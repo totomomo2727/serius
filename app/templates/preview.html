@@ -2,8 +2,19 @@
 {% block title %}Your edition &middot; {{ app_name }}{% endblock %}
 {% block content %}
 <div class="delivery" id="delivery" aria-hidden="true">
-  <img src="/static/seagull.svg" alt="" width="140" height="140" class="delivery-bird">
-  <p class="delivery-copy">Your edition is on its way&hellip;</p>
+  <div class="scene">
+    <span class="ground"></span>
+    <div class="postbox">
+      <img class="postbox-body" src="/static/serius/postbox.svg" alt="">
+      <img class="postbox-flag" src="/static/serius/flag.svg" alt="">
+    </div>
+    <div class="carry posting"><img src="/static/serius/letter.svg" alt=""></div>
+    <div class="serius">
+      <span class="sprite walk"></span>
+      <span class="sprite greet"></span>
+    </div>
+  </div>
+  <p class="delivery-copy">Serius is posting your edition&hellip;</p>
 </div>
 
 <section class="sheet edition" id="edition-sheet">
@@ -95,7 +106,7 @@
       document.body.classList.remove('delivering');
       delivery.remove();
       sheet.classList.add('arrived');
-    }, 1600);
+    }, 3600);
   })();
 </script>
 {% endblock %}

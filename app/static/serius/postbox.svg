@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" role="img" aria-label="A hand-drawn postbox">
+  <g fill="none" stroke="#1a1a1a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 128 L70 206 M90 130 L89 206" />
+    <path d="M58 208 Q80 202 104 208" />
+    <path d="M30 76 Q30 44 80 42 Q130 44 130 76 L131 126 Q80 133 29 126 Z" fill="#fffdf2"/>
+    <path d="M44 88 Q80 84 116 88" stroke-width="2.6"/>
+    <path d="M54 104 L106 103" stroke-width="5"/>
+    <path d="M30 76 Q80 70 130 76" stroke-width="2.2"/>
+  </g>
+</svg>

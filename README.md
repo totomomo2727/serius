@@ -12,8 +12,8 @@ subscribing, and manage delivery afterwards — no password, no dashboard.
 1. `/` introduces the paper, `/start` collects broad topics, optional specific interests, and
    preferred depth.
 2. `/preview/{id}` runs the real recommendation engine and shows the edition that would be
-   sent, after a short seagull delivery animation (skipped entirely under
-   `prefers-reduced-motion`).
+   sent, after a short animation of Serius walking up to a postbox and posting the letter
+   (skipped entirely under `prefers-reduced-motion`).
 3. Subscribing stores the reader and **pins that exact edition** as their first one, then
    emails a confirmation link.
 4. Confirming (a POST, so link scanners cannot subscribe anyone) sends that same edition
