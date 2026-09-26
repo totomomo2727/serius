@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 
@@ -10,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.config import APP_DIR, settings
+from app.config import APP_DIR, BASE_URL_CONFIGURED, settings
 from app.content import DEPTH_CHOICES, INTEREST_LABELS, TOPICS, TOPICS_BY_SLUG, seed_content
 from app.db import SessionLocal, get_db, init_db
 from app.emailer import active_provider, provider_is_live
@@ -52,8 +51,13 @@ app.mount("/static", StaticFiles(directory=str(APP_DIR / "static")), name="stati
 async def learn_base_url(request: Request, call_next):
     # Links in email must point at whatever host this instance is actually served from,
     # unless BASE_URL pins it explicitly.
-    if "BASE_URL" not in os.environ:
-        settings.base_url = str(request.base_url).rstrip("/")
+    if not BASE_URL_CONFIGURED:
+        url = request.url.replace(path="", query="")
+        forwarded = request.headers.get("x-forwarded-proto", "").split(",")[0].strip()
+        scheme = forwarded or url.scheme
+        if url.hostname not in ("localhost", "127.0.0.1", "testserver"):
+            scheme = "https"  # bearer links must never travel in the clear
+        settings.base_url = str(url.replace(scheme=scheme)).rstrip("/")
     return await call_next(request)
 
 
@@ -140,7 +144,7 @@ def do_subscribe(
     db: Session = Depends(get_db),
 ) -> HTMLResponse:
     edition = db.get(Edition, edition_id)
-    if edition is None:
+    if edition is None or edition.subscriber_id is not None:
         return page_error("That preview expired. Choose your interests again.", 404)
     if consent != "yes":
         return page_error("We need your explicit consent before sending you email.", 400)

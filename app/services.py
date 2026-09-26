@@ -148,6 +148,17 @@ def pending_first_edition(db: Session, subscriber: Subscriber) -> Edition | None
 # ---------------------------------------------------------------------------- sending
 
 
+def _date_taken(db: Session, subscriber: Subscriber, day: date, edition: Edition) -> bool:
+    other = db.scalars(
+        select(Edition).where(
+            Edition.subscriber_id == subscriber.id,
+            Edition.edition_date == day,
+            Edition.id != edition.id,
+        )
+    ).first()
+    return other is not None
+
+
 def send_edition(db: Session, edition: Edition, local_date: date | None = None) -> SendResult:
     """Send one edition. Safe to call repeatedly: an already-sent edition is a no-op."""
     subscriber = edition.subscriber
@@ -169,7 +180,8 @@ def send_edition(db: Session, edition: Edition, local_date: date | None = None) 
     local_date = local_date or local_now(subscriber).date()
     edition.status = "sending"
     edition.attempts += 1
-    if edition.edition_date is None:
+    if edition.edition_date is None and not _date_taken(db, subscriber, local_date, edition):
+        # One dated edition per local day; a re-subscription after today's send stays undated.
         edition.edition_date = local_date
     db.commit()
 
@@ -254,7 +266,7 @@ def pending_first_edition_unsent(db: Session, subscriber: Subscriber) -> Edition
             Edition.kind == "first",
             Edition.status.in_(("preview", "queued", "failed")),
         )
-        .order_by(Edition.created_at.asc())
+        .order_by(Edition.created_at.desc())
         .limit(1)
     ).first()
 

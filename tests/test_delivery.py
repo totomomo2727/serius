@@ -138,3 +138,20 @@ def test_rendered_email_has_masthead_summaries_links_and_footer(db):
             assert item.content.read_label in body
     # The plain-text edition must stand alone when images and CSS are blocked.
     assert "<" not in text.replace("<https", "")
+
+
+def test_resubscribing_after_todays_edition_still_sends(db):
+    """A second subscription the same day must not collide with the day's existing edition."""
+    profile = Profile(topics=["tech"], interests=[], depth="mix")
+    subscriber, first = subscribe(db, "again@example.com", profile, "UTC", build_edition(db, profile))
+    verify(db, subscriber)
+    assert send_edition(db, first).ok
+
+    later = build_edition(db, profile)
+    subscriber, second = subscribe(db, "again@example.com", profile, "UTC", later)
+    verify(db, subscriber)
+    result = send_edition(db, second)
+
+    assert result.ok
+    assert second.id != first.id
+    assert second.status == "sent"

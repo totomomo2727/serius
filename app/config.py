@@ -58,3 +58,6 @@ def get_settings() -> Settings:
 
 
 settings = get_settings()
+
+# Set explicitly (env or .env), so request hosts must not override it.
+BASE_URL_CONFIGURED = "base_url" in settings.model_fields_set

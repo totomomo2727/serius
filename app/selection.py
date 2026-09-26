@@ -201,7 +201,8 @@ def select_edition(
 
     def take(pool: list[tuple[ContentItem, float]], revisit: bool) -> None:
         while len(selections) < size and pool:
-            picked = _pick(pool, chosen)
+            # Revisits go strictly oldest-first; the pool is already in that order.
+            picked = pool[0] if revisit else _pick(pool, chosen)
             if picked is None:
                 return
             item, score = picked
@@ -236,11 +237,12 @@ def compose_intro(profile: Profile, selections: list[Selection]) -> str:
         return ", ".join(names[:-1]) + " and " + names[-1]
 
     formats = {s.content.fmt for s in selections}
-    shape = {
-        frozenset({"video"}): "three things to watch",
-        frozenset({"article"}): "three things to read",
-        frozenset({"essay"}): "three things to read",
-    }.get(frozenset(formats), "a mix of reading and watching")
+    if formats == {"video"}:
+        shape = "three things to watch"
+    elif "video" in formats:
+        shape = "a mix of reading and watching"
+    else:
+        shape = "three things to read"
 
     minutes = sum(s.content.duration_minutes for s in selections)
     return (
