@@ -4,7 +4,10 @@
 <div class="delivery" id="delivery">
   <div class="scene" aria-hidden="true">
     <span class="ground"></span>
-    <div class="postbox"><img src="/static/serius/postbox.png" alt=""></div>
+    <div class="postbox">
+      <img class="postbox-body" src="/static/serius/postbox-body.png" alt="">
+      <img class="postbox-door" src="/static/serius/postbox-door.png" alt="">
+    </div>
     <div class="serius">
       <span class="sprite walk"></span>
       <span class="sprite stand"></span>
@@ -116,7 +119,7 @@
       delivery.remove();
       sheet.classList.add('arrived');
     };
-    var timer = window.setTimeout(finish, 4600);
+    var timer = window.setTimeout(finish, 5300);
     document.getElementById('delivery-skip').addEventListener('click', function () {
       window.clearTimeout(timer);
       finish();
