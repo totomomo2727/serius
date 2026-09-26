@@ -7,7 +7,7 @@
 </div>
 
 <section class="sheet edition" id="edition-sheet">
-  <p class="dateline">Your edition &middot; {{ date_label }}</p>
+  <p class="dateline">Your edition &middot; <span id="edition-date">{{ date_label }}</span></p>
   <h1 class="edition-masthead">{{ app_name }}</h1>
   <p class="edition-tagline">{{ tagline }}</p>
   <hr class="rule thick">
@@ -67,6 +67,14 @@
 
 <script>
   (function () {
+    try {
+      // The server can only date this in UTC; the reader's own day is what the email will use.
+      var now = new Date();
+      document.getElementById('edition-date').textContent =
+        now.toLocaleDateString('en-GB', { weekday: 'long' }) + ', ' +
+        now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    } catch (err) { /* keep the server's date */ }
+
     try {
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
       if (tz) {
