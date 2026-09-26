@@ -129,13 +129,13 @@ def test_rendered_email_has_masthead_summaries_links_and_footer(db):
     assert "Your edition" in subject
     for body in (html, text):
         assert "The Feather Press" in body or "THE FEATHER PRESS" in body
-        assert "That's your edition for today. More curiosity tomorrow." in body.replace("&rsquo;", "'")
+        assert "Delivered by Serius. More tomorrow." in body
         assert "unsubscribe" in body.lower()
         for item in edition.items:
             assert item.content.title in body
             assert item.content.creator in body
             assert item.content.url in body
-            assert item.content.read_label in body
+            assert item.content.read_label.lower() in body.lower()
     # The plain-text edition must stand alone when images and CSS are blocked.
     assert "<" not in text.replace("<https", "")
 

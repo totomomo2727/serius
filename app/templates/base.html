@@ -10,23 +10,24 @@
 </head>
 <body class="{% block body_class %}{% endblock %}">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="masthead">
-    <a class="masthead-link" href="/">
-      <img src="/static/serius/serius-standing.png" alt="" width="113" height="195" class="masthead-bird">
-      <span>
-        <span class="masthead-title">{{ app_name }}</span>
-        <span class="masthead-tagline">{{ tagline }}</span>
-      </span>
-    </a>
-    {% block masthead_extra %}{% endblock %}
-  </header>
-  <div class="masthead-rule"><span></span></div>
-  <main id="main">
-    {% block content %}{% endblock %}
-  </main>
-  <footer class="footer">
-    <p>{{ app_name }} &middot; three good finds, delivered daily &middot; no dashboard, no password.</p>
-    {% if dev_tools %}<p class="footer-dev"><a href="/dev">Development controls</a></p>{% endif %}
-  </footer>
+  <div class="page">
+    {% block masthead %}
+    <header class="masthead">
+      <a class="wordmark" href="/">
+        <span class="wordmark-the">The</span>
+        <span class="wordmark-name">Feather Press</span>
+      </a>
+      <p class="wordmark-line">Three good finds. Delivered daily.</p>
+    </header>
+    <hr class="rule">
+    {% endblock %}
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+      <p>{{ app_name }} &middot; no account, no password, unsubscribe from any edition.</p>
+      {% if dev_tools %}<p class="footer-dev"><a href="/dev">Development controls</a></p>{% endif %}
+    </footer>
+  </div>
 </body>
 </html>

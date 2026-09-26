@@ -7,6 +7,7 @@ from datetime import date
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from app.config import APP_DIR, settings
+from app.content import TOPIC_LABELS
 from app.models import Edition
 from app.tokens import MANAGE, make_token, manage_url, unsubscribe_url, verify_url
 
@@ -25,7 +26,12 @@ def long_date(value: date) -> str:
     return f"{value.strftime('%A')}, {value.strftime('%-d')} {value.strftime('%B %Y')}"
 
 
+def topic_label(slug: str) -> str:
+    return TOPIC_LABELS.get(slug, slug.replace("-", " "))
+
+
 env.filters["long_date"] = long_date
+env.filters["topic_label"] = topic_label
 
 
 def edition_context(edition: Edition, local_date: date) -> dict:

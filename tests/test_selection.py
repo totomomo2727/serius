@@ -46,13 +46,18 @@ def test_selection_is_deterministic_for_the_same_profile(db):
 
 def test_every_item_has_complete_attribution_and_a_real_reason(db):
     profile = Profile(topics=["psychology"], interests=["attention-and-focus"], depth="mix")
-    for pick in select_edition(db, profile):
+    picks = select_edition(db, profile)
+    for pick in picks:
         item = pick.content
         assert item.title and item.creator and item.publication
         assert item.url.startswith("http")
-        assert 120 <= len(item.summary.split()) <= 180
+        assert 60 <= len(item.summary.split()) <= 90
         assert item.read_label in ("Read the article", "Read the essay", "Watch the video")
-        assert pick.reason.strip()
+        # A note is optional, but when it appears it stays to one short line.
+        assert len(pick.reason.split()) <= 12
+    assert any(pick.reason for pick in picks)
+    notes = [pick.reason for pick in picks if pick.reason]
+    assert len(notes) == len(set(notes))  # never the same sentence three times
 
 
 def test_previously_delivered_items_are_avoided(db):

@@ -34,8 +34,11 @@ REQUIRED_FIELDS = (
     "verified_on",
 )
 
+OPTIONAL_FIELDS = ("headline", "note", "visual", "visual_alt", "visual_credit")
+
 VALID_FORMATS = {"article", "essay", "video"}
 VALID_DEPTHS = {"accessible", "deep"}
+VALID_VISUALS = {"product-design", "philosophy", "psychology", "ai", "tech"}
 
 
 @dataclass(frozen=True)
@@ -133,6 +136,9 @@ def load_library() -> list[dict]:
             for field in REQUIRED_FIELDS:
                 if field not in raw:
                     raise ValueError(f"{path.name}: item missing '{field}'")
+            unknown = set(raw) - set(REQUIRED_FIELDS) - set(OPTIONAL_FIELDS)
+            if unknown:
+                raise ValueError(f"{path.name}: unknown field(s) {sorted(unknown)}")
             if raw["id"] in seen:
                 raise ValueError(f"duplicate content id: {raw['id']}")
             if raw["format"] not in VALID_FORMATS:
@@ -144,6 +150,8 @@ def load_library() -> list[dict]:
             unknown = set(raw["interests"]) - set(INTEREST_LABELS)
             if unknown:
                 raise ValueError(f"{raw['id']}: unknown interests {sorted(unknown)}")
+            if raw.get("visual") and raw["visual"] not in VALID_VISUALS:
+                raise ValueError(f"{raw['id']}: unknown visual {raw['visual']}")
             seen.add(raw["id"])
             records.append(raw)
     return records
@@ -169,6 +177,11 @@ def seed_content(db: Session) -> int:
         item.duration_minutes = int(raw["duration_minutes"])
         item.summary = raw["summary"]
         item.verified_on = raw["verified_on"]
+        item.headline = raw.get("headline")
+        item.note = raw.get("note")
+        item.visual = raw.get("visual")
+        item.visual_alt = raw.get("visual_alt")
+        item.visual_credit = raw.get("visual_credit")
     db.commit()
     return len(records)
 

@@ -1,26 +1,28 @@
 {{ app_name|upper }}
 {{ tagline }}
-Your edition - {{ date_label }}
+{{ date_label }} - Your edition - Three finds
 
 {{ edition.intro }}
 
 {% for item in items %}
 --------------------------------------------------------------
-{{ loop.index }} of {{ items|length }}
-{{ item.content.title }}
-{{ item.content.creator }} - {{ item.content.publication }}
-{{ item.content.topic.replace('-', ' ') }} | {{ item.content.fmt }} | about {{ item.content.duration_minutes }} minutes{% if item.is_revisit %} | a revisit{% endif %}
+{{ '%02d'|format(loop.index) }} | {{ item.content.topic|topic_label }} | {{ item.content.fmt }}{% if item.is_revisit %} | revisit{% endif %}
 
-Why this one: {{ item.reason }}
+{{ item.content.display_title }}
+{{ item.content.creator }} - {{ item.content.publication }}
 
 {{ item.content.summary }}
+{% if item.reason %}
+Why this one: {{ item.reason }}
+{% endif %}
+{{ item.content.title }} - {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min
+{{ item.content.url }}
 
-{{ item.content.read_label }}: {{ item.content.url }}
 More like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more
 Less like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/less
 {% endfor %}
-==============================================================
-That's your edition for today. More curiosity tomorrow.
+--------------------------------------------------------------
+Delivered by Serius. More tomorrow.
 
 Change your interests or delivery time: {{ manage_link }}
 Unsubscribe: {{ unsubscribe_link }}

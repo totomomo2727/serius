@@ -84,40 +84,25 @@ def base_score(item: ContentItem, profile: Profile, feedback: dict[str, str] | N
     return score
 
 
+def in_sentence(label: str) -> str:
+    """Lowercase a label for mid-sentence use, leaving acronyms such as AI alone."""
+    return label if label.isupper() else label.lower()
+
+
 def explain(item: ContentItem, profile: Profile, is_revisit: bool = False) -> str:
-    matched = [i for i in (item.interests or []) if i in profile.interests]
-    parts: list[str] = []
-    if matched:
-        names = [INTEREST_LABELS.get(i, i) for i in matched]
-        joined = names[0] if len(names) == 1 else " and ".join([", ".join(names[:-1]), names[-1]])
-        parts.append(f"You asked for {joined}")
-    elif item.topic in profile.topics:
-        parts.append(f"You chose {TOPIC_LABELS.get(item.topic, item.topic)}")
-    else:
-        parts.append(f"Close to your {TOPIC_LABELS.get(item.topic, item.topic)} choices")
-
-    if profile.depth == "accessible" and item.depth == "accessible":
-        parts.append("and this is an accessible introduction")
-    elif profile.depth == "deep" and item.depth == "deep":
-        parts.append("and this is a deeper exploration")
-    elif profile.depth == "mix":
-        parts.append(
-            "and this is "
-            + ("an accessible introduction" if item.depth == "accessible" else "a deeper exploration")
-            + ", part of the mix you asked for"
-        )
-    else:
-        wanted = "accessible introductions" if profile.depth == "accessible" else "deeper explorations"
-        got = "an accessible introduction" if item.depth == "accessible" else "a deeper exploration"
-        parts.append(f"and although you prefer {wanted}, this one is {got} worth the detour")
-
-    sentence = " ".join(parts) + "."
+    """One short note, or nothing when the topic label already says it all."""
     if is_revisit:
-        sentence += (
-            " A revisit: you have seen this in an earlier edition, and it is the best match"
-            " left in the library today."
-        )
-    return sentence
+        return "A revisit: the closest match left in the library today."
+    matched = [i for i in (item.interests or []) if i in profile.interests]
+    if matched:
+        label = in_sentence(INTEREST_LABELS.get(matched[0], matched[0]))
+        return f"For your interest in {label}."
+    if item.topic in profile.topics:
+        if profile.depth != "mix" and item.depth == profile.depth:
+            kind = "accessible" if item.depth == "accessible" else "deeper"
+            return f"A {kind} piece from your {in_sentence(TOPIC_LABELS.get(item.topic, item.topic))} choice."
+        return ""
+    return f"Near your choices, from {in_sentence(TOPIC_LABELS.get(item.topic, item.topic))}."
 
 
 def delivered_history(db: Session, subscriber_id: str) -> dict[str, datetime]:
@@ -222,31 +207,41 @@ def select_edition(
         # Suitable unseen content is exhausted: resurface the least-recently-delivered
         # relevant pieces, labelled honestly as revisits.
         take(seen, revisit=True)
+
+    # The same note three times reads like a template, so keep only its first appearance.
+    seen_reasons: set[str] = set()
+    for selection in selections:
+        if selection.is_revisit:
+            continue  # a revisit always says so
+        if selection.reason and selection.reason in seen_reasons:
+            selection.reason = ""
+        seen_reasons.add(selection.reason)
     return selections
 
 
 def compose_intro(profile: Profile, selections: list[Selection]) -> str:
-    topic_names = [TOPIC_LABELS.get(t, t) for t in profile.topics]
-    interest_names = [INTEREST_LABELS.get(i, i) for i in profile.interests]
-    focus = interest_names or topic_names
-
-    def join(names: list[str]) -> str:
-        names = [n.lower() for n in names]
-        if len(names) == 1:
-            return names[0]
-        return ", ".join(names[:-1]) + " and " + names[-1]
-
-    formats = {s.content.fmt for s in selections}
-    if formats == {"video"}:
-        shape = "three things to watch"
-    elif "video" in formats:
-        shape = "a mix of reading and watching"
+    """One line naming what is actually in today's three finds."""
+    names: list[str] = []
+    for selection in selections:
+        item = selection.content
+        matched = [i for i in (item.interests or []) if i in profile.interests]
+        label = in_sentence(
+            INTEREST_LABELS.get(matched[0], matched[0])
+            if matched
+            else TOPIC_LABELS.get(item.topic, item.topic)
+        )
+        if label not in names:
+            names.append(label)
+    if not names:
+        names = [in_sentence(TOPIC_LABELS.get(t, t)) for t in profile.topics][:3]
+    # Several labels already contain "and" ("attention and focus"), so a second
+    # conjunction reads badly: comma-separate those instead.
+    if len(names) == 1:
+        joined = names[0]
+    elif any(" and " in name for name in names):
+        joined = ", ".join(names)
+    elif len(names) == 2:
+        joined = f"{names[0]} and {names[1]}"
     else:
-        shape = "three things to read"
-
-    minutes = sum(s.content.duration_minutes for s in selections)
-    return (
-        f"Today's edition follows {join(focus)}. "
-        f"Three pieces, {shape}, about {minutes} minutes if you take all of them end to end. "
-        "The summaries below stand on their own, so skim them and follow only what pulls at you."
-    )
+        joined = ", ".join(names[:-1]) + ", and " + names[-1]
+    return f"Today: {joined}."

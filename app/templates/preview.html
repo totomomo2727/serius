@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% from "_plate.html" import plate %}
 {% block title %}Your edition &middot; {{ app_name }}{% endblock %}
+
+{% block masthead %}{% endblock %}
+
 {% block content %}
 <div class="delivery" id="delivery">
   <div class="scene" aria-hidden="true">
@@ -22,46 +26,80 @@
   <button type="button" class="delivery-skip" id="delivery-skip">Skip</button>
 </div>
 
-<section class="sheet edition" id="edition-sheet">
-  <h1 class="edition-masthead">{{ app_name }}</h1>
-  <p class="edition-tagline">{{ tagline }}</p>
-  <hr class="rule thick">
-  <p class="edition-meta">
+<article class="edition" id="edition-sheet">
+  <header class="masthead">
+    <a class="wordmark" href="/">
+      <span class="wordmark-the">The</span>
+      <span class="wordmark-name">Feather Press</span>
+    </a>
+    <img class="wordmark-feather" src="/static/serius/feather.svg" alt="" width="64" height="24">
+  </header>
+  <hr class="rule">
+  <p class="strip">
     <span id="edition-date">{{ date_label }}</span>
+    <span>Your edition</span>
     <span>{{ items|length }} finds</span>
-    <span>About three minutes</span>
   </p>
   <hr class="rule">
-  <h2 class="your-edition">Your edition</h2>
-  <p class="intro">{{ edition.intro }}</p>
-  <hr class="rule">
+  <p class="today">{{ edition.intro }}</p>
 
-  <div class="pieces">
-    {% for item in items %}
-    <article class="piece {% if loop.first %}lead{% else %}support{% endif %}">
-      <p class="piece-index">{{ item.content.topic.replace('-', ' ') }} &middot; {{ loop.index }} of {{ items|length }}</p>
-      <h3 class="piece-title">{{ item.content.title }}</h3>
-      <p class="byline">
-        {{ item.content.creator }} &middot; {{ item.content.publication }}
+  {% set lead = items[0] %}
+  <section class="lead">
+    <div class="find-head">
+      <p class="find-number">01</p>
+      <p class="kicker">
+        <span>{{ lead.content.topic|topic_label }}</span>
+        <span>{{ lead.content.fmt }}</span>
+        {% if lead.is_revisit %}<span>revisit</span>{% endif %}
       </p>
-      <p class="stamps">
-        <span class="stamp">{{ item.content.fmt }}</span>
-        <span class="stamp">{{ item.content.duration_minutes }} min to {{ item.content.verb }}</span>
-        {% if item.is_revisit %}<span class="stamp revisit">a revisit</span>{% endif %}
-      </p>
-      <p class="why"><span class="why-label">Why this one</span> {{ item.reason }}</p>
-      <p class="summary">{{ item.content.summary }}</p>
-      <p><a class="source-link" href="{{ item.content.url }}" rel="noopener">{{ item.content.read_label }} &rarr;</a></p>
-    </article>
+      <h1 class="headline">{{ lead.content.display_title }}</h1>
+      <p class="byline">{{ lead.content.creator }} &middot; {{ lead.content.publication }}</p>
+    </div>
+    {{ plate(lead.content, 'lead') }}
+    <div class="find-body">
+      <p class="summary">{{ lead.content.summary }}</p>
+      {% if lead.reason %}<p class="why"><span class="why-label">Why this one</span> {{ lead.reason }}</p>{% endif %}
+      <p class="source"><a href="{{ lead.content.url }}" rel="noopener">{{ lead.content.title }}</a><span
+        class="source-meta"> &middot; {{ lead.content.read_label|lower }}, {{ lead.content.duration_minutes }} min</span></p>
+      {% if lead.content.note %}<p class="annotation">{{ lead.content.note }}</p>{% endif %}
+    </div>
+  </section>
+
+  {% if items|length > 1 %}
+  <hr class="rule">
+  <div class="supports">
+    {% for item in items[1:] %}
+    <section class="find">
+      <div class="find-head">
+        <p class="find-number">0{{ loop.index + 1 }}</p>
+        <p class="kicker">
+          <span>{{ item.content.topic|topic_label }}</span>
+          <span>{{ item.content.fmt }}</span>
+          {% if item.is_revisit %}<span>revisit</span>{% endif %}
+        </p>
+        <h2 class="headline">{{ item.content.display_title }}</h2>
+        <p class="byline">{{ item.content.creator }} &middot; {{ item.content.publication }}</p>
+      </div>
+      {{ plate(item.content) }}
+      <div class="find-body">
+        <p class="summary">{{ item.content.summary }}</p>
+        {% if item.reason %}<p class="why"><span class="why-label">Why this one</span> {{ item.reason }}</p>{% endif %}
+        <p class="source"><a href="{{ item.content.url }}" rel="noopener">{{ item.content.title }}</a><span
+          class="source-meta"> &middot; {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min</span></p>
+      </div>
+    </section>
     {% endfor %}
   </div>
+  {% endif %}
 
-  <hr class="rule thick">
-  <img class="signoff-bird" src="/static/serius/serius-standing.png" alt="" width="113" height="195">
-  <p class="signoff">That&rsquo;s your edition for today. More curiosity tomorrow.</p>
-</section>
+  <hr class="rule">
+  <footer class="edition-foot">
+    <img src="/static/serius/serius-standing.png" alt="" width="113" height="195">
+    <p class="signoff">More tomorrow morning.</p>
+  </footer>
+</article>
 
-<section class="sheet subscribe">
+<section class="subscribe">
   <h2>Get this in your inbox tomorrow morning</h2>
   <p>
     Confirm your address and this exact edition arrives as your first newspaper, then a new

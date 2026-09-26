@@ -7,11 +7,13 @@
     "url": "https://iep.utm.edu/stoicism/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["stoicism"],
+    "interests": [
+      "stoicism"
+    ],
     "depth": "accessible",
     "duration_minutes": 18,
     "verified_on": "2026-09-26",
-    "summary": "A clear encyclopedia introduction to Stoicism as a complete philosophy rather than a set of quotations. It was founded in Athens by Zeno of Citium around 300 BCE, took its name from the Stoa Poikile or painted porch where the first Stoics taught, and was shaped by Socrates and the Cynics in argument with Skeptics, Academics, and Epicureans. The school then moved to Rome, where emperors alternately persecuted and practised it, most famously Marcus Aurelius. The entry explains the core ethical claim that Stoicism is a eudaimonic virtue ethics in which virtue is both necessary and sufficient for a flourishing life, while other things such as health and wealth are indifferents that may still be reasonably preferred. It also covers the Stoic division of philosophy into physics, logic, and ethics, and traces the influence of Stoic ideas on Christianity, on figures such as More, Descartes, and Spinoza, and on modern cognitive behavioural therapy."
+    "summary": "A plain-language entry on what the Stoics actually taught, before the modern self-help version of it. It covers the school's physics and logic as well as the ethics, explains why virtue was held to be the only real good, and shows how the famous advice about control follows from that rather than standing alone. A good first stop if Marcus Aurelius arrived without context."
   },
   {
     "id": "ph-stoicism-sep",
@@ -21,11 +23,15 @@
     "url": "https://plato.stanford.edu/entries/stoicism/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["stoicism", "epistemology"],
+    "interests": [
+      "stoicism",
+      "epistemology"
+    ],
     "depth": "deep",
     "duration_minutes": 40,
     "verified_on": "2026-09-26",
-    "summary": "The scholarly counterpart to a popular introduction, this entry treats Stoicism as one of the dominant philosophical systems of the Hellenistic period and insists on its systematicity: physics, logic, and ethics interlock, and the ethical advice most readers come for does not stand on its own. The physics section covers the Stoic account of bodies and incorporeals, the mixture of active and passive principles, god as immanent in the cosmos, causation and determinism, and the cosmic cycle. The logic section goes through the philosophy of language, propositions and lekta, syllogistic, modality, and the famous paradoxes. The ethics section then shows how the goal of living in agreement with nature follows from those commitments. The entry also explains a difficulty peculiar to the subject: almost nothing written by the early Stoics survives, so doctrine has to be reconstructed from later reporters, including hostile ones, and from Cicero, Seneca, and Epictetus."
+    "summary": "The scholarly treatment: sources, disputes, and the parts of the system usually left out. It reconstructs Stoic physics and logic from fragments, sets out the theory of the passions and what apatheia did and did not mean, and traces disagreements between Zeno, Chrysippus, and the Roman writers. Dense, cited throughout, and the reference to keep open while reading anything else on the subject.",
+    "headline": "Stoicism, with the arguments left in"
   },
   {
     "id": "ph-seneca-shortness",
@@ -35,11 +41,16 @@
     "url": "https://en.wikisource.org/wiki/On_the_shortness_of_life",
     "format": "essay",
     "topic": "philosophy",
-    "interests": ["stoicism", "meaning-and-mortality"],
+    "interests": [
+      "stoicism",
+      "meaning-and-mortality"
+    ],
     "depth": "deep",
     "duration_minutes": 45,
     "verified_on": "2026-09-26",
-    "summary": "Seneca's letter to Paulinus, written in the first century and here in Basore's public-domain Loeb translation, opens by rejecting the common complaint that life is too short. Life is long enough, he argues, if you do not squander it. Most people do: they are consumed by other people's business, by ambition, by greed, by the maintenance of a reputation, by pleasures that leave nothing behind, and above all by postponement, living as though there were an unlimited supply of years. The most-quoted line, that we are not given a short life but make it short, sets up the rest. Seneca examines the paradox that people guard their property carefully and give away their time to anyone who asks, distinguishes the merely busy from the genuinely occupied, and argues that only those who devote time to philosophy are truly alive, since study lets you inherit the lifetimes of everyone who thought before you."
+    "summary": "Seneca's letter to Paulinus argues that life is long enough, and that we spend it as if it were not ours to lose. The complaints are oddly current: busyness as a status claim, obligations nobody chose, plans permanently deferred to a retirement that may not arrive. Two thousand years old, and still uncomfortably direct about how you actually spent today.",
+    "headline": "It is not that we have little time",
+    "note": "Written in the first century. Still about your calendar."
   },
   {
     "id": "ph-pigliucci-stoicism-tedx",
@@ -49,11 +60,13 @@
     "url": "https://www.youtube.com/watch?v=Yhn1Fe8cT0Q",
     "format": "video",
     "topic": "philosophy",
-    "interests": ["stoicism"],
+    "interests": [
+      "stoicism"
+    ],
     "depth": "accessible",
     "duration_minutes": 19,
     "verified_on": "2026-09-26",
-    "summary": "Pigliucci, a philosopher with doctorates in both evolutionary biology and philosophy, presents Stoicism as a practical way of life rather than a historical curiosity. He begins with how he came to it, then lays out the central Stoic distinction between what is up to us, our judgements, intentions, and actions, and what is not, including our bodies, reputations, and outcomes in the world. Serenity comes from investing effort in the first category and accepting the second. He connects this directly to modern cognitive behavioural therapy, whose founders drew on Stoic sources, and works through the practices that follow: the discipline of desire, the daily review of one's conduct, and rehearsing adversity in advance so that misfortune is not also a surprise. Throughout he resists the caricature of Stoicism as suppression of feeling, arguing instead that it is a training of judgement that allows a full emotional life."
+    "summary": "Pigliucci, a philosopher who came to Stoicism late and practically, explains what a modern person can take from it without pretending to be a Roman. He separates the therapeutic advice from the metaphysics, is honest about which parts he rejects, and gives a few exercises worth trying. Nineteen minutes, and a useful corrective to the quote-of-the-day version of a school that was never really about endurance."
   },
   {
     "id": "ph-singer-famine",
@@ -63,11 +76,14 @@
     "url": "https://personal.lse.ac.uk/robert49/teaching/mm/articles/Singer_1972Famine.pdf",
     "format": "essay",
     "topic": "philosophy",
-    "interests": ["ethics"],
+    "interests": [
+      "ethics"
+    ],
     "depth": "deep",
     "duration_minutes": 30,
     "verified_on": "2026-09-26",
-    "summary": "Singer's 1972 paper, written in response to famine in East Bengal, is among the most assigned essays in applied ethics. The argument is short and uncomfortable. Suffering and death from lack of food, shelter, and medical care are bad. If it is in our power to prevent something bad from happening without sacrificing anything of comparable moral importance, we ought to do it. He illustrates with the case of a child drowning in a shallow pond: everyone agrees you must wade in, even at the cost of muddy clothes. He then argues that distance and the presence of other people who could also help make no moral difference to the principle, which means the obligation extends to distant strangers and is not charity but duty. Singer accepts that the conclusion is demanding, discusses a weaker version of the premise, and answers objections about government responsibility, population, and how much any individual is required to give."
+    "summary": "Singer's 1972 argument is one paragraph long and very hard to escape: if you can prevent something bad without sacrificing anything comparably important, you ought to. The drowning child makes it vivid, and the rest of the paper works through what accepting it would mean for distance, numbers, and how much you give. Fifty years on, most responses are still replies to this.",
+    "headline": "The drowning child, and what follows from it"
   },
   {
     "id": "ph-virtue-ethics",
@@ -77,11 +93,13 @@
     "url": "https://plato.stanford.edu/entries/ethics-virtue/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["ethics"],
+    "interests": [
+      "ethics"
+    ],
     "depth": "deep",
     "duration_minutes": 32,
     "verified_on": "2026-09-26",
-    "summary": "Virtue ethics is one of the three major approaches in normative ethics, and this entry explains what actually separates it from the other two. Faced with someone in need, a utilitarian points to the consequences of helping, a deontologist to a rule requiring it, and a virtue ethicist to the fact that helping would be charitable or benevolent. The difference is not that only virtue ethicists care about character, since every plausible theory has something to say about rules, consequences, and virtues; it is which of these is treated as fundamental. The entry then develops the key concepts: a virtue as a stable trait that makes its possessor good, phronesis or practical wisdom as the capacity to judge what a situation requires, and eudaimonia as flourishing. It covers the main variants, including eudaimonist, agent-based, and ethics of care, and takes seriously the standard objections about application, adequacy, and cultural relativity."
+    "summary": "The overview of the tradition that asks what kind of person to be rather than which rule to follow. It sets out the central notions of virtue, practical wisdom, and flourishing, explains the twentieth-century revival after Anscombe, and takes the standard objections seriously — that the theory gives little guidance, and that its list of virtues varies with culture. Clear, and fair to its critics."
   },
   {
     "id": "ph-consequentialism",
@@ -91,11 +109,13 @@
     "url": "https://plato.stanford.edu/entries/consequentialism/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["ethics"],
+    "interests": [
+      "ethics"
+    ],
     "depth": "deep",
     "duration_minutes": 32,
     "verified_on": "2026-09-26",
-    "summary": "Consequentialism holds that normative properties depend only on consequences, and this entry unpacks how much variation hides inside that simple claim. The underlying intuition is that what is right is whatever makes the world go best in future, since the past cannot be changed. The paradigm case is classic utilitarianism, defended by Bentham, Mill, and Sidgwick, which the entry breaks into separable commitments: that only consequences matter, that only welfare counts as a consequence, that everyone's welfare counts equally, that the measure is total rather than average, and that the right act maximises rather than merely satisfices. Each can be rejected independently, producing rule consequentialism, satisficing views, and pluralist theories of value. The entry also examines the standard objections concerning demandingness, injustice, and the difficulty of knowing outcomes, and raises the worry that a sufficiently broad definition of consequentialism makes the label almost empty."
+    "summary": "A careful map of the view that outcomes are what matter morally, and of the many forms it takes once you ask which outcomes and evaluated how. Act and rule versions, satisficing, agent-relative value, and the demandingness problem all get proper treatment. Read alongside the virtue ethics entry: between them they cover most of what people are arguing about when they argue about ethics."
   },
   {
     "id": "ph-effective-altruism",
@@ -105,11 +125,13 @@
     "url": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["ethics"],
+    "interests": [
+      "ethics"
+    ],
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "An introduction to effective altruism written by the movement's own organisation, useful as a primary source for what the project claims about itself. It is presented as both a research field, which tries to identify the world's most pressing problems and the best solutions to them, and a practical community that acts on those findings. The motivating observation is empirical rather than philosophical: among attempts to do good, effectiveness varies enormously, with some charities helping a hundred or a thousand times as many people as others for the same resources. The article then gives concrete examples of the causes this reasoning has led people toward, including pandemic preparedness, basic medical supplies in low-income countries, AI alignment research, ending factory farming, and improving institutional decision-making. It closes with the principles said to unite the community, such as impartial concern for others and willingness to change one's mind, and with suggestions for taking action."
+    "summary": "The movement's own account of itself: use evidence and careful reasoning to work out how to help others most, then act on it. Short, and clearer than most secondary descriptions about the core claims and the cause areas that follow from them. Worth reading first-hand before deciding what you think, given how much of the public argument is conducted at second hand."
   },
   {
     "id": "ph-sandel-justice",
@@ -119,11 +141,13 @@
     "url": "https://www.youtube.com/watch?v=kBdfcR-8hEY",
     "format": "video",
     "topic": "philosophy",
-    "interests": ["ethics"],
+    "interests": [
+      "ethics"
+    ],
     "depth": "accessible",
     "duration_minutes": 55,
     "verified_on": "2026-09-26",
-    "summary": "The opening lecture of Sandel's Harvard course, filmed in a packed theatre, and probably the best single hour of introductory moral philosophy on video. He starts with the trolley problem: your brakes have failed, five workers are on the track ahead, and a side track holds one. Most of the audience turns the trolley. He then varies the case, asking whether you would push a large man off a bridge to stop it, and the same audience refuses, which exposes the gap between consequentialist and categorical moral reasoning. A second case, the nineteenth-century shipwreck of the Mignonette in which survivors killed and ate a cabin boy, tests whether necessity or consent can justify an act. Sandel argues with students throughout rather than lecturing at them, and ends by warning that studying philosophy estranges you from your own settled assumptions."
+    "summary": "The first lecture of Sandel's Harvard course, filmed in a packed hall. He opens with the runaway trolley, gets a thousand students to commit to an answer, then walks them into the case where their own principle fails. What makes it work is the arguing: real objections from the room, taken seriously. The best hour of introductory moral philosophy on video."
   },
   {
     "id": "ph-life-meaning",
@@ -133,11 +157,14 @@
     "url": "https://plato.stanford.edu/entries/life-meaning/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["meaning-and-mortality"],
+    "interests": [
+      "meaning-and-mortality"
+    ],
     "depth": "deep",
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
-    "summary": "A survey of how analytic philosophy handles the question everyone asks and few philosophers used to take seriously in these terms. The entry notes that historical figures answered it under other descriptions, Aristotle on the human function, Aquinas on the beatific vision, Kant on the highest good, alongside Ecclesiastes on futility, Marx on alienation, and Nietzsche on nihilism, while a distinct field of enquiry only formed in the 1980s. It first separates the question of what makes a particular life meaningful from the question of whether the universe has a purpose, and distinguishes meaning from happiness and from virtue. It then sets out the main positions: supernaturalism, which makes meaning depend on God or a soul; objective naturalism, which locates it in mind-independent goods such as knowledge, love, or creativity; and subjectivism, which grounds it in whatever the individual cares about. Nihilism and the challenge from death are treated in their own sections."
+    "summary": "Before answering whether life has meaning, this entry asks what the question means, and finds several distinct ones underneath. It separates supernaturalist from naturalist accounts, subjective from objective ones, and meaning in a life from the meaning of life. Nihilism gets a fair hearing rather than a dismissal, and so does the thought that the question is confused. Systematic, and it makes the conversation much easier to have without talking past everyone in it.",
+    "headline": "What the question is actually asking"
   },
   {
     "id": "ph-plato-apology",
@@ -147,11 +174,14 @@
     "url": "https://www.gutenberg.org/files/1656/1656-h/1656-h.htm",
     "format": "essay",
     "topic": "philosophy",
-    "interests": ["meaning-and-mortality", "epistemology"],
+    "interests": [
+      "meaning-and-mortality",
+      "epistemology"
+    ],
     "depth": "accessible",
     "duration_minutes": 50,
     "verified_on": "2026-09-26",
-    "summary": "Plato's account of Socrates defending himself in an Athenian court against charges of impiety and corrupting the young, in Jowett's public-domain translation. Socrates refuses the usual tactics of appeal and flattery. He explains how he acquired his reputation: told by the oracle at Delphi that no one was wiser, he went looking for a counterexample among politicians, poets, and craftsmen, and concluded that his only advantage was knowing the extent of his own ignorance while they did not. He cross-examines his accuser Meletus in court, argues that a good man cannot be harmed by a worse one, and states that the unexamined life is not worth living. Convicted, he proposes free meals at public expense as his penalty before settling on a fine, and in the closing speech reasons calmly about death as either dreamless sleep or a chance to question the dead."
+    "summary": "Socrates' defence speech, as Plato recorded it. He explains the oracle, the habit of questioning that made him enemies, and why he will not stop in exchange for acquittal. The unexamined life line arrives here, in context, from a man who has just been sentenced to death. Short, readable in one sitting, and the origin of a great deal that follows."
   },
   {
     "id": "ph-descartes-discourse",
@@ -161,11 +191,13 @@
     "url": "https://www.gutenberg.org/files/59/59-h/59-h.htm",
     "format": "essay",
     "topic": "philosophy",
-    "interests": ["epistemology"],
+    "interests": [
+      "epistemology"
+    ],
     "depth": "deep",
     "duration_minutes": 90,
     "verified_on": "2026-09-26",
-    "summary": "Descartes wrote the Discourse in 1637 as an autobiographical preface to his scientific work, and it reads more easily than the later Meditations. He describes his dissatisfaction with everything he was taught, his decision to abandon book learning for the book of the world, and his retreat to a stove-heated room to rebuild his beliefs from nothing. Part two gives the four rules of his method: accept nothing not clearly known to be true, divide difficulties into parts, proceed from the simplest objects upward, and review exhaustively enough to be sure nothing was omitted. Part three sets out a provisional moral code for living while everything else is in doubt. Part four contains the famous move, that even universal doubt cannot doubt the doubter, yielding cogito ergo sum, followed by arguments for God and for the distinctness of mind and body."
+    "summary": "Descartes describes taking his own beliefs apart to find whether anything survives doubt. The method, the dream argument, the demon, and the one thing that cannot be doubted are all here, written as autobiography rather than treatise. Long by modern standards, and the later sections on physics have aged badly, but the first two parts alone explain why this small book restarted European philosophy and why every course still begins here."
   },
   {
     "id": "ph-epistemology",
@@ -175,11 +207,13 @@
     "url": "https://plato.stanford.edu/entries/epistemology/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["epistemology"],
+    "interests": [
+      "epistemology"
+    ],
     "depth": "deep",
     "duration_minutes": 40,
     "verified_on": "2026-09-26",
-    "summary": "A map of the theory of knowledge, starting from the Greek roots episteme and logos and noting that while the word is only a couple of centuries old the field is as old as philosophy itself. The entry shows how different eras asked different questions: Plato on what knowing is and why knowledge is better than true opinion, Locke on the operations of human understanding, Kant on the conditions that make understanding possible, Russell on how sensory experience could justify modern science. It then organises the contemporary subject around its central distinctions, including belief, truth, and justification as candidate components of knowledge, the Gettier problem that broke the traditional analysis, internalism against externalism about justification, foundationalism against coherentism about structure, and the sources of knowledge such as perception, memory, testimony, and reason. Later sections cover formal epistemology and social epistemology."
+    "summary": "The reference entry on knowledge: what it is, how belief differs from knowledge, and why justified true belief stopped being a satisfactory answer after Gettier. It covers foundationalism and coherentism, internalism and externalism, and the sources of knowledge from perception to testimony. It also covers the sceptical challenges that any account has to survive. Substantial, carefully organised, and the piece to read before arguing with anyone about what counts as evidence."
   },
   {
     "id": "ph-skepticism",
@@ -189,10 +223,13 @@
     "url": "https://plato.stanford.edu/entries/skepticism/",
     "format": "article",
     "topic": "philosophy",
-    "interests": ["epistemology"],
+    "interests": [
+      "epistemology"
+    ],
     "depth": "deep",
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
-    "summary": "Philosophical skepticism is interesting, the entry argues, precisely because there are intriguing arguments for a position almost nobody finds plausible, and because so much of modern epistemology is best read as a response to them. Three forms are distinguished. Humean skepticism targets induction, asking what justifies inferring the future from the past, and much of the philosophy of science descends from it. Cartesian skepticism uses hypotheses such as dreaming or deception to argue that you cannot know ordinary things because you cannot rule out scenarios indistinguishable from experience; responses to it drive debates about epistemic closure and about whether some hypotheses can be dismissed without evidence. Pyrrhonian skepticism generalises further, using the regress of reasons to argue that suspension of judgement is the only justified attitude, which is where foundationalism, coherentism, and infinitism enter as attempts to stop the regress."
+    "summary": "A survey of the doubts that refuse to go away: the brain in a vat, the problem of the criterion, and the ancient sceptics' suspension of judgement. It treats them as arguments to be answered rather than games, and covers the main responses, including contextualism and Moore's refusal to play. Useful for seeing exactly where your own confidence is resting on nothing.",
+    "headline": "The arguments you cannot quite answer"
   }
 ]

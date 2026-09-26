@@ -7,11 +7,14 @@
     "url": "https://practicaltypography.com/typography-in-ten-minutes.html",
     "format": "article",
     "topic": "product-design",
-    "interests": ["typography"],
+    "interests": [
+      "typography"
+    ],
     "depth": "accessible",
     "duration_minutes": 10,
     "verified_on": "2026-09-26",
-    "summary": "Butterick opens his free online typography book with a deliberately small promise: five rules, ten minutes, and you will set type better than most writers and many graphic designers. The rules all follow from one observation, that a document's typographic quality is decided almost entirely by its body text, because there is simply more body text than anything else. So he starts there. Choose a point size in the comfortable reading range, roughly 10 to 12 points in print and 15 to 25 pixels on screen, and adjust by eye because fonts of the same nominal size differ in apparent size. Set line spacing to about 120 to 145 percent of the point size, since word processor defaults sit either side of that range. Keep line length moderate, and pick a decent font rather than the software default. The rest of the book elaborates, but Butterick insists these four body-text decisions carry most of the result."
+    "summary": "Butterick's condensed version of everything else he wrote: what matters most in setting text, in the order it matters. Point size, line spacing, line length, and font choice come first, and he is specific about the numbers rather than gesturing at taste. Ten minutes will measurably improve the next document you make, which is not something most design writing can claim.",
+    "note": "Do the line-length one first."
   },
   {
     "id": "pd-typewriter-habits",
@@ -21,11 +24,13 @@
     "url": "https://practicaltypography.com/typewriter-habits.html",
     "format": "article",
     "topic": "product-design",
-    "interests": ["typography"],
+    "interests": [
+      "typography"
+    ],
     "depth": "accessible",
     "duration_minutes": 5,
     "verified_on": "2026-09-26",
-    "summary": "A short, blunt checklist of the typographic habits we inherited from the typewriter and never unlearned. Butterick's argument across his book is that mechanical typewriters imposed constraints, one width per character, no curly quotes, no real dashes, no italics, and that word processors removed those constraints while leaving the habits intact. Here he lists them in one place as things to stop doing: straight quotes instead of curly ones, two spaces after a sentence, hyphens standing in for en and em dashes, three periods instead of an ellipsis character, alphabetic approximations of the trademark and copyright symbols, underlining, monospaced body fonts, all caps abuse, repeated characters used as rules, carriage returns used to create vertical space, tabs used to fake tables, and the reflex that twelve point is the right size for body text. It is a useful self-audit: most writers recognise several of their own defaults in the list."
+    "summary": "A short list of habits carried over from machines that had one font and no kerning: two spaces after a period, straight quotes standing in for real ones, underlining instead of italics, all caps for emphasis. Butterick explains what each one was compensating for and what to do now. Five minutes, and it removes a surprising amount of amateurishness from your writing."
   },
   {
     "id": "pd-responsive-typography",
@@ -35,11 +40,15 @@
     "url": "https://ia.net/topics/responsive-typography-the-basics",
     "format": "article",
     "topic": "product-design",
-    "interests": ["typography", "interaction-design"],
+    "interests": [
+      "typography",
+      "interaction-design"
+    ],
     "depth": "deep",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "Written while iA was relaunching its own site, this piece treats responsive design as a typographic problem rather than a layout problem. Reichenstein's starting point is the traditional one: you define the body text first, and the width of the main column and the rest of the page follow from it. That worked when screen resolution was roughly uniform. With a spread of screen sizes and pixel densities, the same body text definition produces very different reading experiences. He distinguishes adaptive layouts, which step between a limited number of sizes, from liquid layouts, which flex continuously, and argues for adaptive with as few breakpoints as possible, because readability matters more than fluidity. From there he works through the variables that actually decide legibility on a given screen: type size relative to reading distance, measure, line height, and the way a typeface's apparent size shifts across rendering environments. It is a methodical, craft-level treatment rather than a set of snippets."
+    "summary": "Reichenstein starts from reading distance rather than screen size, which reframes the whole problem: a phone held close and a monitor at arm's length need different type even at similar pixel dimensions. He works through measure, size, and spacing as one system, with the reasoning behind each number. The piece that makes responsive typography feel like a craft rather than a set of breakpoints.",
+    "headline": "Setting type for screens you cannot measure"
   },
   {
     "id": "pd-web-design-95-typography",
@@ -49,11 +58,13 @@
     "url": "https://ia.net/topics/the-web-is-all-about-typography-period",
     "format": "essay",
     "topic": "product-design",
-    "interests": ["typography"],
+    "interests": [
+      "typography"
+    ],
     "depth": "accessible",
     "duration_minutes": 8,
     "verified_on": "2026-09-26",
-    "summary": "A 2006 provocation that aged into a standard reference. Reichenstein's claim is arithmetic before it is aesthetic: about ninety-five percent of the information on the web is written language, so a web designer is, mostly, someone shaping written information, which is the definition of typography. He borrows from Swiss typographer Emil Ruder the idea that a flood of printed matter devalues individual work, and applies it to the web, where attention is scarce and the reader is hurried. The practical consequence is that the designer's real levers are the typographic ones, macro-typography such as the arrangement of text blocks, hierarchy and navigation, and micro-typography such as size, spacing, and the choice of a small number of well-made typefaces. He also pushes back on the idea that typography on the web is limited by available fonts; the limits that matter are in composition, structure, and restraint, not in the font menu."
+    "summary": "Reichenstein's claim, made in 2006 and still argued about, is that web design is mostly information design, information design is mostly typography, and therefore most of the job is setting text well. He follows it through to the uncomfortable conclusion that the choices designers enjoy most matter least. Eight minutes, provocative on purpose, and hard to dismiss once you look at any page you use daily."
   },
   {
     "id": "pd-responsive-web-design",
@@ -63,11 +74,14 @@
     "url": "https://alistapart.com/article/responsive-web-design/",
     "format": "article",
     "topic": "product-design",
-    "interests": ["interaction-design", "typography"],
+    "interests": [
+      "interaction-design",
+      "typography"
+    ],
     "depth": "deep",
     "duration_minutes": 15,
     "verified_on": "2026-09-26",
-    "summary": "The 2010 article that named responsive web design and set the direction for the decade that followed. Marcotte opens with an analogy to architecture, where responsive buildings sense and adapt to the people moving through them, and asks what an equivalent flexibility would look like for the web. Rather than building a separate mobile site for each class of device, he proposes one design that reshapes itself, assembled from three ingredients: a fluid grid with proportional rather than fixed widths, flexible images that scale within their containers, and CSS media queries that change the layout at the points where the design stops working. He works through a sample layout to show how the pieces combine, converting pixel values into percentages with a consistent formula. The wider argument is philosophical: the web is inherently unpredictable in size and context, and designs should be built to accommodate that rather than resist it."
+    "summary": "The article that named the approach and changed how sites are built. Marcotte combines fluid grids, flexible images, and media queries into a single method, arguing from architecture that adapts to its site rather than from device lists. Written in 2010, before the term existed, and readable now as both a practical tutorial and the moment the fixed-width page stopped being the default."
   },
   {
     "id": "pd-dao-of-web-design",
@@ -77,11 +91,15 @@
     "url": "https://alistapart.com/article/dao/",
     "format": "essay",
     "topic": "product-design",
-    "interests": ["craft-and-process", "interaction-design"],
+    "interests": [
+      "craft-and-process",
+      "interaction-design"
+    ],
     "depth": "deep",
     "duration_minutes": 14,
     "verified_on": "2026-09-26",
-    "summary": "Written in 2000, when designers were still importing print habits into browsers, Allsopp argues that the web's defining property is not a page but adaptability. Print designers control the page; web designers do not, and every attempt to seize that control by fixing pixel dimensions, font sizes, and canvas size fights the medium. Drawing on the Tao Te Ching's idea of yielding, he suggests that the apparent limitation of not knowing the reader's window size, device, fonts, or preferences is in fact the medium's strength, because it lets one document serve readers whose circumstances differ. The practical program follows: separate structure from presentation, use relative rather than absolute units, treat the user's settings as legitimate input rather than interference, and design for the fact that content will reflow. The essay is the philosophical ancestor of responsive design and progressive enhancement, and it is still the clearest statement of why they matter."
+    "summary": "Allsopp's 2000 essay argues that designers were fighting the medium: the web's flexibility is not a defect to be controlled but the thing that makes it work. He asks for pages that adapt to unknown screens, settings, and abilities rather than pinning everything down. Read a decade before responsive design existed, it is a little uncanny how completely it was right.",
+    "headline": "The web is not a page, and never was"
   },
   {
     "id": "pd-brief-rant",
@@ -91,11 +109,13 @@
     "url": "https://worrydream.com/ABriefRantOnTheFutureOfInteractionDesign/",
     "format": "essay",
     "topic": "product-design",
-    "interests": ["interaction-design"],
+    "interests": [
+      "interaction-design"
+    ],
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "Victor, who once designed future-interface concepts for a living, attacks the genre of glossy vision videos in which everyone slides a fingertip across flat glass. His complaint is not that the future shown is wrong but that it is impoverished. Hands are not pointers; they grip, twist, weigh, and feel edges, and almost all of that capability is unused when interaction is reduced to sliding under glass. He makes the case by asking the reader to pick up a glass of water and notice how much information the hand returns, then to compare that with touching a screen, where every object feels identical. Tools, he argues, should amplify human capabilities, and a vision of the future that numbs one of our richest sensory channels is a vision of less capability, not more. The piece ends as a call for research into dynamic tactile media rather than another decade of pictures under glass."
+    "summary": "Victor's objection to a future of flat glass is that hands do far more than poke, and that pictures under glass throw away nearly everything they can do. He is specific about what capability is being lost, shows how much feeling is involved in handling ordinary objects, and refuses to accept that this is simply how interfaces are now. Twelve minutes, and it stays with you."
   },
   {
     "id": "pd-ten-heuristics",
@@ -105,11 +125,13 @@
     "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
     "format": "article",
     "topic": "product-design",
-    "interests": ["interaction-design"],
+    "interests": [
+      "interaction-design"
+    ],
     "depth": "accessible",
     "duration_minutes": 14,
     "verified_on": "2026-09-26",
-    "summary": "Nielsen's ten heuristics, first published in 1994 and maintained since, remain the most widely used checklist in interface design. They are deliberately broad rules of thumb rather than specific guidelines: keep users informed about system status; speak the users' language rather than the system's; provide clearly marked exits so people can undo and escape; follow platform conventions; prevent errors rather than only reporting them; favour recognition over recall so information is visible when needed; allow accelerators for experienced users without burdening novices; keep interfaces aesthetic and minimal so important content is not diluted; write error messages in plain language that identify the problem and suggest a fix; and provide documentation that is searchable and task-focused even when the product should not need it. Each heuristic in the current version comes with examples and tips, and the set is intended for heuristic evaluation, where a few evaluators inspect an interface against the list."
+    "summary": "Nielsen's ten principles remain the standard checklist for evaluating an interface: visibility of system status, match with the real world, user control, consistency, error prevention, recognition over recall, flexibility, minimalist design, error recovery, and help. Each comes with examples and the reasoning behind it. Broad by design, which is why they still apply to products built long after they were written."
   },
   {
     "id": "pd-progressive-disclosure",
@@ -119,11 +141,13 @@
     "url": "https://www.nngroup.com/articles/progressive-disclosure/",
     "format": "article",
     "topic": "product-design",
-    "interests": ["interaction-design"],
+    "interests": [
+      "interaction-design"
+    ],
     "depth": "accessible",
     "duration_minutes": 9,
     "verified_on": "2026-09-26",
-    "summary": "Interaction designers face a standing dilemma: users want power and enough options to cover their own special cases, and the same users want simplicity and have no time to learn a profusion of features. Nielsen presents progressive disclosure as one of the best ways to satisfy both. The idea is simple. Show a small number of the most important options first, and offer the larger set of specialised options only on request, so most people finish their task without meeting the extra complexity at all. The print dialog is the canonical example: copies and page range up front, colour management and duplex settings behind a button. He is careful about the conditions that make it work, including choosing the initial set based on what most users need most often, making the path to advanced options obvious, and keeping the two levels genuinely distinct rather than splitting features arbitrarily across screens."
+    "summary": "The technique for interfaces that must serve both beginners and experts: show the common case, keep the rest one deliberate step away. Nielsen explains when it helps and when it just hides things people need, how it differs from staged disclosure, and what it costs in extra interaction. Short, practical, and the answer to most arguments that start with a request for another option."
   },
   {
     "id": "pd-aesthetic-usability",
@@ -133,11 +157,14 @@
     "url": "https://www.nngroup.com/articles/aesthetic-usability-effect/",
     "format": "article",
     "topic": "product-design",
-    "interests": ["interaction-design", "craft-and-process"],
+    "interests": [
+      "interaction-design",
+      "craft-and-process"
+    ],
     "depth": "accessible",
     "duration_minutes": 8,
     "verified_on": "2026-09-26",
-    "summary": "People tend to perceive attractive products as more usable, and will forgive minor problems in an interface they find beautiful. Moran explains why this matters in both directions. Positively, it means visual design is not decoration: an emotionally positive first impression buys tolerance and builds trust, which is part of why good experiences cannot be purely functional. Negatively, it is a hazard in research, because the effect can mask real usability problems during testing. Participants who like how something looks often report satisfaction while visibly struggling, so she advises watching behaviour rather than trusting verbal praise, and probing positive comments about visuals to separate aesthetic pleasure from task success. The article traces the effect's history to research in the 1990s on automated teller machine interfaces, and closes with the limits: attractiveness buys patience for small frictions, not for serious breakdowns, and the goodwill runs out when the interface stops working."
+    "summary": "People judge attractive interfaces as easier to use, and are more forgiving of their problems. Moran covers the research behind the effect, including the airline study it came from, and treats it as a double-edged finding: good looks buy goodwill, but they also mask usability problems during testing, so real issues go unreported. Eight minutes, and it changes how you read your own research."
   },
   {
     "id": "pd-invisible-details",
@@ -147,11 +174,16 @@
     "url": "https://rauno.me/craft/interaction-design",
     "format": "essay",
     "topic": "product-design",
-    "interests": ["interaction-design", "craft-and-process"],
+    "interests": [
+      "interaction-design",
+      "craft-and-process"
+    ],
     "depth": "deep",
     "duration_minutes": 14,
     "verified_on": "2026-09-26",
-    "summary": "Freiberg sets out to recover the reasoning behind interactions that feel right, an area he notes is hard to ground scientifically and is usually treated as intuition. Rather than another list of guidelines about personas and storyboards, he deconstructs specific interactions he uses daily and rarely notices, replaying screen recordings in slow motion to find the details responsible for the feeling of quality. The essay covers things like the way a cursor and hit targets communicate what is interactive, how motion and easing convey causality and origin, how state changes should preserve the user's sense of continuity, and how small affordances such as drag thresholds or delayed hover intent prevent misfires. His method is as much the point as the findings: build something, saturate your head with the problem, then let it settle. It is a craft document for designers and engineers who care about the last five percent."
+    "summary": "Freiberg catalogues the small behaviours that make an interface feel considered: focus that survives a dialog, animation that can be interrupted, selection that does not break on drag, hit areas larger than their icons. Each is demonstrated live on the page. Read it once and you will start noticing the absence of these things everywhere, which is either a gift or a curse.",
+    "headline": "The details nobody notices until they are missing",
+    "note": "Every example on the page is interactive."
   },
   {
     "id": "pd-atomic-design",
@@ -161,11 +193,13 @@
     "url": "https://atomicdesign.bradfrost.com/chapter-2/",
     "format": "article",
     "topic": "product-design",
-    "interests": ["design-systems"],
+    "interests": [
+      "design-systems"
+    ],
     "depth": "deep",
     "duration_minutes": 20,
     "verified_on": "2026-09-26",
-    "summary": "Frost borrows a metaphor from chemistry to give interface systems a vocabulary. Atoms are the smallest useful pieces, a label, an input, a button, meaningful only in combination. Molecules are small groups of atoms that do one job, such as a search form made of label, input, and button. Organisms are larger assemblies of molecules and atoms that form distinct sections of an interface, like a site header. Templates place organisms into a page-level structure and show the underlying content skeleton, and pages are templates filled with representative real content, which is where the design is actually tested. The value of the hierarchy, he argues, is that it lets you see interfaces simultaneously as parts and as wholes, and that it gives teams a shared language for building and maintaining a system instead of designing page by page. The chapter is the core of the free online book."
+    "summary": "Frost's chemistry metaphor for building interfaces from the smallest parts up: atoms, molecules, organisms, templates, and pages. The useful part is not the naming but the argument that you are designing a system rather than a set of screens, and that the same parts should compose into layouts nobody has drawn yet. The foundation most design system vocabularies are still built on."
   },
   {
     "id": "pd-design-systems-101",
@@ -175,11 +209,13 @@
     "url": "https://www.nngroup.com/articles/design-systems-101/",
     "format": "article",
     "topic": "product-design",
-    "interests": ["design-systems"],
+    "interests": [
+      "design-systems"
+    ],
     "depth": "accessible",
     "duration_minutes": 10,
     "verified_on": "2026-09-26",
-    "summary": "A practical orientation to what a design system is and whether a team should build one. Fessenden defines it as a complete set of standards for managing design at scale through reusable components and patterns, and distinguishes it from the narrower artefacts it often gets confused with: a style guide, a pattern library, a component library. She lays out the benefits, faster replication of work, visual and functional consistency across channels, a shared language between design and engineering, and less time spent reinventing common pieces, then the honest costs, since a system needs dedicated ownership, governance, and continuous maintenance or it decays into an out-of-date reference nobody trusts. The article closes with adoption strategy, including how to audit existing interfaces, decide what belongs in the system, and choose between a centralised team model and a federated one where contributors across product teams maintain the system together."
+    "summary": "A clear orientation to what a design system is and is not. Fessenden separates the style guide, the component library, and the pattern library, describes who maintains each, and is honest about the cost: a system is a product with users, and an unmaintained one is worse than none. The piece to send before a team commits to building one."
   },
   {
     "id": "pd-resilient-materials",
@@ -189,11 +225,14 @@
     "url": "https://resilientwebdesign.com/chapter2/",
     "format": "essay",
     "topic": "product-design",
-    "interests": ["craft-and-process", "design-systems"],
+    "interests": [
+      "craft-and-process",
+      "design-systems"
+    ],
     "depth": "deep",
     "duration_minutes": 15,
     "verified_on": "2026-09-26",
-    "summary": "Keith examines the materials of the web and finds their defining feature in how they fail. When a browser meets an HTML element it does not recognise it does not throw an error or stop parsing; it ignores the unknown tags and displays the content inside. The same forgiveness applies to CSS declarations it cannot parse. This liberal error handling is what allowed HTML to grow from twenty-one elements to well over a hundred without breaking older browsers, and it means authors can adopt new features immediately, knowing non-supporting browsers degrade quietly. JavaScript behaves differently: it is parsed strictly, so a single unrecognised token can stop everything. The chapter draws the design conclusion from this asymmetry, that the fragile layer should not be the one carrying essential content or functionality, which is the technical foundation for progressive enhancement and for building interfaces that survive imperfect networks and devices."
+    "summary": "Keith explains why the web's materials behave unlike anything designers came from: HTML that renders despite errors, CSS that ignores what it does not understand, and the layering that lets a page survive missing pieces. Progressive enhancement follows from the material rather than being imposed on it. Short, beautifully written, and the clearest explanation of why the web is so hard to break."
   },
   {
     "id": "pd-webs-grain",
@@ -203,11 +242,14 @@
     "url": "https://frankchimero.com/blog/2015/the-webs-grain/",
     "format": "essay",
     "topic": "product-design",
-    "interests": ["craft-and-process"],
+    "interests": [
+      "craft-and-process"
+    ],
     "depth": "deep",
     "duration_minutes": 25,
     "verified_on": "2026-09-26",
-    "summary": "An adaptation of Chimero's 2015 Webstock talk, beginning with the sound of a dial-up modem and the nostalgia it triggers, then asking what happened to that early fascination with the web. His answer is that designers keep working against the material instead of with it. Borrowing from woodworking, he looks for the web's grain, the direction in which it naturally splits: it is edgeless, flexible, made of small pieces that reflow, and hostile to the fixed compositions inherited from print. He traces how much design effort goes into fighting that, and proposes instead building from the smallest sensible unit and letting arrangements emerge, treating layout as a response to content rather than a container imposed on it. Along the way he argues for simplicity as a form of respect for the reader, and for designers to make peace with the fact that they cannot control the final rendering."
+    "summary": "Chimero asks what the web wants to be, and answers with edgelessness: content that flows, adapts, and refuses fixed dimensions. He works through the failures of importing print and app thinking, the tyranny of the screenshot, and what it means to design for an unknown viewport. Long, illustrated, and among the best pieces of writing about the medium itself rather than about the things made with it.",
+    "headline": "Working with the grain of the material"
   },
   {
     "id": "pd-inventing-on-principle",
@@ -217,10 +259,13 @@
     "url": "https://www.youtube.com/watch?v=PUv66718DII",
     "format": "video",
     "topic": "product-design",
-    "interests": ["craft-and-process", "interaction-design"],
+    "interests": [
+      "craft-and-process",
+      "interaction-design"
+    ],
     "depth": "deep",
     "duration_minutes": 54,
     "verified_on": "2026-09-26",
-    "summary": "Victor's talk has two halves that turn out to be one argument. The first is a set of live demonstrations built around his principle that creators need an immediate connection to what they are making: a code editor where changing a number instantly changes the running picture, a game level that can be steered while it plays, an animation timeline that exposes every intermediate state, and a circuit design tool that shows values as you move. Each demo makes the case that ideas are lost when the loop between changing something and seeing the result is slow or invisible. The second half is about how to organise a career. Rather than following passion or a job title, he describes people, including Larry Tesler and Doug Engelbart, who identified a principle or a wrong in the world and spent decades on it, and suggests that finding such a principle is a legitimate and demanding life's work."
+    "summary": "The talk that produced a decade of tooling. Victor demonstrates code whose results appear as you type, an animation editor with no compile step, and a game you can scrub through time in, then argues that the demos follow from a principle he refuses to compromise: creators need an immediate connection to what they make. The second half, about organising a career around a principle, is the part people underestimate."
   }
 ]

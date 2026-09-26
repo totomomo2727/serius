@@ -29,6 +29,15 @@ class Base(DeclarativeBase):
     pass
 
 
+POSE_ALT = {
+    "reading": "Line drawing of Serius the seagull sitting with an open book",
+    "inspecting": "Line drawing of Serius the seagull turning something over to look closely",
+    "watching": "Line drawing of Serius the seagull watching something on a small screen",
+}
+
+DEFAULT_CREDIT = "Illustration: Serius character artwork, drawn for The Feather Press"
+
+
 class ContentItem(Base):
     """A curated piece of content, seeded from content/library.json."""
 
@@ -46,6 +55,11 @@ class ContentItem(Base):
     duration_minutes: Mapped[int] = mapped_column(Integer)
     summary: Mapped[str] = mapped_column(Text)
     verified_on: Mapped[str] = mapped_column(String(20))
+    headline: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    note: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    visual: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    visual_alt: Mapped[str | None] = mapped_column(Text, nullable=True)
+    visual_credit: Mapped[str | None] = mapped_column(String(200), nullable=True)
 
     @property
     def read_label(self) -> str:
@@ -58,6 +72,31 @@ class ContentItem(Base):
     @property
     def verb(self) -> str:
         return "watch" if self.fmt == "video" else "read"
+
+    @property
+    def display_title(self) -> str:
+        """The editorial headline where one was written, otherwise the real title."""
+        return self.headline or self.title
+
+    @property
+    def motif(self) -> str:
+        """Which line motif sits behind the illustration."""
+        return self.visual or self.topic
+
+    @property
+    def pose(self) -> str:
+        """Which Serius drawing suits this format."""
+        return {"essay": "reading", "article": "inspecting", "video": "watching"}[self.fmt]
+
+    @property
+    def alt_text(self) -> str:
+        if self.visual_alt:
+            return self.visual_alt
+        return POSE_ALT[self.pose]
+
+    @property
+    def credit(self) -> str:
+        return self.visual_credit or DEFAULT_CREDIT
 
 
 class Subscriber(Base):

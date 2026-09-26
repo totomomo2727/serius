@@ -1,0 +1,45 @@
+{#
+  Illustrated plates. Every piece gets one drawn visual rather than a scraped
+  publisher photograph: a line motif for the topic, with the Serius character in
+  the pose that suits the format. Provenance travels with the item.
+#}
+{% macro motif(key) %}
+<svg class="motif" viewBox="0 0 300 220" fill="none" aria-hidden="true" focusable="false">
+  {%- if key == 'product-design' -%}
+  <rect x="34" y="30" width="150" height="112" stroke-width="2.4"/>
+  <rect x="96" y="70" width="150" height="112" stroke-width="2.4"/>
+  <path d="M96 106h88" stroke-width="2.4"/>
+  <path d="M96 128h56" stroke-width="2.4"/>
+  {%- elif key == 'philosophy' -%}
+  <circle cx="150" cy="104" r="76" stroke-width="2.4"/>
+  <path d="M18 138h264" stroke-width="2.4"/>
+  <path d="M150 28v152" stroke-width="1.4" stroke-dasharray="5 9"/>
+  {%- elif key == 'psychology' -%}
+  <path d="M150 182a78 78 0 1 0 0-156" stroke-width="2.4"/>
+  <path d="M150 156a52 52 0 1 0 0-104" stroke-width="2.4"/>
+  <path d="M150 130a26 26 0 1 0 0-52" stroke-width="2.4"/>
+  <path d="M150 26v156" stroke-width="1.4"/>
+  {%- elif key == 'ai' -%}
+  {% for row in range(5) %}{% for col in range(7) %}
+  <rect x="{{ 44 + col * 32 }}" y="{{ 38 + row * 32 }}" width="15" height="15" stroke-width="1.8"/>
+  {% endfor %}{% endfor %}
+  <path d="M52 46l190 128" stroke-width="2.4"/>
+  {%- else -%}
+  <rect x="30" y="34" width="240" height="152" stroke-width="2.4"/>
+  <path d="M30 66h240" stroke-width="2.4"/>
+  <path d="M58 98h140" stroke-width="2.4"/>
+  <path d="M58 124h184" stroke-width="2.4"/>
+  <path d="M58 150h96" stroke-width="2.4"/>
+  {%- endif -%}
+</svg>
+{% endmacro %}
+
+{% macro plate(content, size='support') %}
+<figure class="plate plate-{{ size }} plate-{{ content.motif }}">
+  <div class="plate-frame">
+    {{ motif(content.motif) }}
+    <img class="plate-bird" src="/static/serius/serius-{{ content.pose }}.png" alt="{{ content.alt_text }}">
+  </div>
+  {% if size == 'lead' %}<figcaption class="plate-credit">{{ content.credit }}</figcaption>{% endif %}
+</figure>
+{% endmacro %}
