@@ -12,14 +12,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page">
     {% block masthead %}
-    <header class="masthead">
-      <a class="wordmark" href="/">
-        <span class="wordmark-the">The</span>
-        <span class="wordmark-name">Feather Press</span>
-      </a>
-      <p class="wordmark-line">Three good finds. Delivered daily.</p>
-    </header>
-    <hr class="rule">
+    {% include "_masthead.html" %}
     {% endblock %}
     <main id="main">
       {% block content %}{% endblock %}

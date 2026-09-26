@@ -60,6 +60,8 @@ class ContentItem(Base):
     visual: Mapped[str | None] = mapped_column(String(40), nullable=True)
     visual_alt: Mapped[str | None] = mapped_column(Text, nullable=True)
     visual_credit: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    thumbnail: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    thumbnail_source: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     @property
     def read_label(self) -> str:
@@ -89,13 +91,22 @@ class ContentItem(Base):
         return {"essay": "reading", "article": "inspecting", "video": "watching"}[self.fmt]
 
     @property
+    def thumbnail_url(self) -> str | None:
+        """The piece's own share image, cached locally, when it publishes one."""
+        return f"/static/thumbs/{self.thumbnail}" if self.thumbnail else None
+
+    @property
     def alt_text(self) -> str:
+        if self.thumbnail:
+            return f"Image from {self.publication}: {self.title}"
         if self.visual_alt:
             return self.visual_alt
         return POSE_ALT[self.pose]
 
     @property
     def credit(self) -> str:
+        if self.thumbnail:
+            return f"Image: {self.publication}"
         return self.visual_credit or DEFAULT_CREDIT
 
 

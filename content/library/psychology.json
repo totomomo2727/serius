@@ -32,7 +32,9 @@
     "duration_minutes": 20,
     "verified_on": "2026-09-26",
     "summary": "Urban's account of the Instant Gratification Monkey and the Panic Monster is a joke that turns out to be a mechanism. He separates deadline-driven procrastination, which resolves itself painfully, from the undated kind that quietly eats careers and relationships. Funny enough to finish, accurate enough to sting, and better at describing the experience from inside than most of the literature.",
-    "note": "The stick figures are doing real work here."
+    "note": "The stick figures are doing real work here.",
+    "thumbnail": "psy-why-procrastinators-procrastinate.jpg",
+    "thumbnail_source": "https://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html"
   },
   {
     "id": "psy-goals-versus-systems",
@@ -48,7 +50,9 @@
     "depth": "accessible",
     "duration_minutes": 9,
     "verified_on": "2026-09-26",
-    "summary": "Clear's argument is that goals set direction but systems produce results, and that people who achieve things are usually running a better process rather than holding a stronger intention. He is specific about why goals can be counterproductive: the yo-yo after the finish line, the happiness deferred until achievement. Nine minutes, and the practical core of the book it came from."
+    "summary": "Clear's argument is that goals set direction but systems produce results, and that people who achieve things are usually running a better process rather than holding a stronger intention. He is specific about why goals can be counterproductive: the yo-yo after the finish line, the happiness deferred until achievement. Nine minutes, and the practical core of the book it came from.",
+    "thumbnail": "psy-goals-versus-systems.jpg",
+    "thumbnail_source": "https://jamesclear.com/goals-systems"
   },
   {
     "id": "psy-self-determination-theory",
@@ -80,7 +84,9 @@
     "depth": "accessible",
     "duration_minutes": 11,
     "verified_on": "2026-09-26",
-    "summary": "Pink's talk on autonomy, mastery, and purpose, illustrated live by a hand drawing the argument as it is made. The core evidence is the candle problem and the field studies showing bonuses hurting performance on tasks requiring any thought. Eleven minutes, and the animation is not decoration: watching the diagram assemble is what makes the structure of the argument stick when the narration alone would slide past."
+    "summary": "Pink's talk on autonomy, mastery, and purpose, illustrated live by a hand drawing the argument as it is made. The core evidence is the candle problem and the field studies showing bonuses hurting performance on tasks requiring any thought. Eleven minutes, and the animation is not decoration: watching the diagram assemble is what makes the structure of the argument stick when the narration alone would slide past.",
+    "thumbnail": "psy-rsa-drive.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=u6XAPnuFjJc"
   },
   {
     "id": "psy-augmenting-long-term-memory",
@@ -97,7 +103,9 @@
     "duration_minutes": 65,
     "verified_on": "2026-09-26",
     "summary": "Nielsen spent years using spaced repetition seriously and writes up what he learned. Part practical manual — how to write cards that work, what not to memorise — and part argument that reliable memory changes what kind of thinking is available to you. The section on memorising a research field before understanding it is the one people remember. Long, and worth the hour.",
-    "headline": "Memory as something you can decide to have"
+    "headline": "Memory as something you can decide to have",
+    "thumbnail": "psy-augmenting-long-term-memory.jpg",
+    "thumbnail_source": "https://augmentingcognition.com/ltm.html"
   },
   {
     "id": "psy-spaced-repetition",
@@ -113,7 +121,9 @@
     "depth": "deep",
     "duration_minutes": 70,
     "verified_on": "2026-09-26",
-    "summary": "Gwern's survey of the evidence behind spaced repetition: the spacing effect, the testing effect, forgetting curves, and the maths of when review is worth the time. It includes the cost-benefit case for what is not worth memorising, which most enthusiasts skip. It also covers scheduling algorithms and the practical failure modes of large card collections. Heavily cited and sometimes dry, but it is the reference that the shorter articles are quietly summarising."
+    "summary": "Gwern's survey of the evidence behind spaced repetition: the spacing effect, the testing effect, forgetting curves, and the maths of when review is worth the time. It includes the cost-benefit case for what is not worth memorising, which most enthusiasts skip. It also covers scheduling algorithms and the practical failure modes of large card collections. Heavily cited and sometimes dry, but it is the reference that the shorter articles are quietly summarising.",
+    "thumbnail": "psy-spaced-repetition.jpg",
+    "thumbnail_source": "https://gwern.net/spaced-repetition"
   },
   {
     "id": "psy-retrieval-practice",
@@ -129,7 +139,9 @@
     "depth": "accessible",
     "duration_minutes": 8,
     "verified_on": "2026-09-26",
-    "summary": "Two cognitive scientists explain the single highest-return study technique: retrieving material from memory rather than reviewing it. They cover why rereading feels effective and is not, how to make retrieval concrete with blank paper, flashcards, and self-made questions, and how to combine it with spacing across a term. Eight minutes, written for students rather than researchers, and immediately actionable on whatever you are studying this week."
+    "summary": "Two cognitive scientists explain the single highest-return study technique: retrieving material from memory rather than reviewing it. They cover why rereading feels effective and is not, how to make retrieval concrete with blank paper, flashcards, and self-made questions, and how to combine it with spacing across a term. Eight minutes, written for students rather than researchers, and immediately actionable on whatever you are studying this week.",
+    "thumbnail": "psy-retrieval-practice.jpg",
+    "thumbnail_source": "https://www.learningscientists.org/blog/2016/6/23-1"
   },
   {
     "id": "psy-remember-anything",
@@ -161,7 +173,9 @@
     "depth": "accessible",
     "duration_minutes": 9,
     "verified_on": "2026-09-26",
-    "summary": "The technique in four steps: pick a concept, explain it as if to a child, find where the explanation breaks, go back to the source. The useful part is the emphasis on jargon as a hiding place — the moment you cannot say it simply is the moment you learn what you did not know. Short, and best read just before you try it."
+    "summary": "The technique in four steps: pick a concept, explain it as if to a child, find where the explanation breaks, go back to the source. The useful part is the emphasis on jargon as a hiding place — the moment you cannot say it simply is the moment you learn what you did not know. Short, and best read just before you try it.",
+    "thumbnail": "psy-feynman-technique.jpg",
+    "thumbnail_source": "https://fs.blog/feynman-technique/"
   },
   {
     "id": "psy-learning-how-to-learn",
@@ -177,7 +191,9 @@
     "depth": "accessible",
     "duration_minutes": 18,
     "verified_on": "2026-09-26",
-    "summary": "Oakley failed maths as a teenager and later taught engineering, and this talk is the method she reverse-engineered. Focused and diffuse thinking, why breaks are part of the work, chunking, and how procrastination follows from discomfort rather than laziness. Eighteen minutes, drawn from the research rather than from anecdote, and the natural entry point to the most-taken online course ever made. Useful even if you think you already know how you study."
+    "summary": "Oakley failed maths as a teenager and later taught engineering, and this talk is the method she reverse-engineered. Focused and diffuse thinking, why breaks are part of the work, chunking, and how procrastination follows from discomfort rather than laziness. Eighteen minutes, drawn from the research rather than from anecdote, and the natural entry point to the most-taken online course ever made. Useful even if you think you already know how you study.",
+    "thumbnail": "psy-learning-how-to-learn.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=O96fE1E-rf8"
   },
   {
     "id": "psy-acceleration-of-addictiveness",
@@ -210,7 +226,9 @@
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "Newport's case is that opting out tool by tool never works, because each one has a plausible benefit. He proposes deciding first what you actually value, then admitting only the technologies that serve it, and treats a thirty-day declutter as the way to find out what you miss. The declutter is specific enough to follow, and the standard he sets — does this serve something you actually care about — survives outside the book. Clearer and less moralising than most writing on the subject."
+    "summary": "Newport's case is that opting out tool by tool never works, because each one has a plausible benefit. He proposes deciding first what you actually value, then admitting only the technologies that serve it, and treats a thirty-day declutter as the way to find out what you miss. The declutter is specific enough to follow, and the standard he sets — does this serve something you actually care about — survives outside the book. Clearer and less moralising than most writing on the subject.",
+    "thumbnail": "psy-digital-minimalism.jpg",
+    "thumbnail_source": "https://calnewport.com/on-digital-minimalism/"
   },
   {
     "id": "psy-how-i-got-my-attention-back",
@@ -227,6 +245,8 @@
     "duration_minutes": 16,
     "verified_on": "2026-09-26",
     "summary": "Mod went offline for a month in the mountains and writes about what came back. Not a productivity piece: it is about how long it takes for a mind to stop reaching for a phone, what reading feels like once it does, and how quickly the old habits return afterwards. Honest about the relapse, and about how little of it he managed to keep, which is exactly why it lands.",
-    "note": "The relapse section is the honest part."
+    "note": "The relapse section is the honest part.",
+    "thumbnail": "psy-how-i-got-my-attention-back.jpg",
+    "thumbnail_source": "https://craigmod.com/essays/how_i_got_my_attention_back/"
   }
 ]

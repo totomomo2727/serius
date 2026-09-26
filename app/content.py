@@ -34,7 +34,15 @@ REQUIRED_FIELDS = (
     "verified_on",
 )
 
-OPTIONAL_FIELDS = ("headline", "note", "visual", "visual_alt", "visual_credit")
+OPTIONAL_FIELDS = (
+    "headline",
+    "note",
+    "visual",
+    "visual_alt",
+    "visual_credit",
+    "thumbnail",
+    "thumbnail_source",
+)
 
 VALID_FORMATS = {"article", "essay", "video"}
 VALID_DEPTHS = {"accessible", "deep"}
@@ -182,6 +190,8 @@ def seed_content(db: Session) -> int:
         item.visual = raw.get("visual")
         item.visual_alt = raw.get("visual_alt")
         item.visual_credit = raw.get("visual_credit")
+        item.thumbnail = raw.get("thumbnail")
+        item.thumbnail_source = raw.get("thumbnail_source")
     db.commit()
     return len(records)
 

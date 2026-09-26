@@ -13,7 +13,9 @@
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "Twelve yes-or-no questions about how a software team works: source control, one-step builds, daily builds, a bug database, fixing bugs before new code, quiet working conditions, testers, usability testing. Spolsky's point is that a rough test you can apply in five minutes beats a rigorous one nobody runs. Written in 2000, and still a fast way to read a team you are considering joining."
+    "summary": "Twelve yes-or-no questions about how a software team works: source control, one-step builds, daily builds, a bug database, fixing bugs before new code, quiet working conditions, testers, usability testing. Spolsky's point is that a rough test you can apply in five minutes beats a rigorous one nobody runs. Written in 2000, and still a fast way to read a team you are considering joining.",
+    "thumbnail": "tech-joel-test.jpg",
+    "thumbnail_source": "https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/"
   },
   {
     "id": "tech-never-rewrite",
@@ -30,7 +32,9 @@
     "duration_minutes": 10,
     "verified_on": "2026-09-26",
     "summary": "Spolsky's case against the ground-up rewrite, argued through Netscape's decision to discard its codebase and the years it cost them. The core idea is that ugly code usually encodes bug fixes for real conditions nobody remembers, so throwing it out means discovering all of them again. The single most-cited argument in favour of refactoring what you already have, and worth rereading whenever a codebase starts to look beyond saving.",
-    "headline": "Never throw the code away"
+    "headline": "Never throw the code away",
+    "thumbnail": "tech-never-rewrite.jpg",
+    "thumbnail_source": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/"
   },
   {
     "id": "tech-choose-boring-technology",
@@ -146,7 +150,9 @@
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "Dash's 2012 inventory of what the social web traded away: interoperable data, links that led off-platform, feeds in the order things happened, identity you controlled. He is specific, and he resists nostalgia by pointing out what genuinely improved. The clearest statement of what changed between the blog era and the platform era, written while it was still happening rather than a decade after the fact."
+    "summary": "Dash's 2012 inventory of what the social web traded away: interoperable data, links that led off-platform, feeds in the order things happened, identity you controlled. He is specific, and he resists nostalgia by pointing out what genuinely improved. The clearest statement of what changed between the blog era and the platform era, written while it was still happening rather than a decade after the fact.",
+    "thumbnail": "tech-web-we-lost.jpg",
+    "thumbnail_source": "https://anildash.com/2012/12/13/the_web_we_lost/"
   },
   {
     "id": "tech-website-obesity",
@@ -181,7 +187,9 @@
     "duration_minutes": 100,
     "verified_on": "2026-09-26",
     "summary": "Engelbart sits at a console in San Francisco and demonstrates the mouse, hypertext, screen windows, version control, and video collaboration with a colleague thirty miles away, in one live session. Nothing on screen existed anywhere else at the time. Watch even ten minutes of it: the strange part is not how much was invented, but how little of the vision behind it we kept.",
-    "headline": "Ninety minutes in 1968 that contained everything"
+    "headline": "Ninety minutes in 1968 that contained everything",
+    "thumbnail": "tech-mother-of-all-demos.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=yJDv-zdhzMY"
   },
   {
     "id": "tech-computer-revolution",
@@ -197,7 +205,9 @@
     "depth": "deep",
     "duration_minutes": 64,
     "verified_on": "2026-09-26",
-    "summary": "Kay's OOPSLA keynote, delivered with visible impatience, argues that the industry industrialised the wrong parts of computing and stopped asking what the machine was for. He revisits what object orientation was meant to mean, compares software engineering unfavourably with real engineering, and demonstrates ideas from the sixties still ahead of 1997. Bracing, funny, and a little uncomfortable if you build software for a living."
+    "summary": "Kay's OOPSLA keynote, delivered with visible impatience, argues that the industry industrialised the wrong parts of computing and stopped asking what the machine was for. He revisits what object orientation was meant to mean, compares software engineering unfavourably with real engineering, and demonstrates ideas from the sixties still ahead of 1997. Bracing, funny, and a little uncomfortable if you build software for a living.",
+    "thumbnail": "tech-computer-revolution.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=oKg1hTOQXoY"
   },
   {
     "id": "tech-aggregation-theory",
@@ -213,7 +223,9 @@
     "depth": "accessible",
     "duration_minutes": 16,
     "verified_on": "2026-09-26",
-    "summary": "Thompson's explanation of why the internet's biggest companies own demand rather than supply. When distribution is free and transactions cost nothing, the firm that owns the user relationship commands the suppliers, and the dynamic compounds. He works it through Google, Facebook, Netflix, and Uber. The single most useful framework for reading technology business news, and it takes sixteen minutes to acquire something you will apply for years."
+    "summary": "Thompson's explanation of why the internet's biggest companies own demand rather than supply. When distribution is free and transactions cost nothing, the firm that owns the user relationship commands the suppliers, and the dynamic compounds. He works it through Google, Facebook, Netflix, and Uber. The single most useful framework for reading technology business news, and it takes sixteen minutes to acquire something you will apply for years.",
+    "thumbnail": "tech-aggregation-theory.jpg",
+    "thumbnail_source": "https://stratechery.com/2015/aggregation-theory/"
   },
   {
     "id": "tech-enshittification",
@@ -231,7 +243,9 @@
     "duration_minutes": 15,
     "verified_on": "2026-09-26",
     "summary": "Doctorow's now-standard account of platform decay: good to users, then good to business customers, then good only to shareholders, until the value is gone. He traces the pattern through TikTok's heating tool and Amazon's advertising, and argues the constraints that used to prevent it — competition, regulation, interoperability — were removed rather than outgrown. Angry, specific, and it names something everyone had noticed.",
-    "headline": "How platforms decay, in three stages"
+    "headline": "How platforms decay, in three stages",
+    "thumbnail": "tech-enshittification.jpg",
+    "thumbnail_source": "https://pluralistic.net/2023/01/21/potemkin-ai/"
   },
   {
     "id": "tech-reflections-on-palantir",
@@ -248,6 +262,8 @@
     "depth": "deep",
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
-    "summary": "Qureshi's account of working at an unusually strange company: how it hired, why deployment engineers mattered more than product managers, what forward-deployed work actually involves, and where the culture failed. It is neither defence nor exposé, which is what makes it useful. The sections on hiring for raw ability and on what it costs to place engineers inside a customer's problem are the ones worth arguing with. The most concrete first-hand writing available about how an enterprise software company really operates."
+    "summary": "Qureshi's account of working at an unusually strange company: how it hired, why deployment engineers mattered more than product managers, what forward-deployed work actually involves, and where the culture failed. It is neither defence nor exposé, which is what makes it useful. The sections on hiring for raw ability and on what it costs to place engineers inside a customer's problem are the ones worth arguing with. The most concrete first-hand writing available about how an enterprise software company really operates.",
+    "thumbnail": "tech-reflections-on-palantir.jpg",
+    "thumbnail_source": "https://nabeelqu.substack.com/p/reflections-on-palantir"
   }
 ]

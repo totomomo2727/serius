@@ -66,7 +66,9 @@
     "depth": "accessible",
     "duration_minutes": 19,
     "verified_on": "2026-09-26",
-    "summary": "Pigliucci, a philosopher who came to Stoicism late and practically, explains what a modern person can take from it without pretending to be a Roman. He separates the therapeutic advice from the metaphysics, is honest about which parts he rejects, and gives a few exercises worth trying. Nineteen minutes, and a useful corrective to the quote-of-the-day version of a school that was never really about endurance."
+    "summary": "Pigliucci, a philosopher who came to Stoicism late and practically, explains what a modern person can take from it without pretending to be a Roman. He separates the therapeutic advice from the metaphysics, is honest about which parts he rejects, and gives a few exercises worth trying. Nineteen minutes, and a useful corrective to the quote-of-the-day version of a school that was never really about endurance.",
+    "thumbnail": "ph-pigliucci-stoicism-tedx.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=Yhn1Fe8cT0Q"
   },
   {
     "id": "ph-singer-famine",
@@ -131,7 +133,9 @@
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "The movement's own account of itself: use evidence and careful reasoning to work out how to help others most, then act on it. Short, and clearer than most secondary descriptions about the core claims and the cause areas that follow from them. Worth reading first-hand before deciding what you think, given how much of the public argument is conducted at second hand."
+    "summary": "The movement's own account of itself: use evidence and careful reasoning to work out how to help others most, then act on it. Short, and clearer than most secondary descriptions about the core claims and the cause areas that follow from them. Worth reading first-hand before deciding what you think, given how much of the public argument is conducted at second hand.",
+    "thumbnail": "ph-effective-altruism.jpg",
+    "thumbnail_source": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism"
   },
   {
     "id": "ph-sandel-justice",
@@ -147,7 +151,9 @@
     "depth": "accessible",
     "duration_minutes": 55,
     "verified_on": "2026-09-26",
-    "summary": "The first lecture of Sandel's Harvard course, filmed in a packed hall. He opens with the runaway trolley, gets a thousand students to commit to an answer, then walks them into the case where their own principle fails. What makes it work is the arguing: real objections from the room, taken seriously. The best hour of introductory moral philosophy on video."
+    "summary": "The first lecture of Sandel's Harvard course, filmed in a packed hall. He opens with the runaway trolley, gets a thousand students to commit to an answer, then walks them into the case where their own principle fails. What makes it work is the arguing: real objections from the room, taken seriously. The best hour of introductory moral philosophy on video.",
+    "thumbnail": "ph-sandel-justice.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=kBdfcR-8hEY"
   },
   {
     "id": "ph-life-meaning",

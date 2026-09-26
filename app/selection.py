@@ -99,8 +99,9 @@ def explain(item: ContentItem, profile: Profile, is_revisit: bool = False) -> st
         return f"For your interest in {label}."
     if item.topic in profile.topics:
         if profile.depth != "mix" and item.depth == profile.depth:
-            kind = "accessible" if item.depth == "accessible" else "deeper"
-            return f"A {kind} piece from your {in_sentence(TOPIC_LABELS.get(item.topic, item.topic))} choice."
+            kind = "An accessible" if item.depth == "accessible" else "A deeper"
+            topic = in_sentence(TOPIC_LABELS.get(item.topic, item.topic))
+            return f"{kind} piece from your {topic} choice."
         return ""
     return f"Near your choices, from {in_sentence(TOPIC_LABELS.get(item.topic, item.topic))}."
 

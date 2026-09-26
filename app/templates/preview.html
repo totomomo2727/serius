@@ -27,24 +27,25 @@
 </div>
 
 <article class="edition" id="edition-sheet">
-  <header class="masthead">
-    <a class="wordmark" href="/">
-      <span class="wordmark-the">The</span>
-      <span class="wordmark-name">Feather Press</span>
-    </a>
-    <img class="wordmark-feather" src="/static/serius/feather.svg" alt="" width="64" height="24">
-  </header>
-  <hr class="rule">
+  {% include "_masthead.html" %}
   <p class="strip">
     <span id="edition-date">{{ date_label }}</span>
-    <span>Your edition</span>
+    <span>Assembled for you</span>
     <span>{{ items|length }} finds</span>
+    <span>Three minutes</span>
   </p>
   <hr class="rule">
   <p class="today">{{ edition.intro }}</p>
 
   {% set lead = items[0] %}
   <section class="lead">
+    <div class="lead-column">
+      {{ plate(lead.content, 'lead') }}
+      {% if lead.content.note %}
+      <p class="annotation">{{ lead.content.note }}</p>
+      {% endif %}
+      <img class="margin-bird" src="/static/serius/serius-{{ lead.content.pose }}.png" alt="">
+    </div>
     <div class="find-head">
       <p class="find-number">01</p>
       <p class="kicker">
@@ -55,13 +56,11 @@
       <h1 class="headline">{{ lead.content.display_title }}</h1>
       <p class="byline">{{ lead.content.creator }} &middot; {{ lead.content.publication }}</p>
     </div>
-    {{ plate(lead.content, 'lead') }}
     <div class="find-body">
-      <p class="summary">{{ lead.content.summary }}</p>
+      <p class="summary summary-lead">{{ lead.content.summary }}</p>
       {% if lead.reason %}<p class="why"><span class="why-label">Why this one</span> {{ lead.reason }}</p>{% endif %}
       <p class="source"><a href="{{ lead.content.url }}" rel="noopener">{{ lead.content.title }}</a><span
         class="source-meta"> &middot; {{ lead.content.read_label|lower }}, {{ lead.content.duration_minutes }} min</span></p>
-      {% if lead.content.note %}<p class="annotation">{{ lead.content.note }}</p>{% endif %}
     </div>
   </section>
 
@@ -92,13 +91,14 @@
   </div>
   {% endif %}
 
-  <hr class="rule">
+  <hr class="rule rule-double">
   <footer class="edition-foot">
     <img src="/static/serius/serius-standing.png" alt="" width="113" height="195">
     <p class="signoff">More tomorrow morning.</p>
   </footer>
 </article>
 
+<div class="subscribe-row">
 <section class="subscribe">
   <h2>Get this in your inbox tomorrow morning</h2>
   <p>
@@ -125,6 +125,11 @@
     <p class="cta-row"><button class="button" type="submit">Send me this edition</button></p>
   </form>
 </section>
+<aside class="subscribe-aside">
+  <p class="hand-note">No account. No password.<br>Leave whenever you like.</p>
+  <img src="/static/serius/serius-flower.png" alt="" width="120">
+</aside>
+</div>
 
 <script>
   (function () {

@@ -32,7 +32,9 @@
     "duration_minutes": 90,
     "verified_on": "2026-09-26",
     "summary": "Wolfram starts from a single question — what is the next word? — and keeps answering it until a language model has been built in front of you. Along the way he covers probabilities over text, what a neural net is, why training works at all, embeddings, attention, and where the whole thing stops being explainable. Long, but it assumes nothing, and the toy examples are runnable rather than decorative.",
-    "headline": "What is ChatGPT actually doing?"
+    "headline": "What is ChatGPT actually doing?",
+    "thumbnail": "ai-what-is-chatgpt-doing.jpg",
+    "thumbnail_source": "https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/"
   },
   {
     "id": "ai-unreasonable-effectiveness-rnn",
@@ -49,7 +51,9 @@
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
     "summary": "Karpathy trains small recurrent networks on Shakespeare, Wikipedia markup, LaTeX, and Linux source, then shows what each one produces. The samples are funny, and they are also the argument: structure the model was never told about appears anyway. He follows with visualisations of individual neurons tracking quotes and bracket depth, which is the clearest early picture of a network learning representations nobody designed.",
-    "headline": "Character by character, a network learns to write"
+    "headline": "Character by character, a network learns to write",
+    "thumbnail": "ai-unreasonable-effectiveness-rnn.jpg",
+    "thumbnail_source": "https://karpathy.github.io/2015/05/21/rnn-effectiveness/"
   },
   {
     "id": "ai-karpathy-intro-llms",
@@ -66,7 +70,9 @@
     "depth": "accessible",
     "duration_minutes": 60,
     "verified_on": "2026-09-26",
-    "summary": "A one-hour talk that gets a general audience from tokens to fine-tuning without hand-waving. Karpathy frames a model as two files, walks through pretraining and the assistant training that follows, and then spends the second half on the security side: prompt injection, jailbreaks, and data poisoning. It is the talk to send someone who wants a real mental model rather than a metaphor."
+    "summary": "A one-hour talk that gets a general audience from tokens to fine-tuning without hand-waving. Karpathy frames a model as two files, walks through pretraining and the assistant training that follows, and then spends the second half on the security side: prompt injection, jailbreaks, and data poisoning. It is the talk to send someone who wants a real mental model rather than a metaphor.",
+    "thumbnail": "ai-karpathy-intro-llms.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=zjkBMFhNj_g"
   },
   {
     "id": "ai-circuits-zoom-in",
@@ -84,7 +90,9 @@
     "duration_minutes": 40,
     "verified_on": "2026-09-26",
     "summary": "The opening paper of the circuits programme argues that neural networks can be studied like cells under a microscope. Features are directions in activation space, circuits are the weighted connections between them, and both can be read off a trained vision model. Curve detectors and high-low frequency detectors are traced in detail. It is the founding document of mechanistic interpretability, and it stays concrete throughout.",
-    "headline": "Looking inside a network, neuron by neuron"
+    "headline": "Looking inside a network, neuron by neuron",
+    "thumbnail": "ai-circuits-zoom-in.jpg",
+    "thumbnail_source": "https://distill.pub/2020/circuits/zoom-in/"
   },
   {
     "id": "ai-core-views-safety",
@@ -100,7 +108,9 @@
     "depth": "deep",
     "duration_minutes": 45,
     "verified_on": "2026-09-26",
-    "summary": "Anthropic sets out why it works on systems it considers risky, and what it would do if the risk turned out to be high. The essay sorts possible worlds into optimistic, intermediate, and pessimistic, and describes portfolios of work for each. It also explains scaling laws as the reason safety research needs frontier models. A rare case of an organisation writing its reasoning down where it can be checked later."
+    "summary": "Anthropic sets out why it works on systems it considers risky, and what it would do if the risk turned out to be high. The essay sorts possible worlds into optimistic, intermediate, and pessimistic, and describes portfolios of work for each. It also explains scaling laws as the reason safety research needs frontier models. A rare case of an organisation writing its reasoning down where it can be checked later.",
+    "thumbnail": "ai-core-views-safety.jpg",
+    "thumbnail_source": "https://www.anthropic.com/news/core-views-on-ai-safety"
   },
   {
     "id": "ai-concrete-problems",
@@ -117,7 +127,9 @@
     "duration_minutes": 50,
     "verified_on": "2026-09-26",
     "summary": "The paper that moved AI safety from speculation to a research agenda. It names five concrete failures — negative side effects, reward hacking, scalable oversight, safe exploration, and robustness to distributional shift — and for each gives a small example, a set of possible approaches, and open questions. The cleaning robot examples are still the shortest way to explain why a well-specified objective can go badly wrong.",
-    "headline": "Five accident risks, stated plainly"
+    "headline": "Five accident risks, stated plainly",
+    "thumbnail": "ai-concrete-problems.jpg",
+    "thumbnail_source": "https://arxiv.org/abs/1606.06565"
   },
   {
     "id": "ai-intro-ai-safety",
@@ -133,7 +145,9 @@
     "depth": "accessible",
     "duration_minutes": 18,
     "verified_on": "2026-09-26",
-    "summary": "Eighteen minutes on why a capable system pursuing a slightly wrong objective is a problem, delivered without doom or hype. Miles builds the argument from specification, instrumental goals, and the gap between what we ask for and what we want, using examples simple enough to repeat to someone else afterwards. The best short introduction if you want the shape of the field before reading papers."
+    "summary": "Eighteen minutes on why a capable system pursuing a slightly wrong objective is a problem, delivered without doom or hype. Miles builds the argument from specification, instrumental goals, and the gap between what we ask for and what we want, using examples simple enough to repeat to someone else afterwards. The best short introduction if you want the shape of the field before reading papers.",
+    "thumbnail": "ai-intro-ai-safety.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=pYXy-A4siMw"
   },
   {
     "id": "ai-stochastic-parrots",
@@ -168,7 +182,9 @@
     "duration_minutes": 18,
     "verified_on": "2026-09-26",
     "summary": "Chiang's analogy is lossy compression: a language model stores a blurred copy of the web and reconstructs plausible detail when asked. From there he draws consequences — why models hallucinate confidently, why compression and understanding are related, and why writing with one may cost you the thinking that writing usually does. Short, precise, and the single best piece for a sceptical non-technical reader.",
-    "note": "Worth arguing with, which is the point."
+    "note": "Worth arguing with, which is the point.",
+    "thumbnail": "ai-blurry-jpeg.jpg",
+    "thumbnail_source": "https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web"
   },
   {
     "id": "ai-dark-forest",
@@ -185,7 +201,9 @@
     "duration_minutes": 25,
     "verified_on": "2026-09-26",
     "summary": "Appleton takes the dark forest theory of the internet and asks what cheap generated text does to it. If anything can be produced at volume, proof of humanity becomes the scarce thing, and people retreat to smaller, quieter spaces. She sketches what remains legible: idiosyncrasy, specific detail, real reputation. Illustrated throughout, and unusually calm about a subject that normally invites panic.",
-    "headline": "Where do you go when the web fills with generated text?"
+    "headline": "Where do you go when the web fills with generated text?",
+    "thumbnail": "ai-dark-forest.jpg",
+    "thumbnail_source": "https://maggieappleton.com/forest-talk"
   },
   {
     "id": "ai-boo-chatbots",
@@ -217,7 +235,9 @@
     "depth": "deep",
     "duration_minutes": 18,
     "verified_on": "2026-09-26",
-    "summary": "Litt asks what happens to the old dream of software people can change when models can write code on request. He works through the difference between generating an app and giving someone durable control over one, and argues that the interesting layer is shared data with swappable tools on top. Grounded in his own prototypes, so the claims come with working examples."
+    "summary": "Litt asks what happens to the old dream of software people can change when models can write code on request. He works through the difference between generating an app and giving someone durable control over one, and argues that the interesting layer is shared data with swappable tools on top. Grounded in his own prototypes, so the claims come with working examples.",
+    "thumbnail": "ai-malleable-software.jpg",
+    "thumbnail_source": "https://www.geoffreylitt.com/2023/03/25/llm-end-user-programming.html"
   },
   {
     "id": "ai-synthesizer-for-thought",
@@ -234,7 +254,9 @@
     "duration_minutes": 14,
     "verified_on": "2026-09-26",
     "summary": "Lee draws the parallel with music synthesis: once sound became a space you could move through, instruments changed. He argues embeddings do the same for meaning, and sketches interfaces that let you blend, steer, and traverse ideas instead of typing prompts at them. Speculative, but backed by demos he built, and it gives you a vocabulary for what generative interfaces could be.",
-    "headline": "Instruments for ideas, not just answers"
+    "headline": "Instruments for ideas, not just answers",
+    "thumbnail": "ai-synthesizer-for-thought.jpg",
+    "thumbnail_source": "https://thesephist.com/posts/synth/"
   },
   {
     "id": "ai-guide-to-prompting",
@@ -250,7 +272,9 @@
     "depth": "accessible",
     "duration_minutes": 12,
     "verified_on": "2026-09-26",
-    "summary": "Mollick's practical position is that prompting is less of a discipline than it is sold as, and mostly comes down to context, examples, and iteration. He gives what works, what stopped working as models improved, and where the popular tricks are cargo cult. Useful because it is written by someone who tests claims with students rather than collecting them from social media."
+    "summary": "Mollick's practical position is that prompting is less of a discipline than it is sold as, and mostly comes down to context, examples, and iteration. He gives what works, what stopped working as models improved, and where the popular tricks are cargo cult. Useful because it is written by someone who tests claims with students rather than collecting them from social media.",
+    "thumbnail": "ai-guide-to-prompting.jpg",
+    "thumbnail_source": "https://www.oneusefulthing.org/p/a-guide-to-prompting-ai-for-what"
   },
   {
     "id": "ai-weird-world-of-llms",
@@ -268,6 +292,8 @@
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
     "summary": "Willison's catch-up talk covers how the current models arrived, what they are genuinely good at, and the failure modes that keep biting people in production. He is specific about prompt injection, about evaluation being harder than it looks, and about the gap between demo and system. A good calibration pass if you have been following the news but not the substance.",
-    "headline": "A field update, delivered without hype"
+    "headline": "A field update, delivered without hype",
+    "thumbnail": "ai-weird-world-of-llms.jpg",
+    "thumbnail_source": "https://simonwillison.net/2023/Aug/3/weird-world-of-llms/"
   }
 ]

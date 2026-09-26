@@ -1,7 +1,8 @@
 {#
-  Illustrated plates. Every piece gets one drawn visual rather than a scraped
-  publisher photograph: a line motif for the topic, with the Serius character in
-  the pose that suits the format. Provenance travels with the item.
+  Each piece shows the image its own publisher nominates for sharing, cached
+  locally at build time (see scripts/fetch_thumbnails.py). Pieces that publish
+  none — old plain-text essays, encyclopedias, PDFs — fall back to a drawn
+  plate: a line motif for the topic with Serius in the pose for the format.
 #}
 {% macro motif(key) %}
 <svg class="motif" viewBox="0 0 300 220" fill="none" aria-hidden="true" focusable="false">
@@ -35,11 +36,20 @@
 {% endmacro %}
 
 {% macro plate(content, size='support') %}
-<figure class="plate plate-{{ size }} plate-{{ content.motif }}">
+{% if content.thumbnail_url %}
+<figure class="plate plate-{{ size }} plate-photo">
+  <div class="plate-frame">
+    <img class="plate-image" src="{{ content.thumbnail_url }}" alt="{{ content.alt_text }}" loading="lazy">
+  </div>
+  <figcaption class="plate-credit">{{ content.credit }}</figcaption>
+</figure>
+{% else %}
+<figure class="plate plate-{{ size }} plate-drawn plate-{{ content.motif }}">
   <div class="plate-frame">
     {{ motif(content.motif) }}
     <img class="plate-bird" src="/static/serius/serius-{{ content.pose }}.png" alt="{{ content.alt_text }}">
   </div>
-  {% if size == 'lead' %}<figcaption class="plate-credit">{{ content.credit }}</figcaption>{% endif %}
+  <figcaption class="plate-credit">{{ content.credit }}</figcaption>
 </figure>
+{% endif %}
 {% endmacro %}
