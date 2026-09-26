@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Unsubscribe &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet narrow">
+  <p class="dateline">{{ subscriber.email }}</p>
+  <h1>Unsubscribe?</h1>
+  <p class="lede">
+    Confirm below and no further editions will be sent. If you only want a break, you can
+    pause instead and keep your preferences.
+  </p>
+  <form method="post" action="/unsubscribe/{{ token }}">
+    <p class="cta-row"><button class="button" type="submit">Unsubscribe me</button></p>
+  </form>
+  <p><a class="source-link" href="/preferences/{{ token }}">Go to preferences instead &rarr;</a></p>
+</section>
+{% endblock %}

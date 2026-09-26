@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Your edition &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<div class="delivery" id="delivery" aria-hidden="true">
+  <img src="/static/seagull.svg" alt="" width="140" height="140" class="delivery-bird">
+  <p class="delivery-copy">Your edition is on its way&hellip;</p>
+</div>
+
+<section class="sheet edition" id="edition-sheet">
+  <p class="dateline">Your edition &middot; {{ date_label }}</p>
+  <h1 class="edition-masthead">{{ app_name }}</h1>
+  <p class="edition-tagline">{{ tagline }}</p>
+  <hr class="rule thick">
+  <p class="intro">{{ edition.intro }}</p>
+  <hr class="rule">
+
+  {% for item in items %}
+  <article class="piece">
+    <p class="piece-index">{{ loop.index }} of {{ items|length }}</p>
+    <h2 class="piece-title">{{ item.content.title }}</h2>
+    <p class="byline">
+      {{ item.content.creator }} &middot; {{ item.content.publication }}
+    </p>
+    <p class="stamps">
+      <span class="stamp">{{ item.content.topic.replace('-', ' ') }}</span>
+      <span class="stamp">{{ item.content.fmt }}</span>
+      <span class="stamp">{{ item.content.duration_minutes }} min</span>
+      {% if item.is_revisit %}<span class="stamp revisit">a revisit</span>{% endif %}
+    </p>
+    <p class="why"><strong>Why this one:</strong> {{ item.reason }}</p>
+    <p class="summary">{{ item.content.summary }}</p>
+    <p><a class="source-link" href="{{ item.content.url }}" rel="noopener">{{ item.content.read_label }} &rarr;</a></p>
+  </article>
+  {% if not loop.last %}<hr class="rule">{% endif %}
+  {% endfor %}
+
+  <hr class="rule thick">
+  <p class="signoff">That&rsquo;s your edition for today. More curiosity tomorrow.</p>
+</section>
+
+<section class="sheet subscribe">
+  <h2>Get this in your inbox tomorrow morning</h2>
+  <p>
+    Confirm your address and this exact edition arrives as your first newspaper, then a new
+    one each day at eight o&rsquo;clock, your time.
+  </p>
+  {% if not provider_is_live %}
+  <p class="notice" role="status">
+    No email provider is configured on this deployment, so nothing can actually be delivered
+    yet. Messages are written to the local outbox instead and clearly marked as undelivered.
+  </p>
+  {% endif %}
+  <form method="post" action="/subscribe" class="form">
+    <input type="hidden" name="edition_id" value="{{ edition.id }}">
+    <input type="hidden" name="timezone_name" id="timezone_name" value="UTC">
+    <label class="field-label" for="email">Your email address</label>
+    <input class="text-input" type="email" id="email" name="email" required autocomplete="email"
+           placeholder="you@example.com">
+    <label class="choice consent">
+      <input type="checkbox" name="consent" value="yes" required>
+      <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
+    </label>
+    <p class="fine" id="tz-note">Delivery timezone: <span id="tz-label">UTC</span>. You can change this later.</p>
+    <p class="cta-row"><button class="button" type="submit">Send me this edition</button></p>
+  </form>
+</section>
+
+<script>
+  (function () {
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz) {
+        document.getElementById('timezone_name').value = tz;
+        document.getElementById('tz-label').textContent = tz;
+      }
+    } catch (err) { /* keep UTC */ }
+
+    var delivery = document.getElementById('delivery');
+    var sheet = document.getElementById('edition-sheet');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!delivery || reduced) {
+      if (delivery) { delivery.remove(); }
+      return;
+    }
+    document.body.classList.add('delivering');
+    window.setTimeout(function () {
+      document.body.classList.remove('delivering');
+      delivery.remove();
+      sheet.classList.add('arrived');
+    }, 1600);
+  })();
+</script>
+{% endblock %}

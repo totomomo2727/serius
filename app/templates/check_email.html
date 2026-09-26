@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Confirm your subscription &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet narrow">
+  {% if result.ok and result.delivered %}
+  <p class="dateline">Step two of two</p>
+  <h1>Check your inbox</h1>
+  <p class="lede">
+    We sent a confirmation link to <strong>{{ subscriber.email }}</strong>. Click it and your
+    first edition &mdash; the one you just read &mdash; goes out immediately.
+  </p>
+  <p class="fine">Provider: {{ result.provider }}{% if result.message_id %} &middot; message {{ result.message_id }}{% endif %}</p>
+  {% elif result.ok and not result.delivered %}
+  <p class="dateline">Nothing was emailed</p>
+  <h1>Written to the local outbox</h1>
+  <p class="lede">
+    This deployment has no email provider configured, so the confirmation message for
+    <strong>{{ subscriber.email }}</strong> was written to disk instead of being delivered.
+    Your subscription is still pending and no mail has left this machine.
+  </p>
+  <p class="fine">File: {{ result.message_id }}.html</p>
+  {% else %}
+  <p class="dateline">Sending failed</p>
+  <h1>We couldn&rsquo;t send that email</h1>
+  <p class="lede">
+    Your preferences are saved, but the confirmation message to
+    <strong>{{ subscriber.email }}</strong> did not go out, so you are not subscribed yet.
+  </p>
+  <p class="error" role="alert">{{ result.error }}</p>
+  {% endif %}
+
+  {% if verify_link %}
+  <p class="dev-box">
+    <strong>Development shortcut:</strong> <a href="{{ verify_link }}">open the confirmation page</a>
+    without the email.
+  </p>
+  {% endif %}
+</section>
+{% endblock %}

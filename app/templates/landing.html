@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block body_class %}landing{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="dateline">Est. today &middot; delivered at eight, your time</p>
+  <h1>A daily newspaper, curated for you.</h1>
+  <p class="lede">
+    Three thoughtful articles, essays, or videos selected around your interests.
+    Get the substance in three minutes, then explore whatever catches your curiosity.
+  </p>
+  <p class="cta-row">
+    <a class="button" href="/start">Choose your interests</a>
+  </p>
+  <p class="fine">Takes about a minute. No account, no password, unsubscribe from any edition.</p>
+</section>
+
+<hr class="rule">
+
+<section class="columns">
+  <article>
+    <h2>Chosen, not scraped</h2>
+    <p>
+      Every piece in the library was read or watched before it was catalogued, with its
+      creator, publication, format, and length recorded by hand. Nothing is generated,
+      nothing is crawled, and no piece appears twice until you have seen everything that fits.
+    </p>
+  </article>
+  <article>
+    <h2>Three minutes, then your choice</h2>
+    <p>
+      Each edition carries three summaries of roughly 150 words: enough to know what a piece
+      argues and whether you want it. Follow the link when something pulls at you, and close
+      the email when nothing does.
+    </p>
+  </article>
+  <article>
+    <h2>Quiet by design</h2>
+    <p>
+      One email a day, at eight in the morning where you are. No feed, no streak, no
+      notifications. Pause it for a week or leave for good with one link at the bottom of
+      every edition.
+    </p>
+  </article>
+</section>
+
+<hr class="rule">
+
+<section class="closing">
+  <img src="/static/seagull.svg" alt="A seagull carrying a rolled newspaper" width="120" height="120">
+  <p class="closing-copy">Your choices shape your daily edition.</p>
+  <p><a class="button" href="/start">Choose your interests</a></p>
+</section>
+{% endblock %}

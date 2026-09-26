@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="A seagull carrying a rolled newspaper">
+  <g fill="none" stroke="#1d1a15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- far wing -->
+    <path d="M62 44 C50 26 34 20 20 24 C30 32 34 40 40 50" fill="#efe9dc"/>
+    <!-- body -->
+    <path d="M40 50 C44 38 58 32 72 36 C84 39 92 48 96 58 C88 62 78 64 68 63 C60 78 44 82 30 76 C36 70 38 60 40 50 Z" fill="#fbf7ef"/>
+    <!-- near wing -->
+    <path d="M52 50 C60 42 74 40 84 44 C76 54 66 60 56 60 Z" fill="#efe9dc"/>
+    <!-- head -->
+    <circle cx="80" cy="40" r="11" fill="#fbf7ef"/>
+    <!-- beak -->
+    <path d="M90 40 L104 44 L90 47 Z" fill="#c9762b" stroke="#8c4f16"/>
+    <!-- eye -->
+    <circle cx="83" cy="37" r="2.2" fill="#1d1a15" stroke="none"/>
+    <!-- legs -->
+    <path d="M58 72 L58 82 M52 82 L64 82" />
+    <!-- rolled newspaper -->
+    <g transform="rotate(-14 56 90)">
+      <rect x="34" y="84" width="46" height="16" rx="8" fill="#fbf7ef"/>
+      <path d="M46 84 C42 88 42 96 46 100" />
+      <path d="M56 88 H72 M56 96 H70" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ app_name }}{% endblock %}</title>
+  <meta name="description" content="A daily newspaper, curated for you.">
+  <link rel="stylesheet" href="/static/press.css">
+  <link rel="icon" href="/static/seagull.svg" type="image/svg+xml">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead">
+    <a class="masthead-link" href="/">
+      <img src="/static/seagull.svg" alt="" width="46" height="46" class="masthead-bird">
+      <span>
+        <span class="masthead-title">{{ app_name }}</span>
+        <span class="masthead-tagline">{{ tagline }}</span>
+      </span>
+    </a>
+    {% block masthead_extra %}{% endblock %}
+  </header>
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">
+    <p>{{ app_name }} &middot; three good finds, delivered daily &middot; no dashboard, no password.</p>
+    {% if dev_tools %}<p class="footer-dev"><a href="/dev">Development controls</a></p>{% endif %}
+  </footer>
+</body>
+</html>

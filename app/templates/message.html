@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet narrow">
+  <h1>{{ heading }}</h1>
+  <p class="lede">{{ body }}</p>
+  <p><a class="source-link" href="/">Back to the front page &rarr;</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}You're subscribed &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet narrow">
+  {% if result is none %}
+  <p class="dateline">Confirmed</p>
+  <h1>You&rsquo;re subscribed</h1>
+  <p class="lede">Your next edition arrives at eight in the morning, {{ subscriber.timezone }} time.</p>
+  {% elif result.ok and result.delivered %}
+  <p class="dateline">Confirmed &middot; first edition sent</p>
+  <h1>It&rsquo;s on its way</h1>
+  <p class="lede">
+    The edition you previewed has been sent to <strong>{{ subscriber.email }}</strong>.
+    From tomorrow you&rsquo;ll get a new one each morning at eight, {{ subscriber.timezone }} time
+    (it is {{ local_time }} there now).
+  </p>
+  <p class="fine">Provider: {{ result.provider }}{% if result.message_id %} &middot; message {{ result.message_id }}{% endif %}</p>
+  {% elif result.ok and not result.delivered %}
+  <p class="dateline">Confirmed &middot; nothing emailed</p>
+  <h1>Your subscription is active</h1>
+  <p class="lede">
+    No email provider is configured here, so your first edition was written to the local
+    outbox rather than delivered to <strong>{{ subscriber.email }}</strong>.
+  </p>
+  <p class="fine">File: {{ result.message_id }}.html</p>
+  {% else %}
+  <p class="dateline">Confirmed &middot; delivery failed</p>
+  <h1>Subscribed, but the first edition didn&rsquo;t send</h1>
+  <p class="lede">
+    Your subscription is active and tomorrow&rsquo;s edition will be attempted as normal, but
+    today&rsquo;s send failed.
+  </p>
+  <p class="error" role="alert">{{ result.error }}</p>
+  {% endif %}
+  <p><a class="source-link" href="{{ manage_link }}">Manage your preferences &rarr;</a></p>
+</section>
+{% endblock %}

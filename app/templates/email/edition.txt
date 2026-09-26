@@ -1,0 +1,26 @@
+{{ app_name|upper }}
+{{ tagline }}
+Your edition - {{ date_label }}
+
+{{ edition.intro }}
+
+{% for item in items %}
+--------------------------------------------------------------
+{{ loop.index }} of {{ items|length }}
+{{ item.content.title }}
+{{ item.content.creator }} - {{ item.content.publication }}
+{{ item.content.topic.replace('-', ' ') }} | {{ item.content.fmt }} | about {{ item.content.duration_minutes }} minutes{% if item.is_revisit %} | a revisit{% endif %}
+
+Why this one: {{ item.reason }}
+
+{{ item.content.summary }}
+
+{{ item.content.read_label }}: {{ item.content.url }}
+More like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more
+Less like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/less
+{% endfor %}
+==============================================================
+That's your edition for today. More curiosity tomorrow.
+
+Change your interests or delivery time: {{ manage_link }}
+Unsubscribe: {{ unsubscribe_link }}

@@ -1,0 +1,12 @@
+{{ app_name|upper }}
+A daily newspaper, curated for you.
+
+Confirm your subscription and your first edition - the one you previewed - is sent
+straight away:
+
+{{ verify_link }}
+
+Your first edition holds:
+{% for item in items %}- {{ item.content.title }} - {{ item.content.creator }}
+{% endfor %}
+If you did not ask for this, ignore this email and nothing will be sent.

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Thanks &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet narrow">
+  <h1>{% if signal == 'more' %}More like this?{% else %}Less like this?{% endif %}</h1>
+  <p class="lede">Confirm and we&rsquo;ll weigh future editions accordingly.</p>
+  <form method="post" action="/feedback/{{ token }}/{{ content_id }}/{{ signal }}">
+    <p class="cta-row"><button class="button" type="submit">Yes, record that</button></p>
+  </form>
+</section>
+{% endblock %}
