@@ -28,72 +28,93 @@
 
 <article class="edition" id="edition-sheet">
   {% include "_masthead.html" %}
-  <p class="strip">
+  <p class="strip dateline-strip">
     <span id="edition-date">{{ date_label }}</span>
-    <span>Assembled for you</span>
+    <span>Assembled for one reader</span>
     <span>{{ items|length }} finds</span>
     <span>Three minutes</span>
   </p>
-  <hr class="rule">
   <p class="today">{{ edition.intro }}</p>
 
+  {# Two reusable arrangements: a lead paired with a narrow second column,
+     then the third find run horizontally underneath. #}
   {% set lead = items[0] %}
-  <section class="lead">
-    <div class="lead-column">
-      {{ plate(lead.content, 'lead') }}
-      {% if lead.content.note %}
-      <p class="annotation">{{ lead.content.note }}</p>
-      {% endif %}
-      <img class="margin-bird" src="/static/serius/serius-{{ lead.content.pose }}.png" alt="">
-    </div>
-    <div class="find-head">
-      <p class="find-number">01</p>
-      <p class="kicker">
-        <span>{{ lead.content.topic|topic_label }}</span>
-        <span>{{ lead.content.fmt }}</span>
-        {% if lead.is_revisit %}<span>revisit</span>{% endif %}
-      </p>
-      <h1 class="headline">{{ lead.content.display_title }}</h1>
-      <p class="byline">{{ lead.content.creator }} &middot; {{ lead.content.publication }}</p>
-    </div>
-    <div class="find-body">
-      <p class="summary summary-lead">{{ lead.content.summary }}</p>
-      {% if lead.reason %}<p class="why"><span class="why-label">Why this one</span> {{ lead.reason }}</p>{% endif %}
-      <p class="source"><a href="{{ lead.content.url }}" rel="noopener">{{ lead.content.title }}</a><span
-        class="source-meta"> &middot; {{ lead.content.read_label|lower }}, {{ lead.content.duration_minutes }} min</span></p>
-    </div>
-  </section>
+  {% set second = items[1] if items|length > 1 else none %}
+  {% set third = items[2] if items|length > 2 else none %}
 
-  {% if items|length > 1 %}
-  <hr class="rule">
-  <div class="supports">
-    {% for item in items[1:] %}
-    <section class="find">
+  <div class="spread">
+    <section class="compartment lead">
       <div class="find-head">
-        <p class="find-number">0{{ loop.index + 1 }}</p>
+        <p class="find-number find-number-lead">01</p>
         <p class="kicker">
-          <span>{{ item.content.topic|topic_label }}</span>
-          <span>{{ item.content.fmt }}</span>
-          {% if item.is_revisit %}<span>revisit</span>{% endif %}
+          <span>{{ lead.content.topic|topic_label }}</span>
+          <span>{{ lead.content.fmt }}</span>
+          {% if lead.is_revisit %}<span>revisit</span>{% endif %}
         </p>
-        <h2 class="headline">{{ item.content.display_title }}</h2>
-        <p class="byline">{{ item.content.creator }} &middot; {{ item.content.publication }}</p>
+        <h1 class="headline headline-lead">{{ lead.content.display_title }}</h1>
+        <p class="byline">{{ lead.content.creator }} &middot; {{ lead.content.publication }}</p>
       </div>
-      {{ plate(item.content) }}
+      {{ plate(lead.content, 'lead', tape=true) }}
       <div class="find-body">
-        <p class="summary">{{ item.content.summary }}</p>
-        {% if item.reason %}<p class="why"><span class="why-label">Why this one</span> {{ item.reason }}</p>{% endif %}
-        <p class="source"><a href="{{ item.content.url }}" rel="noopener">{{ item.content.title }}</a><span
-          class="source-meta"> &middot; {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min</span></p>
+        <p class="summary summary-lead">{{ lead.content.summary }}</p>
+        {% if lead.reason %}<p class="why"><span class="why-label">Why this one</span> {{ lead.reason }}</p>{% endif %}
+        <p class="source"><a href="{{ lead.content.url }}" rel="noopener">{{ lead.content.title }}</a><span
+          class="source-meta"> &middot; {{ lead.content.read_label|lower }}, {{ lead.content.duration_minutes }} min</span></p>
       </div>
     </section>
-    {% endfor %}
+
+    <div class="sidebar">
+      {% if second %}
+      <section class="compartment find find-second">
+        <p class="compartment-label"><span>The second find</span><span class="find-number">02</span></p>
+        <div class="find-head">
+          <p class="kicker">
+            <span>{{ second.content.topic|topic_label }}</span>
+            <span>{{ second.content.fmt }}</span>
+            {% if second.is_revisit %}<span>revisit</span>{% endif %}
+          </p>
+          <h2 class="headline">{{ second.content.display_title }}</h2>
+          <p class="byline">{{ second.content.creator }} &middot; {{ second.content.publication }}</p>
+        </div>
+        {{ plate(second.content, 'column', tilt=true) }}
+        <div class="find-body">
+          <p class="summary">{{ second.content.summary }}</p>
+          {% if second.reason %}<p class="why"><span class="why-label">Why this one</span> {{ second.reason }}</p>{% endif %}
+          <p class="source"><a href="{{ second.content.url }}" rel="noopener">{{ second.content.title }}</a><span
+            class="source-meta"> &middot; {{ second.content.read_label|lower }}, {{ second.content.duration_minutes }} min</span></p>
+        </div>
+      </section>
+      {% endif %}
+      <aside class="scrap">
+        <img src="/static/serius/serius-{{ lead.content.pose }}.png" alt="" width="96">
+        <p class="hand-note">{{ lead.content.note or 'Start here, then wander.' }}</p>
+      </aside>
+    </div>
   </div>
+
+  {% if third %}
+  <section class="compartment band">
+    <p class="find-number find-number-band">03</p>
+    {{ plate(third.content, 'band') }}
+    <div class="band-text">
+      <p class="kicker">
+        <span>{{ third.content.topic|topic_label }}</span>
+        <span>{{ third.content.fmt }}</span>
+        {% if third.is_revisit %}<span>revisit</span>{% endif %}
+      </p>
+      <h2 class="headline">{{ third.content.display_title }}</h2>
+      <p class="byline">{{ third.content.creator }} &middot; {{ third.content.publication }}</p>
+      <p class="summary">{{ third.content.summary }}</p>
+      {% if third.reason %}<p class="why"><span class="why-label">Why this one</span> {{ third.reason }}</p>{% endif %}
+      <p class="source"><a href="{{ third.content.url }}" rel="noopener">{{ third.content.title }}</a><span
+        class="source-meta"> &middot; {{ third.content.read_label|lower }}, {{ third.content.duration_minutes }} min</span></p>
+    </div>
+  </section>
   {% endif %}
 
-  <hr class="rule rule-double">
   <footer class="edition-foot">
-    <img src="/static/serius/serius-standing.png" alt="" width="113" height="195">
+    <span class="stamp"><img src="/static/serius/feather.svg" alt="" width="40" height="15"><span>Feather Press</span></span>
+    <img class="foot-bird" src="/static/serius/serius-standing.png" alt="" width="113" height="195">
     <p class="signoff">More tomorrow morning.</p>
   </footer>
 </article>

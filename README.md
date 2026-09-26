@@ -88,3 +88,24 @@ Pieces the reader has already been sent are excluded while suitable unseen conte
 Once it runs out, the least-recently-sent relevant pieces return, labelled as revisits in
 both the reason line and the edition itself. Every edition stores the profile used, the
 three items, and the reason for each, so a preview, its email, and any retry are identical.
+
+## Type and imagery
+
+Four self-hosted families, each with one job, all under the SIL Open Font License 1.1 and
+subset to latin in `app/static/fonts/`:
+
+| Role | Family | Used for |
+| --- | --- | --- |
+| `--didone` | Bodoni Moda | masthead, story numerals, the standfirst |
+| `--display` | Noto Serif Display (condensed widths) | headlines, kickers, section labels |
+| `--reading` | Source Serif 4 | body copy, 16–18px |
+| `--meta` | Source Sans 3 | captions, forms, fine print |
+| `--hand` | Caveat | one handwritten annotation per page, never body copy |
+
+Each piece shows the image its own publisher nominates for sharing (`og:image`, or the
+official thumbnail for a video), fetched once by `scripts/fetch_thumbnails.py`, checked for
+usable dimensions, and cached under `app/static/thumbs/` so editions never hotlink at read
+time. The original URL is kept in `thumbnail_source` and the publication is credited under
+the image. Pieces that publish no usable image — plain-text essays, encyclopedias, PDFs —
+fall back to a drawn plate: a line motif for the topic with Serius in the pose for the
+format, credited as original artwork.

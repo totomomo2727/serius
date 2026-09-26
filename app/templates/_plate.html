@@ -35,16 +35,22 @@
 </svg>
 {% endmacro %}
 
-{% macro plate(content, size='support') %}
+{#
+  scrapbook: `tape` sticks a strip of translucent tape across a corner and
+  `tilt` lifts the clipping a degree or two. Both are decoration on the image
+  only — never over text — and callers use at most a couple per edition.
+#}
+{% macro plate(content, size='support', tape=false, tilt=false) %}
+{% set scraps = (' plate-tape' if tape else '') ~ (' plate-tilt' if tilt else '') %}
 {% if content.thumbnail_url %}
-<figure class="plate plate-{{ size }} plate-photo">
+<figure class="plate plate-{{ size }} plate-photo{{ scraps }}">
   <div class="plate-frame">
     <img class="plate-image" src="{{ content.thumbnail_url }}" alt="{{ content.alt_text }}" loading="lazy">
   </div>
   <figcaption class="plate-credit">{{ content.credit }}</figcaption>
 </figure>
 {% else %}
-<figure class="plate plate-{{ size }} plate-drawn plate-{{ content.motif }}">
+<figure class="plate plate-{{ size }} plate-drawn plate-{{ content.motif }}{{ scraps }}">
   <div class="plate-frame">
     {{ motif(content.motif) }}
     <img class="plate-bird" src="/static/serius/serius-{{ content.pose }}.png" alt="{{ content.alt_text }}">

@@ -11,24 +11,26 @@
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#f7f6f2;">
 
-<tr><td style="padding:32px 32px 0 32px;font-family:Georgia,'Times New Roman',serif;color:#20201e;">
-  <div style="font-size:34px;line-height:1.05;font-weight:700;letter-spacing:-0.01em;">{{ app_name }}</div>
-  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#60605b;padding-top:6px;">{{ tagline }}</div>
+<tr><td align="center" style="padding:34px 32px 0 32px;font-family:Didot,'Bodoni MT',Georgia,'Times New Roman',serif;color:#20201e;">
+  <div style="font-size:17px;font-style:italic;line-height:1;">The</div>
+  <div style="font-size:44px;line-height:1.04;font-weight:700;letter-spacing:-0.01em;">Feather Press</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#60605b;padding-top:8px;">{{ tagline }}</div>
 </td></tr>
-<tr><td style="padding:0 32px;"><div style="border-top:1px solid #c9c8c1;margin:14px 0 0 0;"></div></td></tr>
-<tr><td style="padding:10px 32px 0 32px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#60605b;">
-  {{ date_label }} &nbsp;&middot;&nbsp; Your edition &nbsp;&middot;&nbsp; Three finds
+<tr><td style="padding:0 32px;"><div style="border-top:3px solid #20201e;margin:14px 0 0 0;"></div><div style="border-top:1px solid #20201e;margin:3px 0 0 0;"></div></td></tr>
+<tr><td align="center" style="padding:8px 32px 0 32px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#60605b;">
+  {{ date_label }} &nbsp;&middot;&nbsp; Assembled for one reader &nbsp;&middot;&nbsp; Three finds
 </td></tr>
-<tr><td style="padding:0 32px;"><div style="border-top:1px solid #c9c8c1;margin:10px 0 0 0;"></div></td></tr>
-<tr><td style="padding:14px 32px 0 32px;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.4;font-style:italic;color:#20201e;">
+<tr><td style="padding:0 32px;"><div style="border-top:1px solid #20201e;margin:8px 0 0 0;"></div></td></tr>
+<tr><td align="center" style="padding:16px 32px 0 32px;font-family:Didot,'Bodoni MT',Georgia,'Times New Roman',serif;font-size:21px;line-height:1.35;font-style:italic;color:#20201e;">
   {{ edition.intro }}
 </td></tr>
 
 {% for item in items %}
 <tr><td style="padding:0 32px;"><div style="border-top:1px solid #c9c8c1;margin:{% if loop.first %}22px{% else %}26px{% endif %} 0 0 0;"></div></td></tr>
 <tr><td style="padding:16px 32px 0 32px;font-family:Georgia,'Times New Roman',serif;color:#20201e;">
-  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#60605b;">
-    {{ '%02d'|format(loop.index) }} &nbsp;&middot;&nbsp; {{ item.content.topic|topic_label }} &nbsp;&middot;&nbsp; {{ item.content.fmt }}{% if item.is_revisit %} &nbsp;&middot;&nbsp; revisit{% endif %}
+  <div style="font-family:Didot,'Bodoni MT',Georgia,serif;font-size:30px;line-height:1;font-weight:700;">{{ '%02d'|format(loop.index) }}</div>
+  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#60605b;padding-top:6px;">
+    {{ item.content.topic|topic_label }} &nbsp;&middot;&nbsp; {{ item.content.fmt }}{% if item.is_revisit %} &nbsp;&middot;&nbsp; revisit{% endif %}
   </div>
   <h2 style="margin:8px 0 6px 0;font-size:{% if loop.first %}30px{% else %}23px{% endif %};line-height:1.16;font-weight:700;letter-spacing:-0.01em;">{{ item.content.display_title }}</h2>
   <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#60605b;">{{ item.content.creator }} &middot; {{ item.content.publication }}</div>
@@ -50,7 +52,7 @@
   </table>
   <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#60605b;padding-top:6px;">{{ item.content.credit }}</div>
 </td></tr>
-<tr><td style="padding:12px 32px 0 32px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.6;color:#20201e;">
+<tr><td style="padding:12px 32px 0 32px;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.62;color:#20201e;">
   {{ item.content.summary }}
 </td></tr>
 {% if item.reason %}
