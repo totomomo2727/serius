@@ -5,52 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ app_name }} — {{ date_label }}</title>
 </head>
-<body style="margin:0;padding:0;background:#efe9dc;">
+<body style="margin:0;padding:0;background:#ece5d5;">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Three good finds for {{ date_label }}.</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#efe9dc;padding:24px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ece5d5;padding:24px 12px;">
 <tr><td align="center">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;background:#fbf7ef;border:1px solid #d8cfba;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#faf8e8;border:1px solid #d6cfba;">
 
 <tr><td style="padding:28px 28px 8px 28px;text-align:center;font-family:Georgia,'Times New Roman',serif;">
-  <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#7a6a52;">Your edition &middot; {{ date_label }}</div>
-  <div style="font-size:38px;line-height:1.1;font-weight:700;color:#1d1a15;padding:8px 0 4px 0;">{{ app_name }}</div>
-  <div style="font-size:14px;font-style:italic;color:#5b4f3c;">{{ tagline }}</div>
+  <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#56564e;">Your edition &middot; {{ date_label }}</div>
+  <div style="font-size:38px;line-height:1.1;font-weight:700;color:#171713;padding:8px 0 4px 0;">{{ app_name }}</div>
+  <div style="font-size:14px;font-style:italic;color:#56564e;">{{ tagline }}</div>
 </td></tr>
 
-<tr><td style="padding:0 28px;"><div style="border-top:3px double #1d1a15;margin:16px 0;"></div></td></tr>
+<tr><td style="padding:0 28px;"><div style="border-top:3px double #171713;margin:16px 0;"></div></td></tr>
 
-<tr><td style="padding:0 28px 8px 28px;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#2b261d;">
-  {{ edition.intro }}
+<tr><td style="padding:0 28px 8px 28px;font-family:Georgia,'Times New Roman',serif;color:#171713;">
+  <div style="font-size:20px;font-weight:700;padding-bottom:4px;">Your edition</div>
+  <div style="font-size:16px;line-height:1.6;color:#56564e;">{{ edition.intro }}</div>
 </td></tr>
 
 {% for item in items %}
-<tr><td style="padding:0 28px;"><div style="border-top:1px solid #d8cfba;margin:18px 0;"></div></td></tr>
-<tr><td style="padding:0 28px;font-family:Georgia,'Times New Roman',serif;color:#1d1a15;">
-  <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#7a6a52;">{{ loop.index }} of {{ items|length }}</div>
-  <h2 style="margin:6px 0 4px 0;font-size:24px;line-height:1.25;font-weight:700;">{{ item.content.title }}</h2>
-  <div style="font-size:14px;color:#5b4f3c;">{{ item.content.creator }} &middot; {{ item.content.publication }}</div>
-  <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#7a6a52;padding:8px 0;">
-    {{ item.content.topic.replace('-', ' ') }} &nbsp;|&nbsp; {{ item.content.fmt }} &nbsp;|&nbsp; about {{ item.content.duration_minutes }} minutes{% if item.is_revisit %} &nbsp;|&nbsp; a revisit{% endif %}
+<tr><td style="padding:0 28px;"><div style="border-top:1px solid #d6cfba;margin:18px 0;"></div></td></tr>
+<tr><td style="padding:0 28px;font-family:Georgia,'Times New Roman',serif;color:#171713;">
+  <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#56564e;">{{ loop.index }} of {{ items|length }}</div>
+  <h2 style="margin:6px 0 4px 0;font-size:{% if loop.first %}30px{% else %}24px{% endif %};line-height:1.22;font-weight:700;">{{ item.content.title }}</h2>
+  <div style="font-size:14px;color:#56564e;">{{ item.content.creator }} &middot; {{ item.content.publication }}</div>
+  <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#56564e;padding:8px 0;">
+    {{ item.content.topic.replace('-', ' ') }} &nbsp;|&nbsp; {{ item.content.fmt }} &nbsp;|&nbsp; about {{ item.content.duration_minutes }} minutes to {{ item.content.verb }}{% if item.is_revisit %} &nbsp;|&nbsp; a revisit{% endif %}
   </div>
-  <div style="font-size:15px;line-height:1.55;color:#3a3225;padding-bottom:8px;"><em>Why this one:</em> {{ item.reason }}</div>
-  <div style="font-size:16px;line-height:1.65;color:#2b261d;">{{ item.content.summary }}</div>
+  <div style="font-size:15px;line-height:1.55;color:#56564e;padding-bottom:8px;border-left:2px solid #d6cfba;padding-left:12px;"><em>Why this one:</em> {{ item.reason }}</div>
+  <div style="font-size:16px;line-height:1.65;color:#171713;">{{ item.content.summary }}</div>
   <div style="padding:12px 0 4px 0;font-size:16px;">
-    <a href="{{ item.content.url }}" style="color:#7a2f1d;font-weight:700;text-decoration:underline;">{{ item.content.read_label }} &rarr;</a>
+    <a href="{{ item.content.url }}" style="color:#38489e;font-weight:700;text-decoration:underline;">{{ item.content.read_label }} &rarr;</a>
   </div>
-  <div style="font-size:12px;color:#7a6a52;padding-bottom:4px;">
-    <a href="{{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more" style="color:#7a6a52;">More like this</a>
+  <div style="font-size:12px;color:#56564e;padding-bottom:4px;">
+    <a href="{{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more" style="color:#56564e;">More like this</a>
     &nbsp;&middot;&nbsp;
-    <a href="{{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/less" style="color:#7a6a52;">Less like this</a>
+    <a href="{{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/less" style="color:#56564e;">Less like this</a>
   </div>
 </td></tr>
 {% endfor %}
 
-<tr><td style="padding:0 28px;"><div style="border-top:3px double #1d1a15;margin:20px 0 12px 0;"></div></td></tr>
+<tr><td style="padding:0 28px;"><div style="border-top:3px double #171713;margin:20px 0 12px 0;"></div></td></tr>
 <tr><td style="padding:0 28px 24px 28px;font-family:Georgia,'Times New Roman',serif;text-align:center;">
-  <div style="font-size:16px;font-style:italic;color:#3a3225;">That&rsquo;s your edition for today. More curiosity tomorrow.</div>
-  <div style="font-size:12px;color:#7a6a52;padding-top:14px;line-height:1.7;">
-    <a href="{{ manage_link }}" style="color:#7a6a52;">Change your interests or delivery time</a><br>
-    <a href="{{ unsubscribe_link }}" style="color:#7a6a52;">Unsubscribe</a>
+  <div style="font-size:16px;font-style:italic;color:#56564e;">That&rsquo;s your edition for today. More curiosity tomorrow.</div>
+  <div style="font-size:12px;color:#56564e;padding-top:14px;line-height:1.7;">
+    <a href="{{ manage_link }}" style="color:#56564e;">Change your interests or delivery time</a><br>
+    <a href="{{ unsubscribe_link }}" style="color:#56564e;">Unsubscribe</a>
   </div>
 </td></tr>
 

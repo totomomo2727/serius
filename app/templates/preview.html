@@ -1,51 +1,60 @@
 {% extends "base.html" %}
 {% block title %}Your edition &middot; {{ app_name }}{% endblock %}
 {% block content %}
-<div class="delivery" id="delivery" aria-hidden="true">
-  <div class="scene">
+<div class="delivery" id="delivery">
+  <div class="scene" aria-hidden="true">
     <span class="ground"></span>
-    <div class="postbox">
-      <img class="postbox-body" src="/static/serius/postbox.svg" alt="">
-      <img class="postbox-flag" src="/static/serius/flag.svg" alt="">
-    </div>
-    <div class="carry posting"><img src="/static/serius/letter.svg" alt=""></div>
+    <div class="postbox"><img src="/static/serius/postbox.png" alt=""></div>
     <div class="serius">
       <span class="sprite walk"></span>
+      <span class="sprite stand"></span>
       <span class="sprite greet"></span>
+      <span class="carry"><img src="/static/serius/mail.png" alt=""></span>
     </div>
   </div>
-  <p class="delivery-copy">Serius is posting your edition&hellip;</p>
+  <p class="delivery-copy" role="status">
+    <span class="said-first">Serius is posting your edition&hellip;</span>
+    <span class="said-then">Your edition is here.</span>
+  </p>
+  <button type="button" class="delivery-skip" id="delivery-skip">Skip</button>
 </div>
 
 <section class="sheet edition" id="edition-sheet">
-  <p class="dateline">Your edition &middot; <span id="edition-date">{{ date_label }}</span></p>
   <h1 class="edition-masthead">{{ app_name }}</h1>
   <p class="edition-tagline">{{ tagline }}</p>
   <hr class="rule thick">
+  <p class="edition-meta">
+    <span id="edition-date">{{ date_label }}</span>
+    <span>{{ items|length }} finds</span>
+    <span>About three minutes</span>
+  </p>
+  <hr class="rule">
+  <h2 class="your-edition">Your edition</h2>
   <p class="intro">{{ edition.intro }}</p>
   <hr class="rule">
 
-  {% for item in items %}
-  <article class="piece">
-    <p class="piece-index">{{ loop.index }} of {{ items|length }}</p>
-    <h2 class="piece-title">{{ item.content.title }}</h2>
-    <p class="byline">
-      {{ item.content.creator }} &middot; {{ item.content.publication }}
-    </p>
-    <p class="stamps">
-      <span class="stamp">{{ item.content.topic.replace('-', ' ') }}</span>
-      <span class="stamp">{{ item.content.fmt }}</span>
-      <span class="stamp">{{ item.content.duration_minutes }} min</span>
-      {% if item.is_revisit %}<span class="stamp revisit">a revisit</span>{% endif %}
-    </p>
-    <p class="why"><strong>Why this one:</strong> {{ item.reason }}</p>
-    <p class="summary">{{ item.content.summary }}</p>
-    <p><a class="source-link" href="{{ item.content.url }}" rel="noopener">{{ item.content.read_label }} &rarr;</a></p>
-  </article>
-  {% if not loop.last %}<hr class="rule">{% endif %}
-  {% endfor %}
+  <div class="pieces">
+    {% for item in items %}
+    <article class="piece {% if loop.first %}lead{% else %}support{% endif %}">
+      <p class="piece-index">{{ item.content.topic.replace('-', ' ') }} &middot; {{ loop.index }} of {{ items|length }}</p>
+      <h3 class="piece-title">{{ item.content.title }}</h3>
+      <p class="byline">
+        {{ item.content.creator }} &middot; {{ item.content.publication }}
+      </p>
+      <p class="stamps">
+        <span class="stamp">{{ item.content.fmt }}</span>
+        <span class="stamp">{{ item.content.duration_minutes }} min to {{ item.content.verb }}</span>
+        {% if item.is_revisit %}<span class="stamp revisit">a revisit</span>{% endif %}
+      </p>
+      <p class="why"><span class="why-label">Why this one</span> {{ item.reason }}</p>
+      <p class="summary">{{ item.content.summary }}</p>
+      <p><a class="source-link" href="{{ item.content.url }}" rel="noopener">{{ item.content.read_label }} &rarr;</a></p>
+    </article>
+    {% endfor %}
+  </div>
 
   <hr class="rule thick">
+  <img class="signoff-bird" src="/static/serius/serius-standing.png" alt="" width="113" height="195">
   <p class="signoff">That&rsquo;s your edition for today. More curiosity tomorrow.</p>
 </section>
 
@@ -102,11 +111,16 @@
       return;
     }
     document.body.classList.add('delivering');
-    window.setTimeout(function () {
+    var finish = function () {
       document.body.classList.remove('delivering');
       delivery.remove();
       sheet.classList.add('arrived');
-    }, 3600);
+    };
+    var timer = window.setTimeout(finish, 4600);
+    document.getElementById('delivery-skip').addEventListener('click', function () {
+      window.clearTimeout(timer);
+      finish();
+    });
   })();
 </script>
 {% endblock %}

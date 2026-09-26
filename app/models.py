@@ -55,6 +55,10 @@ class ContentItem(Base):
             "video": "Watch the video",
         }.get(self.fmt, "Read the original")
 
+    @property
+    def verb(self) -> str:
+        return "watch" if self.fmt == "video" else "read"
+
 
 class Subscriber(Base):
     __tablename__ = "subscribers"

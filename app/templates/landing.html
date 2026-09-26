@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block body_class %}landing{% endblock %}
 {% block content %}
+<div class="sheet landing-sheet">
 <section class="hero">
   <p class="dateline">Est. today &middot; delivered at eight, your time</p>
+  <img class="hero-art" src="/static/serius/postbox.png" alt="" width="669" height="640">
   <h1>A daily newspaper, curated for you.</h1>
   <p class="lede">
     Three thoughtful articles, essays, or videos selected around your interests.
@@ -51,4 +53,5 @@
   <p class="closing-copy">Your choices shape your daily edition.</p>
   <p><a class="button" href="/start">Choose your interests</a></p>
 </section>
+</div>
 {% endblock %}
