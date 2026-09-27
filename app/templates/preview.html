@@ -5,7 +5,7 @@
 {% block content %}
 <section class="inbox">
   <div class="inbox-top">
-    <a href="/start">← Adjust your interests</a>
+    <a href="/start?edition={{ edition.id }}">← Adjust your interests</a>
     <span>YOUR EDITION · {{ date_label|upper }}</span>
   </div>
   <div class="message-header">
@@ -31,7 +31,7 @@
       {% endif %}
       <form method="post" action="/subscribe" data-once>
         <input type="hidden" name="edition_id" value="{{ edition.id }}">
-        <input type="hidden" name="timezone_name" id="timezone_name" value="UTC">
+        <input type="hidden" name="timezone_name" id="timezone_name" value="UTC" data-detect-timezone>
         <div class="email-field">
           <label for="email">Where should Serius deliver?</label>
           <input id="email" type="email" name="email" required autocomplete="email"

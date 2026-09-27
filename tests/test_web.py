@@ -29,6 +29,15 @@ def test_landing_and_onboarding_render(client):
     assert "curious about?" in start.text
 
 
+def test_adjusting_interests_reopens_the_form_on_the_same_choices(client, db):
+    start_preview(client, topics=("philosophy",), interests=("ethics",), depth="deep")
+    edition = db.query(Edition).order_by(Edition.created_at.desc()).first()
+    form = client.get(f"/start?edition={edition.id}")
+    assert 'value="philosophy" data-topic="philosophy" checked' in form.text.replace("\n", " ")
+    assert 'value="ethics"' in form.text
+    assert 'value="deep"' in form.text
+
+
 def test_preview_requires_a_topic(client):
     response = client.post("/preview", data={"depth": "mix"}, follow_redirects=True)
     assert "at least one topic" in response.text

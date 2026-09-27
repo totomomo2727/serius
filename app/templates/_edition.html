@@ -34,8 +34,10 @@
     <h2>{{ piece.display_title }}</h2>
     <p class="byline">{{ piece.creator }} / {{ piece.publication }}</p>
     <p>{{ piece.summary }}</p>
+    {% if item.reason or item.is_revisit %}
     <p class="curator-note">{{ item.reason }}{% if item.is_revisit %} A revisit — worth a second look.{% endif %}
       <span>— Serius</span></p>
+    {% endif %}
     <a href="{{ piece.url }}" target="_blank" rel="noopener">{{ piece.title }} ↗</a>
     <span class="duration">Original · {{ piece.duration_minutes }} min {{ piece.verb }}
       · summary reads in about a minute</span>

@@ -102,8 +102,11 @@ def sample() -> HTMLResponse:
 
 
 @app.get("/start", response_class=HTMLResponse)
-def start() -> HTMLResponse:
-    return render("onboarding.html", topics=TOPICS, depth_choices=DEPTH_CHOICES, selected=None)
+def start(edition: str | None = None, db: Session = Depends(get_db)) -> HTMLResponse:
+    """`?edition=` comes back from a preview, so the form reopens on its choices."""
+    previous = db.get(Edition, edition) if edition else None
+    selected = Profile.from_dict(previous.profile_snapshot) if previous else None
+    return render("onboarding.html", topics=TOPICS, depth_choices=DEPTH_CHOICES, selected=selected)
 
 
 @app.post("/preview", response_class=HTMLResponse)

@@ -48,8 +48,10 @@
     if (reduced) document.body.classList.add('motion-reduced');
   }
 
+  /* Only fills fields that ask for detection; a saved preference is never
+     overwritten by the device it happens to be opened on. */
   function timezone() {
-    var field = document.getElementById('timezone_name');
+    var field = document.querySelector('[data-detect-timezone]');
     if (!field) return;
     try {
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;

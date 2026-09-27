@@ -119,9 +119,14 @@
    behind it. Geometry is tuned to the drawn content of each asset, which sits
    inside transparent padding. */
 .delivery .quiet { display: inline-block; margin-top: 26px; }
-.delivery-scene { overflow: visible; }
 .beak-mail { width: 74px; left: 168px; top: 50px; animation-name: post; }
-.mail-arrived { right: 112px; top: 92px; }
+.mail-arrived { right: 112px; top: 92px; animation-name: posted; }
+
+/* The tick only appears once the envelope is inside the box. */
+@keyframes posted {
+  0%, 90% { opacity: 0; transform: scale(.5); }
+  97%, 100% { opacity: 1; transform: scale(1); }
+}
 
 @keyframes post {
   0%, 50% { opacity: 1; transform: rotate(13deg); }
@@ -131,15 +136,37 @@
 }
 
 @media (max-width: 700px) {
+  .courier { animation-name: arrive-narrow; }
   .beak-mail { width: 56px; left: 124px; top: 38px; animation-name: post-mobile; }
-  .mail-arrived { right: 30px; top: 34px; }
+  .mail-arrived { right: 24px; top: 60px; }
 }
 
+/* Serius stops short of the box on a narrow screen instead of standing on it. */
+@keyframes arrive-narrow {
+  0% { transform: translateX(-150px) translateY(-20px); }
+  40% { transform: translateX(72px) translateY(-7px); }
+  55%, 80% { transform: translateX(78px); }
+  100% { transform: translateX(62px); }
+}
+
+/* Narrower travel: the box stands much closer to the beak on a phone. */
 @keyframes post-mobile {
   0%, 50% { opacity: 1; transform: rotate(13deg); }
-  70% { opacity: 1; transform: translate(84px, 20px) rotate(34deg) scale(.86); }
-  80% { opacity: 1; transform: translate(104px, 34px) rotate(52deg) scale(.6); }
-  88%, 100% { opacity: 0; transform: translate(112px, 42px) rotate(58deg) scale(.42); }
+  70% { opacity: 1; transform: translate(44px, 14px) rotate(34deg) scale(.86); }
+  80% { opacity: 1; transform: translate(62px, 26px) rotate(52deg) scale(.6); }
+  88%, 100% { opacity: 0; transform: translate(68px, 32px) rotate(58deg) scale(.42); }
+}
+
+/* Below 360px the scene is clamped to the viewport, pulling the box closer again. */
+@media (max-width: 360px) {
+  .beak-mail { animation-name: post-narrow; }
+}
+
+@keyframes post-narrow {
+  0%, 50% { opacity: 1; transform: rotate(13deg); }
+  70% { opacity: 1; transform: translate(22px, 12px) rotate(34deg) scale(.86); }
+  80% { opacity: 1; transform: translate(38px, 24px) rotate(52deg) scale(.6); }
+  88%, 100% { opacity: 0; transform: translate(44px, 30px) rotate(58deg) scale(.42); }
 }
 
 @media (prefers-reduced-motion: reduce) {
