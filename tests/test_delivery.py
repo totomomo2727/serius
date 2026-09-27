@@ -129,7 +129,7 @@ def test_rendered_email_has_masthead_summaries_links_and_footer(db):
     assert "Your edition" in subject
     for body in (html, text):
         assert "The Feather Press" in body or "THE FEATHER PRESS" in body
-        assert "Delivered by Serius. More tomorrow." in body
+        assert "The rest of the day is yours." in body
         assert "unsubscribe" in body.lower()
         for item in edition.items:
             assert item.content.title in body

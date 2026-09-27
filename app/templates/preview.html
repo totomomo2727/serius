@@ -1,193 +1,53 @@
 {% extends "base.html" %}
-{% from "_plate.html" import plate %}
 {% block title %}Your edition &middot; {{ app_name }}{% endblock %}
-
-{% block masthead %}{% endblock %}
+{% block body_class %}page-inbox{% endblock %}
 
 {% block content %}
-<div class="delivery" id="delivery">
-  <div class="scene" aria-hidden="true">
-    <span class="ground"></span>
-    <div class="postbox">
-      <img class="postbox-body" src="/static/serius/postbox-body.png" alt="">
-      <img class="postbox-door" src="/static/serius/postbox-door.png" alt="">
-    </div>
-    <div class="serius">
-      <span class="sprite walk"></span>
-      <span class="sprite stand"></span>
-      <span class="sprite greet"></span>
-      <span class="carry"><img src="/static/serius/mail.png" alt=""></span>
-    </div>
+<section class="inbox">
+  <div class="inbox-top">
+    <a href="/start">← Adjust your interests</a>
+    <span>YOUR EDITION · {{ date_label|upper }}</span>
   </div>
-  <p class="delivery-copy" role="status">
-    <span class="said-first">Serius is posting your edition&hellip;</span>
-    <span class="said-then">Your edition is here.</span>
-  </p>
-  <button type="button" class="delivery-skip" id="delivery-skip">Skip</button>
-</div>
-
-<article class="edition" id="edition-sheet">
-  {% include "_masthead.html" %}
-  <p class="strip dateline-strip">
-    <span id="edition-date">{{ date_label }}</span>
-    <span>Assembled for one reader</span>
-    <span>{{ items|length }} finds</span>
-    <span>Three minutes</span>
-  </p>
-  <p class="today">{{ edition.intro }}</p>
-
-  {# Two reusable arrangements: a lead paired with a narrow second column,
-     then the third find run horizontally underneath. #}
-  {% set lead = items[0] %}
-  {% set second = items[1] if items|length > 1 else none %}
-  {% set third = items[2] if items|length > 2 else none %}
-
-  <div class="spread">
-    <section class="compartment lead">
-      <div class="find-head">
-        <p class="find-number find-number-lead">01</p>
-        <p class="kicker">
-          <span>{{ lead.content.topic|topic_label }}</span>
-          <span>{{ lead.content.fmt }}</span>
-          {% if lead.is_revisit %}<span>revisit</span>{% endif %}
-        </p>
-        <h1 class="headline headline-lead">{{ lead.content.display_title }}</h1>
-        <p class="byline">{{ lead.content.creator }} &middot; {{ lead.content.publication }}</p>
-      </div>
-      {{ plate(lead.content, 'lead', tape=true) }}
-      <div class="find-body">
-        <p class="summary summary-lead">{{ lead.content.summary }}</p>
-        {% if lead.reason %}<p class="why"><span class="why-label">Why this one</span> {{ lead.reason }}</p>{% endif %}
-        <p class="source"><a href="{{ lead.content.url }}" rel="noopener">{{ lead.content.title }}</a><span
-          class="source-meta"> &middot; {{ lead.content.read_label|lower }}, {{ lead.content.duration_minutes }} min</span></p>
-      </div>
-    </section>
-
-    <div class="sidebar">
-      {% if second %}
-      <section class="compartment find find-second">
-        <p class="compartment-label"><span>The second find</span><span class="find-number">02</span></p>
-        <div class="find-head">
-          <p class="kicker">
-            <span>{{ second.content.topic|topic_label }}</span>
-            <span>{{ second.content.fmt }}</span>
-            {% if second.is_revisit %}<span>revisit</span>{% endif %}
-          </p>
-          <h2 class="headline">{{ second.content.display_title }}</h2>
-          <p class="byline">{{ second.content.creator }} &middot; {{ second.content.publication }}</p>
-        </div>
-        {{ plate(second.content, 'column', tilt=true) }}
-        <div class="find-body">
-          <p class="summary">{{ second.content.summary }}</p>
-          {% if second.reason %}<p class="why"><span class="why-label">Why this one</span> {{ second.reason }}</p>{% endif %}
-          <p class="source"><a href="{{ second.content.url }}" rel="noopener">{{ second.content.title }}</a><span
-            class="source-meta"> &middot; {{ second.content.read_label|lower }}, {{ second.content.duration_minutes }} min</span></p>
-        </div>
-      </section>
-      {% endif %}
-      <aside class="scrap">
-        <img src="/static/serius/serius-{{ lead.content.pose }}.png" alt="" width="96">
-        <p class="hand-note">{{ lead.content.note or 'Start here, then wander.' }}</p>
-      </aside>
-    </div>
+  <div class="message-header">
+    <span>FROM <b>Serius · The Feather Press</b></span>
+    <h2>Three good finds, just for you.</h2>
+    <small>{{ items[0].content.display_title }}</small>
   </div>
 
-  {% if third %}
-  <section class="compartment band">
-    <p class="find-number find-number-band">03</p>
-    {{ plate(third.content, 'band') }}
-    <div class="band-text">
-      <p class="kicker">
-        <span>{{ third.content.topic|topic_label }}</span>
-        <span>{{ third.content.fmt }}</span>
-        {% if third.is_revisit %}<span>revisit</span>{% endif %}
+  {% set intro = edition.intro %}
+  {% include "_edition.html" %}
+
+  <section class="signup-tail" id="subscribe">
+    <div class="tail-inner">
+      <span class="pill">STEP 03 / DELIVERY</span>
+      <h2>Want this every morning?</h2>
+      <p>Confirm your address and this exact edition arrives as your first newspaper, then a new
+        one each day at eight o’clock, your time.</p>
+      {% if not provider_is_live %}
+      <p class="notice" role="status">
+        No email provider is configured on this deployment, so nothing can actually be delivered
+        yet. Messages are written to the local outbox instead and clearly marked as undelivered.
       </p>
-      <h2 class="headline">{{ third.content.display_title }}</h2>
-      <p class="byline">{{ third.content.creator }} &middot; {{ third.content.publication }}</p>
-      <p class="summary">{{ third.content.summary }}</p>
-      {% if third.reason %}<p class="why"><span class="why-label">Why this one</span> {{ third.reason }}</p>{% endif %}
-      <p class="source"><a href="{{ third.content.url }}" rel="noopener">{{ third.content.title }}</a><span
-        class="source-meta"> &middot; {{ third.content.read_label|lower }}, {{ third.content.duration_minutes }} min</span></p>
+      {% endif %}
+      <form method="post" action="/subscribe" data-once>
+        <input type="hidden" name="edition_id" value="{{ edition.id }}">
+        <input type="hidden" name="timezone_name" id="timezone_name" value="UTC">
+        <div class="email-field">
+          <label for="email">Where should Serius deliver?</label>
+          <input id="email" type="email" name="email" required autocomplete="email"
+                 placeholder="you@somewhere.com" value="{{ email_value|default('') }}">
+          <span class="hint">Your inbox. His favorite postbox.</span>
+        </div>
+        {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+        <label class="consent-check">
+          <input type="checkbox" name="consent" value="yes" required>
+          <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
+        </label>
+        <p class="fine" id="tz-note">Delivery timezone: <span id="tz-label">UTC</span>.
+          You can change this from your preferences later.</p>
+        <button class="button" type="submit">Send me Serius’s finds<span>↗</span></button>
+      </form>
     </div>
   </section>
-  {% endif %}
-
-  <footer class="edition-foot">
-    <span class="stamp"><img src="/static/serius/feather.svg" alt="" width="40" height="15"><span>Feather Press</span></span>
-    <img class="foot-bird" src="/static/serius/serius-standing.png" alt="" width="113" height="195">
-    <p class="signoff">More tomorrow morning.</p>
-  </footer>
-</article>
-
-<div class="subscribe-row">
-<section class="subscribe">
-  <h2>Get this in your inbox tomorrow morning</h2>
-  <p>
-    Confirm your address and this exact edition arrives as your first newspaper, then a new
-    one each day at eight o&rsquo;clock, your time.
-  </p>
-  {% if not provider_is_live %}
-  <p class="notice" role="status">
-    No email provider is configured on this deployment, so nothing can actually be delivered
-    yet. Messages are written to the local outbox instead and clearly marked as undelivered.
-  </p>
-  {% endif %}
-  <form method="post" action="/subscribe" class="form">
-    <input type="hidden" name="edition_id" value="{{ edition.id }}">
-    <input type="hidden" name="timezone_name" id="timezone_name" value="UTC">
-    <label class="field-label" for="email">Your email address</label>
-    <input class="text-input" type="email" id="email" name="email" required autocomplete="email"
-           placeholder="you@example.com">
-    <label class="choice consent">
-      <input type="checkbox" name="consent" value="yes" required>
-      <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
-    </label>
-    <p class="fine" id="tz-note">Delivery timezone: <span id="tz-label">UTC</span>. You can change this later.</p>
-    <p class="cta-row"><button class="button" type="submit">Send me this edition</button></p>
-  </form>
 </section>
-<aside class="subscribe-aside">
-  <p class="aside-note">No account. No password.<br>Leave whenever you like.</p>
-  <img src="/static/serius/serius-flower.png" alt="" width="120">
-</aside>
-</div>
-
-<script>
-  (function () {
-    try {
-      // The server can only date this in UTC; the reader's own day is what the email will use.
-      var now = new Date();
-      document.getElementById('edition-date').textContent =
-        now.toLocaleDateString('en-GB', { weekday: 'long' }) + ', ' +
-        now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-    } catch (err) { /* keep the server's date */ }
-
-    try {
-      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (tz) {
-        document.getElementById('timezone_name').value = tz;
-        document.getElementById('tz-label').textContent = tz;
-      }
-    } catch (err) { /* keep UTC */ }
-
-    var delivery = document.getElementById('delivery');
-    var sheet = document.getElementById('edition-sheet');
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!delivery || reduced) {
-      if (delivery) { delivery.remove(); }
-      return;
-    }
-    document.body.classList.add('delivering');
-    var finish = function () {
-      document.body.classList.remove('delivering');
-      delivery.remove();
-      sheet.classList.add('arrived');
-    };
-    var timer = window.setTimeout(finish, 5300);
-    document.getElementById('delivery-skip').addEventListener('click', function () {
-      window.clearTimeout(timer);
-      finish();
-    });
-  })();
-</script>
 {% endblock %}

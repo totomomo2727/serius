@@ -10,7 +10,15 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.config import APP_DIR, BASE_URL_CONFIGURED, settings
-from app.content import DEPTH_CHOICES, INTEREST_LABELS, TOPICS, TOPICS_BY_SLUG, seed_content
+from app.content import (
+    DEPTH_CHOICES,
+    INTEREST_LABELS,
+    TOPICS,
+    TOPICS_BY_SLUG,
+    interests_line,
+    sample_edition,
+    seed_content,
+)
 from app.db import SessionLocal, get_db, init_db
 from app.emailer import active_provider, provider_is_live
 from app.models import Edition, Feedback, Subscriber
@@ -84,7 +92,13 @@ def client_key(request: Request) -> str:
 
 @app.get("/", response_class=HTMLResponse)
 def landing() -> HTMLResponse:
-    return render("landing.html")
+    return render("landing.html", sample=sample_edition()["stories"])
+
+
+@app.get("/sample", response_class=HTMLResponse)
+def sample() -> HTMLResponse:
+    """A fixed, clearly-labelled sample so people can read one before choosing."""
+    return render("sample.html", sample=sample_edition())
 
 
 @app.get("/start", response_class=HTMLResponse)
@@ -100,22 +114,31 @@ def create_preview(
     depth: str = Form(default="mix"),
     db: Session = Depends(get_db),
 ) -> HTMLResponse:
+    if depth not in {d[0] for d in DEPTH_CHOICES}:
+        depth = "mix"
     topics = [t for t in topics if t in TOPICS_BY_SLUG]
     if not topics:
         return render(
             "onboarding.html",
             topics=TOPICS,
             depth_choices=DEPTH_CHOICES,
-            selected=None,
+            selected=Profile(topics=[], interests=interests, depth=depth),
             error="Choose at least one topic so we know where to start.",
         )
     allowed = {i.slug for t in topics for i in TOPICS_BY_SLUG[t].interests}
     interests = [i for i in interests if i in allowed]
-    if depth not in {d[0] for d in DEPTH_CHOICES}:
-        depth = "mix"
     profile = Profile(topics=topics, interests=interests, depth=depth)
     edition = build_edition(db, profile)
-    return RedirectResponse(f"/preview/{edition.id}", status_code=303)
+    return RedirectResponse(f"/delivering/{edition.id}", status_code=303)
+
+
+@app.get("/delivering/{edition_id}", response_class=HTMLResponse)
+def delivering(edition_id: str, db: Session = Depends(get_db)) -> HTMLResponse:
+    """Serius walking to the postbox. The edition below already exists; this is theatre."""
+    edition = db.get(Edition, edition_id)
+    if edition is None:
+        return page_error("We couldn't find that edition. Choose your interests again to rebuild it.", 404)
+    return render("delivery.html", next_url=f"/preview/{edition.id}")
 
 
 @app.get("/preview/{edition_id}", response_class=HTMLResponse)
@@ -124,13 +147,15 @@ def show_preview(edition_id: str, db: Session = Depends(get_db)) -> HTMLResponse
     if edition is None:
         return page_error("We couldn't find that edition. Choose your interests again to rebuild it.", 404)
     today = datetime.now(tz=UTC).date()
+    profile = Profile.from_dict(edition.profile_snapshot)
     return render(
         "preview.html",
         edition=edition,
         items=edition.items,
         date_label=long_date(today),
-        profile=Profile.from_dict(edition.profile_snapshot),
+        profile=profile,
         interest_labels=INTEREST_LABELS,
+        interests_line=interests_line(profile),
     )
 
 

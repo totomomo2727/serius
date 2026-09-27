@@ -7,8 +7,9 @@ from datetime import date
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from app.config import APP_DIR, settings
-from app.content import TOPIC_LABELS
+from app.content import TOPIC_LABELS, interests_line
 from app.models import Edition
+from app.selection import Profile
 from app.tokens import MANAGE, make_token, manage_url, unsubscribe_url, verify_url
 
 TEMPLATE_DIR = APP_DIR / "templates"
@@ -52,6 +53,7 @@ def edition_context(edition: Edition, local_date: date) -> dict:
         "unsubscribe_link": unsubscribe_url(subscriber) if subscriber else "",
         "base_url": settings.base_url,
         "asset_url": asset_base(),
+        "interests_line": interests_line(Profile.from_dict(edition.profile_snapshot)),
     }
 
 

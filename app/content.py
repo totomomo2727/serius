@@ -9,13 +9,18 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.config import ROOT_DIR
 from app.models import ContentItem
+
+if TYPE_CHECKING:
+    from app.selection import Profile
 
 LIBRARY_DIR = ROOT_DIR / "content" / "library"
 
@@ -133,6 +138,23 @@ DEPTH_CHOICES = (
     ("deep", "Deeper explorations"),
     ("mix", "A mix of both"),
 )
+
+
+SAMPLE_PATH = ROOT_DIR / "content" / "sample-edition.json"
+
+
+@lru_cache(maxsize=1)
+def sample_edition() -> dict:
+    """The fixed edition shown on the landing page and at /sample, never personalized."""
+    return json.loads(SAMPLE_PATH.read_text())
+
+
+def interests_line(profile: Profile) -> str:
+    """The kicker above an edition, naming what it was actually built from."""
+    chosen = [INTEREST_LABELS[i] for i in profile.interests if i in INTEREST_LABELS]
+    if not chosen:
+        chosen = [TOPIC_LABELS[t] for t in profile.topics if t in TOPIC_LABELS]
+    return " + ".join(chosen).upper() or "YOUR INTERESTS"
 
 
 def load_library() -> list[dict]:

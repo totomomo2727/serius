@@ -5,22 +5,28 @@ from app.tokens import MANAGE, VERIFY, make_token
 
 
 def start_preview(client, topics=("ai",), interests=("ai-safety",), depth="mix"):
-    response = client.post(
+    """Post the interests, walk through the delivery screen, read the edition."""
+    created = client.post(
         "/preview",
         data={"topics": list(topics), "interests": list(interests), "depth": depth},
-        follow_redirects=True,
+        follow_redirects=False,
     )
+    assert created.status_code == 303
+    delivering = client.get(created.headers["location"])
+    assert delivering.status_code == 200
+    response = client.get(delivering.text.split('data-next="')[1].split('"')[0])
     assert response.status_code == 200
     return response
 
 
 def test_landing_and_onboarding_render(client):
     landing = client.get("/")
-    assert "A daily newspaper, curated for you." in landing.text
+    assert "Worth your attention." in landing.text
+    assert "Find my daily three" in landing.text
     start = client.get("/start")
     for label in ("Product design", "Philosophy", "Psychology", "AI", "Tech"):
         assert label in start.text
-    assert "Your choices shape your daily edition." in start.text
+    assert "curious about?" in start.text
 
 
 def test_preview_requires_a_topic(client):
@@ -35,7 +41,7 @@ def test_preview_shows_three_real_pieces(client, db):
     for item in edition.items:
         assert item.content.title in response.text
         assert item.content.url in response.text
-    assert "Why this one" in response.text
+    assert "— Serius" in response.text
 
 
 def test_subscribe_requires_consent(client, db):

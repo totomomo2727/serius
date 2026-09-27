@@ -44,13 +44,16 @@ def test_a_piece_without_an_image_still_falls_back_to_a_drawn_plate() -> None:
 
 
 def test_edition_renders_source_imagery(client) -> None:
-    response = client.post(
+    created = client.post(
         "/preview",
         data={"topics": ["ai", "philosophy", "product-design"], "depth": "mix"},
-        follow_redirects=True,
+        follow_redirects=False,
     )
+    assert created.status_code == 303
+    edition_id = created.headers["location"].rsplit("/", 1)[1]
+    response = client.get(f"/preview/{edition_id}")
     assert response.status_code == 200
     body = response.text
-    assert "plate-photo" in body
-    assert "plate-drawn" not in body  # every piece brings its own image
-    assert "/static/serius/" in body  # Serius still keeps the margins
+    assert 'class="news-image"' in body
+    assert "essay-art" not in body  # every piece brings its own image
+    assert "/static/press/serius.png" in body  # Serius still keeps the margins

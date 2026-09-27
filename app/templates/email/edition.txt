@@ -1,6 +1,7 @@
-{{ app_name|upper }}
-{{ tagline }}
-{{ date_label }} - Your edition - Three finds
+THE FEATHER PRESS
+Three good finds. Delivered daily.
+{{ date_label }} - curated for you by Serius
+{{ interests_line }}
 
 {{ edition.intro }}
 
@@ -13,7 +14,7 @@
 
 {{ item.content.summary }}
 {% if item.reason %}
-Why this one: {{ item.reason }}
+{{ item.reason }}{% if item.is_revisit %} A revisit - worth a second look.{% endif %} - Serius
 {% endif %}
 {{ item.content.title }} - {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min
 {{ item.content.url }}
@@ -22,7 +23,7 @@ More like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}
 Less like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/less
 {% endfor %}
 --------------------------------------------------------------
-Delivered by Serius. More tomorrow.
+That's your three. The rest of the day is yours. - Serius
 
 Change your interests or delivery time: {{ manage_link }}
 Unsubscribe: {{ unsubscribe_link }}

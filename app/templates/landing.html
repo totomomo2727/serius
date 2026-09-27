@@ -1,57 +1,52 @@
 {% extends "base.html" %}
-{% block body_class %}landing{% endblock %}
+{% block title %}{{ app_name }} &middot; three good finds, delivered daily{% endblock %}
+{% block body_class %}page-home{% endblock %}
+
 {% block content %}
-<section class="hero">
-  <div>
-    <p class="dateline">A daily edition &middot; delivered at eight, your time</p>
-    <h1>A daily newspaper, curated for you.</h1>
-    <p class="lede">
-      Three thoughtful articles, essays, or videos selected around your interests.
-      Get the substance in three minutes, then explore whatever catches your curiosity.
-    </p>
-    <p class="cta-row"><a class="button" href="/start">Choose your interests</a></p>
-    <p class="fine">Takes about a minute. No account, no password, unsubscribe from any edition.</p>
+<section class="home">
+  <div class="hero-top">
+    <span class="eyebrow">THE FEATHER PRESS · CURATED BY SERIUS</span>
+    <span class="edition-note">A little less searching. <i>A little more discovery.</i></span>
   </div>
-  <img class="hero-art" src="/static/serius/postbox.png" alt="" width="669" height="640">
-</section>
-
-<hr class="rule">
-
-<section class="columns">
-  <article>
-    <h2>Chosen, not scraped</h2>
-    <p>
-      Every piece was read or watched before it was catalogued, with its creator, publication,
-      format, and length recorded by hand. Nothing appears twice until you have seen everything
-      that fits.
-    </p>
-  </article>
-  <article>
-    <h2>Three minutes, then your choice</h2>
-    <p>
-      Each edition carries three short summaries: enough to know what a piece argues and whether
-      you want it. Follow the link when something pulls at you, and close the email when nothing
-      does.
-    </p>
-  </article>
-  <article>
-    <h2>Quiet by design</h2>
-    <p>
-      One email a day, at eight in the morning where you are. No feed, no streak, no
-      notifications. Pause for a week or leave for good with one link at the bottom of every
-      edition.
-    </p>
-  </article>
-</section>
-
-<hr class="rule">
-
-<section class="closing">
-  <img src="/static/serius/serius-standing.png" alt="Serius, the seagull who brings the paper"
-       width="113" height="195">
-  <div>
-    <p class="closing-copy">Your choices shape your daily edition.</p>
-    <p><a class="button" href="/start">Choose your interests</a></p>
+  <h1>Worth your attention.<br><span>Picked for your interests.</span></h1>
+  <div class="hero-content">
+    <div class="hero-copy">
+      <span class="pill">SERIUS IS YOUR CURATOR</span>
+      <h2 data-typed-tagline>Three good finds.<br><em>Delivered daily.</em></h2>
+      <p>Serius curates articles, essays, and videos around what you love—with short summaries and
+        original links. Less doomscrolling. More discovering.</p>
+      <a class="button" href="/start">Find my daily three<span>↗</span></a>
+      <a class="quiet" href="/sample">Peek at his newsletter ↗</a>
+    </div>
+    <div class="hero-art">
+      <span class="sticker">your interests.<br><em>his good finds.</em></span>
+      <div class="paper-tilt">
+        <div class="mini-paper">
+          <div class="mini-top">THE FEATHER PRESS <span>CURATED BY SERIUS</span></div>
+          <h3>Your personalized<br>newsletter.</h3>
+          <img src="{{ sample[0].image }}" alt="{{ sample[0].alt }}">
+          <div class="mini-row"><span>01 / {{ sample[0].topic|upper }}</span><span>↗</span></div>
+          <p>{{ sample[0].title }}</p>
+          <div class="mini-bottom">
+            <div>02<br><em>{{ sample[1].short|safe }}</em></div>
+            <div>03<br><em>{{ sample[2].short|safe }}</em></div>
+          </div>
+          <small>SAMPLE EDITION · THREE GOOD FINDS</small>
+        </div>
+      </div>
+      <img class="hero-bird" src="/static/press/serius.png"
+           alt="Serius, your seagull curator, holding a flower">
+      <span class="bird-note">a small bird.<br>excellent taste.</span>
+    </div>
+  </div>
+  <div class="process">
+    <div><b>01</b><span>Your interests.<small>Tell him what you like.</small></span></div>
+    <div><b>02</b><span>His daily discoveries.<small>Three things worth your time.</small></span></div>
+    <div><b>03</b><span>In your inbox.<small>A little ritual. A lot less scrolling.</small></span></div>
+  </div>
+  <div class="closing">
+    <h2>The internet is big.<br><em>Your morning doesn’t have to be.</em></h2>
+    <a class="button" href="/start">Find my good stuff<span>↗</span></a>
   </div>
 </section>
 {% endblock %}
