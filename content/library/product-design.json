@@ -16,7 +16,8 @@
     "summary": "Butterick's condensed version of everything else he wrote: what matters most in setting text, in the order it matters. Point size, line spacing, line length, and font choice come first, and he is specific about the numbers rather than gesturing at taste. Ten minutes will measurably improve the next document you make, which is not something most design writing can claim.",
     "note": "Do the line-length one first.",
     "thumbnail": "pd-typography-ten-minutes.jpg",
-    "thumbnail_source": "https://practicaltypography.com/typography-in-ten-minutes.html"
+    "thumbnail_source": "https://practicaltypography.com/typography-in-ten-minutes.html",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-typewriter-habits",
@@ -34,7 +35,8 @@
     "verified_on": "2026-09-26",
     "summary": "A short list of habits carried over from machines that had one font and no kerning: two spaces after a period, straight quotes standing in for real ones, underlining instead of italics, all caps for emphasis. Butterick explains what each one was compensating for and what to do now. Five minutes, and it removes a surprising amount of amateurishness from your writing.",
     "thumbnail": "pd-typewriter-habits.jpg",
-    "thumbnail_source": "https://practicaltypography.com/typewriter-habits.html"
+    "thumbnail_source": "https://practicaltypography.com/typewriter-habits.html",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-responsive-typography",
@@ -54,7 +56,8 @@
     "summary": "Reichenstein starts from reading distance rather than screen size, which reframes the whole problem: a phone held close and a monitor at arm's length need different type even at similar pixel dimensions. He works through measure, size, and spacing as one system, with the reasoning behind each number. The piece that makes responsive typography feel like a craft rather than a set of breakpoints.",
     "headline": "Setting type for screens you cannot measure",
     "thumbnail": "pd-responsive-typography.jpg",
-    "thumbnail_source": "https://ia.net/topics/responsive-typography-the-basics"
+    "thumbnail_source": "https://ia.net/topics/responsive-typography-the-basics",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-web-design-95-typography",
@@ -72,7 +75,8 @@
     "verified_on": "2026-09-26",
     "summary": "Reichenstein's claim, made in 2006 and still argued about, is that web design is mostly information design, information design is mostly typography, and therefore most of the job is setting text well. He follows it through to the uncomfortable conclusion that the choices designers enjoy most matter least. Eight minutes, provocative on purpose, and hard to dismiss once you look at any page you use daily.",
     "thumbnail": "pd-web-design-95-typography.jpg",
-    "thumbnail_source": "https://ia.net/topics/the-web-is-all-about-typography-period"
+    "thumbnail_source": "https://ia.net/topics/the-web-is-all-about-typography-period",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-responsive-web-design",
@@ -91,7 +95,8 @@
     "verified_on": "2026-09-26",
     "summary": "The article that named the approach and changed how sites are built. Marcotte combines fluid grids, flexible images, and media queries into a single method, arguing from architecture that adapts to its site rather than from device lists. Written in 2010, before the term existed, and readable now as both a practical tutorial and the moment the fixed-width page stopped being the default.",
     "thumbnail": "pd-responsive-web-design.jpg",
-    "thumbnail_source": "https://alistapart.com/article/responsive-web-design/"
+    "thumbnail_source": "https://alistapart.com/article/responsive-web-design/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-dao-of-web-design",
@@ -111,7 +116,8 @@
     "summary": "Allsopp's 2000 essay argues that designers were fighting the medium: the web's flexibility is not a defect to be controlled but the thing that makes it work. He asks for pages that adapt to unknown screens, settings, and abilities rather than pinning everything down. Read a decade before responsive design existed, it is a little uncanny how completely it was right.",
     "headline": "The web is not a page, and never was",
     "thumbnail": "pd-dao-of-web-design.jpg",
-    "thumbnail_source": "https://alistapart.com/article/dao/"
+    "thumbnail_source": "https://alistapart.com/article/dao/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-brief-rant",
@@ -129,7 +135,8 @@
     "verified_on": "2026-09-26",
     "summary": "Victor's objection to a future of flat glass is that hands do far more than poke, and that pictures under glass throw away nearly everything they can do. He is specific about what capability is being lost, shows how much feeling is involved in handling ordinary objects, and refuses to accept that this is simply how interfaces are now. Twelve minutes, and it stays with you.",
     "thumbnail": "pd-brief-rant.jpg",
-    "thumbnail_source": "https://worrydream.com/ABriefRantOnTheFutureOfInteractionDesign/"
+    "thumbnail_source": "https://worrydream.com/ABriefRantOnTheFutureOfInteractionDesign/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-ten-heuristics",
@@ -147,7 +154,8 @@
     "verified_on": "2026-09-26",
     "summary": "Nielsen's ten principles remain the standard checklist for evaluating an interface: visibility of system status, match with the real world, user control, consistency, error prevention, recognition over recall, flexibility, minimalist design, error recovery, and help. Each comes with examples and the reasoning behind it. Broad by design, which is why they still apply to products built long after they were written.",
     "thumbnail": "pd-ten-heuristics.jpg",
-    "thumbnail_source": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+    "thumbnail_source": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-progressive-disclosure",
@@ -165,7 +173,8 @@
     "verified_on": "2026-09-26",
     "summary": "The technique for interfaces that must serve both beginners and experts: show the common case, keep the rest one deliberate step away. Nielsen explains when it helps and when it just hides things people need, how it differs from staged disclosure, and what it costs in extra interaction. Short, practical, and the answer to most arguments that start with a request for another option.",
     "thumbnail": "pd-progressive-disclosure.jpg",
-    "thumbnail_source": "https://www.nngroup.com/articles/progressive-disclosure/"
+    "thumbnail_source": "https://www.nngroup.com/articles/progressive-disclosure/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-aesthetic-usability",
@@ -184,7 +193,8 @@
     "verified_on": "2026-09-26",
     "summary": "People judge attractive interfaces as easier to use, and are more forgiving of their problems. Moran covers the research behind the effect, including the airline study it came from, and treats it as a double-edged finding: good looks buy goodwill, but they also mask usability problems during testing, so real issues go unreported. Eight minutes, and it changes how you read your own research.",
     "thumbnail": "pd-aesthetic-usability.jpg",
-    "thumbnail_source": "https://www.nngroup.com/articles/aesthetic-usability-effect/"
+    "thumbnail_source": "https://www.nngroup.com/articles/aesthetic-usability-effect/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-invisible-details",
@@ -205,7 +215,8 @@
     "headline": "The details nobody notices until they are missing",
     "note": "Every example on the page is interactive.",
     "thumbnail": "pd-invisible-details.jpg",
-    "thumbnail_source": "https://rauno.me/craft/interaction-design"
+    "thumbnail_source": "https://rauno.me/craft/interaction-design",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-atomic-design",
@@ -223,7 +234,8 @@
     "verified_on": "2026-09-26",
     "summary": "Frost's chemistry metaphor for building interfaces from the smallest parts up: atoms, molecules, organisms, templates, and pages. The useful part is not the naming but the argument that you are designing a system rather than a set of screens, and that the same parts should compose into layouts nobody has drawn yet. The foundation most design system vocabularies are still built on.",
     "thumbnail": "pd-atomic-design.jpg",
-    "thumbnail_source": "https://atomicdesign.bradfrost.com/chapter-2/"
+    "thumbnail_source": "https://atomicdesign.bradfrost.com/chapter-2/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-design-systems-101",
@@ -241,7 +253,8 @@
     "verified_on": "2026-09-26",
     "summary": "A clear orientation to what a design system is and is not. Fessenden separates the style guide, the component library, and the pattern library, describes who maintains each, and is honest about the cost: a system is a product with users, and an unmaintained one is worse than none. The piece to send before a team commits to building one.",
     "thumbnail": "pd-design-systems-101.jpg",
-    "thumbnail_source": "https://www.nngroup.com/articles/design-systems-101/"
+    "thumbnail_source": "https://www.nngroup.com/articles/design-systems-101/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-resilient-materials",
@@ -260,7 +273,8 @@
     "verified_on": "2026-09-26",
     "summary": "Keith explains why the web's materials behave unlike anything designers came from: HTML that renders despite errors, CSS that ignores what it does not understand, and the layering that lets a page survive missing pieces. Progressive enhancement follows from the material rather than being imposed on it. Short, beautifully written, and the clearest explanation of why the web is so hard to break.",
     "thumbnail": "pd-resilient-materials.jpg",
-    "thumbnail_source": "https://resilientwebdesign.com/chapter2/"
+    "thumbnail_source": "https://resilientwebdesign.com/chapter2/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-webs-grain",
@@ -279,7 +293,8 @@
     "summary": "Chimero asks what the web wants to be, and answers with edgelessness: content that flows, adapts, and refuses fixed dimensions. He works through the failures of importing print and app thinking, the tyranny of the screenshot, and what it means to design for an unknown viewport. Long, illustrated, and among the best pieces of writing about the medium itself rather than about the things made with it.",
     "headline": "Working with the grain of the material",
     "thumbnail": "pd-webs-grain.jpg",
-    "thumbnail_source": "https://frankchimero.com/blog/2015/the-webs-grain/"
+    "thumbnail_source": "https://frankchimero.com/blog/2015/the-webs-grain/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "pd-inventing-on-principle",
@@ -298,6 +313,7 @@
     "verified_on": "2026-09-26",
     "summary": "The talk that produced a decade of tooling. Victor demonstrates code whose results appear as you type, an animation editor with no compile step, and a game you can scrub through time in, then argues that the demos follow from a principle he refuses to compromise: creators need an immediate connection to what they make. The second half, about organising a career around a principle, is the part people underestimate.",
     "thumbnail": "pd-inventing-on-principle.jpg",
-    "thumbnail_source": "https://www.youtube.com/watch?v=PUv66718DII"
+    "thumbnail_source": "https://www.youtube.com/watch?v=PUv66718DII",
+    "thumbnail_kind": "image"
   }
 ]

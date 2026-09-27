@@ -4,7 +4,7 @@
     "title": "Judgment under Uncertainty: Heuristics and Biases",
     "creator": "Amos Tversky and Daniel Kahneman",
     "publication": "Science, Vol. 185, No. 4157 (1974)",
-    "url": "https://www2.psych.ubc.ca/~schaller/Psyc590Readings/TverskyKahneman1974.pdf",
+    "url": "https://www.its.caltech.edu/~camerer/Ec101/JudgementUncertainty.pdf",
     "format": "essay",
     "topic": "psychology",
     "interests": [
@@ -14,7 +14,10 @@
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
     "summary": "The 1974 paper that started the field. Tversky and Kahneman describe three heuristics people use under uncertainty — representativeness, availability, and anchoring — and show with small experiments how each produces predictable errors. The writing is short and clean, the experiments are ones you can run on yourself, and almost every cognitive bias you have heard named since is a descendant of something in these eight pages.",
-    "headline": "Three shortcuts, and where they fail"
+    "headline": "Three shortcuts, and where they fail",
+    "thumbnail": "psy-heuristics-and-biases.jpg",
+    "thumbnail_source": "https://www.its.caltech.edu/~camerer/Ec101/JudgementUncertainty.pdf",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-why-procrastinators-procrastinate",
@@ -34,7 +37,8 @@
     "summary": "Urban's account of the Instant Gratification Monkey and the Panic Monster is a joke that turns out to be a mechanism. He separates deadline-driven procrastination, which resolves itself painfully, from the undated kind that quietly eats careers and relationships. Funny enough to finish, accurate enough to sting, and better at describing the experience from inside than most of the literature.",
     "note": "The stick figures are doing real work here.",
     "thumbnail": "psy-why-procrastinators-procrastinate.jpg",
-    "thumbnail_source": "https://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html"
+    "thumbnail_source": "https://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-goals-versus-systems",
@@ -52,7 +56,8 @@
     "verified_on": "2026-09-26",
     "summary": "Clear's argument is that goals set direction but systems produce results, and that people who achieve things are usually running a better process rather than holding a stronger intention. He is specific about why goals can be counterproductive: the yo-yo after the finish line, the happiness deferred until achievement. Nine minutes, and the practical core of the book it came from.",
     "thumbnail": "psy-goals-versus-systems.jpg",
-    "thumbnail_source": "https://jamesclear.com/goals-systems"
+    "thumbnail_source": "https://jamesclear.com/goals-systems",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-self-determination-theory",
@@ -68,7 +73,10 @@
     "depth": "deep",
     "duration_minutes": 16,
     "verified_on": "2026-09-26",
-    "summary": "The authors' own summary of the most durable theory of motivation in psychology. Autonomy, competence, and relatedness are the needs; the interesting part is the distinction between motivation that is imposed and motivation that has been internalised, and the evidence that rewards can undermine the second. Cites the underlying studies, which makes it far more useful than the popular retellings."
+    "summary": "The authors' own summary of the most durable theory of motivation in psychology. Autonomy, competence, and relatedness are the needs; the interesting part is the distinction between motivation that is imposed and motivation that has been internalised, and the evidence that rewards can undermine the second. Cites the underlying studies, which makes it far more useful than the popular retellings.",
+    "thumbnail": "psy-self-determination-theory.jpg",
+    "thumbnail_source": "https://selfdeterminationtheory.org/theory/",
+    "thumbnail_kind": "page"
   },
   {
     "id": "psy-rsa-drive",
@@ -86,7 +94,8 @@
     "verified_on": "2026-09-26",
     "summary": "Pink's talk on autonomy, mastery, and purpose, illustrated live by a hand drawing the argument as it is made. The core evidence is the candle problem and the field studies showing bonuses hurting performance on tasks requiring any thought. Eleven minutes, and the animation is not decoration: watching the diagram assemble is what makes the structure of the argument stick when the narration alone would slide past.",
     "thumbnail": "psy-rsa-drive.jpg",
-    "thumbnail_source": "https://www.youtube.com/watch?v=u6XAPnuFjJc"
+    "thumbnail_source": "https://www.youtube.com/watch?v=u6XAPnuFjJc",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-augmenting-long-term-memory",
@@ -105,7 +114,8 @@
     "summary": "Nielsen spent years using spaced repetition seriously and writes up what he learned. Part practical manual — how to write cards that work, what not to memorise — and part argument that reliable memory changes what kind of thinking is available to you. The section on memorising a research field before understanding it is the one people remember. Long, and worth the hour.",
     "headline": "Memory as something you can decide to have",
     "thumbnail": "psy-augmenting-long-term-memory.jpg",
-    "thumbnail_source": "https://augmentingcognition.com/ltm.html"
+    "thumbnail_source": "https://augmentingcognition.com/ltm.html",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-spaced-repetition",
@@ -123,7 +133,8 @@
     "verified_on": "2026-09-26",
     "summary": "Gwern's survey of the evidence behind spaced repetition: the spacing effect, the testing effect, forgetting curves, and the maths of when review is worth the time. It includes the cost-benefit case for what is not worth memorising, which most enthusiasts skip. It also covers scheduling algorithms and the practical failure modes of large card collections. Heavily cited and sometimes dry, but it is the reference that the shorter articles are quietly summarising.",
     "thumbnail": "psy-spaced-repetition.jpg",
-    "thumbnail_source": "https://gwern.net/spaced-repetition"
+    "thumbnail_source": "https://gwern.net/spaced-repetition",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-retrieval-practice",
@@ -141,7 +152,8 @@
     "verified_on": "2026-09-26",
     "summary": "Two cognitive scientists explain the single highest-return study technique: retrieving material from memory rather than reviewing it. They cover why rereading feels effective and is not, how to make retrieval concrete with blank paper, flashcards, and self-made questions, and how to combine it with spacing across a term. Eight minutes, written for students rather than researchers, and immediately actionable on whatever you are studying this week.",
     "thumbnail": "psy-retrieval-practice.jpg",
-    "thumbnail_source": "https://www.learningscientists.org/blog/2016/6/23-1"
+    "thumbnail_source": "https://www.learningscientists.org/blog/2016/6/23-1",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-remember-anything",
@@ -157,7 +169,10 @@
     "depth": "accessible",
     "duration_minutes": 20,
     "verified_on": "2026-09-26",
-    "summary": "Case builds an explanation you use rather than read: the page teaches you a fact, then tests you on it minutes later, then again further down, so the spacing effect happens to you while you scroll. By the end you have both the theory and the evidence from your own recall, which is a more convincing demonstration than any citation. A small masterpiece of explanatory interface design, and it takes twenty minutes."
+    "summary": "Case builds an explanation you use rather than read: the page teaches you a fact, then tests you on it minutes later, then again further down, so the spacing effect happens to you while you scroll. By the end you have both the theory and the evidence from your own recall, which is a more convincing demonstration than any citation. A small masterpiece of explanatory interface design, and it takes twenty minutes.",
+    "thumbnail": "psy-remember-anything.jpg",
+    "thumbnail_source": "https://ncase.me/remember/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-feynman-technique",
@@ -175,7 +190,8 @@
     "verified_on": "2026-09-26",
     "summary": "The technique in four steps: pick a concept, explain it as if to a child, find where the explanation breaks, go back to the source. The useful part is the emphasis on jargon as a hiding place — the moment you cannot say it simply is the moment you learn what you did not know. Short, and best read just before you try it.",
     "thumbnail": "psy-feynman-technique.jpg",
-    "thumbnail_source": "https://fs.blog/feynman-technique/"
+    "thumbnail_source": "https://fs.blog/feynman-technique/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-learning-how-to-learn",
@@ -193,7 +209,8 @@
     "verified_on": "2026-09-26",
     "summary": "Oakley failed maths as a teenager and later taught engineering, and this talk is the method she reverse-engineered. Focused and diffuse thinking, why breaks are part of the work, chunking, and how procrastination follows from discomfort rather than laziness. Eighteen minutes, drawn from the research rather than from anecdote, and the natural entry point to the most-taken online course ever made. Useful even if you think you already know how you study.",
     "thumbnail": "psy-learning-how-to-learn.jpg",
-    "thumbnail_source": "https://www.youtube.com/watch?v=O96fE1E-rf8"
+    "thumbnail_source": "https://www.youtube.com/watch?v=O96fE1E-rf8",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-acceleration-of-addictiveness",
@@ -210,7 +227,10 @@
     "duration_minutes": 8,
     "verified_on": "2026-09-26",
     "summary": "Graham's observation is that technological progress makes things more concentrated and more habit-forming, and that our defences adapt far more slowly. He notes that avoiding the newest addictive things will make you look eccentric, because the norms have not caught up yet. His advice is to notice which of your habits would have looked strange a decade ago. Eight minutes, written in 2010, and more obviously correct with every year that has passed since.",
-    "headline": "Everything is getting more addictive"
+    "headline": "Everything is getting more addictive",
+    "thumbnail": "psy-acceleration-of-addictiveness.jpg",
+    "thumbnail_source": "https://paulgraham.com/addiction.html",
+    "thumbnail_kind": "page"
   },
   {
     "id": "psy-digital-minimalism",
@@ -228,7 +248,8 @@
     "verified_on": "2026-09-26",
     "summary": "Newport's case is that opting out tool by tool never works, because each one has a plausible benefit. He proposes deciding first what you actually value, then admitting only the technologies that serve it, and treats a thirty-day declutter as the way to find out what you miss. The declutter is specific enough to follow, and the standard he sets — does this serve something you actually care about — survives outside the book. Clearer and less moralising than most writing on the subject.",
     "thumbnail": "psy-digital-minimalism.jpg",
-    "thumbnail_source": "https://calnewport.com/on-digital-minimalism/"
+    "thumbnail_source": "https://calnewport.com/on-digital-minimalism/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "psy-how-i-got-my-attention-back",
@@ -247,6 +268,7 @@
     "summary": "Mod went offline for a month in the mountains and writes about what came back. Not a productivity piece: it is about how long it takes for a mind to stop reaching for a phone, what reading feels like once it does, and how quickly the old habits return afterwards. Honest about the relapse, and about how little of it he managed to keep, which is exactly why it lands.",
     "note": "The relapse section is the honest part.",
     "thumbnail": "psy-how-i-got-my-attention-back.jpg",
-    "thumbnail_source": "https://craigmod.com/essays/how_i_got_my_attention_back/"
+    "thumbnail_source": "https://craigmod.com/essays/how_i_got_my_attention_back/",
+    "thumbnail_kind": "image"
   }
 ]

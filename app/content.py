@@ -42,6 +42,9 @@ OPTIONAL_FIELDS = (
     "visual_credit",
     "thumbnail",
     "thumbnail_source",
+    "thumbnail_kind",
+    "thumbnail_page",
+    "thumbnail_credit",
 )
 
 VALID_FORMATS = {"article", "essay", "video"}
@@ -192,6 +195,8 @@ def seed_content(db: Session) -> int:
         item.visual_credit = raw.get("visual_credit")
         item.thumbnail = raw.get("thumbnail")
         item.thumbnail_source = raw.get("thumbnail_source")
+        item.thumbnail_kind = raw.get("thumbnail_kind")
+        item.thumbnail_credit = raw.get("thumbnail_credit")
     db.commit()
     return len(records)
 

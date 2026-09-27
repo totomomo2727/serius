@@ -15,7 +15,8 @@
     "verified_on": "2026-09-26",
     "summary": "Twelve yes-or-no questions about how a software team works: source control, one-step builds, daily builds, a bug database, fixing bugs before new code, quiet working conditions, testers, usability testing. Spolsky's point is that a rough test you can apply in five minutes beats a rigorous one nobody runs. Written in 2000, and still a fast way to read a team you are considering joining.",
     "thumbnail": "tech-joel-test.jpg",
-    "thumbnail_source": "https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/"
+    "thumbnail_source": "https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-never-rewrite",
@@ -34,7 +35,8 @@
     "summary": "Spolsky's case against the ground-up rewrite, argued through Netscape's decision to discard its codebase and the years it cost them. The core idea is that ugly code usually encodes bug fixes for real conditions nobody remembers, so throwing it out means discovering all of them again. The single most-cited argument in favour of refactoring what you already have, and worth rereading whenever a codebase starts to look beyond saving.",
     "headline": "Never throw the code away",
     "thumbnail": "tech-never-rewrite.jpg",
-    "thumbnail_source": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/"
+    "thumbnail_source": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-choose-boring-technology",
@@ -51,7 +53,10 @@
     "duration_minutes": 20,
     "verified_on": "2026-09-26",
     "summary": "McKinley's innovation tokens: you get roughly three, so spend them where novelty actually wins you something. The argument is not that new technology is bad, but that its failure modes are unknown and each unknown compounds with the others. He is practical about how to evaluate a choice and how to have the conversation with a team that wants the new thing. The clearest framing of engineering conservatism.",
-    "note": "Three tokens. Spend them carefully."
+    "note": "Three tokens. Spend them carefully.",
+    "thumbnail": "tech-choose-boring-technology.jpg",
+    "thumbnail_source": "https://mcfunley.com/choose-boring-technology",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-best-code-is-no-code",
@@ -67,7 +72,10 @@
     "depth": "accessible",
     "duration_minutes": 7,
     "verified_on": "2026-09-26",
-    "summary": "Atwood's argument is that code is a liability before it is an asset: every line has to be read, maintained, and debugged by someone. The best outcome of a feature request is often that the problem dissolves, or an existing tool covers it. Seven minutes, deliberately blunt, and a useful counterweight in any team that has started measuring its progress by the amount of code it produces."
+    "summary": "Atwood's argument is that code is a liability before it is an asset: every line has to be read, maintained, and debugged by someone. The best outcome of a feature request is often that the problem dissolves, or an existing tool covers it. Seven minutes, deliberately blunt, and a useful counterweight in any team that has started measuring its progress by the amount of code it produces.",
+    "thumbnail": "tech-best-code-is-no-code.jpg",
+    "thumbnail_source": "https://blog.codinghorror.com/the-best-code-is-no-code-at-all/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-fast-software",
@@ -84,7 +92,10 @@
     "duration_minutes": 20,
     "verified_on": "2026-09-26",
     "summary": "Mod writes about software that responds instantly and why it changes your relationship to a tool: fast software invites use, slow software teaches avoidance. He compares the feel of specific applications, cameras, and websites, and argues that latency is a design decision rather than a technical inevitability. The piece to read before accepting that a spinner is a normal part of an interface, or before shipping one yourself.",
-    "headline": "Speed is a feature you can feel"
+    "headline": "Speed is a feature you can feel",
+    "thumbnail": "tech-fast-software.jpg",
+    "thumbnail_source": "https://craigmod.com/essays/fast_software/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-humble-programmer",
@@ -101,7 +112,10 @@
     "depth": "deep",
     "duration_minutes": 35,
     "verified_on": "2026-09-26",
-    "summary": "Dijkstra's 1972 Turing lecture, on the discovery that the limiting factor in programming is the size of a human mind. He argues for keeping programs intellectually manageable, for reasoning about correctness rather than testing it in, and for humility as a working method rather than a virtue. Opinionated, occasionally severe, and still the most quotable thing written about the discipline."
+    "summary": "Dijkstra's 1972 Turing lecture, on the discovery that the limiting factor in programming is the size of a human mind. He argues for keeping programs intellectually manageable, for reasoning about correctness rather than testing it in, and for humility as a working method rather than a virtue. Opinionated, occasionally severe, and still the most quotable thing written about the discipline.",
+    "thumbnail": "tech-humble-programmer.jpg",
+    "thumbnail_source": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD03xx/EWD340.html",
+    "thumbnail_kind": "page"
   },
   {
     "id": "tech-as-we-may-think",
@@ -118,7 +132,12 @@
     "duration_minutes": 45,
     "verified_on": "2026-09-26",
     "summary": "Bush, writing in 1945, describes the memex: a desk that stores everything you read and lets you build named trails of association through it. He is describing hypertext, decades before the hardware existed, and reasoning about why the problem is retrieval rather than storage. Engelbart, Nelson, and Berners-Lee all cite it. Read it to see how much of the web was imagined before it was possible.",
-    "headline": "The machine that remembered for you"
+    "headline": "The machine that remembered for you",
+    "thumbnail_page": "https://www.w3.org/History/1945/vbush/vbush.shtml",
+    "thumbnail_credit": "From the W3C archive copy of the article",
+    "thumbnail": "tech-as-we-may-think.jpg",
+    "thumbnail_source": "https://www.w3.org/History/1945/vbush/vbush.shtml",
+    "thumbnail_kind": "page"
   },
   {
     "id": "tech-www-proposal",
@@ -134,7 +153,10 @@
     "depth": "accessible",
     "duration_minutes": 20,
     "verified_on": "2026-09-26",
-    "summary": "The memo that proposed the web, marked vague but exciting by Berners-Lee's manager. It starts from a mundane problem — CERN loses information when people leave — and argues for a linked, decentralised system with no central database and no enforced structure. The decisions that made the web work are visible here as choices, with the reasoning attached. Twenty minutes, and unexpectedly readable."
+    "summary": "The memo that proposed the web, marked vague but exciting by Berners-Lee's manager. It starts from a mundane problem — CERN loses information when people leave — and argues for a linked, decentralised system with no central database and no enforced structure. The decisions that made the web work are visible here as choices, with the reasoning attached. Twenty minutes, and unexpectedly readable.",
+    "thumbnail": "tech-www-proposal.jpg",
+    "thumbnail_source": "https://www.w3.org/History/1989/proposal.html",
+    "thumbnail_kind": "page"
   },
   {
     "id": "tech-web-we-lost",
@@ -152,7 +174,8 @@
     "verified_on": "2026-09-26",
     "summary": "Dash's 2012 inventory of what the social web traded away: interoperable data, links that led off-platform, feeds in the order things happened, identity you controlled. He is specific, and he resists nostalgia by pointing out what genuinely improved. The clearest statement of what changed between the blog era and the platform era, written while it was still happening rather than a decade after the fact.",
     "thumbnail": "tech-web-we-lost.jpg",
-    "thumbnail_source": "https://anildash.com/2012/12/13/the_web_we_lost/"
+    "thumbnail_source": "https://anildash.com/2012/12/13/the_web_we_lost/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-website-obesity",
@@ -169,7 +192,10 @@
     "depth": "accessible",
     "duration_minutes": 30,
     "verified_on": "2026-09-26",
-    "summary": "Cegłowski's talk on pages that weigh more than novels while carrying a paragraph of text. The numbers are funny and damning, the tour through advertising, tracking, and framework bloat is precise about who benefits, and the ending turns serious about what a heavy web costs people on slow connections. Still the sharpest thing written on the subject, and the numbers have only got worse."
+    "summary": "Cegłowski's talk on pages that weigh more than novels while carrying a paragraph of text. The numbers are funny and damning, the tour through advertising, tracking, and framework bloat is precise about who benefits, and the ending turns serious about what a heavy web costs people on slow connections. Still the sharpest thing written on the subject, and the numbers have only got worse.",
+    "thumbnail": "tech-website-obesity.jpg",
+    "thumbnail_source": "https://idlewords.com/talks/website_obesity.htm",
+    "thumbnail_kind": "page"
   },
   {
     "id": "tech-mother-of-all-demos",
@@ -189,7 +215,8 @@
     "summary": "Engelbart sits at a console in San Francisco and demonstrates the mouse, hypertext, screen windows, version control, and video collaboration with a colleague thirty miles away, in one live session. Nothing on screen existed anywhere else at the time. Watch even ten minutes of it: the strange part is not how much was invented, but how little of the vision behind it we kept.",
     "headline": "Ninety minutes in 1968 that contained everything",
     "thumbnail": "tech-mother-of-all-demos.jpg",
-    "thumbnail_source": "https://www.youtube.com/watch?v=yJDv-zdhzMY"
+    "thumbnail_source": "https://www.youtube.com/watch?v=yJDv-zdhzMY",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-computer-revolution",
@@ -207,7 +234,8 @@
     "verified_on": "2026-09-26",
     "summary": "Kay's OOPSLA keynote, delivered with visible impatience, argues that the industry industrialised the wrong parts of computing and stopped asking what the machine was for. He revisits what object orientation was meant to mean, compares software engineering unfavourably with real engineering, and demonstrates ideas from the sixties still ahead of 1997. Bracing, funny, and a little uncomfortable if you build software for a living.",
     "thumbnail": "tech-computer-revolution.jpg",
-    "thumbnail_source": "https://www.youtube.com/watch?v=oKg1hTOQXoY"
+    "thumbnail_source": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-aggregation-theory",
@@ -225,7 +253,8 @@
     "verified_on": "2026-09-26",
     "summary": "Thompson's explanation of why the internet's biggest companies own demand rather than supply. When distribution is free and transactions cost nothing, the firm that owns the user relationship commands the suppliers, and the dynamic compounds. He works it through Google, Facebook, Netflix, and Uber. The single most useful framework for reading technology business news, and it takes sixteen minutes to acquire something you will apply for years.",
     "thumbnail": "tech-aggregation-theory.jpg",
-    "thumbnail_source": "https://stratechery.com/2015/aggregation-theory/"
+    "thumbnail_source": "https://stratechery.com/2015/aggregation-theory/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-enshittification",
@@ -245,7 +274,8 @@
     "summary": "Doctorow's now-standard account of platform decay: good to users, then good to business customers, then good only to shareholders, until the value is gone. He traces the pattern through TikTok's heating tool and Amazon's advertising, and argues the constraints that used to prevent it — competition, regulation, interoperability — were removed rather than outgrown. Angry, specific, and it names something everyone had noticed.",
     "headline": "How platforms decay, in three stages",
     "thumbnail": "tech-enshittification.jpg",
-    "thumbnail_source": "https://pluralistic.net/2023/01/21/potemkin-ai/"
+    "thumbnail_source": "https://pluralistic.net/2023/01/21/potemkin-ai/",
+    "thumbnail_kind": "image"
   },
   {
     "id": "tech-reflections-on-palantir",
@@ -264,6 +294,7 @@
     "verified_on": "2026-09-26",
     "summary": "Qureshi's account of working at an unusually strange company: how it hired, why deployment engineers mattered more than product managers, what forward-deployed work actually involves, and where the culture failed. It is neither defence nor exposé, which is what makes it useful. The sections on hiring for raw ability and on what it costs to place engineers inside a customer's problem are the ones worth arguing with. The most concrete first-hand writing available about how an enterprise software company really operates.",
     "thumbnail": "tech-reflections-on-palantir.jpg",
-    "thumbnail_source": "https://nabeelqu.substack.com/p/reflections-on-palantir"
+    "thumbnail_source": "https://nabeelqu.substack.com/p/reflections-on-palantir",
+    "thumbnail_kind": "image"
   }
 ]

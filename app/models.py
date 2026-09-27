@@ -62,6 +62,8 @@ class ContentItem(Base):
     visual_credit: Mapped[str | None] = mapped_column(String(200), nullable=True)
     thumbnail: Mapped[str | None] = mapped_column(String(120), nullable=True)
     thumbnail_source: Mapped[str | None] = mapped_column(Text, nullable=True)
+    thumbnail_kind: Mapped[str | None] = mapped_column(String(20), nullable=True)  # image | page
+    thumbnail_credit: Mapped[str | None] = mapped_column(String(200), nullable=True)
 
     @property
     def read_label(self) -> str:
@@ -97,6 +99,8 @@ class ContentItem(Base):
 
     @property
     def alt_text(self) -> str:
+        if self.thumbnail and self.thumbnail_kind == "page":
+            return f"The opening of {self.title} as published on {self.publication}"
         if self.thumbnail:
             return f"Image from {self.publication}: {self.title}"
         if self.visual_alt:
@@ -105,6 +109,10 @@ class ContentItem(Base):
 
     @property
     def credit(self) -> str:
+        if self.thumbnail and self.thumbnail_credit:
+            return self.thumbnail_credit
+        if self.thumbnail and self.thumbnail_kind == "page":
+            return f"From the page at {self.publication}"
         if self.thumbnail:
             return f"Image: {self.publication}"
         return self.visual_credit or DEFAULT_CREDIT
