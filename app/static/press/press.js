@@ -94,6 +94,18 @@
         }, 0);
       });
     });
+    /* Coming back through history restores the disabled button from the page
+       cache, so the form is released whenever the page is shown again. */
+    window.addEventListener('pageshow', function (event) {
+      if (!event.persisted) return;
+      document.querySelectorAll('form[data-once]').forEach(function (form) {
+        delete form.dataset.submitted;
+        form.querySelectorAll('button[type=submit]').forEach(function (b) {
+          b.disabled = false;
+          b.classList.remove('is-sending');
+        });
+      });
+    });
   }
 
   editorial();

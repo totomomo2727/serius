@@ -159,14 +159,22 @@
 
 /* Below 360px the scene is clamped to the viewport, pulling the box closer again. */
 @media (max-width: 360px) {
+  .courier { animation-name: arrive-tiny; }
   .beak-mail { animation-name: post-narrow; }
+}
+
+@keyframes arrive-tiny {
+  0% { transform: translateX(-150px) translateY(-20px); }
+  40% { transform: translateX(44px) translateY(-7px); }
+  55%, 80% { transform: translateX(50px); }
+  100% { transform: translateX(34px); }
 }
 
 @keyframes post-narrow {
   0%, 50% { opacity: 1; transform: rotate(13deg); }
-  70% { opacity: 1; transform: translate(22px, 12px) rotate(34deg) scale(.86); }
-  80% { opacity: 1; transform: translate(38px, 24px) rotate(52deg) scale(.6); }
-  88%, 100% { opacity: 0; transform: translate(44px, 30px) rotate(58deg) scale(.42); }
+  70% { opacity: 1; transform: translate(50px, 12px) rotate(34deg) scale(.86); }
+  80% { opacity: 1; transform: translate(66px, 24px) rotate(52deg) scale(.6); }
+  88%, 100% { opacity: 0; transform: translate(72px, 30px) rotate(58deg) scale(.42); }
 }
 
 @media (prefers-reduced-motion: reduce) {
