@@ -34,6 +34,11 @@ env.filters["long_date"] = long_date
 env.filters["topic_label"] = topic_label
 
 
+def asset_base() -> str:
+    """Where emailed images are fetched from; images need a host the inbox can reach."""
+    return (settings.asset_base_url or settings.base_url).rstrip("/")
+
+
 def edition_context(edition: Edition, local_date: date) -> dict:
     subscriber = edition.subscriber
     return {
@@ -46,6 +51,7 @@ def edition_context(edition: Edition, local_date: date) -> dict:
         "manage_token": make_token(subscriber, MANAGE) if subscriber else "",
         "unsubscribe_link": unsubscribe_url(subscriber) if subscriber else "",
         "base_url": settings.base_url,
+        "asset_url": asset_base(),
     }
 
 
@@ -64,6 +70,7 @@ def render_verification_email(subscriber, preview_items) -> tuple[str, str, str]
         "items": preview_items,
         "verify_link": verify_url(subscriber),
         "base_url": settings.base_url,
+        "asset_url": asset_base(),
     }
     subject = "Confirm your subscription to The Feather Press"
     html = env.get_template("email/verify.html").render(**context)

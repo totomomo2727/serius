@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     app_name: str = "The Feather Press"
     tagline: str = "Three good finds. Delivered daily."
     base_url: str = "http://localhost:8000"
+    asset_base_url: str = ""  # host for emailed images; defaults to base_url
     database_url: str = f"sqlite:///{ROOT_DIR / 'data' / 'feather.db'}"
 
     secret_key: str = DEV_SECRET_KEY

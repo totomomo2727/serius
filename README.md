@@ -41,6 +41,7 @@ Then open http://localhost:8000. The content library is seeded into SQLite on st
 | Variable | Default | Notes |
 | --- | --- | --- |
 | `BASE_URL` | auto-detected per request | Pin it in production so email links are absolute and stable. |
+| `ASSET_BASE_URL` | empty (falls back to `BASE_URL`) | Host serving `/static/...` for emailed images. Set it when the app itself is not publicly reachable, otherwise inboxes cannot load the thumbnails. |
 | `DATABASE_URL` | `sqlite:///data/feather.db` | Any SQLAlchemy URL. The SQLite file must live on persistent storage. |
 | `SECRET_KEY` | random, persisted to `data/secrets.json` | Signs verification/management links. Set explicitly when running more than one instance. |
 | `CRON_SECRET` | random, persisted to `data/secrets.json` | Required in the `X-Cron-Secret` header on `POST /jobs/daily`. |
