@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ app_name }}{% endblock %}</title>
   <meta name="description" content="Three good finds. Delivered daily.">
+  <script>document.documentElement.className += ' js';</script>
   <link rel="stylesheet" href="/static/press/fonts.css">
   <link rel="stylesheet" href="/static/press/style.css">
   <link rel="stylesheet" href="/static/press/product.css">
@@ -17,6 +18,8 @@
     <nav>
       <a href="/sample">A sample edition ↗</a>
       <a class="nav-cta" href="/start">Meet your curator ↗</a>
+      <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false"
+              hidden>Sound <span data-sound-state>off</span></button>
     </nav>
   </header>
   <main id="main">

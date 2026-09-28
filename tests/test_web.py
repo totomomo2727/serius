@@ -29,6 +29,16 @@ def test_landing_and_onboarding_render(client):
     assert "curious about?" in start.text
 
 
+def test_landing_content_is_present_before_any_motion_runs(client):
+    """Revealed elements must be in the markup, not created by the script."""
+    landing = client.get("/")
+    for marker in ('data-reveal="paper"', 'data-reveal="bird"', "data-stagger"):
+        assert marker in landing.text
+    assert "a small bird." in landing.text
+    assert "data-sound-toggle" in landing.text
+    assert 'aria-pressed="false"' in landing.text
+
+
 def test_adjusting_interests_reopens_the_form_on_the_same_choices(client, db):
     start_preview(client, topics=("philosophy",), interests=("ethics",), depth="deep")
     edition = db.query(Edition).order_by(Edition.created_at.desc()).first()

@@ -30,3 +30,14 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 
 /* Format marker: read, watch or listen. */
 .news-kicker{gap:10px}.news-kicker b{margin-left:auto}.mode-tag{font:9px Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:#60605b;border:1px solid #c9c8c1;border-radius:30px;padding:4px 10px}
+
+/* Landing choreography: the page arrives in the order it is read. Hidden only
+   when scripting can bring it back. */
+.js [data-reveal],.js [data-stagger]>*{opacity:0;transform:rotate(var(--rot,0deg)) translateY(16px);transition:opacity 520ms cubic-bezier(.2,.6,.2,1) var(--reveal-delay,0ms),transform 520ms cubic-bezier(.2,.6,.2,1) var(--reveal-delay,0ms)}
+.js [data-reveal].is-in,.js [data-stagger]>*.is-in{opacity:1;transform:rotate(var(--rot,0deg))}
+.paper-tilt[data-reveal]{--rot:5deg}.hero-bird[data-reveal]{--rot:-7deg}
+.sticker[data-reveal]{--rot:-7deg}.bird-note[data-reveal]{--rot:-6deg}
+.sound-toggle{border:1px solid #c9c8c1;border-radius:30px;background:transparent;color:#60605b;font:11px Arial,sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:7px 13px}
+.sound-toggle[aria-pressed=true]{border-color:#38489e;color:#38489e}
+@media(prefers-reduced-motion:reduce){.js [data-reveal],.js [data-stagger]>*{opacity:1;transform:rotate(var(--rot,0deg));transition:none}}
+.motion-reduced [data-reveal],.motion-reduced [data-stagger]>*{opacity:1;transform:rotate(var(--rot,0deg));transition:none}
