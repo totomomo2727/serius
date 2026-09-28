@@ -102,7 +102,6 @@ def test_preview_offers_the_delivery_invitation_without_scripting(client, db):
     # The pop-up carries the daily promise, and the tail below it still works
     # for anyone the script never reaches.
     assert "data-delivery-modal" in response.text
-    assert "data-edition-end" in response.text
     assert "Your personal newsletter," in response.text
     assert "searches the web all day" in response.text.lower()
     assert response.text.count('action="/subscribe"') == 2

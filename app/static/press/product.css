@@ -372,7 +372,7 @@
 @media (max-width: 700px) {
   .site-foot, .sheet { padding-left: 22px; padding-right: 22px; }
   .sheet h1 { font-size: 40px; letter-spacing: -1px; }
-  .signup-tail { margin-top: 48px; padding-top: 34px; }
+  .signup-tail { margin-top: 48px; padding: 34px 22px 0; }
   .tail-inner h2 { font-size: 34px; }
 }
 
@@ -405,7 +405,6 @@
   transition: opacity 240ms cubic-bezier(.2,.6,.2,1);
 }
 .delivery-modal.is-open .modal-scrim { opacity: 1; }
-.edition-end { display: block; height: 1px; }
 .modal-paper {
   position: relative;
   width: min(420px, 100%);

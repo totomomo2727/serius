@@ -403,8 +403,8 @@
     }
   }
 
-  /* Serius asks for the address himself, once the reader has reached the end
-     of their edition - unless they have already found the form there. */
+  /* Serius asks for the address himself, a moment after the edition appears -
+     unless the reader has already found the form. */
   function deliveryModal() {
     var modal = document.querySelector('[data-delivery-modal]');
     if (!modal) return;
@@ -474,29 +474,15 @@
       return;
     }
 
-    /* The bottom of the edition is the cue. On a page too short to scroll
-       there is no cue to wait for, so a short pause stands in for it. */
-    var end = document.querySelector('[data-edition-end]');
-    var scrollable = function () {
-      return document.documentElement.scrollHeight - window.innerHeight > 120;
+    /* A few seconds with the edition in view, then the invitation. A tab
+       opened in the background waits until it is actually shown. */
+    var wait = function () {
+      if (document.visibilityState === 'hidden') return;
+      document.removeEventListener('visibilitychange', wait);
+      if (!asked) timer = window.setTimeout(ask, 4000);
     };
-    /* Passing the marker counts too: a flick can skip a one-pixel target. */
-    var reached = function () {
-      return end.getBoundingClientRect().top < window.innerHeight * 0.9;
-    };
-    var onScroll = function () {
-      if (asked) {
-        window.removeEventListener('scroll', onScroll);
-        return;
-      }
-      if (reached()) ask();
-    };
-    if (end) {
-      window.addEventListener('scroll', onScroll, { passive: true });
-      if (!scrollable()) timer = window.setTimeout(ask, 6000);
-    } else {
-      timer = window.setTimeout(ask, 6000);
-    }
+    document.addEventListener('visibilitychange', wait);
+    wait();
   }
 
   function chips() {
