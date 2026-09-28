@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Your edition &middot; {{ app_name }}{% endblock %}
+{% block body_class %}page-inbox{% endblock %}
+
+{% block content %}
+<section class="inbox">
+  <div class="inbox-top">
+    <a href="/start?edition={{ edition.id }}">← Adjust your interests</a>
+    <span>YOUR EDITION · {{ date_label|upper }}</span>
+  </div>
+  <div class="message-header">
+    <span>FROM <b>Serius · The Feather Press</b></span>
+    <h2>Three good finds, just for you.</h2>
+    <small>{{ items[0].content.display_title }}</small>
+  </div>
+
+  {% set intro = edition.intro %}
+  {% include "_edition.html" %}
+
+  <section class="signup-tail" id="subscribe">
+    <div class="tail-inner">
+      <span class="pill">STEP 03 / DELIVERY</span>
+      <h2>Want this every morning?</h2>
+      <p>Confirm your address and this exact edition arrives as your first newspaper, then a new
+        one each day at eight o’clock, your time.</p>
+      {% if not provider_is_live %}
+      <p class="notice" role="status">
+        No email provider is configured on this deployment, so nothing can actually be delivered
+        yet. Messages are written to the local outbox instead and clearly marked as undelivered.
+      </p>
+      {% endif %}
+      <form method="post" action="/subscribe" data-once>
+        <input type="hidden" name="edition_id" value="{{ edition.id }}">
+        <input type="hidden" name="timezone_name" id="timezone_name" value="UTC" data-detect-timezone>
+        <div class="email-field">
+          <label for="email">Where should Serius deliver?</label>
+          <input id="email" type="email" name="email" required autocomplete="email"
+                 placeholder="you@somewhere.com" value="{{ email_value|default('') }}">
+          <span class="hint">Your inbox. His favorite postbox.</span>
+        </div>
+        {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+        <label class="consent-check">
+          <input type="checkbox" name="consent" value="yes" required>
+          <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
+        </label>
+        <p class="fine" id="tz-note">Delivery timezone: <span id="tz-label">UTC</span>.
+          You can change this from your preferences later.</p>
+        <button class="button" type="submit">Send me Serius’s finds<span>↗</span></button>
+      </form>
+    </div>
+  </section>
+</section>
+{% endblock %}

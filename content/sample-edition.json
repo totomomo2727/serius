@@ -1,0 +1,62 @@
+{
+  "theme": "The things certainty<br><em>makes us miss.</em>",
+  "interests": "SAMPLE EDITION · PHILOSOPHY + PSYCHOLOGY",
+  "subject": "Three good finds, just for you.",
+  "preheader": "Wonder, other minds, and the overlooked art of being helped.",
+  "intro": "Today’s thread: staying open to what you haven’t figured out. Three finds for a mind interested in other minds.",
+  "stories": [
+    {
+      "id": "01",
+      "topic": "Philosophy × attention",
+      "title": "When curiosity becomes another scroll.",
+      "short": "When curiosity<br>becomes a scroll.",
+      "original": "To benefit from wonder, make sure you’ve got the genuine kind",
+      "by": "Lisa Sideris",
+      "publication": "Psyche",
+      "url": "https://psyche.co/ideas/to-benefit-from-wonder-make-sure-youve-got-the-genuine-kind",
+      "duration": "Original · 7 min read, estimated",
+      "image": "/static/press/sample/01-wonder.jpg",
+      "alt": "A hiker with a large backpack on a ridge above misty mountains.",
+      "credit": "Simon Townsley / Panos Pictures · via Psyche",
+      "summary": "Can collecting fascinating facts become its own kind of distraction? Lisa Sideris distinguishes lasting wonder from a restless appetite for the next mystery. Once a puzzle is solved, that appetite moves on. More durable wonder can tolerate an unfinished explanation and let an encounter change our perspective. Her essay offers an unexpectedly sharp question for an internet full of interesting things: are we becoming more receptive, or merely consuming more novelty?",
+      "note": "For your interest in attention: even curiosity can become a feed."
+    },
+    {
+      "id": "02",
+      "topic": "Psychology × perception",
+      "title": "Your mind’s eye isn’t everyone’s.",
+      "short": "Your mind’s eye<br>isn’t everyone’s.",
+      "original": "What colour do you see?",
+      "by": "Gary Lupyan",
+      "publication": "Aeon",
+      "url": "https://aeon.co/essays/the-moral-imperative-to-learn-from-diverse-phenomenal-experiences",
+      "duration": "Original · 20 min read, estimated",
+      "image": "/static/press/sample/02-perception.jpg",
+      "alt": "Close-up of a person’s face and ear in low light.",
+      "credit": "Article lead image · Aeon",
+      "summary": "Picture an apple. For some people, that request produces a vivid image; for others, no mental picture appears. Gary Lupyan explores these hidden differences in imagery, inner speech and memory, and why we so often assume our own experience is universal. The striking implication goes beyond perception: someone may respond differently because the situation actually feels different to them. Understanding another person can begin with asking what their experience is like.",
+      "note": "For your interest in psychology—and designing for minds unlike your own."
+    },
+    {
+      "id": "03",
+      "topic": "Philosophy × everyday life",
+      "title": "The overlooked art of being helped.",
+      "short": "The art of<br>being helped.",
+      "original": "How Will the Miracle Happen Today?",
+      "by": "Kevin Kelly",
+      "publication": "KK · Substack",
+      "url": "https://kevinkelly.substack.com/p/how-will-the-miracle-happen-today",
+      "duration": "Original essay · read on Substack",
+      "image": "",
+      "alt": "",
+      "credit": "",
+      "panel": {
+        "label": "A QUESTION TO TAKE INTO TODAY",
+        "quote": "How will the miracle<br>happen today?",
+        "by": "Kevin Kelly"
+      },
+      "summary": "Kevin Kelly remembers hitchhiking to work and accepting remarkable hospitality while travelling. His unusual focus is the receiving side of generosity: the vulnerability of letting someone help you. He calls that recipient a “kindee” and reflects on gratitude as a way of meeting the world. This is a personal, spiritual interpretation of his experiences, rather than a promise that kindness always arrives. The invitation is to notice the gifts we struggle to accept.",
+      "note": "A warmer place to land: you don’t have to earn every good thing."
+    }
+  ]
+}

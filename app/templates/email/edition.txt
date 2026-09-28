@@ -1,0 +1,29 @@
+THE FEATHER PRESS
+Three good finds. Delivered daily.
+{{ date_label }} - curated for you by Serius
+{{ interests_line }}
+
+{{ edition.intro }}
+
+{% for item in items %}
+--------------------------------------------------------------
+{{ '%02d'|format(loop.index) }} | {{ item.content.topic|topic_label }} | {{ item.content.fmt }}{% if item.is_revisit %} | revisit{% endif %}
+
+{{ item.content.display_title }}
+{{ item.content.creator }} - {{ item.content.publication }}
+
+{{ item.content.summary }}
+{% if item.reason %}
+{{ item.reason }}{% if item.is_revisit %} A revisit - worth a second look.{% endif %} - Serius
+{% endif %}
+{{ item.content.title }} - {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min {{ item.content.verb }}
+{{ item.content.url }}
+
+More like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more
+Less like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/less
+{% endfor %}
+--------------------------------------------------------------
+That's your three. The rest of the day is yours. - Serius
+
+Change your interests or delivery time: {{ manage_link }}
+Unsubscribe: {{ unsubscribe_link }}

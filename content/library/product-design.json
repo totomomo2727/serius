@@ -1,0 +1,387 @@
+[
+  {
+    "id": "pd-typography-ten-minutes",
+    "title": "Typography in ten minutes",
+    "creator": "Matthew Butterick",
+    "publication": "Butterick's Practical Typography",
+    "url": "https://practicaltypography.com/typography-in-ten-minutes.html",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 10,
+    "verified_on": "2026-09-26",
+    "summary": "Butterick's condensed version of everything else he wrote: what matters most in setting text, in the order it matters. Point size, line spacing, line length, and font choice come first, and he is specific about the numbers rather than gesturing at taste. Ten minutes will measurably improve the next document you make, which is not something most design writing can claim.",
+    "note": "Do the line-length one first.",
+    "thumbnail": "pd-typography-ten-minutes.jpg",
+    "thumbnail_source": "https://practicaltypography.com/typography-in-ten-minutes.html",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-typewriter-habits",
+    "title": "Typewriter habits",
+    "creator": "Matthew Butterick",
+    "publication": "Butterick's Practical Typography",
+    "url": "https://practicaltypography.com/typewriter-habits.html",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 5,
+    "verified_on": "2026-09-26",
+    "summary": "A short list of habits carried over from machines that had one font and no kerning: two spaces after a period, straight quotes standing in for real ones, underlining instead of italics, all caps for emphasis. Butterick explains what each one was compensating for and what to do now. Five minutes, and it removes a surprising amount of amateurishness from your writing.",
+    "thumbnail": "pd-typewriter-habits.jpg",
+    "thumbnail_source": "https://practicaltypography.com/typewriter-habits.html",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-responsive-typography",
+    "title": "Responsive Typography: The Basics",
+    "creator": "Oliver Reichenstein",
+    "publication": "iA",
+    "url": "https://ia.net/topics/responsive-typography-the-basics",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "typography",
+      "interaction-design"
+    ],
+    "depth": "deep",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-26",
+    "summary": "Reichenstein starts from reading distance rather than screen size, which reframes the whole problem: a phone held close and a monitor at arm's length need different type even at similar pixel dimensions. He works through measure, size, and spacing as one system, with the reasoning behind each number. The piece that makes responsive typography feel like a craft rather than a set of breakpoints.",
+    "headline": "Setting type for screens you cannot measure",
+    "thumbnail": "pd-responsive-typography.jpg",
+    "thumbnail_source": "https://ia.net/topics/responsive-typography-the-basics",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-web-design-95-typography",
+    "title": "Web Design is 95% Typography",
+    "creator": "Oliver Reichenstein",
+    "publication": "iA",
+    "url": "https://ia.net/topics/the-web-is-all-about-typography-period",
+    "format": "essay",
+    "topic": "product-design",
+    "interests": [
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 8,
+    "verified_on": "2026-09-26",
+    "summary": "Reichenstein's claim, made in 2006 and still argued about, is that web design is mostly information design, information design is mostly typography, and therefore most of the job is setting text well. He follows it through to the uncomfortable conclusion that the choices designers enjoy most matter least. Eight minutes, provocative on purpose, and hard to dismiss once you look at any page you use daily.",
+    "thumbnail": "pd-web-design-95-typography.jpg",
+    "thumbnail_source": "https://ia.net/topics/the-web-is-all-about-typography-period",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-responsive-web-design",
+    "title": "Responsive Web Design",
+    "creator": "Ethan Marcotte",
+    "publication": "A List Apart",
+    "url": "https://alistapart.com/article/responsive-web-design/",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "interaction-design",
+      "typography"
+    ],
+    "depth": "deep",
+    "duration_minutes": 15,
+    "verified_on": "2026-09-26",
+    "summary": "The article that named the approach and changed how sites are built. Marcotte combines fluid grids, flexible images, and media queries into a single method, arguing from architecture that adapts to its site rather than from device lists. Written in 2010, before the term existed, and readable now as both a practical tutorial and the moment the fixed-width page stopped being the default.",
+    "thumbnail": "pd-responsive-web-design.jpg",
+    "thumbnail_source": "https://alistapart.com/article/responsive-web-design/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-dao-of-web-design",
+    "title": "A Dao of Web Design",
+    "creator": "John Allsopp",
+    "publication": "A List Apart",
+    "url": "https://alistapart.com/article/dao/",
+    "format": "essay",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "interaction-design"
+    ],
+    "depth": "deep",
+    "duration_minutes": 14,
+    "verified_on": "2026-09-26",
+    "summary": "Allsopp's 2000 essay argues that designers were fighting the medium: the web's flexibility is not a defect to be controlled but the thing that makes it work. He asks for pages that adapt to unknown screens, settings, and abilities rather than pinning everything down. Read a decade before responsive design existed, it is a little uncanny how completely it was right.",
+    "headline": "The web is not a page, and never was",
+    "thumbnail": "pd-dao-of-web-design.jpg",
+    "thumbnail_source": "https://alistapart.com/article/dao/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-brief-rant",
+    "title": "A Brief Rant on the Future of Interaction Design",
+    "creator": "Bret Victor",
+    "publication": "worrydream.com",
+    "url": "https://worrydream.com/ABriefRantOnTheFutureOfInteractionDesign/",
+    "format": "essay",
+    "topic": "product-design",
+    "interests": [
+      "interaction-design"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-26",
+    "summary": "Victor's objection to a future of flat glass is that hands do far more than poke, and that pictures under glass throw away nearly everything they can do. He is specific about what capability is being lost, shows how much feeling is involved in handling ordinary objects, and refuses to accept that this is simply how interfaces are now. Twelve minutes, and it stays with you.",
+    "thumbnail": "pd-brief-rant.jpg",
+    "thumbnail_source": "https://worrydream.com/ABriefRantOnTheFutureOfInteractionDesign/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-ten-heuristics",
+    "title": "10 Usability Heuristics for User Interface Design",
+    "creator": "Jakob Nielsen",
+    "publication": "Nielsen Norman Group",
+    "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "interaction-design"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 14,
+    "verified_on": "2026-09-26",
+    "summary": "Nielsen's ten principles remain the standard checklist for evaluating an interface: visibility of system status, match with the real world, user control, consistency, error prevention, recognition over recall, flexibility, minimalist design, error recovery, and help. Each comes with examples and the reasoning behind it. Broad by design, which is why they still apply to products built long after they were written.",
+    "thumbnail": "pd-ten-heuristics.jpg",
+    "thumbnail_source": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-progressive-disclosure",
+    "title": "Progressive Disclosure",
+    "creator": "Jakob Nielsen",
+    "publication": "Nielsen Norman Group",
+    "url": "https://www.nngroup.com/articles/progressive-disclosure/",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "interaction-design"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 9,
+    "verified_on": "2026-09-26",
+    "summary": "The technique for interfaces that must serve both beginners and experts: show the common case, keep the rest one deliberate step away. Nielsen explains when it helps and when it just hides things people need, how it differs from staged disclosure, and what it costs in extra interaction. Short, practical, and the answer to most arguments that start with a request for another option.",
+    "thumbnail": "pd-progressive-disclosure.jpg",
+    "thumbnail_source": "https://www.nngroup.com/articles/progressive-disclosure/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-aesthetic-usability",
+    "title": "The Aesthetic-Usability Effect",
+    "creator": "Kate Moran",
+    "publication": "Nielsen Norman Group",
+    "url": "https://www.nngroup.com/articles/aesthetic-usability-effect/",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "interaction-design",
+      "craft-and-process"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 8,
+    "verified_on": "2026-09-26",
+    "summary": "People judge attractive interfaces as easier to use, and are more forgiving of their problems. Moran covers the research behind the effect, including the airline study it came from, and treats it as a double-edged finding: good looks buy goodwill, but they also mask usability problems during testing, so real issues go unreported. Eight minutes, and it changes how you read your own research.",
+    "thumbnail": "pd-aesthetic-usability.jpg",
+    "thumbnail_source": "https://www.nngroup.com/articles/aesthetic-usability-effect/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-invisible-details",
+    "title": "Invisible Details of Interaction Design",
+    "creator": "Rauno Freiberg",
+    "publication": "rauno.me",
+    "url": "https://rauno.me/craft/interaction-design",
+    "format": "essay",
+    "topic": "product-design",
+    "interests": [
+      "interaction-design",
+      "craft-and-process"
+    ],
+    "depth": "deep",
+    "duration_minutes": 14,
+    "verified_on": "2026-09-26",
+    "summary": "Freiberg catalogues the small behaviours that make an interface feel considered: focus that survives a dialog, animation that can be interrupted, selection that does not break on drag, hit areas larger than their icons. Each is demonstrated live on the page. Read it once and you will start noticing the absence of these things everywhere, which is either a gift or a curse.",
+    "headline": "The details nobody notices until they are missing",
+    "note": "Every example on the page is interactive.",
+    "thumbnail": "pd-invisible-details.jpg",
+    "thumbnail_source": "https://rauno.me/craft/interaction-design",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-atomic-design",
+    "title": "Atomic Design Methodology",
+    "creator": "Brad Frost",
+    "publication": "Atomic Design (Chapter 2)",
+    "url": "https://atomicdesign.bradfrost.com/chapter-2/",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "design-systems"
+    ],
+    "depth": "deep",
+    "duration_minutes": 20,
+    "verified_on": "2026-09-26",
+    "summary": "Frost's chemistry metaphor for building interfaces from the smallest parts up: atoms, molecules, organisms, templates, and pages. The useful part is not the naming but the argument that you are designing a system rather than a set of screens, and that the same parts should compose into layouts nobody has drawn yet. The foundation most design system vocabularies are still built on.",
+    "thumbnail": "pd-atomic-design.jpg",
+    "thumbnail_source": "https://atomicdesign.bradfrost.com/chapter-2/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-design-systems-101",
+    "title": "Design Systems 101",
+    "creator": "Therese Fessenden",
+    "publication": "Nielsen Norman Group",
+    "url": "https://www.nngroup.com/articles/design-systems-101/",
+    "format": "article",
+    "topic": "product-design",
+    "interests": [
+      "design-systems"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 10,
+    "verified_on": "2026-09-26",
+    "summary": "A clear orientation to what a design system is and is not. Fessenden separates the style guide, the component library, and the pattern library, describes who maintains each, and is honest about the cost: a system is a product with users, and an unmaintained one is worse than none. The piece to send before a team commits to building one.",
+    "thumbnail": "pd-design-systems-101.jpg",
+    "thumbnail_source": "https://www.nngroup.com/articles/design-systems-101/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-resilient-materials",
+    "title": "Resilient Web Design, Chapter 2: Materials",
+    "creator": "Jeremy Keith",
+    "publication": "resilientwebdesign.com",
+    "url": "https://resilientwebdesign.com/chapter2/",
+    "format": "essay",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "design-systems"
+    ],
+    "depth": "deep",
+    "duration_minutes": 15,
+    "verified_on": "2026-09-26",
+    "summary": "Keith explains why the web's materials behave unlike anything designers came from: HTML that renders despite errors, CSS that ignores what it does not understand, and the layering that lets a page survive missing pieces. Progressive enhancement follows from the material rather than being imposed on it. Short, beautifully written, and the clearest explanation of why the web is so hard to break.",
+    "thumbnail": "pd-resilient-materials.jpg",
+    "thumbnail_source": "https://resilientwebdesign.com/chapter2/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-webs-grain",
+    "title": "The Web's Grain",
+    "creator": "Frank Chimero",
+    "publication": "frankchimero.com",
+    "url": "https://frankchimero.com/blog/2015/the-webs-grain/",
+    "format": "essay",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process"
+    ],
+    "depth": "deep",
+    "duration_minutes": 25,
+    "verified_on": "2026-09-26",
+    "summary": "Chimero asks what the web wants to be, and answers with edgelessness: content that flows, adapts, and refuses fixed dimensions. He works through the failures of importing print and app thinking, the tyranny of the screenshot, and what it means to design for an unknown viewport. Long, illustrated, and among the best pieces of writing about the medium itself rather than about the things made with it.",
+    "headline": "Working with the grain of the material",
+    "thumbnail": "pd-webs-grain.jpg",
+    "thumbnail_source": "https://frankchimero.com/blog/2015/the-webs-grain/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-inventing-on-principle",
+    "title": "Inventing on Principle",
+    "creator": "Bret Victor",
+    "publication": "YouTube (recording of the CUSEC 2012 talk)",
+    "url": "https://www.youtube.com/watch?v=PUv66718DII",
+    "format": "video",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "interaction-design"
+    ],
+    "depth": "deep",
+    "duration_minutes": 54,
+    "verified_on": "2026-09-26",
+    "summary": "The talk that produced a decade of tooling. Victor demonstrates code whose results appear as you type, an animation editor with no compile step, and a game you can scrub through time in, then argues that the demos follow from a principle he refuses to compromise: creators need an immediate connection to what they make. The second half, about organising a career around a principle, is the part people underestimate.",
+    "thumbnail": "pd-inventing-on-principle.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=PUv66718DII",
+    "thumbnail_kind": "image",
+    "source_tier": 1
+  },
+  {
+    "id": "pd-99pi-fraktur",
+    "title": "Fraktur",
+    "creator": "Roman Mars and Katie Mingle",
+    "publication": "99% Invisible",
+    "url": "https://99percentinvisible.org/episode/fraktur/",
+    "format": "podcast",
+    "topic": "product-design",
+    "interests": [
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 37,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "A sign on a Dresden bus, set in blackletter, is enough to start an argument about who counts as German. The episode traces Fraktur from medieval scribes economising on quill strokes, through its slow loss to Roman type, to the Nazis adopting it and then abruptly banning it in 1941. What you get is a working demonstration that a typeface carries history whether or not the designer intends it, which is worth having in mind the next time a font feels merely decorative.",
+    "headline": "A typeface that cannot stop meaning something",
+    "note": "Type as politics, told as a story.",
+    "thumbnail": "pd-99pi-fraktur.jpg",
+    "thumbnail_source": "https://99percentinvisible.org/episode/fraktur/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-design-matters-don-norman",
+    "title": "Don Norman",
+    "creator": "Debbie Millman",
+    "publication": "Design Matters",
+    "url": "https://www.designmattersmedia.com/podcast/2023/Don-Norman",
+    "format": "podcast",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "interaction-design"
+    ],
+    "depth": "deep",
+    "duration_minutes": 61,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Norman wrote the book that taught a generation to blame the door rather than themselves, and here he argues his own field has been aiming too low. Human-centred design, he tells Millman, optimises for the person in front of you while the ecology they live in degrades; his answer in Design for a Better World is humanity-centred design, with longer time horizons and communities doing the designing. Millman also gets the biography — the engineer who never finished high school, and how he arrived at usability.",
+    "headline": "The man who blamed the door, on what he got wrong",
+    "thumbnail": "pd-design-matters-don-norman.jpg",
+    "thumbnail_source": "https://www.designmattersmedia.com/podcast/2023/Don-Norman",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-scher-serious-not-solemn",
+    "title": "Great design is serious (not solemn)",
+    "creator": "Paula Scher",
+    "publication": "TED",
+    "url": "https://www.youtube.com/watch?v=atn22-bmTPU",
+    "format": "video",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 22,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Scher borrows a distinction from Russell Baker — solemn is easy, serious is hard — and applies it to a 35-year career at Pentagram. Solemn work is correct, approved and safe; serious work happens spontaneously, often out of innocence or arrogance, and is usually imperfect. She counts four genuinely serious moments in her own career, including the Citibank logo drawn on a napkin, and is honest that the rest was competent solemnity. A good corrective if your process has become entirely process.",
+    "headline": "Solemn is easy. Serious is hard.",
+    "note": "She drew the Citi logo on a napkin. That's the point.",
+    "thumbnail": "pd-scher-serious-not-solemn.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=atn22-bmTPU",
+    "thumbnail_kind": "image"
+  }
+]

@@ -1,0 +1,346 @@
+[
+  {
+    "id": "tech-joel-test",
+    "title": "The Joel Test: 12 Steps to Better Code",
+    "creator": "Joel Spolsky",
+    "publication": "Joel on Software",
+    "url": "https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/",
+    "format": "article",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-26",
+    "summary": "Twelve yes-or-no questions about how a software team works: source control, one-step builds, daily builds, a bug database, fixing bugs before new code, quiet working conditions, testers, usability testing. Spolsky's point is that a rough test you can apply in five minutes beats a rigorous one nobody runs. Written in 2000, and still a fast way to read a team you are considering joining.",
+    "thumbnail": "tech-joel-test.jpg",
+    "thumbnail_source": "https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-never-rewrite",
+    "title": "Things You Should Never Do, Part I",
+    "creator": "Joel Spolsky",
+    "publication": "Joel on Software",
+    "url": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 10,
+    "verified_on": "2026-09-26",
+    "summary": "Spolsky's case against the ground-up rewrite, argued through Netscape's decision to discard its codebase and the years it cost them. The core idea is that ugly code usually encodes bug fixes for real conditions nobody remembers, so throwing it out means discovering all of them again. The single most-cited argument in favour of refactoring what you already have, and worth rereading whenever a codebase starts to look beyond saving.",
+    "headline": "Never throw the code away",
+    "thumbnail": "tech-never-rewrite.jpg",
+    "thumbnail_source": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-choose-boring-technology",
+    "title": "Choose Boring Technology",
+    "creator": "Dan McKinley",
+    "publication": "mcfunley.com",
+    "url": "https://mcfunley.com/choose-boring-technology",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "deep",
+    "duration_minutes": 20,
+    "verified_on": "2026-09-26",
+    "summary": "McKinley's innovation tokens: you get roughly three, so spend them where novelty actually wins you something. The argument is not that new technology is bad, but that its failure modes are unknown and each unknown compounds with the others. He is practical about how to evaluate a choice and how to have the conversation with a team that wants the new thing. The clearest framing of engineering conservatism.",
+    "note": "Three tokens. Spend them carefully.",
+    "thumbnail": "tech-choose-boring-technology.jpg",
+    "thumbnail_source": "https://mcfunley.com/choose-boring-technology",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-best-code-is-no-code",
+    "title": "The Best Code is No Code At All",
+    "creator": "Jeff Atwood",
+    "publication": "Coding Horror",
+    "url": "https://blog.codinghorror.com/the-best-code-is-no-code-at-all/",
+    "format": "article",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 7,
+    "verified_on": "2026-09-26",
+    "summary": "Atwood's argument is that code is a liability before it is an asset: every line has to be read, maintained, and debugged by someone. The best outcome of a feature request is often that the problem dissolves, or an existing tool covers it. Seven minutes, deliberately blunt, and a useful counterweight in any team that has started measuring its progress by the amount of code it produces.",
+    "thumbnail": "tech-best-code-is-no-code.jpg",
+    "thumbnail_source": "https://blog.codinghorror.com/the-best-code-is-no-code-at-all/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-fast-software",
+    "title": "Fast Software, the Best Software",
+    "creator": "Craig Mod",
+    "publication": "craigmod.com",
+    "url": "https://craigmod.com/essays/fast_software/",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "deep",
+    "duration_minutes": 20,
+    "verified_on": "2026-09-26",
+    "summary": "Mod writes about software that responds instantly and why it changes your relationship to a tool: fast software invites use, slow software teaches avoidance. He compares the feel of specific applications, cameras, and websites, and argues that latency is a design decision rather than a technical inevitability. The piece to read before accepting that a spinner is a normal part of an interface, or before shipping one yourself.",
+    "headline": "Speed is a feature you can feel",
+    "thumbnail": "tech-fast-software.jpg",
+    "thumbnail_source": "https://craigmod.com/essays/fast_software/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-humble-programmer",
+    "title": "The Humble Programmer (EWD 340)",
+    "creator": "Edsger W. Dijkstra",
+    "publication": "ACM Turing Lecture 1972, E.W. Dijkstra Archive",
+    "url": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD03xx/EWD340.html",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "software-craft",
+      "computing-culture"
+    ],
+    "depth": "deep",
+    "duration_minutes": 35,
+    "verified_on": "2026-09-26",
+    "summary": "Dijkstra's 1972 Turing lecture, on the discovery that the limiting factor in programming is the size of a human mind. He argues for keeping programs intellectually manageable, for reasoning about correctness rather than testing it in, and for humility as a working method rather than a virtue. Opinionated, occasionally severe, and still the most quotable thing written about the discipline.",
+    "thumbnail": "tech-humble-programmer.jpg",
+    "thumbnail_source": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD03xx/EWD340.html",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "tech-as-we-may-think",
+    "title": "As We May Think",
+    "creator": "Vannevar Bush",
+    "publication": "The Atlantic (July 1945)",
+    "url": "https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "internet-history"
+    ],
+    "depth": "deep",
+    "duration_minutes": 45,
+    "verified_on": "2026-09-26",
+    "summary": "Bush, writing in 1945, describes the memex: a desk that stores everything you read and lets you build named trails of association through it. He is describing hypertext, decades before the hardware existed, and reasoning about why the problem is retrieval rather than storage. Engelbart, Nelson, and Berners-Lee all cite it. Read it to see how much of the web was imagined before it was possible.",
+    "headline": "The machine that remembered for you",
+    "thumbnail_page": "https://www.w3.org/History/1945/vbush/vbush.shtml",
+    "thumbnail_credit": "From the W3C archive copy of the article",
+    "thumbnail": "tech-as-we-may-think.jpg",
+    "thumbnail_source": "https://www.w3.org/History/1945/vbush/vbush.shtml",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "tech-www-proposal",
+    "title": "Information Management: A Proposal",
+    "creator": "Tim Berners-Lee",
+    "publication": "W3C archive (CERN, March 1989)",
+    "url": "https://www.w3.org/History/1989/proposal.html",
+    "format": "article",
+    "topic": "tech",
+    "interests": [
+      "internet-history"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 20,
+    "verified_on": "2026-09-26",
+    "summary": "The memo that proposed the web, marked vague but exciting by Berners-Lee's manager. It starts from a mundane problem — CERN loses information when people leave — and argues for a linked, decentralised system with no central database and no enforced structure. The decisions that made the web work are visible here as choices, with the reasoning attached. Twenty minutes, and unexpectedly readable.",
+    "thumbnail": "tech-www-proposal.jpg",
+    "thumbnail_source": "https://www.w3.org/History/1989/proposal.html",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "tech-web-we-lost",
+    "title": "The Web We Lost",
+    "creator": "Anil Dash",
+    "publication": "anildash.com",
+    "url": "https://anildash.com/2012/12/13/the_web_we_lost/",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "internet-history"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-26",
+    "summary": "Dash's 2012 inventory of what the social web traded away: interoperable data, links that led off-platform, feeds in the order things happened, identity you controlled. He is specific, and he resists nostalgia by pointing out what genuinely improved. The clearest statement of what changed between the blog era and the platform era, written while it was still happening rather than a decade after the fact.",
+    "thumbnail": "tech-web-we-lost.jpg",
+    "thumbnail_source": "https://anildash.com/2012/12/13/the_web_we_lost/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-website-obesity",
+    "title": "The Website Obesity Crisis",
+    "creator": "Maciej Cegłowski",
+    "publication": "idlewords.com (talk given at Web Directions, Sydney, 2015)",
+    "url": "https://idlewords.com/talks/website_obesity.htm",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "internet-history",
+      "software-craft"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 30,
+    "verified_on": "2026-09-26",
+    "summary": "Cegłowski's talk on pages that weigh more than novels while carrying a paragraph of text. The numbers are funny and damning, the tour through advertising, tracking, and framework bloat is precise about who benefits, and the ending turns serious about what a heavy web costs people on slow connections. Still the sharpest thing written on the subject, and the numbers have only got worse.",
+    "thumbnail": "tech-website-obesity.jpg",
+    "thumbnail_source": "https://idlewords.com/talks/website_obesity.htm",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "tech-mother-of-all-demos",
+    "title": "The Mother of All Demos (1968)",
+    "creator": "Douglas Engelbart",
+    "publication": "YouTube (recording of the 1968 Fall Joint Computer Conference demonstration)",
+    "url": "https://www.youtube.com/watch?v=yJDv-zdhzMY",
+    "format": "video",
+    "topic": "tech",
+    "interests": [
+      "internet-history",
+      "computing-culture"
+    ],
+    "depth": "deep",
+    "duration_minutes": 100,
+    "verified_on": "2026-09-26",
+    "summary": "Engelbart sits at a console in San Francisco and demonstrates the mouse, hypertext, screen windows, version control, and video collaboration with a colleague thirty miles away, in one live session. Nothing on screen existed anywhere else at the time. Watch even ten minutes of it: the strange part is not how much was invented, but how little of the vision behind it we kept.",
+    "headline": "Ninety minutes in 1968 that contained everything",
+    "thumbnail": "tech-mother-of-all-demos.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=yJDv-zdhzMY",
+    "thumbnail_kind": "image",
+    "source_tier": 1
+  },
+  {
+    "id": "tech-computer-revolution",
+    "title": "The Computer Revolution Hasn't Happened Yet",
+    "creator": "Alan Kay",
+    "publication": "YouTube (recording of the OOPSLA 1997 keynote)",
+    "url": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
+    "format": "video",
+    "topic": "tech",
+    "interests": [
+      "computing-culture"
+    ],
+    "depth": "deep",
+    "duration_minutes": 64,
+    "verified_on": "2026-09-26",
+    "summary": "Kay's OOPSLA keynote, delivered with visible impatience, argues that the industry industrialised the wrong parts of computing and stopped asking what the machine was for. He revisits what object orientation was meant to mean, compares software engineering unfavourably with real engineering, and demonstrates ideas from the sixties still ahead of 1997. Bracing, funny, and a little uncomfortable if you build software for a living.",
+    "thumbnail": "tech-computer-revolution.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
+    "thumbnail_kind": "image",
+    "source_tier": 1
+  },
+  {
+    "id": "tech-aggregation-theory",
+    "title": "Aggregation Theory",
+    "creator": "Ben Thompson",
+    "publication": "Stratechery",
+    "url": "https://stratechery.com/2015/aggregation-theory/",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "startups-and-strategy"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 16,
+    "verified_on": "2026-09-26",
+    "summary": "Thompson's explanation of why the internet's biggest companies own demand rather than supply. When distribution is free and transactions cost nothing, the firm that owns the user relationship commands the suppliers, and the dynamic compounds. He works it through Google, Facebook, Netflix, and Uber. The single most useful framework for reading technology business news, and it takes sixteen minutes to acquire something you will apply for years.",
+    "thumbnail": "tech-aggregation-theory.jpg",
+    "thumbnail_source": "https://stratechery.com/2015/aggregation-theory/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-enshittification",
+    "title": "Tiktok's enshittification",
+    "creator": "Cory Doctorow",
+    "publication": "Pluralistic",
+    "url": "https://pluralistic.net/2023/01/21/potemkin-ai/",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "computing-culture",
+      "startups-and-strategy"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 15,
+    "verified_on": "2026-09-26",
+    "summary": "Doctorow's now-standard account of platform decay: good to users, then good to business customers, then good only to shareholders, until the value is gone. He traces the pattern through TikTok's heating tool and Amazon's advertising, and argues the constraints that used to prevent it — competition, regulation, interoperability — were removed rather than outgrown. Angry, specific, and it names something everyone had noticed.",
+    "headline": "How platforms decay, in three stages",
+    "thumbnail": "tech-enshittification.jpg",
+    "thumbnail_source": "https://pluralistic.net/2023/01/21/potemkin-ai/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-reflections-on-palantir",
+    "title": "Reflections on Palantir",
+    "creator": "Nabeel S. Qureshi",
+    "publication": "nabeelqu.substack.com",
+    "url": "https://nabeelqu.substack.com/p/reflections-on-palantir",
+    "format": "essay",
+    "topic": "tech",
+    "interests": [
+      "startups-and-strategy",
+      "computing-culture"
+    ],
+    "depth": "deep",
+    "duration_minutes": 35,
+    "verified_on": "2026-09-26",
+    "summary": "Qureshi's account of working at an unusually strange company: how it hired, why deployment engineers mattered more than product managers, what forward-deployed work actually involves, and where the culture failed. It is neither defence nor exposé, which is what makes it useful. The sections on hiring for raw ability and on what it costs to place engineers inside a customer's problem are the ones worth arguing with. The most concrete first-hand writing available about how an enterprise software company really operates.",
+    "thumbnail": "tech-reflections-on-palantir.jpg",
+    "thumbnail_source": "https://nabeelqu.substack.com/p/reflections-on-palantir",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-acquired-nvidia-part-one",
+    "title": "Nvidia Part I: The GPU Company (1993-2006)",
+    "creator": "Ben Gilbert and David Rosenthal",
+    "publication": "Acquired",
+    "url": "https://www.acquired.fm/episodes/nvidia-the-gpu-company-1993-2006",
+    "format": "podcast",
+    "topic": "tech",
+    "interests": [
+      "startups-and-strategy",
+      "computing-culture"
+    ],
+    "depth": "deep",
+    "duration_minutes": 113,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Recorded in 2022, before the AI boom made the story obvious, this is Nvidia as a company that nearly died repeatedly: the first chip architecture bet wrong, a market with dozens of graphics competitors, and Jensen Huang's decision to ship on a cadence nobody else could sustain. Gilbert and Rosenthal are unusually good on why the GPU turned out to be a general-purpose parallel machine that happened to be sold to gamers. The first of a trilogy, and the one that explains the rest.",
+    "headline": "Before the trillion dollars, a graphics card company",
+    "thumbnail": "tech-acquired-nvidia-part-one.jpg",
+    "thumbnail_source": "https://www.acquired.fm/episodes/nvidia-the-gpu-company-1993-2006",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-hickey-simple-made-easy",
+    "title": "Simple Made Easy",
+    "creator": "Rich Hickey",
+    "publication": "Strange Loop",
+    "url": "https://www.youtube.com/watch?v=SxdOUGdseq4",
+    "format": "video",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "deep",
+    "duration_minutes": 62,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Hickey separates two words we use interchangeably. Simple is objective — one fold, one braid, nothing twisted together. Easy is relative to you: near at hand, familiar, already installed. Most of what we choose in software is chosen for easiness, and the complexity we pay for it is not visible until the system is large. He then goes construct by construct — state, objects, inheritance, ORMs, conditionals — naming what each one complects. The talk that put 'complect' into working vocabularies.",
+    "headline": "Simple is not the same as easy",
+    "note": "Worth it for the vocabulary alone.",
+    "thumbnail": "tech-hickey-simple-made-easy.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=SxdOUGdseq4",
+    "thumbnail_kind": "image"
+  }
+]

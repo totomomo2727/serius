@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}You're subscribed &middot; {{ app_name }}{% endblock %}
+{% block body_class %}page-complete{% endblock %}
+
+{% block content %}
+<section class="complete">
+  <div class="step"><span>YOUR PERSONAL EDITION / 03</span><span>THE START OF A GOOD HABIT</span></div>
+  <div class="complete-grid">
+    <div class="complete-art">
+      <span class="postmark">THE FEATHER PRESS<br><b>WITH CARE</b><br>DELIVERED BY SERIUS</span>
+      <img src="/static/press/postbox.png" alt="Your personal newsletter postbox">
+      <div class="small-envelope">
+        <img src="/static/press/delivered.png" alt="Envelope with a confirmation mark">
+      </div>
+      <span class="hand">See you in the morning.</span>
+    </div>
+    <div class="complete-copy">
+      {% if result is none %}
+      <span class="pill">YOU’RE ON SERIUS’S LIST</span>
+      <h1>Your inbox.<br><em>A little more<br>interesting.</em></h1>
+      <p>Your next edition arrives at eight in the morning, {{ subscriber.timezone }} time.</p>
+      {% elif result.ok and result.delivered %}
+      <span class="pill">YOU’RE ON SERIUS’S LIST</span>
+      <h1>It’s on its way.<br><em>Three good finds.</em></h1>
+      <p>The edition you previewed has been sent. From tomorrow you’ll get a new one each
+        morning at eight, {{ subscriber.timezone }} time — it is {{ local_time }} there now.</p>
+      {% elif result.ok and not result.delivered %}
+      <span class="pill">CONFIRMED · NOTHING EMAILED</span>
+      <h1>Subscribed.<br><em>Not yet delivered.</em></h1>
+      <p>No email provider is configured here, so your first edition was written to the local
+        outbox rather than delivered.</p>
+      {% else %}
+      <span class="pill">CONFIRMED · DELIVERY FAILED</span>
+      <h1>Subscribed, but<br><em>today’s send failed.</em></h1>
+      <p>Your subscription is active and tomorrow’s edition will be attempted as normal.</p>
+      <p class="error" role="alert">{{ result.error }}</p>
+      {% endif %}
+      <div class="address"><span>DELIVER TO</span><strong>{{ subscriber.email }}</strong></div>
+      <a class="button" href="{{ manage_link }}">Manage your preferences<span>↗</span></a>
+      <p class="state-note">
+        {% if result is none %}
+        Status: already confirmed — nothing was re-sent.
+        {% elif result.ok and result.delivered %}
+        Status: sent{% if result.message_id %} · provider {{ result.provider }} · message
+        {{ result.message_id }}{% endif %}. Acceptance by the provider is not proof it reached
+        the inbox.
+        {% elif result.ok %}
+        Status: not delivered · outbox file {{ result.message_id }}.html.
+        {% else %}
+        Status: send failed · it will be retried with tomorrow’s edition.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

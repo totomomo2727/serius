@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Development controls &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet">
+  <p class="dateline">Not part of the reader experience &middot; hidden when DEV_TOOLS_ENABLED=false</p>
+  <h1>Development controls</h1>
+  <p class="fine">Email provider: <strong>{{ provider }}</strong>{% if not provider_is_live %} (writes to {{ outbox }}, delivers nothing){% endif %}</p>
+  <p><a class="source-link" href="/start">Build a preview for a new profile &rarr;</a></p>
+  {% for row in rows %}
+  <hr class="rule">
+  <article>
+    <h2>{{ row.subscriber.email }}</h2>
+    <p class="fine">
+      status {{ row.subscriber.status }} &middot; {{ row.subscriber.timezone }} &middot;
+      depth {{ row.subscriber.depth }} &middot;
+      topics {{ row.subscriber.topics|join(', ') }} &middot;
+      interests {{ row.subscriber.interests|join(', ') or 'none' }}
+    </p>
+    <p class="fine">
+      <a href="{{ row.manage }}">preferences</a> &middot;
+      <a href="{{ row.verify }}">verification page</a>
+    </p>
+    <ul class="dev-list">
+      {% for edition in row.editions %}
+      <li>
+        {{ edition.edition_date or 'unscheduled' }} &middot; {{ edition.kind }} &middot;
+        <strong>{{ edition.status }}</strong>
+        {% if edition.provider %}via {{ edition.provider }}{% endif %}
+        {% if edition.error %}<span class="error-inline">{{ edition.error }}</span>{% endif %}
+        &middot; attempts {{ edition.attempts }}
+        <br><span class="fine">{% for item in edition.items %}{{ item.content.title }}{% if not loop.last %} / {% endif %}{% endfor %}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="/dev/simulate" class="inline-form">
+      <input type="hidden" name="subscriber_id" value="{{ row.subscriber.id }}">
+      <button class="button quiet" type="submit">Simulate next edition</button>
+    </form>
+    <form method="post" action="/dev/reset" class="inline-form">
+      <input type="hidden" name="subscriber_id" value="{{ row.subscriber.id }}">
+      <button class="button quiet" type="submit">Reset this subscriber</button>
+    </form>
+  </article>
+  {% else %}
+  <p class="lede">No subscribers yet.</p>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,137 @@
+# The Feather Press
+
+A daily newspaper, curated for you. Three thoughtful articles, essays, or videos chosen
+around your interests, summarised so the substance takes three minutes, with the originals
+one link away.
+
+The email is the product. The web app exists to choose interests, see a real edition before
+subscribing, and manage delivery afterwards — no password, no dashboard.
+
+## The flow
+
+1. `/` introduces the paper, `/start` collects broad topics, optional specific interests, and
+   preferred depth.
+2. `/preview/{id}` runs the real recommendation engine and shows the edition that would be
+   sent, after a short animation of Serius walking up to a postbox and posting the letter
+   (skipped entirely under `prefers-reduced-motion`).
+3. Subscribing stores the reader and **pins that exact edition** as their first one, then
+   emails a confirmation link.
+4. Confirming (a POST, so link scanners cannot subscribe anyone) sends that same edition
+   immediately.
+5. An hourly job sends a new edition to each reader once 08:00 has passed in their own
+   timezone, once per local day.
+
+## Running it
+
+```bash
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python -e ".[dev]"
+.venv/bin/uvicorn app.main:app --reload
+```
+
+Then open http://localhost:8000. The content library is seeded into SQLite on startup.
+
+```bash
+.venv/bin/python -m pytest -q     # tests
+.venv/bin/ruff check . && .venv/bin/ruff format --check .
+```
+
+## Environment variables
+
+| Variable | Default | Notes |
+| --- | --- | --- |
+| `BASE_URL` | auto-detected per request | Pin it in production so email links are absolute and stable. |
+| `ASSET_BASE_URL` | empty (falls back to `BASE_URL`) | Host serving `/static/...` for emailed images. Set it when the app itself is not publicly reachable, otherwise inboxes cannot load the thumbnails. |
+| `DATABASE_URL` | `sqlite:///data/feather.db` | Any SQLAlchemy URL. The SQLite file must live on persistent storage. |
+| `SECRET_KEY` | random, persisted to `data/secrets.json` | Signs verification/management links. Set explicitly when running more than one instance. |
+| `CRON_SECRET` | random, persisted to `data/secrets.json` | Required in the `X-Cron-Secret` header on `POST /jobs/daily`. |
+| `RESEND_API_KEY` | empty | When empty, nothing is delivered: messages are written to `data/outbox/` and clearly marked undelivered. |
+| `EMAIL_PROVIDER` | `auto` | `auto` (Resend when a key exists, otherwise console), `resend`, or `console`. |
+| `EMAIL_FROM` | `The Feather Press <onboarding@resend.dev>` | Resend's shared sender only reaches your own account address; use a verified domain for real readers. |
+| `EMAIL_ALLOWED_RECIPIENTS` | empty | Comma-separated allow-list. Set it while testing so mail can only reach the test inbox. |
+| `DELIVERY_HOUR_LOCAL` | `8` | Local hour at which an edition becomes due. |
+| `SCHEDULER_ENABLED` | `true` | Turn off when the platform provides cron and calls `/jobs/daily`. |
+| `DEV_TOOLS_ENABLED` | `true` | **Set to `false` in production.** Hides `/dev` and the confirmation-link shortcut. |
+| `OUTBOX_DIR` | `data/outbox` | Where console messages are written. |
+
+## Deployment requirements
+
+- Persistent disk for `data/` (SQLite database, generated secrets, outbox).
+- `RESEND_API_KEY` plus a verified sending domain for `EMAIL_FROM`; without a verified
+  domain Resend only delivers to the account owner's own address.
+- Either keep `SCHEDULER_ENABLED=true` on a single always-on instance, or run platform cron
+  hourly: `curl -X POST -H "X-Cron-Secret: $CRON_SECRET" $BASE_URL/jobs/daily`.
+- `DEV_TOOLS_ENABLED=false` and an explicit `BASE_URL`.
+- `GET /healthz` reports library size, subscriber count, and whether delivery is live.
+
+## The content library
+
+`content/library/*.json` holds 88 hand-checked pieces across product design, philosophy,
+psychology, AI, and tech — essays, articles, talks and podcast episodes. Each record carries
+a stable id, title, creator, publication or channel, url, format (`article` / `essay` /
+`video` / `podcast`), broad topic, specific-interest tags, depth (`accessible` / `deep`),
+estimated minutes, an original 60–90 word summary, and the date it was verified.
+
+Source quality is a tier: 1 for primary sources and original-author work (Paul Graham, Aeon,
+Distill, the Stanford Encyclopedia, arXiv, authored newsletters), 2 for strong specialist
+publications, 3 for everything else. `app/sources.py` infers it from the publisher domain;
+pieces hosted on a platform (YouTube, podcast hosts) say nothing about their own quality by
+their url, so those records must declare `source_tier` explicitly or loading fails.
+
+To add a piece: read or watch it, append a record to the right file with a new stable id,
+use only interest slugs listed in `app/content.py`, and write the summary yourself. Restart
+the app (or call `seed_content`) to upsert it — seeding is idempotent and keyed by id, so
+editing a record updates it in place and nothing is ever duplicated. Summaries are checked
+at load time for required fields, known topics, known interests, and valid formats.
+
+## How selection works
+
+`app/selection.py` scores each piece: a specific-interest match is worth 10, the broad topic
+4, matching the preferred depth 3, reader feedback ±5/8, and source quality +5 (tier 1) or
++2.5 (tier 2) — bounded below one interest match, so a better source breaks a tie without
+ever beating relevance. Variety penalties nudge the edition away from repeating a format,
+mode, topic, or creator, and a final pass trades the weakest pick for a watch or a listen
+when an edition would otherwise be three of the same mode — only for a piece already inside
+the reader's topics and relevant on its own merits, never for format variety alone. Ties
+break on id, so the same profile always yields the same edition.
+
+Pieces the reader has already been sent are excluded while suitable unseen content remains.
+Once it runs out, the least-recently-sent relevant pieces return, labelled as revisits in
+both the reason line and the edition itself. Every edition stores the profile used, the
+three items, and the reason for each, so a preview, its email, and any retry are identical.
+
+### Checking that editions really are personalised
+
+```
+.venv/bin/python scripts/personalization_report.py
+```
+
+Builds one real edition per profile in `PROFILE_MATRIX` (each topic alone, subtopics within
+a topic, two topics together, the same topic at opposite depths) in a throwaway database,
+writes each profile's newsletter as it would be sent to
+`data/personalization-report/<profile>.html` and `.txt`, and writes `report.md`: what each
+profile received and how many of the three pieces any two profiles share. It exits non-zero
+if two profiles would receive the same three pieces, if a piece falls outside the chosen
+topics, or if a chosen subtopic goes unmatched. Add a profile by appending to the matrix;
+`tests/test_personalization.py` asserts the same invariants over it on every test run.
+
+## Type and imagery
+
+Four self-hosted families, each with one job, all under the SIL Open Font License 1.1 and
+subset to latin in `app/static/fonts/`:
+
+| Role | Family | Used for |
+| --- | --- | --- |
+| `--didone` | Bodoni Moda | masthead, story numerals, the standfirst |
+| `--display` | Noto Serif Display (condensed widths) | headlines, kickers, section labels |
+| `--reading` | Source Serif 4 | body copy, 16–18px |
+| `--meta` | Source Sans 3 | captions, forms, fine print |
+| `--hand` | Caveat | one handwritten annotation per page, never body copy |
+
+Each piece shows the image its own publisher nominates for sharing (`og:image`, or the
+official thumbnail for a video), fetched once by `scripts/fetch_thumbnails.py`, checked for
+usable dimensions, and cached under `app/static/thumbs/` so editions never hotlink at read
+time. The original URL is kept in `thumbnail_source` and the publication is credited under
+the image. Pieces that publish no usable image — plain-text essays, encyclopedias, PDFs —
+fall back to a drawn plate: a line motif for the topic with Serius in the pose for the
+format, credited as original artwork.

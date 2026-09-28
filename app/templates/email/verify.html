@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Confirm your subscription</title></head>
+<body style="margin:0;padding:0;background:#efe9dc;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#efe9dc;padding:24px 12px;">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;background:#fbf7ef;border:1px solid #d8cfba;">
+<tr><td style="padding:28px 28px 8px 28px;text-align:center;font-family:Georgia,'Times New Roman',serif;">
+  <div style="font-size:34px;line-height:1.1;font-weight:700;color:#1d1a15;">{{ app_name }}</div>
+  <div style="font-size:14px;font-style:italic;color:#5b4f3c;padding-top:4px;">{{ tagline }}</div>
+</td></tr>
+<tr><td style="padding:0 28px;"><div style="border-top:3px double #1d1a15;margin:16px 0;"></div></td></tr>
+<tr><td style="padding:0 28px;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.65;color:#2b261d;">
+  <p>One confirmation and your first edition &mdash; the one you previewed &mdash; is sent straight away.</p>
+  <p style="text-align:center;padding:12px 0;">
+    <a href="{{ verify_link }}" style="display:inline-block;background:#1d1a15;color:#fbf7ef;padding:14px 22px;font-weight:700;text-decoration:none;">Confirm and send my first edition</a>
+  </p>
+  <p style="font-size:14px;color:#5b4f3c;">If the button does not work, open this link:<br>
+    <a href="{{ verify_link }}" style="color:#7a2f1d;word-break:break-all;">{{ verify_link }}</a></p>
+  <p style="font-size:14px;color:#5b4f3c;">Your first edition holds:</p>
+  <ul style="font-size:15px;color:#3a3225;line-height:1.6;">
+    {% for item in items %}<li>{{ item.content.title }} &mdash; {{ item.content.creator }}</li>{% endfor %}
+  </ul>
+  <p style="font-size:13px;color:#7a6a52;">If you did not ask for this, ignore the email and nothing will be sent.</p>
+</td></tr>
+<tr><td style="height:20px;"></td></tr>
+</table></td></tr></table>
+</body>
+</html>

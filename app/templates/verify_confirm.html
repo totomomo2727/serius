@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Confirm your subscription &middot; {{ app_name }}{% endblock %}
+{% block content %}
+<section class="sheet narrow">
+  <p class="dateline">One click left</p>
+  <h1>Confirm your subscription</h1>
+  <p class="lede">
+    Press the button to confirm <strong>{{ subscriber.email }}</strong>. Your first edition,
+    the one you previewed, is sent straight away.
+  </p>
+  <form method="post" action="/verify/{{ token }}">
+    <p class="cta-row"><button class="button" type="submit">Confirm and send my first edition</button></p>
+  </form>
+  <p class="fine">
+    Nothing is confirmed by loading this page, so link scanners and previews in your mail
+    client cannot subscribe you by accident.
+  </p>
+</section>
+{% endblock %}

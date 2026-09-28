@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Serius is on his way &middot; {{ app_name }}{% endblock %}
+{% block body_class %}page-delivery{% endblock %}
+
+{% block content %}
+<section class="delivery" data-next="{{ next_url }}">
+  <div class="step"><span>YOUR PERSONAL EDITION / 02</span><span>A SPECIAL DELIVERY</span></div>
+  <span class="pill">SERIUS IS ON HIS WAY</span>
+  <h1>Good things<br><em>take a little flight.</em></h1>
+  <p>Your curious curator is bringing your newsletter.</p>
+  <div class="delivery-scene"
+       aria-label="Serius carries an envelope in his beak and drops it into the postbox">
+    <div class="ground"></div>
+    <div class="courier">
+      <img src="/static/press/walk.png" alt="Serius carrying your mail">
+      <img class="beak-mail" src="/static/press/mail.png" alt="">
+    </div>
+    <img class="postbox" src="/static/press/postbox.png" alt="Your postbox">
+    <span class="mail-arrived">✓</span>
+    <span class="scene-note">a little something<br>just for you.</span>
+  </div>
+  <div class="delivery-status" role="status"><span class="dot"></span> A newsletter with your name on it.</div>
+  <div class="delivery-progress"></div>
+  <a class="quiet" id="skip" href="{{ next_url }}">Skip animation →</a>
+  <noscript><p class="quiet"><a href="{{ next_url }}">Read your edition →</a></p></noscript>
+</section>
+
+<script>
+  // Presentation only. The edition already exists on the server; this screen just
+  // walks Serius to the postbox before showing it.
+  (function () {
+    var scene = document.querySelector('.delivery');
+    var next = scene.dataset.next;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.setTimeout(function () { window.location.replace(next); }, reduced ? 400 : 6500);
+  })();
+</script>
+{% endblock %}

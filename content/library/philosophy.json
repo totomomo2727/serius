@@ -1,0 +1,323 @@
+[
+  {
+    "id": "ph-stoicism-iep",
+    "title": "Stoicism",
+    "creator": "Internet Encyclopedia of Philosophy",
+    "publication": "Internet Encyclopedia of Philosophy",
+    "url": "https://iep.utm.edu/stoicism/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "stoicism"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 18,
+    "verified_on": "2026-09-26",
+    "summary": "A plain-language entry on what the Stoics actually taught, before the modern self-help version of it. It covers the school's physics and logic as well as the ethics, explains why virtue was held to be the only real good, and shows how the famous advice about control follows from that rather than standing alone. A good first stop if Marcus Aurelius arrived without context.",
+    "thumbnail": "ph-stoicism-iep.jpg",
+    "thumbnail_source": "https://iep.utm.edu/stoicism/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "ph-stoicism-sep",
+    "title": "Stoicism",
+    "creator": "Stanford Encyclopedia of Philosophy",
+    "publication": "plato.stanford.edu",
+    "url": "https://plato.stanford.edu/entries/stoicism/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "stoicism",
+      "epistemology"
+    ],
+    "depth": "deep",
+    "duration_minutes": 40,
+    "verified_on": "2026-09-26",
+    "summary": "The scholarly treatment: sources, disputes, and the parts of the system usually left out. It reconstructs Stoic physics and logic from fragments, sets out the theory of the passions and what apatheia did and did not mean, and traces disagreements between Zeno, Chrysippus, and the Roman writers. Dense, cited throughout, and the reference to keep open while reading anything else on the subject.",
+    "headline": "Stoicism, with the arguments left in",
+    "thumbnail": "ph-stoicism-sep.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/stoicism/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-seneca-shortness",
+    "title": "On the Shortness of Life",
+    "creator": "Seneca, translated by John W. Basore",
+    "publication": "Wikisource (Loeb Classical Library, 1932)",
+    "url": "https://en.wikisource.org/wiki/On_the_shortness_of_life",
+    "format": "essay",
+    "topic": "philosophy",
+    "interests": [
+      "stoicism",
+      "meaning-and-mortality"
+    ],
+    "depth": "deep",
+    "duration_minutes": 45,
+    "verified_on": "2026-09-26",
+    "summary": "Seneca's letter to Paulinus argues that life is long enough, and that we spend it as if it were not ours to lose. The complaints are oddly current: busyness as a status claim, obligations nobody chose, plans permanently deferred to a retirement that may not arrive. Two thousand years old, and still uncomfortably direct about how you actually spent today.",
+    "headline": "It is not that we have little time",
+    "note": "Written in the first century. Still about your calendar.",
+    "thumbnail": "ph-seneca-shortness.jpg",
+    "thumbnail_source": "https://en.wikisource.org/wiki/On_the_shortness_of_life",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-pigliucci-stoicism-tedx",
+    "title": "Stoicism as a philosophy for an ordinary life",
+    "creator": "Massimo Pigliucci",
+    "publication": "YouTube, TEDx Talks (TEDxAthens)",
+    "url": "https://www.youtube.com/watch?v=Yhn1Fe8cT0Q",
+    "format": "video",
+    "topic": "philosophy",
+    "interests": [
+      "stoicism"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 19,
+    "verified_on": "2026-09-26",
+    "summary": "Pigliucci, a philosopher who came to Stoicism late and practically, explains what a modern person can take from it without pretending to be a Roman. He separates the therapeutic advice from the metaphysics, is honest about which parts he rejects, and gives a few exercises worth trying. Nineteen minutes, and a useful corrective to the quote-of-the-day version of a school that was never really about endurance.",
+    "thumbnail": "ph-pigliucci-stoicism-tedx.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=Yhn1Fe8cT0Q",
+    "thumbnail_kind": "image",
+    "source_tier": 3
+  },
+  {
+    "id": "ph-singer-famine",
+    "title": "Famine, Affluence, and Morality",
+    "creator": "Peter Singer",
+    "publication": "Philosophy and Public Affairs, Vol. 1, No. 3 (1972)",
+    "url": "https://rintintin.colorado.edu/~vancecd/phil308/Singer1.pdf",
+    "format": "essay",
+    "topic": "philosophy",
+    "interests": [
+      "ethics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 30,
+    "verified_on": "2026-09-26",
+    "summary": "Singer's 1972 argument is one paragraph long and very hard to escape: if you can prevent something bad without sacrificing anything comparably important, you ought to. The drowning child makes it vivid, and the rest of the paper works through what accepting it would mean for distance, numbers, and how much you give. Fifty years on, most responses are still replies to this.",
+    "headline": "The drowning child, and what follows from it",
+    "thumbnail": "ph-singer-famine.jpg",
+    "thumbnail_source": "https://rintintin.colorado.edu/~vancecd/phil308/Singer1.pdf",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-virtue-ethics",
+    "title": "Virtue Ethics",
+    "creator": "Stanford Encyclopedia of Philosophy",
+    "publication": "plato.stanford.edu",
+    "url": "https://plato.stanford.edu/entries/ethics-virtue/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "ethics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 32,
+    "verified_on": "2026-09-26",
+    "summary": "The overview of the tradition that asks what kind of person to be rather than which rule to follow. It sets out the central notions of virtue, practical wisdom, and flourishing, explains the twentieth-century revival after Anscombe, and takes the standard objections seriously — that the theory gives little guidance, and that its list of virtues varies with culture. Clear, and fair to its critics.",
+    "thumbnail": "ph-virtue-ethics.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/ethics-virtue/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-consequentialism",
+    "title": "Consequentialism",
+    "creator": "Stanford Encyclopedia of Philosophy",
+    "publication": "plato.stanford.edu",
+    "url": "https://plato.stanford.edu/entries/consequentialism/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "ethics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 32,
+    "verified_on": "2026-09-26",
+    "summary": "A careful map of the view that outcomes are what matter morally, and of the many forms it takes once you ask which outcomes and evaluated how. Act and rule versions, satisficing, agent-relative value, and the demandingness problem all get proper treatment. Read alongside the virtue ethics entry: between them they cover most of what people are arguing about when they argue about ethics.",
+    "thumbnail": "ph-consequentialism.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/consequentialism/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-effective-altruism",
+    "title": "What is effective altruism?",
+    "creator": "Centre for Effective Altruism",
+    "publication": "effectivealtruism.org",
+    "url": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "ethics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-26",
+    "summary": "The movement's own account of itself: use evidence and careful reasoning to work out how to help others most, then act on it. Short, and clearer than most secondary descriptions about the core claims and the cause areas that follow from them. Worth reading first-hand before deciding what you think, given how much of the public argument is conducted at second hand.",
+    "thumbnail": "ph-effective-altruism.jpg",
+    "thumbnail_source": "https://www.effectivealtruism.org/articles/introduction-to-effective-altruism",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "ph-sandel-justice",
+    "title": "Justice: What's The Right Thing To Do? Episode 01, The Moral Side of Murder",
+    "creator": "Michael Sandel",
+    "publication": "YouTube, Harvard University",
+    "url": "https://www.youtube.com/watch?v=kBdfcR-8hEY",
+    "format": "video",
+    "topic": "philosophy",
+    "interests": [
+      "ethics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 55,
+    "verified_on": "2026-09-26",
+    "summary": "The first lecture of Sandel's Harvard course, filmed in a packed hall. He opens with the runaway trolley, gets a thousand students to commit to an answer, then walks them into the case where their own principle fails. What makes it work is the arguing: real objections from the room, taken seriously. The best hour of introductory moral philosophy on video.",
+    "thumbnail": "ph-sandel-justice.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=kBdfcR-8hEY",
+    "thumbnail_kind": "image",
+    "source_tier": 1
+  },
+  {
+    "id": "ph-life-meaning",
+    "title": "The Meaning of Life",
+    "creator": "Stanford Encyclopedia of Philosophy",
+    "publication": "plato.stanford.edu",
+    "url": "https://plato.stanford.edu/entries/life-meaning/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "meaning-and-mortality"
+    ],
+    "depth": "deep",
+    "duration_minutes": 35,
+    "verified_on": "2026-09-26",
+    "summary": "Before answering whether life has meaning, this entry asks what the question means, and finds several distinct ones underneath. It separates supernaturalist from naturalist accounts, subjective from objective ones, and meaning in a life from the meaning of life. Nihilism gets a fair hearing rather than a dismissal, and so does the thought that the question is confused. Systematic, and it makes the conversation much easier to have without talking past everyone in it.",
+    "headline": "What the question is actually asking",
+    "thumbnail": "ph-life-meaning.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/life-meaning/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-plato-apology",
+    "title": "Apology",
+    "creator": "Plato, translated by Benjamin Jowett",
+    "publication": "Project Gutenberg",
+    "url": "https://www.gutenberg.org/files/1656/1656-h/1656-h.htm",
+    "format": "essay",
+    "topic": "philosophy",
+    "interests": [
+      "meaning-and-mortality",
+      "epistemology"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 50,
+    "verified_on": "2026-09-26",
+    "summary": "Socrates' defence speech, as Plato recorded it. He explains the oracle, the habit of questioning that made him enemies, and why he will not stop in exchange for acquittal. The unexamined life line arrives here, in context, from a man who has just been sentenced to death. Short, readable in one sitting, and the origin of a great deal that follows.",
+    "thumbnail": "ph-plato-apology.jpg",
+    "thumbnail_source": "https://www.gutenberg.org/files/1656/1656-h/1656-h.htm",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-descartes-discourse",
+    "title": "A Discourse on Method",
+    "creator": "René Descartes, translated by John Veitch",
+    "publication": "Project Gutenberg",
+    "url": "https://www.gutenberg.org/files/59/59-h/59-h.htm",
+    "format": "essay",
+    "topic": "philosophy",
+    "interests": [
+      "epistemology"
+    ],
+    "depth": "deep",
+    "duration_minutes": 90,
+    "verified_on": "2026-09-26",
+    "summary": "Descartes describes taking his own beliefs apart to find whether anything survives doubt. The method, the dream argument, the demon, and the one thing that cannot be doubted are all here, written as autobiography rather than treatise. Long by modern standards, and the later sections on physics have aged badly, but the first two parts alone explain why this small book restarted European philosophy and why every course still begins here.",
+    "thumbnail": "ph-descartes-discourse.jpg",
+    "thumbnail_source": "https://www.gutenberg.org/files/59/59-h/59-h.htm",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-epistemology",
+    "title": "Epistemology",
+    "creator": "Stanford Encyclopedia of Philosophy",
+    "publication": "plato.stanford.edu",
+    "url": "https://plato.stanford.edu/entries/epistemology/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "epistemology"
+    ],
+    "depth": "deep",
+    "duration_minutes": 40,
+    "verified_on": "2026-09-26",
+    "summary": "The reference entry on knowledge: what it is, how belief differs from knowledge, and why justified true belief stopped being a satisfactory answer after Gettier. It covers foundationalism and coherentism, internalism and externalism, and the sources of knowledge from perception to testimony. It also covers the sceptical challenges that any account has to survive. Substantial, carefully organised, and the piece to read before arguing with anyone about what counts as evidence.",
+    "thumbnail": "ph-epistemology.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/epistemology/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "ph-skepticism",
+    "title": "Skepticism",
+    "creator": "Stanford Encyclopedia of Philosophy",
+    "publication": "plato.stanford.edu",
+    "url": "https://plato.stanford.edu/entries/skepticism/",
+    "format": "article",
+    "topic": "philosophy",
+    "interests": [
+      "epistemology"
+    ],
+    "depth": "deep",
+    "duration_minutes": 35,
+    "verified_on": "2026-09-26",
+    "summary": "A survey of the doubts that refuse to go away: the brain in a vat, the problem of the criterion, and the ancient sceptics' suspension of judgement. It treats them as arguments to be answered rather than games, and covers the main responses, including contextualism and Moore's refusal to play. Useful for seeing exactly where your own confidence is resting on nothing.",
+    "headline": "The arguments you cannot quite answer",
+    "thumbnail": "ph-skepticism.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/skepticism/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "phil-philosophize-this-camus-fall",
+    "title": "Episode #170 — Albert Camus: The Fall",
+    "creator": "Stephen West",
+    "publication": "Philosophize This!",
+    "url": "https://www.philosophizethis.org/podcast/episode-170-the-fall",
+    "format": "podcast",
+    "topic": "philosophy",
+    "interests": [
+      "meaning-and-mortality",
+      "ethics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 39,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "West reads Camus's last novel as a warning rather than a manifesto. Jean-Baptiste Clamence, a Paris lawyer with an immaculate self-image, hears a woman fall from a bridge, does nothing, and spends the rest of the book constructing defences against what that revealed. The device Camus gives him — the judge-penitent, confessing first so that he earns the right to accuse you — is a precise description of a move you will recognise in public life. A careful, unhurried guide to a short, uncomfortable book.",
+    "headline": "Confess first, then accuse: Camus on self-deception",
+    "thumbnail": "phil-philosophize-this-camus-fall.jpg",
+    "thumbnail_source": "https://www.philosophizethis.org/podcast/episode-170-the-fall",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "phil-cwt-agnes-callard",
+    "title": "Agnes Callard on the Theory of Everything",
+    "creator": "Tyler Cowen and Agnes Callard",
+    "publication": "Conversations with Tyler",
+    "url": "https://conversationswithtyler.com/episodes/agnes-callard/",
+    "format": "podcast",
+    "topic": "philosophy",
+    "interests": [
+      "epistemology",
+      "meaning-and-mortality"
+    ],
+    "depth": "deep",
+    "duration_minutes": 60,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Callard's book Aspiration is about the strange position of wanting to become someone who values what you do not yet value — you cannot fully want the end you are working towards, because wanting it is the thing you are acquiring. Cowen pushes her across Plato's dialogue form, whether parenting is undertheorised, whether death should frighten us, and whether immortality would be boring. She argues rather than performs, and disagrees with him often enough that the hour stays live.",
+    "headline": "On becoming someone who wants different things",
+    "thumbnail": "phil-cwt-agnes-callard.jpg",
+    "thumbnail_source": "https://conversationswithtyler.com/episodes/agnes-callard/",
+    "thumbnail_kind": "image"
+  }
+]

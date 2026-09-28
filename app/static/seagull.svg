@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-label="Serius, a hand-drawn seagull">
+  <g fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M58 12 C40 15 31 36 29 62 C27 88 39 106 60 106 C81 106 93 88 91 62 C89 36 80 15 62 12 Z" fill="#fffdf2"/>
+    <path d="M80 26 L106 31 L79 36" fill="#fffdf2" stroke-width="3.4"/>
+    <path d="M46 50 C39 70 43 90 57 100" stroke-width="3.2"/>
+    <circle cx="66" cy="27" r="3" fill="#1a1a1a" stroke="none"/>
+    <circle cx="76" cy="26" r="3" fill="#1a1a1a" stroke="none"/>
+    <path d="M52 106 L50 126 M70 106 L72 126" stroke-width="3.2"/>
+    <path d="M40 129 Q50 124 60 128 M62 128 Q72 124 82 129" stroke-width="3.2"/>
+  </g>
+</svg>

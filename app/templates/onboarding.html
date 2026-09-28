@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Choose your interests &middot; {{ app_name }}{% endblock %}
+{% block body_class %}page-signup{% endblock %}
+
+{% block content %}
+<section class="signup">
+  <div class="step"><a href="/">← BACK</a><span>STEP 01 / 03 · YOUR INTERESTS</span></div>
+  <div class="signup-grid">
+    <div class="form-side">
+      <span class="pill">TELL SERIUS WHAT YOU LIKE</span>
+      <h1>What are you<br><em>curious about?</em></h1>
+      {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+      <form method="post" action="/preview" data-once>
+        <fieldset class="topic-set">
+          <legend>Pick at least one.</legend>
+          <div class="topics">
+            {% for topic in topics %}
+            <label class="topic" data-chip>
+              <input type="checkbox" name="topics" value="{{ topic.slug }}" data-topic="{{ topic.slug }}"
+                     {% if selected and topic.slug in selected.topics %}checked{% endif %}>
+              <span>{{ topic.label }}</span><b aria-hidden="true">+</b>
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+
+        <fieldset class="topic-set" id="specifics">
+          <legend>Anything specific? <i>Optional.</i></legend>
+          {% for topic in topics %}
+          <div class="interest-group" data-group="{{ topic.slug }}">
+            <h3>{{ topic.label }}</h3>
+            <div class="topics">
+              {% for interest in topic.interests %}
+              <label class="topic small" data-chip>
+                <input type="checkbox" name="interests" value="{{ interest.slug }}"
+                       {% if selected and interest.slug in selected.interests %}checked{% endif %}>
+                <span>{{ interest.label }}</span><b aria-hidden="true">+</b>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </fieldset>
+
+        <fieldset class="topic-set">
+          <legend>How deep do you like to go?</legend>
+          <div class="topics">
+            {% for value, label in depth_choices %}
+            <label class="topic" data-chip>
+              <input type="radio" name="depth" value="{{ value }}"
+                     {% if (selected and selected.depth == value) or (not selected and value == 'mix') %}checked{% endif %}>
+              <span>{{ label }}</span><b aria-hidden="true">+</b>
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+
+        <button class="button" type="submit">Show me my three<span>↗</span></button>
+        <p class="consent">No email needed yet. You will read the real edition first, then decide
+          whether you want it delivered.</p>
+      </form>
+    </div>
+
+    <aside class="signup-aside">
+      <div class="aside-top"><span>✦</span><b>YOUR CURATOR</b><span>✦</span></div>
+      <h2>He reads,<br><em>so you don’t<br>have to.</em></h2>
+      <img src="/static/press/serius.png" alt="Serius, the seagull curator, holding a flower">
+      <p class="hand">three finds. every morning.</p>
+      <div class="selection-note">
+        <span>HOW HE CHOOSES</span>
+        <p>Your specific interests first, then the wider topic, then the depth you asked for.</p>
+      </div>
+      <small>NO ACCOUNT · NO PASSWORD · UNSUBSCRIBE ANY TIME</small>
+    </aside>
+  </div>
+</section>
+
+<script>
+  // Progressive enhancement only: without JS every interest group stays visible and usable.
+  (function () {
+    var groups = document.querySelectorAll('.interest-group');
+    var topics = document.querySelectorAll('input[data-topic]');
+    var specifics = document.getElementById('specifics');
+    function sync() {
+      var chosen = {};
+      topics.forEach(function (box) { if (box.checked) { chosen[box.dataset.topic] = true; } });
+      var any = Object.keys(chosen).length > 0;
+      specifics.hidden = !any;
+      groups.forEach(function (group) {
+        var show = Boolean(chosen[group.dataset.group]);
+        group.hidden = !show;
+        if (!show) {
+          group.querySelectorAll('input[type=checkbox]').forEach(function (box) {
+            box.checked = false;
+            box.dispatchEvent(new Event('change'));
+          });
+        }
+      });
+    }
+    topics.forEach(function (box) { box.addEventListener('change', sync); });
+    sync();
+  })();
+</script>
+{% endblock %}

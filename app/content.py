@@ -1,0 +1,240 @@
+"""Loading and seeding the curated content library.
+
+The library lives in ``content/library/*.json`` — one file per broad topic. Editing
+those files and restarting the app (or running ``python -m app.seed``) is the whole
+maintenance process; see docs/CONTENT.md.
+"""
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
+from typing import TYPE_CHECKING
+
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from app.config import ROOT_DIR
+from app.models import ContentItem
+from app.sources import TIER_WEIGHTS, is_platform, tier_for
+
+if TYPE_CHECKING:
+    from app.selection import Profile
+
+LIBRARY_DIR = ROOT_DIR / "content" / "library"
+
+REQUIRED_FIELDS = (
+    "id",
+    "title",
+    "creator",
+    "publication",
+    "url",
+    "format",
+    "topic",
+    "interests",
+    "depth",
+    "duration_minutes",
+    "summary",
+    "verified_on",
+)
+
+OPTIONAL_FIELDS = (
+    "headline",
+    "note",
+    "visual",
+    "visual_alt",
+    "visual_credit",
+    "thumbnail",
+    "thumbnail_source",
+    "thumbnail_kind",
+    "thumbnail_page",
+    "thumbnail_credit",
+    "source_tier",
+)
+
+VALID_FORMATS = {"article", "essay", "video", "podcast"}
+VALID_DEPTHS = {"accessible", "deep"}
+VALID_VISUALS = {"product-design", "philosophy", "psychology", "ai", "tech"}
+
+
+@dataclass(frozen=True)
+class Interest:
+    slug: str
+    label: str
+
+
+@dataclass(frozen=True)
+class Topic:
+    slug: str
+    label: str
+    blurb: str
+    interests: tuple[Interest, ...]
+
+
+TOPICS: tuple[Topic, ...] = (
+    Topic(
+        "product-design",
+        "Product design",
+        "Typography, interfaces, and the craft of making things people use.",
+        (
+            Interest("typography", "Typography"),
+            Interest("interaction-design", "Interaction design"),
+            Interest("design-systems", "Design systems"),
+            Interest("craft-and-process", "Craft and process"),
+        ),
+    ),
+    Topic(
+        "philosophy",
+        "Philosophy",
+        "Old arguments that still decide how you spend a Tuesday.",
+        (
+            Interest("stoicism", "Stoicism"),
+            Interest("ethics", "Ethics"),
+            Interest("meaning-and-mortality", "Meaning and mortality"),
+            Interest("epistemology", "Knowledge and doubt"),
+        ),
+    ),
+    Topic(
+        "psychology",
+        "Psychology",
+        "How attention, memory, and motivation actually behave.",
+        (
+            Interest("learning-and-memory", "Learning and memory"),
+            Interest("attention-and-focus", "Attention and focus"),
+            Interest("habits-and-motivation", "Habits and motivation"),
+            Interest("decision-making", "Decision making"),
+        ),
+    ),
+    Topic(
+        "ai",
+        "AI",
+        "What the models do, where they fail, and what they change.",
+        (
+            Interest("how-models-work", "How models work"),
+            Interest("ai-safety", "AI safety"),
+            Interest("ai-and-society", "AI and society"),
+            Interest("ai-tools-and-interfaces", "Tools and interfaces"),
+        ),
+    ),
+    Topic(
+        "tech",
+        "Tech",
+        "Software craft, internet history, and the industry's own arguments.",
+        (
+            Interest("software-craft", "Software craft"),
+            Interest("internet-history", "Internet history"),
+            Interest("computing-culture", "Computing culture"),
+            Interest("startups-and-strategy", "Startups and strategy"),
+        ),
+    ),
+)
+
+TOPICS_BY_SLUG = {t.slug: t for t in TOPICS}
+INTEREST_LABELS = {i.slug: i.label for t in TOPICS for i in t.interests}
+TOPIC_LABELS = {t.slug: t.label for t in TOPICS}
+
+DEPTH_CHOICES = (
+    ("accessible", "Accessible introductions"),
+    ("deep", "Deeper explorations"),
+    ("mix", "A mix of both"),
+)
+
+
+SAMPLE_PATH = ROOT_DIR / "content" / "sample-edition.json"
+
+
+@lru_cache(maxsize=1)
+def sample_edition() -> dict:
+    """The fixed edition shown on the landing page and at /sample, never personalized."""
+    return json.loads(SAMPLE_PATH.read_text())
+
+
+def interests_line(profile: Profile) -> str:
+    """The kicker above an edition, naming what it was actually built from."""
+    chosen = [INTEREST_LABELS[i] for i in profile.interests if i in INTEREST_LABELS]
+    if not chosen:
+        chosen = [TOPIC_LABELS[t] for t in profile.topics if t in TOPIC_LABELS]
+    return " + ".join(chosen).upper() or "YOUR INTERESTS"
+
+
+def load_library() -> list[dict]:
+    """Read every topic file, validating structure. Raises on malformed entries."""
+    records: list[dict] = []
+    seen: set[str] = set()
+    for path in sorted(LIBRARY_DIR.glob("*.json")):
+        data = json.loads(Path(path).read_text())
+        if not isinstance(data, list):
+            raise ValueError(f"{path.name}: expected a list of items")
+        for raw in data:
+            for field in REQUIRED_FIELDS:
+                if field not in raw:
+                    raise ValueError(f"{path.name}: item missing '{field}'")
+            unknown = set(raw) - set(REQUIRED_FIELDS) - set(OPTIONAL_FIELDS)
+            if unknown:
+                raise ValueError(f"{path.name}: unknown field(s) {sorted(unknown)}")
+            if raw["id"] in seen:
+                raise ValueError(f"duplicate content id: {raw['id']}")
+            if raw["format"] not in VALID_FORMATS:
+                raise ValueError(f"{raw['id']}: invalid format {raw['format']}")
+            if raw["depth"] not in VALID_DEPTHS:
+                raise ValueError(f"{raw['id']}: invalid depth {raw['depth']}")
+            if raw["topic"] not in TOPICS_BY_SLUG:
+                raise ValueError(f"{raw['id']}: unknown topic {raw['topic']}")
+            unknown = set(raw["interests"]) - set(INTEREST_LABELS)
+            if unknown:
+                raise ValueError(f"{raw['id']}: unknown interests {sorted(unknown)}")
+            if raw.get("visual") and raw["visual"] not in VALID_VISUALS:
+                raise ValueError(f"{raw['id']}: unknown visual {raw['visual']}")
+            if "source_tier" in raw and raw["source_tier"] not in TIER_WEIGHTS:
+                raise ValueError(f"{raw['id']}: source_tier must be 1, 2 or 3")
+            if is_platform(raw["url"]) and "source_tier" not in raw:
+                # A platform domain says nothing about who made the thing.
+                raise ValueError(f"{raw['id']}: platform-hosted pieces must declare source_tier")
+            seen.add(raw["id"])
+            records.append(raw)
+    return records
+
+
+def seed_content(db: Session) -> int:
+    """Upsert the library into the database. Safe to run repeatedly."""
+    records = load_library()
+    existing = {c.id: c for c in db.scalars(select(ContentItem)).all()}
+    for raw in records:
+        item = existing.get(raw["id"])
+        if item is None:
+            item = ContentItem(id=raw["id"])
+            db.add(item)
+        item.title = raw["title"]
+        item.creator = raw["creator"]
+        item.publication = raw["publication"]
+        item.url = raw["url"]
+        item.fmt = raw["format"]
+        item.topic = raw["topic"]
+        item.interests = list(raw["interests"])
+        item.depth = raw["depth"]
+        item.duration_minutes = int(raw["duration_minutes"])
+        item.summary = raw["summary"]
+        item.verified_on = raw["verified_on"]
+        item.headline = raw.get("headline")
+        item.note = raw.get("note")
+        item.visual = raw.get("visual")
+        item.visual_alt = raw.get("visual_alt")
+        item.visual_credit = raw.get("visual_credit")
+        item.thumbnail = raw.get("thumbnail")
+        item.thumbnail_source = raw.get("thumbnail_source")
+        item.thumbnail_kind = raw.get("thumbnail_kind")
+        item.thumbnail_credit = raw.get("thumbnail_credit")
+        item.source_tier = tier_for(raw["url"], raw.get("source_tier"))
+    db.commit()
+    return len(records)
+
+
+def interests_for_topics(topics: list[str]) -> list[Interest]:
+    out: list[Interest] = []
+    for slug in topics:
+        topic = TOPICS_BY_SLUG.get(slug)
+        if topic:
+            out.extend(topic.interests)
+    return out

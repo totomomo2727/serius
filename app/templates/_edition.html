@@ -1,0 +1,62 @@
+{# The newspaper itself: shared by the on-site preview and the sample edition. #}
+<div class="newsletter">
+  <header>
+    <span class="eyebrow">{{ eyebrow|default('YOUR PERSONALIZED NEWSLETTER') }}</span>
+    <h1>The Feather Press</h1>
+    <div class="news-meta">
+      <span>{{ date_label|upper }}</span>
+      <span>CURATED FOR YOU BY SERIUS</span>
+    </div>
+    <p class="news-tagline">Three good finds. Delivered daily.</p>
+    {% if theme %}<h2 class="edition-theme">{{ theme|safe }}</h2>{% endif %}
+    <p class="edition-interests">{{ interests_line }}</p>
+    <p>{{ intro }}</p>
+    <span class="hand">— Serius</span>
+  </header>
+
+  {% for item in items %}
+  {% set piece = item.content %}
+  <article class="news-story">
+    <div class="news-kicker">
+      <span class="pill">{{ piece.topic|topic_label }}{% if piece.interests %} ×
+        {{ piece.interests[0]|replace('-', ' ') }}{% endif %}</span>
+      <span class="mode-tag">{{ piece.verb }}</span><b>0{{ loop.index }}</b>
+    </div>
+    {% if piece.thumbnail_url %}
+    <img class="news-image" src="{{ piece.thumbnail_url }}" alt="{{ piece.alt_text }}">
+    <small class="credit">{{ piece.credit }}</small>
+    {% else %}
+    <div class="essay-art">
+      <small>WORTH YOUR ATTENTION</small>
+      <em>{{ piece.display_title }}</em>
+      <span>{{ piece.creator }}</span>
+    </div>
+    {% endif %}
+    <h2>{{ piece.display_title }}</h2>
+    <p class="byline">{{ piece.creator }} / {{ piece.publication }}</p>
+    <p>{{ piece.summary }}</p>
+    {% if item.reason or item.is_revisit %}
+    <p class="curator-note">{{ item.reason }}{% if item.is_revisit %} A revisit — worth a second look.{% endif %}
+      <span>— Serius</span></p>
+    {% endif %}
+    <a href="{{ piece.url }}" target="_blank" rel="noopener">{{ piece.title }} ↗</a>
+    <span class="duration">Original · {{ piece.duration_minutes }} min {{ piece.verb }}
+      · summary reads in about a minute</span>
+  </article>
+  {% endfor %}
+
+  <footer class="news-footer">
+    <img src="/static/press/serius.png" alt="Serius">
+    <h2>That’s your three.<br><em>The rest of the day is yours.</em></h2>
+    <span class="hand">— Serius</span>
+    {% if manage_link %}
+    <div class="email-controls">
+      <a href="{{ manage_link }}">Delivery preferences</a>
+      <a href="{{ unsubscribe_link }}">Unsubscribe</a>
+    </div>
+    {% else %}
+    <div class="email-controls"><span>Delivery preferences</span><span>Unsubscribe</span></div>
+    <small>{{ footer_note|default('Preferences and unsubscribe links arrive with every email.') }}</small>
+    {% endif %}
+  </footer>
+</div>
