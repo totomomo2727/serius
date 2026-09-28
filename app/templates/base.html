@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ app_name }}{% endblock %}</title>
   <meta name="description" content="Three good finds. Delivered daily.">
+  <script>
+    /* Hiding for the reveal is only applied while a live script is there to
+       undo it: if press.js never runs, the page shows itself. */
+    document.documentElement.className += ' js';
+    (function () {
+      /* The deferred script always runs before load, so reaching load without
+         it means it never will, however slow the page was. */
+      var check = function () {
+        if (document.documentElement.dataset.motion !== 'ready') {
+          document.documentElement.classList.remove('js');
+        }
+      };
+      window.addEventListener('load', check);
+      setTimeout(check, 10000);
+    })();
+  </script>
+  <link rel="preload" href="/static/press/fonts/font-5.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/static/press/fonts/font-4.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/static/press/fonts/gaegu.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="/static/press/fonts.css">
   <link rel="stylesheet" href="/static/press/style.css">
   <link rel="stylesheet" href="/static/press/product.css">
@@ -17,6 +36,8 @@
     <nav>
       <a href="/sample">A sample edition ↗</a>
       <a class="nav-cta" href="/start">Meet your curator ↗</a>
+      <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false"
+              hidden>Sound <span data-sound-state>off</span></button>
     </nav>
   </header>
   <main id="main">
