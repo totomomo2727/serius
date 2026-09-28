@@ -403,8 +403,8 @@
     }
   }
 
-  /* Serius asks for the address himself, a few seconds after the reader meets
-     their edition - unless they have already found the form further down. */
+  /* Serius asks for the address himself, once the reader has reached the end
+     of their edition - unless they have already found the form there. */
   function deliveryModal() {
     var modal = document.querySelector('[data-delivery-modal]');
     if (!modal) return;
@@ -449,7 +449,14 @@
       }
     });
 
+    var asked = false;
+    var ask = function () {
+      if (asked) return;
+      asked = true;
+      open();
+    };
     var cancel = function () {
+      asked = true;
       if (timer) window.clearTimeout(timer);
       timer = null;
     };
@@ -459,8 +466,28 @@
       tail.addEventListener('pointerdown', cancel);
     }
 
-    if (modal.hasAttribute('data-open-now')) open();
-    else timer = window.setTimeout(open, 5000);
+    if (modal.hasAttribute('data-open-now')) {
+      open();
+      return;
+    }
+
+    /* The bottom of the edition is the cue. On a page too short to scroll
+       there is no cue to wait for, so a short pause stands in for it. */
+    var end = document.querySelector('[data-edition-end]');
+    var scrollable = function () {
+      return document.documentElement.scrollHeight - window.innerHeight > 120;
+    };
+    if (end && 'IntersectionObserver' in window) {
+      var watch = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        watch.disconnect();
+        ask();
+      }, { rootMargin: '0px 0px -10% 0px' });
+      watch.observe(end);
+      if (!scrollable()) timer = window.setTimeout(ask, 6000);
+    } else {
+      timer = window.setTimeout(ask, 6000);
+    }
   }
 
   function chips() {
@@ -480,26 +507,44 @@
     sync();
   }
 
-  /* Three sample editions share one place in the hero. The front page itself
-     is the control: clicking it shows the next reader's. */
+  /* Three sample editions sit in one deck in the hero. Any sheet can be taken
+     and brought to the front; the sheet it replaces swings out of the way. */
   function sampleStacks() {
-    var stack = document.querySelector('[data-sample-cycle]');
+    var stack = document.querySelector('[data-sample-stack]');
     if (!stack) return;
-    var papers = [].slice.call(stack.querySelectorAll('[data-sample]'));
-    if (papers.length < 2) return;
-    var hint = document.querySelector('[data-sample-hint]');
-    if (hint) hint.hidden = false;
-    stack.addEventListener('click', function () {
-      var current = papers.findIndex(function (paper) {
-        return paper.classList.contains('is-active');
+    var cards = [].slice.call(stack.querySelectorAll('[data-sample]'));
+    if (cards.length < 2) return;
+
+    var order = cards.slice();
+    var paint = function () {
+      order.forEach(function (card, index) {
+        card.dataset.pos = String(index);
       });
-      papers.forEach(function (paper, index) {
-        var active = index === (current + 1) % papers.length;
-        paper.classList.toggle('is-active', active);
-        if (active) paper.removeAttribute('aria-hidden');
-        else paper.setAttribute('aria-hidden', 'true');
+    };
+    var bring = function (card) {
+      var at = order.indexOf(card);
+      if (at < 0 || at === 0) {
+        /* The front sheet passes itself to the back, so one deck reads through. */
+        order.push(order.shift());
+      } else {
+        var front = order[0];
+        front.classList.add('is-leaving');
+        window.setTimeout(function () {
+          front.classList.remove('is-leaving');
+        }, 260);
+        order.splice(at, 1);
+        order.unshift(card);
+      }
+      paint();
+      audio.play('paper');
+    };
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        bring(card);
       });
     });
+    paint();
   }
 
   function guardDoubleSubmit() {

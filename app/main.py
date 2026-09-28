@@ -34,7 +34,6 @@ from app.services import (
     rate_limited,
     run_daily,
     send_edition,
-    send_verification,
     subscribe,
     verify,
 )
@@ -167,15 +166,12 @@ def do_subscribe(
     request: Request,
     edition_id: str = Form(...),
     email: str = Form(...),
-    consent: str = Form(default=""),
     timezone_name: str = Form(default="UTC"),
     db: Session = Depends(get_db),
 ) -> HTMLResponse:
     edition = db.get(Edition, edition_id)
     if edition is None or edition.subscriber_id is not None:
         return page_error("That preview expired. Choose your interests again.", 404)
-    if consent != "yes":
-        return page_error("We need your explicit consent before sending you email.", 400)
     email = email.strip().lower()
     if "@" not in email or len(email) < 5:
         return page_error("That email address doesn't look right.", 400)
@@ -186,12 +182,17 @@ def do_subscribe(
 
     profile = Profile.from_dict(edition.profile_snapshot)
     subscriber, first_edition = subscribe(db, email, profile, timezone_name, edition)
-    result = send_verification(db, subscriber, first_edition)
+    # One step: submitting the address is the subscription, and the edition they
+    # just read goes out immediately.
+    verify(db, subscriber)
+    result = send_edition(db, first_edition)
     return render(
-        "check_email.html",
+        "verified.html",
         subscriber=subscriber,
         result=result,
-        verify_link=verify_url(subscriber) if settings.dev_tools_enabled else None,
+        already_active=False,
+        manage_link=manage_url(subscriber),
+        local_time=local_now(subscriber).strftime("%H:%M"),
     )
 
 

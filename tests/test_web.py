@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from app.models import Edition, Subscriber
-from app.tokens import MANAGE, VERIFY, make_token
+from app.tokens import MANAGE, make_token
 
 
 def start_preview(client, topics=("ai",), interests=("ai-safety",), depth="mix"):
@@ -58,9 +58,10 @@ def test_three_sample_editions_are_offered_with_the_featured_one_first(client):
         for sample in samples:
             assert first <= text.index(f'data-sample="{sample["slug"]}"')
 
-    # The stack itself is the control; no separate tabs to click.
+    # Every sheet in the deck is its own control; no separate tabs to click.
     landing = client.get("/").text
-    assert "data-sample-cycle" in landing
+    assert "data-sample-stack" in landing
+    assert landing.count('class="sample-card"') == 3
     assert "data-sample-tab" not in landing
 
     sample_page = client.get("/sample").text
@@ -98,16 +99,17 @@ def test_preview_offers_the_delivery_invitation_without_scripting(client, db):
     # The pop-up carries the daily promise, and the tail below it still works
     # for anyone the script never reaches.
     assert "data-delivery-modal" in response.text
-    assert "every single day" in response.text.lower()
+    assert "data-edition-end" in response.text
+    assert "searches the web all day" in response.text.lower()
     assert response.text.count('action="/subscribe"') == 2
     assert 'id="email-page"' in response.text
     assert 'id="email-modal"' in response.text
 
 
-def test_subscribe_requires_consent(client, db):
+def test_subscribe_rejects_an_unusable_address(client, db):
     start_preview(client)
     edition = db.query(Edition).order_by(Edition.created_at.desc()).first()
-    response = client.post("/subscribe", data={"edition_id": edition.id, "email": "a@example.com"})
+    response = client.post("/subscribe", data={"edition_id": edition.id, "email": "nope"})
     assert response.status_code == 400
     assert db.query(Subscriber).count() == 0
 
@@ -122,24 +124,16 @@ def test_full_journey_preview_to_first_edition(client, db):
         data={
             "edition_id": edition.id,
             "email": "journey@example.com",
-            "consent": "yes",
             "timezone_name": "Europe/Berlin",
         },
     )
+    # One step: the address alone subscribes them and sends what they just read.
     assert response.status_code == 200
-    subscriber = db.query(Subscriber).filter_by(email="journey@example.com").one()
-    assert subscriber.status == "pending"
-
-    token = make_token(subscriber, VERIFY)
-    # Loading the link must not activate anything: scanners only ever issue GETs.
-    assert client.get(f"/verify/{token}").status_code == 200
-    db.refresh(subscriber)
-    assert subscriber.status == "pending"
-
-    confirmed = client.post(f"/verify/{token}")
-    assert confirmed.status_code == 200
     db.expire_all()
+    subscriber = db.query(Subscriber).filter_by(email="journey@example.com").one()
     assert subscriber.status == "active"
+    assert subscriber.timezone == "Europe/Berlin"
+    assert "journey@example.com" in response.text
 
     first = db.query(Edition).filter_by(subscriber_id=subscriber.id, kind="first").one()
     assert first.status == "sent"

@@ -10,11 +10,7 @@
     <span class="hint">Your inbox. His favorite postbox.</span>
   </div>
   {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
-  <label class="consent-check">
-    <input type="checkbox" name="consent" value="yes" required>
-    <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
-  </label>
-  <p class="fine">Delivery timezone: <span data-tz-label>UTC</span>.
-    You can change this from your preferences later.</p>
   <button class="button" type="submit">Send me Serius’s finds<span>↗</span></button>
+  <p class="consent-note">By subscribing you’ll get this edition now and a new one each morning
+    at eight, <span data-tz-label>UTC</span> time. Unsubscribe from any email.</p>
 </form>

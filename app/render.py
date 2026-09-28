@@ -20,7 +20,21 @@ env = Environment(
     trim_blocks=True,
     lstrip_blocks=True,
 )
-env.globals.update(app_name=settings.app_name, tagline=settings.tagline)
+
+
+def _static_version() -> str:
+    """Newest stylesheet/script mtime, so a deploy never serves a stale pairing."""
+    press = APP_DIR / "static" / "press"
+    stamps = [p.stat().st_mtime for p in press.glob("*.css")]
+    stamps += [p.stat().st_mtime for p in press.glob("*.js")]
+    return str(int(max(stamps))) if stamps else "1"
+
+
+env.globals.update(
+    app_name=settings.app_name,
+    tagline=settings.tagline,
+    static_version=_static_version(),
+)
 
 
 def long_date(value: date) -> str:
