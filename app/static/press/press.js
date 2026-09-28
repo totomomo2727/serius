@@ -70,6 +70,8 @@
       if (i === 0) {
         for (var k = start; k < end; k += 36) beat(k, 'key');
         beat(end + 100, 'draw');
+        /* The oval finishes drawing 850ms after it starts. */
+        beat(end + 950, 'caw');
         last = end + 950;
       }
     });
@@ -88,6 +90,8 @@
       var offset = order[el.dataset.reveal] || 0;
       el.style.setProperty('--reveal-delay', base + offset + 'ms');
       if (offset === 0) beat(base, 'paper');
+      /* Serius announces himself once he is actually on the page. */
+      if (el.dataset.reveal === 'bird') beat(base + offset + 300, 'caw');
     });
     requestAnimationFrame(function () {
       items.forEach(function (el) {
@@ -102,7 +106,7 @@
     if (!groups.length) return;
     var show = function (group) {
       Array.prototype.forEach.call(group.children, function (child, i) {
-        var delay = reduced ? 0 : i * 110;
+        var delay = reduced ? 0 : i * 200;
         child.style.setProperty('--reveal-delay', delay + 'ms');
         child.classList.add('is-in');
         window.setTimeout(function () {
@@ -173,7 +177,7 @@
       filter.frequency.value = opts.frequency;
       filter.Q.value = opts.q || 1;
       var gain = ctx.createGain();
-      var now = ctx.currentTime;
+      var now = ctx.currentTime + (opts.delay || 0);
       gain.gain.setValueAtTime(0, now);
       gain.gain.linearRampToValueAtTime(opts.level, now + 0.004);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + opts.length);
@@ -182,27 +186,70 @@
       src.stop(now + opts.length + 0.02);
     }
 
-    function tone(frequency, length, level) {
+    function tone(frequency, length, level, delay, type) {
       var osc = ctx.createOscillator();
       var gain = ctx.createGain();
-      var now = ctx.currentTime;
-      osc.type = 'triangle';
+      var now = ctx.currentTime + (delay || 0);
+      osc.type = type || 'triangle';
       osc.frequency.value = frequency;
       gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(level, now + 0.01);
+      gain.gain.linearRampToValueAtTime(level, now + 0.006);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + length);
       osc.connect(gain).connect(master);
       osc.start(now);
       osc.stop(now + length + 0.02);
     }
 
+    /* A gull's cry: a rasping glide up and back down, the raggedness coming
+       from fast vibrato rather than a sample. */
+    function cry(delay, top) {
+      var now = ctx.currentTime + delay;
+      var osc = ctx.createOscillator();
+      var lfo = ctx.createOscillator();
+      var depth = ctx.createGain();
+      var throat = ctx.createBiquadFilter();
+      var gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(top * 0.55, now);
+      osc.frequency.exponentialRampToValueAtTime(top, now + 0.07);
+      osc.frequency.setValueAtTime(top, now + 0.15);
+      osc.frequency.exponentialRampToValueAtTime(top * 0.5, now + 0.34);
+      lfo.type = 'sine';
+      lfo.frequency.value = 27;
+      depth.gain.value = top * 0.09;
+      lfo.connect(depth).connect(osc.frequency);
+      throat.type = 'bandpass';
+      throat.frequency.value = top * 1.7;
+      throat.Q.value = 1.6;
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.24, now + 0.05);
+      gain.gain.setValueAtTime(0.24, now + 0.18);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
+      osc.connect(throat).connect(gain).connect(master);
+      osc.start(now);
+      lfo.start(now);
+      osc.stop(now + 0.4);
+      lfo.stop(now + 0.4);
+    }
+
     var voices = {
+      /* One keystroke is three sounds a few milliseconds apart: the key going
+         down, the typebar striking the platen, and the frame ringing. */
       key: function () {
-        hit({ length: 0.035, frequency: 1500 + Math.random() * 700, q: 1.4, level: 0.5 });
+        var wobble = Math.random();
+        hit({ length: 0.012, frequency: 2300 + wobble * 600, q: 3.2, level: 0.42 });
+        hit({ length: 0.045, frequency: 420 + wobble * 90, q: 1.5, level: 0.5, delay: 0.008 });
+        tone(126 + wobble * 22, 0.05, 0.11, 0.008, 'square');
+        tone(1900 + wobble * 400, 0.03, 0.015, 0.009);
+      },
+      caw: function () {
+        cry(0, 1180);
+        if (Math.random() < 0.55) cry(0.34, 980);
       },
       return: function () {
-        hit({ length: 0.12, frequency: 900, q: 0.8, level: 0.35 });
-        tone(320, 0.09, 0.05);
+        hit({ length: 0.09, frequency: 1200, q: 1.2, level: 0.3 });
+        hit({ length: 0.16, frequency: 300, q: 0.9, level: 0.34, delay: 0.05 });
+        tone(196, 0.12, 0.06, 0.05, 'square');
       },
       draw: function () {
         hit({ length: 0.5, frequency: 2600, q: 0.5, level: 0.14, type: 'highpass' });
@@ -311,10 +358,6 @@
     });
   }
 
-  function scheduleBeats() {
-    playBeats(window.performance && performance.now ? performance.now() : 0);
-  }
-
   /* Restarting the CSS animations from their first frame. */
   function replayIntro() {
     var nodes = document.querySelectorAll('.typed-character, .drawn-outline path');
@@ -412,7 +455,9 @@
     heroReveal(introEnd + 120);
     scrollReveal();
     soundControl(replayIntro);
-    scheduleBeats();
+    /* The typing starts when this script runs, however late that is, so the
+       beats count from here rather than from navigation. */
+    playBeats(0);
     touchFeedback();
   } catch (err) {
     showEverything();
