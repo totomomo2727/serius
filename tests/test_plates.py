@@ -21,6 +21,7 @@ def test_every_piece_carries_an_image_from_its_source(db: Session) -> None:
         assert item.thumbnail_source, f"{item.slug}: image without a recorded source"
         assert item.thumbnail_kind in ("image", "page"), f"{item.slug}: {item.thumbnail_kind}"
         assert item.thumbnail_url == f"/static/thumbs/{item.thumbnail}"
+        assert (THUMBS / "mini" / item.thumbnail).is_file(), f"{item.slug}: run scripts/mini_thumbs.py"
         assert item.credit
         assert item.alt_text
 

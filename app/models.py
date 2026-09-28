@@ -114,6 +114,11 @@ class ContentItem(Base):
         return f"/static/thumbs/{self.thumbnail}" if self.thumbnail else None
 
     @property
+    def mini_thumbnail_url(self) -> str | None:
+        """A 280px copy of the thumbnail, for places that show many at once."""
+        return f"/static/thumbs/mini/{self.thumbnail}" if self.thumbnail else None
+
+    @property
     def alt_text(self) -> str:
         if self.thumbnail and self.thumbnail_kind == "page":
             return f"The opening of {self.title} as published on {self.publication}"

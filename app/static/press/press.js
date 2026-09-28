@@ -686,6 +686,267 @@
     });
   }
 
+  /* The delivery screen: Serius runs through a whirl of real clippings, keeps
+     the reader's three, folds them into an envelope and posts it. Everything
+     is a function of one clock, so a resize only re-measures the scene. */
+  function scouring() {
+    var scene = document.querySelector('[data-scouring]');
+    if (!scene) return;
+    var section = scene.closest('.delivery');
+    if (reduced) {
+      scene.classList.add('is-still');
+      return;
+    }
+    var T = { pick: 4300, fold: 5500, walk: 6300, post: 7900, done: 8600, leave: 9400 };
+    section.style.setProperty('--scene-duration', T.leave + 'ms');
+
+    var courier = scene.querySelector('.courier');
+    var beakMail = scene.querySelector('.beak-mail');
+    var posted = scene.querySelector('.posted-mail');
+    var postbox = scene.querySelector('.postbox');
+    var tick = scene.querySelector('.mail-arrived');
+    var note = section.querySelector('.scene-note');
+    var caption = document.querySelector('[data-scour-caption]');
+    var narrow = scene.clientWidth < 600;
+    var budget = narrow ? 16 : 24;
+    var spare = 0;
+    var clips = [];
+    Array.prototype.forEach.call(scene.querySelectorAll('.clip'), function (el) {
+      var pick = Number(el.dataset.pick) || 0;
+      if (!pick && spare >= budget - 3) {
+        el.hidden = true;
+        return;
+      }
+      if (!pick) spare++;
+      clips.push({ el: el, pick: pick });
+    });
+
+    /* Stable per-card scatter, so the whirl looks the same on every frame. */
+    function scatter(i, k) {
+      var x = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453;
+      return x - Math.floor(x);
+    }
+    clips.forEach(function (c, i) {
+      var ring = i % 3;
+      c.theta = i * 2.39996;
+      c.speed = 0.85 + scatter(i, 1) * 0.3;
+      c.radius = 0.52 + ring * 0.24 + scatter(i, 2) * 0.1;
+      c.lift = ring * 0.05 + (scatter(i, 3) - 0.5) * 0.06;
+      c.tilt = (scatter(i, 4) - 0.5) * 16;
+      c.delay = i * 35;
+    });
+
+    var g = {};
+    function measure() {
+      g.w = scene.clientWidth;
+      g.h = scene.clientHeight;
+      g.narrow = g.w < 600;
+      g.cw = clips[0] ? clips[0].el.offsetWidth : 100;
+      g.ch = clips[0] ? clips[0].el.offsetHeight : 80;
+      g.bird = courier.offsetWidth;
+      g.cx = g.w * (g.narrow ? 0.44 : 0.4);
+      g.cy = g.h * 0.54;
+      g.r = g.narrow ? g.w * 0.5 : Math.min(g.w * 0.36, 330);
+      g.birdX = g.cx - g.bird / 2;
+      g.birdTop = g.h - 22 - g.bird;
+      g.box = { x: postbox.offsetLeft, y: postbox.offsetTop, w: postbox.offsetWidth, h: postbox.offsetHeight };
+      g.toX = g.box.x - g.bird * 0.78;
+    }
+
+    function clamp(v) {
+      return v < 0 ? 0 : v > 1 ? 1 : v;
+    }
+    function easeOut(u) {
+      return 1 - Math.pow(1 - u, 3);
+    }
+    function easeInOut(u) {
+      return u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+    }
+    function settle(u) {
+      var k = 1.4;
+      return 1 + (k + 1) * Math.pow(u - 1, 3) + k * Math.pow(u - 1, 2);
+    }
+    function mix(a, b, u) {
+      return a + (b - a) * u;
+    }
+
+    /* How far the whirl has turned: it spins up, holds, then races just
+       before he makes his choice. */
+    function turned(t) {
+      var f;
+      if (t <= 900) f = (t * t) / 1800;
+      else if (t <= 3400) f = 450 + (t - 900);
+      else if (t <= T.pick) f = 2950 + (t - 3400) + (0.7 * (t - 3400) * (t - 3400)) / 1800;
+      else f = 2950 + 900 + 0.7 * 450 + 1.7 * (t - T.pick);
+      return (f / 1000) * Math.PI * 2 * 0.62;
+    }
+
+    function orbit(c, t) {
+      var angle = c.theta + turned(t) * c.speed;
+      var entry = easeOut(clamp((t - c.delay) / 900));
+      var spread = 2.6 - 1.6 * entry;
+      var fade = entry;
+      if (!c.pick && t > T.pick) {
+        var fling = clamp((t - T.pick) / 650);
+        fling = fling * fling;
+        spread *= 1 + 1.8 * fling;
+        fade *= 1 - fling;
+      }
+      var rx = g.r * c.radius * spread;
+      var depth = Math.sin(angle);
+      return {
+        x: g.cx + rx * Math.cos(angle) - g.cw / 2,
+        y: g.cy - g.h * c.lift + rx * 0.3 * depth - g.ch / 2,
+        s: 0.62 + 0.19 * (depth + 1),
+        r: Math.cos(angle) * -12 + c.tilt,
+        o: fade * (0.55 + 0.225 * (depth + 1)),
+        z: depth > 0 ? 5 : 2,
+      };
+    }
+
+    function slot(c) {
+      var step = g.cw * 1.12 + (g.narrow ? 8 : 16);
+      var middle = Math.max(step * 1.5 + 6, Math.min(g.w - step * 1.5 - 6, g.cx));
+      return {
+        x: middle + (c.pick - 2) * step - g.cw / 2,
+        y: (g.narrow ? 24 : 28) + (c.pick === 2 ? -6 : 0),
+        s: 1.12,
+        r: (c.pick - 2) * 5,
+        o: 1,
+        z: 7,
+      };
+    }
+
+    function beak() {
+      return { x: g.birdX + g.bird * 0.73 - g.cw / 2, y: g.birdTop + g.bird * 0.3 - g.ch / 2, s: 0.22, r: 13, o: 0, z: 7 };
+    }
+
+    function blend(a, b, u) {
+      return { x: mix(a.x, b.x, u), y: mix(a.y, b.y, u), s: mix(a.s, b.s, u), r: mix(a.r, b.r, u), o: mix(a.o, b.o, u), z: b.z };
+    }
+
+    function place(el, p) {
+      el.style.transform =
+        'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px) rotate(' + p.r.toFixed(2) + 'deg) scale(' + p.s.toFixed(3) + ')';
+      el.style.opacity = p.o.toFixed(3);
+      el.style.zIndex = p.z;
+    }
+
+    function clipAt(c, t) {
+      if (!c.pick || t < T.pick) return orbit(c, t);
+      var held = slot(c);
+      var start = T.fold + (c.pick - 1) * 90;
+      if (t < start) return blend(orbit(c, T.pick), held, settle(clamp((t - T.pick) / 750)));
+      var u = easeInOut(clamp((t - start) / 650));
+      var p = blend(held, beak(), u);
+      p.o = 1 - clamp((u - 0.6) / 0.4);
+      return p;
+    }
+
+    function frame(t) {
+      clips.forEach(function (c) {
+        place(c.el, clipAt(c, t));
+        if (c.pick && t >= T.pick + 300) c.el.classList.add('is-kept');
+      });
+
+      var walking = clamp((t - T.walk) / (T.post - T.walk));
+      var x = mix(g.birdX, g.toX, easeInOut(walking));
+      var bob = t < T.pick ? -Math.abs(Math.sin((t / 210) * Math.PI)) * 3 : 0;
+      courier.style.transform = 'translate(' + x.toFixed(1) + 'px,' + bob.toFixed(1) + 'px)';
+      courier.classList.toggle('is-running', t < T.pick);
+      courier.classList.toggle('is-walking', t >= T.walk && t < T.post);
+
+      var shown = clamp((t - T.fold) / (T.walk - T.fold));
+      postbox.style.opacity = easeOut(shown).toFixed(3);
+      postbox.style.transform = 'translateY(' + ((1 - easeOut(shown)) * 10).toFixed(1) + 'px)';
+
+      beakMail.style.opacity = t < T.post ? clamp((t - T.fold - 450) / 150).toFixed(3) : '0';
+
+      var toss = clamp((t - T.post) / 600);
+      if (t >= T.post && toss < 1) {
+        var fromX = x + g.bird * 0.56;
+        var fromY = g.birdTop + g.bird * 0.2;
+        var toX = g.box.x + g.box.w * 0.37 - posted.offsetWidth / 2;
+        var toY = g.box.y + g.box.h * 0.44 - posted.offsetHeight / 2;
+        var u = easeInOut(toss);
+        var px = mix(fromX, toX, u);
+        var py = mix(fromY, toY, u) - Math.sin(Math.PI * u) * 40;
+        posted.style.transform =
+          'translate(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px) rotate(' + mix(13, 30, u).toFixed(1) + 'deg) scale(' + mix(1, 0.4, u).toFixed(3) + ')';
+        posted.style.opacity = (1 - clamp((toss - 0.55) / 0.3)).toFixed(3);
+      } else {
+        posted.style.opacity = '0';
+      }
+      tick.classList.toggle('is-on', t >= T.done);
+      note.classList.toggle('is-on', t >= T.done + 100);
+    }
+
+    var lines = [
+      [200, 'Reading essays…'],
+      [1150, 'Watching lectures…'],
+      [2100, 'Listening to podcasts…'],
+      [3050, 'Checking every source…'],
+      [T.pick, 'Keeping three, just for you.'],
+      [T.walk, 'Off to your postbox.'],
+      [T.done, 'Delivered.'],
+    ];
+    function say(text) {
+      if (!caption) return;
+      caption.classList.add('is-changing');
+      window.setTimeout(function () {
+        caption.textContent = text;
+        caption.classList.remove('is-changing');
+      }, 180);
+    }
+
+    function begin() {
+      measure();
+      beakMail.style.width = '';
+      posted.style.width = beakMail.offsetWidth + 'px';
+      courier.style.left = '0';
+      window.addEventListener('resize', measure);
+      lines.forEach(function (line) {
+        window.setTimeout(function () {
+          say(line[1]);
+        }, line[0]);
+      });
+      if (audio.enabled()) {
+        audio.unlock().then(function (running) {
+          if (!running) return;
+          for (var at = 150; at < 4000; at += 520) window.setTimeout(audio.play, at, 'paper');
+          window.setTimeout(audio.play, T.pick + 150, 'caw');
+          window.setTimeout(audio.play, T.fold, 'paper');
+          window.setTimeout(audio.play, T.done, 'tick');
+        });
+      }
+      var start = null;
+      var step = function (now) {
+        if (start === null) start = now;
+        var t = now - start;
+        frame(t);
+        if (t < T.leave) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+      window.setTimeout(function () {
+        window.location.replace(section.dataset.next);
+      }, T.leave);
+    }
+
+    /* Start once the clippings have pictures, but never wait long for them. */
+    var images = clips.map(function (c) {
+      var img = c.el.querySelector('img');
+      return img && img.decode ? img.decode().catch(function () {}) : null;
+    });
+    var begun = false;
+    var go = function () {
+      if (begun) return;
+      begun = true;
+      begin();
+    };
+    Promise.all(images).then(go);
+    window.setTimeout(go, 700);
+  }
+
   try {
     var introEnd = editorial();
     heroReveal(introEnd + 120);
@@ -707,4 +968,5 @@
   sampleStacks();
   deliveryModal();
   guardDoubleSubmit();
+  scouring();
 })();

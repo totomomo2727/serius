@@ -7,33 +7,44 @@
   <div class="step"><span>YOUR PERSONAL EDITION / 02</span><span>A SPECIAL DELIVERY</span></div>
   <span class="pill">SERIUS IS ON HIS WAY</span>
   <h1>Good things<br><em>take a little flight.</em></h1>
-  <p>Your curious curator is bringing your newsletter.</p>
-  <div class="delivery-scene"
-       aria-label="Serius carries an envelope in his beak and drops it into the postbox">
+  <p>He reads everything, so you only get the three worth your morning.</p>
+  <div class="delivery-scene" data-scouring
+       aria-label="Serius sorts through a whirl of essays, articles, videos and podcasts, keeps three for you, and posts them in your postbox">
     <div class="ground"></div>
+    <div class="swirl" aria-hidden="true">
+      {% for clip in pool %}
+      <figure class="clip clip-{{ clip.content.mode }}"{% if clip.pick %} data-pick="{{ clip.pick }}"{% endif %}>
+        <span class="clip-image"><img src="{{ clip.content.mini_thumbnail_url }}" alt="" decoding="async"></span>
+        <figcaption><b>{{ clip.content.fmt }}</b>{{ clip.content.creator }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
     <div class="courier">
-      <img src="/static/press/walk.png" alt="Serius carrying your mail">
+      <span class="walker" role="img" aria-label="Serius"></span>
       <img class="beak-mail" src="/static/press/mail.png" alt="">
     </div>
     <img class="posted-mail" src="/static/press/mail.png" alt="">
     <img class="postbox" src="/static/press/postbox.png" alt="Your postbox">
-    <span class="mail-arrived">✓</span>
+    <span class="mail-arrived" aria-hidden="true">✓</span>
   </div>
   <span class="scene-note">a little something<br>just for you.</span>
-  <div class="delivery-status" role="status"><span class="dot"></span> A newsletter with your name on it.</div>
+  <div class="delivery-status">
+    <span class="dot"></span>
+    <span class="scour-caption" data-scour-caption aria-hidden="true">A newsletter with your name on it.</span>
+    <span class="visually-hidden" role="status">Serius is choosing your three pieces and bringing your newsletter.</span>
+  </div>
   <div class="delivery-progress"></div>
   <a class="quiet" id="skip" href="{{ next_url }}">Skip animation →</a>
   <noscript><p class="quiet"><a href="{{ next_url }}">Read your edition →</a></p></noscript>
 </section>
 
 <script>
-  // Presentation only. The edition already exists on the server; this screen just
-  // walks Serius to the postbox before showing it.
+  // Presentation only. The edition already exists on the server. press.js runs
+  // the scene and moves on when it ends; this is the fallback if it never runs.
   (function () {
-    var scene = document.querySelector('.delivery');
-    var next = scene.dataset.next;
+    var next = document.querySelector('.delivery').dataset.next;
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.setTimeout(function () { window.location.replace(next); }, reduced ? 400 : 6500);
+    window.setTimeout(function () { window.location.replace(next); }, reduced ? 400 : 12000);
   })();
 </script>
 {% endblock %}

@@ -224,3 +224,20 @@ def test_health_reports_library_and_provider(client):
     assert body["content_items"] == 122
     assert body["email_provider"] == "console"
     assert body["email_delivery_live"] is False
+
+
+def test_delivery_scene_sorts_real_pieces_around_the_editions_three(client, db):
+    created = client.post(
+        "/preview", data={"topics": ["business", "politics"], "depth": "mix"}, follow_redirects=False
+    )
+    delivering = client.get(created.headers["location"])
+    body = delivering.text
+    edition = db.get(Edition, created.headers["location"].rsplit("/", 1)[1])
+    assert body.count('<figure class="clip ') == 24
+    assert body.count("data-pick=") == 3
+    for item in edition.items:
+        assert f'data-pick="{item.position}"' in body
+        assert item.content.mini_thumbnail_url in body
+    for mode in ("read", "watch", "listen"):
+        assert f"clip-{mode}" in body
+    assert client.get(created.headers["location"]).text == body  # the same whirl every time
