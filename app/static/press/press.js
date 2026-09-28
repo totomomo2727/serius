@@ -311,10 +311,6 @@
     });
   }
 
-  function scheduleBeats() {
-    playBeats(window.performance && performance.now ? performance.now() : 0);
-  }
-
   /* Restarting the CSS animations from their first frame. */
   function replayIntro() {
     var nodes = document.querySelectorAll('.typed-character, .drawn-outline path');
@@ -412,7 +408,9 @@
     heroReveal(introEnd + 120);
     scrollReveal();
     soundControl(replayIntro);
-    scheduleBeats();
+    /* The typing starts when this script runs, however late that is, so the
+       beats count from here rather than from navigation. */
+    playBeats(0);
     touchFeedback();
   } catch (err) {
     showEverything();
