@@ -100,6 +100,7 @@ def test_preview_offers_the_delivery_invitation_without_scripting(client, db):
     # for anyone the script never reaches.
     assert "data-delivery-modal" in response.text
     assert "data-edition-end" in response.text
+    assert "Your own paper," in response.text
     assert "searches the web all day" in response.text.lower()
     assert response.text.count('action="/subscribe"') == 2
     assert 'id="email-page"' in response.text
