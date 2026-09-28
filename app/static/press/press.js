@@ -467,10 +467,6 @@
         cancel();
         close();
       });
-      tail.addEventListener('pointerdown', function () {
-        cancel();
-        close();
-      });
     }
 
     if (modal.hasAttribute('data-open-now')) {
@@ -484,13 +480,19 @@
     var scrollable = function () {
       return document.documentElement.scrollHeight - window.innerHeight > 120;
     };
-    if (end && 'IntersectionObserver' in window) {
-      var watch = new IntersectionObserver(function (entries) {
-        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
-        watch.disconnect();
-        ask();
-      }, { rootMargin: '0px 0px -10% 0px' });
-      watch.observe(end);
+    /* Passing the marker counts too: a flick can skip a one-pixel target. */
+    var reached = function () {
+      return end.getBoundingClientRect().top < window.innerHeight * 0.9;
+    };
+    var onScroll = function () {
+      if (asked) {
+        window.removeEventListener('scroll', onScroll);
+        return;
+      }
+      if (reached()) ask();
+    };
+    if (end) {
+      window.addEventListener('scroll', onScroll, { passive: true });
       if (!scrollable()) timer = window.setTimeout(ask, 6000);
     } else {
       timer = window.setTimeout(ask, 6000);
@@ -523,9 +525,14 @@
     if (cards.length < 2) return;
 
     var order = cards.slice();
+    var dots = [].slice.call(document.querySelectorAll('.deck-dots > i'));
     var paint = function () {
       order.forEach(function (card, index) {
         card.dataset.pos = String(index);
+      });
+      var front = cards.indexOf(order[0]);
+      dots.forEach(function (dot, index) {
+        dot.classList.toggle('is-current', index === front);
       });
     };
     var bring = function (card) {
@@ -546,8 +553,59 @@
       audio.play('paper');
     };
 
+    var back = function () {
+      order.unshift(order.pop());
+      paint();
+      audio.play('paper');
+    };
+
+    /* A sideways swipe deals the next sheet (or the previous one) off the top;
+       the front sheet follows the finger until it is let go. */
+    var swipe = null;
+    var swiped = false;
+    stack.addEventListener('pointerdown', function (event) {
+      if (event.pointerType === 'mouse') return;
+      swipe = { id: event.pointerId, x: event.clientX, y: event.clientY, dx: 0, sideways: null };
+    });
+    stack.addEventListener('pointermove', function (event) {
+      if (!swipe || event.pointerId !== swipe.id) return;
+      var dx = event.clientX - swipe.x;
+      var dy = event.clientY - swipe.y;
+      if (swipe.sideways === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+        swipe.sideways = Math.abs(dx) > Math.abs(dy);
+      }
+      if (!swipe.sideways) return;
+      swipe.dx = dx;
+      var front = order[0];
+      front.classList.add('is-dragging');
+      front.style.setProperty('--drag-x', dx + 'px');
+      front.style.setProperty('--drag-r', dx / 30 + 'deg');
+    });
+    var release = function (event) {
+      if (!swipe || event.pointerId !== swipe.id) return;
+      var front = order[0];
+      front.classList.remove('is-dragging');
+      front.style.removeProperty('--drag-x');
+      front.style.removeProperty('--drag-r');
+      if (swipe.sideways && Math.abs(swipe.dx) > 48) {
+        swiped = true;
+        window.setTimeout(function () {
+          swiped = false;
+        }, 400);
+        if (swipe.dx < 0) bring(front);
+        else back();
+      }
+      swipe = null;
+    };
+    stack.addEventListener('pointerup', release);
+    stack.addEventListener('pointercancel', release);
+
     cards.forEach(function (card) {
       card.addEventListener('click', function () {
+        if (swiped) {
+          swiped = false;
+          return;
+        }
         bring(card);
       });
     });

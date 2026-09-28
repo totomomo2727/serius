@@ -24,8 +24,7 @@
         <div class="paper-stack" data-sample-stack>
           {% for edition in samples %}
           {% set stories = edition.stories %}
-          <button type="button" class="sample-card" data-sample="{{ edition.slug }}"
-                  data-pos="{{ loop.index0 }}">
+          <button type="button" class="sample-card" data-sample="{{ edition.slug }}" data-pos="{{ loop.index0 }}">
             <span class="offscreen">Bring this sample edition to the front.</span>
             <span class="mini-paper">
               <span class="mini-top">THE FEATHER PRESS <span>CURATED BY SERIUS</span></span>
@@ -42,6 +41,10 @@
           </button>
           {% endfor %}
         </div>
+      </div>
+      <div class="deck-cue" aria-hidden="true">
+        <span class="deck-dots">{% for edition in samples %}<i></i>{% endfor %}</span>
+        <span class="deck-hint">swipe for the next reader</span>
       </div>
       <span class="hero-bird hero-wave" role="img" data-reveal="bird"
             aria-label="Serius, your seagull curator, waving hello"></span>

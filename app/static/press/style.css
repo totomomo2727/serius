@@ -85,3 +85,31 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 @media(max-width:700px){.hero-bird.hero-wave{width:138px;left:-2px}.hero-art .hero-bird.hero-wave{bottom:92px}}
 @media(prefers-reduced-motion:reduce){.js .hero-bird.hero-wave[data-reveal].is-in{animation:none;background-position:40% 0}}
 .motion-reduced .hero-bird.hero-wave[data-reveal].is-in{animation:none;background-position:40% 0}
+
+/* The deck follows a swiping finger; a cue under it shows which of the three is up. */
+.paper-stack{touch-action:pan-y}
+.sample-card[data-pos='0'].is-dragging{transition:none;transform:translateX(var(--drag-x,0)) rotate(var(--drag-r,0deg))}
+.deck-cue{display:none}
+
+/* Phones: one column on an 8px rhythm. The deck sits in the flow at full width,
+   the cue under it, and Serius signs off beneath with his note beside him. */
+@media(max-width:700px){
+.home{padding-inline:24px}
+.hero-content{display:block;min-height:0}
+.hero-copy{padding:24px 0 0}
+.hero-copy h2{margin:16px 0}
+.hero-copy>p{margin-bottom:24px}
+.hero-art,.hero-art.hero-art{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:8px;min-height:0;margin:56px 0 0;padding:0}
+.hero-art .sticker{position:static;grid-column:1/-1;justify-self:end;margin:0 8px 16px 0;transform:rotate(-5deg)}
+.hero-art .paper-tilt{position:relative;grid-column:1/-1;justify-self:center;top:auto;right:auto;width:min(272px,78vw);--rot:2deg;transform:rotate(2deg)}
+.deck-cue{display:flex;grid-column:1/-1;flex-direction:column;align-items:center;gap:8px;margin-top:32px;color:#38489e}
+.deck-dots{display:flex;gap:8px}
+.deck-dots>i{width:8px;height:8px;border-radius:50%;border:1px solid #38489e;transition:background 240ms ease,width 240ms ease}
+.deck-dots>i.is-current{width:22px;border-radius:4px;background:#38489e}
+.deck-hint{font:19px/1 Gaegu,cursive}
+.hero-art .hero-bird.hero-wave{position:relative;left:auto;bottom:auto;width:112px;margin:32px 0 0 -4px}
+.hero-art .bird-note{position:static;margin-top:32px;font-size:21px;line-height:1.1}
+.process{margin-top:64px;padding:0;gap:32px}
+.closing{padding-top:64px}
+}
+@media(max-width:700px) and (prefers-reduced-motion:reduce){.deck-dots>i{transition:none}}
