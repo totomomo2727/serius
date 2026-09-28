@@ -7,6 +7,8 @@ matter how often the scheduler or a retry runs.
 
 from __future__ import annotations
 
+import random
+from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -15,7 +17,7 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.emailer import SendResult, send_email
-from app.models import Edition, EditionItem, RateLimit, Subscriber, utcnow
+from app.models import ContentItem, Edition, EditionItem, RateLimit, Subscriber, utcnow
 from app.render import render_edition_email, render_verification_email
 from app.selection import Profile, compose_intro, select_edition
 from app.tokens import manage_url, unsubscribe_url
@@ -73,6 +75,39 @@ def build_edition(
     db.commit()
     db.refresh(edition)
     return edition
+
+
+@dataclass(frozen=True)
+class Clipping:
+    content: ContentItem
+    pick: int | None = None  # the edition position, for the three he keeps
+
+
+def scouring_pool(db: Session, edition: Edition, size: int = 24) -> list[Clipping]:
+    """What Serius sorts through on the delivery screen: the edition's own picks
+    shuffled into a stack of other real pieces, every format represented."""
+    picks = [Clipping(item.content, item.position) for item in edition.items if item.content.thumbnail]
+    taken = {c.content.id for c in picks}
+    rng = random.Random(edition.id)
+    by_format: dict[str, list[ContentItem]] = {}
+    for item in db.scalars(
+        select(ContentItem).where(ContentItem.thumbnail.is_not(None)).order_by(ContentItem.id)
+    ):
+        if item.id not in taken:
+            by_format.setdefault(item.fmt, []).append(item)
+    for items in by_format.values():
+        rng.shuffle(items)
+    formats = sorted(by_format)
+    rng.shuffle(formats)
+    others: list[Clipping] = []
+    while len(others) < size - len(picks) and any(by_format.values()):
+        for fmt in formats:
+            if by_format[fmt] and len(others) < size - len(picks):
+                others.append(Clipping(by_format[fmt].pop()))
+    pool = others
+    for n, pick in enumerate(picks):
+        pool.insert(min(len(pool), 4 + n * 7), pick)
+    return pool
 
 
 def latest_edition(db: Session, subscriber: Subscriber) -> Edition | None:

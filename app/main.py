@@ -33,6 +33,7 @@ from app.services import (
     local_now,
     rate_limited,
     run_daily,
+    scouring_pool,
     send_edition,
     subscribe,
     verify,
@@ -136,11 +137,11 @@ def create_preview(
 
 @app.get("/delivering/{edition_id}", response_class=HTMLResponse)
 def delivering(edition_id: str, db: Session = Depends(get_db)) -> HTMLResponse:
-    """Serius walking to the postbox. The edition below already exists; this is theatre."""
+    """Serius sorting the pile and posting the three. The edition already exists; this is theatre."""
     edition = db.get(Edition, edition_id)
     if edition is None:
         return page_error("We couldn't find that edition. Choose your interests again to rebuild it.", 404)
-    return render("delivery.html", next_url=f"/preview/{edition.id}")
+    return render("delivery.html", next_url=f"/preview/{edition.id}", pool=scouring_pool(db, edition))
 
 
 @app.get("/preview/{edition_id}", response_class=HTMLResponse)

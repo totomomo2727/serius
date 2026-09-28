@@ -131,7 +131,7 @@ subset to latin in `app/static/fonts/`:
 Each piece shows the image its own publisher nominates for sharing (`og:image`, or the
 official thumbnail for a video), fetched once by `scripts/fetch_thumbnails.py`, checked for
 usable dimensions, and cached under `app/static/thumbs/` so editions never hotlink at read
-time. The original URL is kept in `thumbnail_source` and the publication is credited under
+time (`scripts/mini_thumbs.py` then writes the 280px copies the delivery screen's whirl uses). The original URL is kept in `thumbnail_source` and the publication is credited under
 the image. Pieces that publish no usable image — plain-text essays, encyclopedias, PDFs —
 fall back to a drawn plate: a line motif for the topic with Serius in the pose for the
 format, credited as original artwork.

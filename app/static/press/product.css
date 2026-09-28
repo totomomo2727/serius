@@ -111,99 +111,195 @@
 .button[disabled], .button.is-sending { opacity: .55; pointer-events: none; }
 
 /* ---- delivery screen ----
-   A wide, small-figure scene: Serius walks the length of it with the envelope
-   in his beak, hands it over to a second envelope that arcs into the slot, and
-   the postbox paints above both so nothing floats on top of the box.
-   Distances are custom properties so one set of keyframes serves every width. */
+   Serius runs through a whirl of real clippings (the pieces' own thumbnails),
+   keeps the reader's three, folds them into an envelope and posts it. press.js
+   drives every moving part from one clock; the rules here are the resting
+   geometry and the still, reduced-motion composition. */
 .delivery .quiet { display: inline-block; margin-top: 26px; }
 .delivery-scene {
-  --walk: 556px;
-  --toss-x: 60px;
-  --toss-y: -78px;
-  --slot-x: 112px;
-  --slot-y: -48px;
+  --card: 112px;
+  --bird: 132px;
   width: 920px;
-  height: 240px;
+  height: 330px;
   max-width: 100%;
 }
-.delivery-scene .ground { left: 2%; right: 4%; bottom: 22px; }
-.postbox { width: 168px; height: 216px; right: 40px; bottom: 12px; z-index: 5; }
-.courier { width: 150px; height: 150px; left: 0; bottom: 22px; animation-name: walk-in; }
-.courier > img:first-child { width: 150px; }
-
-/* One long walk down the scene, a pause at the box, one step back. */
-@keyframes walk-in {
-  0% { transform: translateX(-160px) translateY(-14px); }
-  45% { transform: translateX(var(--walk)) translateY(0); }
-  62%, 82% { transform: translateX(var(--walk)); }
-  100% { transform: translateX(calc(var(--walk) - 34px)); }
+.delivery-scene .ground { left: 2%; right: 2%; bottom: 22px; }
+.delivery-scene .postbox { width: 150px; height: 190px; right: 24px; bottom: 12px; z-index: 5; opacity: 0; }
+.delivery-scene .courier {
+  width: var(--bird);
+  height: var(--bird);
+  left: 34%;
+  bottom: 22px;
+  z-index: 6;
+  animation: none;
+  will-change: transform;
+}
+.walker {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url('/static/press/walk-sprite.png') 100% 0 / 600% 100% no-repeat;
+}
+.courier.is-running .walker { animation: stride .42s steps(5) infinite; }
+.courier.is-walking .walker { animation: stride .66s steps(5) infinite; }
+@keyframes stride {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
 }
 .beak-mail {
-  width: 52px;
-  left: 94px;
-  top: 28px;
+  position: absolute;
+  width: 34%;
+  left: 56%;
+  top: 20%;
   z-index: 1;
-  animation-name: carry;
+  opacity: 0;
+  animation: none;
+  transform: rotate(13deg);
 }
 .posted-mail {
   position: absolute;
-  width: 52px;
-  left: calc(var(--walk) + 94px);
-  top: 100px;
-  z-index: 2;
-  transform: rotate(13deg);
+  left: 0;
+  top: 0;
+  width: 46px;
+  z-index: 4;
   opacity: 0;
-  animation: post 6s both;
+  animation: none;
 }
-.mail-arrived { right: 118px; top: 30px; width: 28px; height: 28px; line-height: 28px; font-size: 15px; animation-name: posted; }
-.scene-note { right: 10px; bottom: 0; }
+.delivery-scene .mail-arrived {
+  right: 88px;
+  top: 118px;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 15px;
+  z-index: 6;
+  opacity: 0;
+  animation: none;
+  transform: scale(.5);
+  transition: opacity .25s ease-out, transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+.delivery-scene .mail-arrived.is-on { opacity: 1; transform: none; }
+/* The note sits under the ground line, beneath the postbox, never on it. */
+.scene-note {
+  position: static;
+  display: block;
+  width: fit-content;
+  margin: 10px max(30px, calc((100% - 920px) / 2 + 30px)) 0 auto;
+  text-align: left;
+  opacity: 0;
+  transition: opacity .4s ease-out;
+}
+.scene-note.is-on { opacity: 1; }
 
-/* Serius keeps the envelope only until the hand-off. */
-@keyframes carry {
-  0%, 44% { opacity: 1; transform: rotate(13deg); }
-  45%, 100% { opacity: 0; transform: rotate(13deg); }
+.swirl { position: absolute; inset: 0; }
+.clip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--card);
+  margin: 0;
+  padding: 5px 5px 4px;
+  background: #fbfaf6;
+  border: 1px solid #cfcdc4;
+  box-shadow: 0 6px 14px rgba(32, 32, 30, .1);
+  opacity: 0;
+  will-change: transform, opacity;
+  text-align: left;
+}
+.clip-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e6e5de;
+}
+.clip-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.clip figcaption {
+  overflow: hidden;
+  margin-top: 4px;
+  font: 9px/1.25 Arial, Helvetica, sans-serif;
+  color: #60605b;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.clip figcaption b {
+  margin-right: 5px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: #38489e;
+}
+/* What the reader would do with it, marked the way a player or feed would. */
+.clip-watch .clip-image::after,
+.clip-listen .clip-image::after {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(32, 32, 30, .78);
+  color: #fff;
+  font: 9px/20px Arial, sans-serif;
+  text-align: center;
+}
+.clip-watch .clip-image::after { content: '\25B6'; padding-left: 2px; }
+.clip-listen .clip-image::after { content: '\266B'; font-size: 11px; }
+/* The three he keeps get their edition number. */
+.clip.is-kept,
+.delivery-scene.is-still .clip[data-pick] { border-color: #38489e; box-shadow: 0 10px 22px rgba(56, 72, 158, .18); }
+.clip.is-kept::before,
+.delivery-scene.is-still .clip[data-pick]::before {
+  content: '0' attr(data-pick);
+  position: absolute;
+  left: -9px;
+  top: -11px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #38489e;
+  color: #fff;
+  font: 10px/24px Arial, sans-serif;
+  letter-spacing: .5px;
+  text-align: center;
 }
 
-/* The envelope leaves the beak, arcs up to the slot and is gone inside it. */
-@keyframes post {
-  0%, 44% { opacity: 0; transform: rotate(13deg); }
-  45% { opacity: 1; transform: rotate(13deg); }
-  58% { opacity: 1; transform: translate(var(--toss-x), var(--toss-y)) rotate(26deg) scale(.96); }
-  72% { opacity: 1; transform: translate(var(--slot-x), var(--slot-y)) rotate(46deg) scale(.86); }
-  78%, 100% { opacity: 0; transform: translate(var(--slot-x), calc(var(--slot-y) + 14px)) rotate(52deg) scale(.72); }
-}
-
-/* The tick only appears once the envelope is inside the box. */
-@keyframes posted {
-  0%, 80% { opacity: 0; transform: scale(.5); }
-  88%, 100% { opacity: 1; transform: scale(1); }
-}
-
-/* Below the scene's full width the postbox travels with the right edge, so the
-   walk is measured from the viewport and Serius still arrives beside it. */
-@media (max-width: 1000px) {
-  .delivery-scene { --walk: calc(100vw - 444px); width: 100%; }
+.delivery-status { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 30px; }
+.scour-caption { transition: opacity .18s ease-out; }
+.scour-caption.is-changing { opacity: 0; }
+.delivery-status .dot { margin-right: 0; }
+.delivery-progress::after { animation-duration: var(--scene-duration, 6s); }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 @media (max-width: 700px) {
-  .delivery-scene {
-    --walk: calc(100vw - 276px);
-    --toss-x: 44px;
-    --toss-y: -60px;
-    --slot-x: 86px;
-    --slot-y: -38px;
-    height: 200px;
-  }
-  .postbox { width: 118px; height: 152px; right: 8px; bottom: 10px; }
-  .courier { width: 104px; height: 104px; bottom: 18px; }
-  .courier > img:first-child { width: 104px; }
-  .beak-mail { width: 38px; left: 66px; top: 20px; }
-  .posted-mail { width: 38px; left: calc(var(--walk) + 66px); top: 102px; }
-  .mail-arrived { right: 78px; top: 22px; width: 22px; height: 22px; line-height: 22px; font-size: 12px; }
+  .delivery-scene { --card: 76px; --bird: 96px; height: 270px; }
+  .delivery-scene .postbox { width: 104px; height: 132px; right: 4px; bottom: 12px; }
+  .delivery-scene .mail-arrived { right: 44px; top: 112px; width: 22px; height: 22px; line-height: 22px; font-size: 12px; }
+  .posted-mail { width: 32px; }
+  .scene-note { margin-right: 8px; }
+  .clip { padding: 3px 3px 2px; }
+  .clip figcaption { font-size: 7px; margin-top: 2px; }
+  .clip figcaption b { letter-spacing: .4px; margin-right: 3px; }
+  .clip-watch .clip-image::after, .clip-listen .clip-image::after { width: 15px; height: 15px; line-height: 15px; font-size: 7px; right: 3px; bottom: 3px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .beak-mail, .posted-mail { animation: none; opacity: 0; }
+/* Still: Serius beside the postbox with his three held up, nothing moving. */
+.delivery-scene.is-still .postbox,
+.delivery-scene.is-still ~ .scene-note { opacity: 1; }
+.delivery-scene.is-still .courier { left: auto; right: 180px; transform: none; }
+.delivery-scene.is-still .clip[data-pick] { opacity: 1; top: 18px; left: calc(50% - var(--card) * 1.7); }
+.delivery-scene.is-still .clip[data-pick="2"] { left: calc(50% - var(--card) * .5); top: 8px; }
+.delivery-scene.is-still .clip[data-pick="3"] { left: calc(50% + var(--card) * .7); }
+@media (max-width: 700px) {
+  .delivery-scene.is-still .courier { right: 110px; }
 }
 
 /* ---- generic document pages (preferences, unsubscribe, messages) ---- */
