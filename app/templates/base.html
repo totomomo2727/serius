@@ -24,9 +24,9 @@
   <link rel="preload" href="/static/press/fonts/font-5.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/static/press/fonts/font-4.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/static/press/fonts/gaegu.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="/static/press/fonts.css">
-  <link rel="stylesheet" href="/static/press/style.css">
-  <link rel="stylesheet" href="/static/press/product.css">
+  <link rel="stylesheet" href="/static/press/fonts.css?v={{ static_version }}">
+  <link rel="stylesheet" href="/static/press/style.css?v={{ static_version }}">
+  <link rel="stylesheet" href="/static/press/product.css?v={{ static_version }}">
   <link rel="icon" href="/static/seagull.svg" type="image/svg+xml">
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -47,6 +47,6 @@
     <p>{{ app_name }} &middot; curated by Serius &middot; no account, no password, unsubscribe from any edition.</p>
     {% if dev_tools %}<p class="footer-dev"><a href="/dev">Development controls</a></p>{% endif %}
   </footer>
-  <script src="/static/press/press.js" defer></script>
+  <script src="/static/press/press.js?v={{ static_version }}" defer></script>
 </body>
 </html>
