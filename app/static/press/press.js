@@ -263,6 +263,17 @@
       toggle: function () {
         tone(520, 0.08, 0.06);
       },
+      /* A control going down: a dry click over a short wooden knock. */
+      press: function () {
+        hit({ length: 0.016, frequency: 2600, q: 2.6, level: 0.3 });
+        hit({ length: 0.05, frequency: 320, q: 1.1, level: 0.36, delay: 0.004 });
+        tone(150, 0.06, 0.09, 0.004, 'square');
+      },
+      /* And coming back up: quieter, brighter, a touch later. */
+      release: function () {
+        hit({ length: 0.012, frequency: 3000, q: 3, level: 0.16 });
+        tone(240, 0.035, 0.035, 0.004, 'square');
+      },
     };
 
     return {
@@ -437,14 +448,40 @@
     var buzz = function (pattern) {
       if (audio.enabled() && navigator.vibrate) navigator.vibrate(pattern);
     };
-    document.addEventListener('change', function (event) {
-      if (!event.target.closest('[data-chip]')) return;
-      audio.play('tick');
-      buzz(8);
+    var PRESSABLE = 'button, .button, .nav-cta, .topic, [data-chip], .sound-toggle, a.button';
+    var pressed = false;
+    var isControl = function (target) {
+      return target && target.closest && target.closest(PRESSABLE);
+    };
+    document.addEventListener('pointerdown', function (event) {
+      if (!isControl(event.target)) return;
+      pressed = true;
+      audio.play('press');
+      buzz(10);
+    });
+    document.addEventListener('pointerup', function () {
+      if (!pressed) return;
+      pressed = false;
+      audio.play('release');
+    });
+    document.addEventListener('pointercancel', function () {
+      pressed = false;
+    });
+    /* Keyboard activation gets the same pair, without repeats while held. */
+    document.addEventListener('keydown', function (event) {
+      if (event.repeat) return;
+      if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+      if (!isControl(event.target)) return;
+      audio.play('press');
+      buzz(10);
+    });
+    document.addEventListener('keyup', function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+      if (!isControl(event.target)) return;
+      audio.play('release');
     });
     document.querySelectorAll('.button, .nav-cta').forEach(function (button) {
       button.addEventListener('click', function () {
-        audio.play('paper');
         buzz(12);
       });
     });
