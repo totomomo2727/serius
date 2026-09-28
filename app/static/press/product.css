@@ -348,6 +348,7 @@
 .modal-paper .hint, .modal-paper .fine { display: none; }
 .modal-paper .consent-note { font-size: 10px; margin-top: 10px; }
 .modal-paper .button { margin-top: 14px; width: 100%; min-height: 72px; font-size: 17px; padding-inline: 24px; white-space: nowrap; }
+.modal-paper .button .button-copy { white-space: nowrap; }
 .modal-paper .quiet { margin: 8px auto 0; padding: 10px 0; }
 body.has-modal { overflow: hidden; }
 

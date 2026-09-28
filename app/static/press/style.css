@@ -101,7 +101,7 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 .hero-copy>p{margin-bottom:24px}
 .hero-art,.hero-art.hero-art{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:8px;min-height:0;margin:56px 0 0;padding:0}
 .hero-art .sticker{position:static;grid-column:1/-1;justify-self:end;margin:0 8px 16px 0;transform:rotate(-5deg)}
-.hero-art .paper-tilt{position:relative;grid-column:1/-1;justify-self:center;top:auto;right:auto;width:min(272px,78vw);transform:rotate(2deg)}
+.hero-art .paper-tilt{position:relative;grid-column:1/-1;justify-self:center;top:auto;right:auto;width:min(272px,78vw);--rot:2deg;transform:rotate(2deg)}
 .deck-cue{display:flex;grid-column:1/-1;flex-direction:column;align-items:center;gap:8px;margin-top:32px;color:#38489e}
 .deck-dots{display:flex;gap:8px}
 .deck-dots>i{width:8px;height:8px;border-radius:50%;border:1px solid #38489e;transition:background 240ms ease,width 240ms ease}
