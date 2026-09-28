@@ -75,3 +75,13 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 @media(prefers-reduced-motion:reduce){.sample-card{transition:none}.sample-card:hover{transform:none}.sample-card[data-pos='1']:hover{transform:rotate(-2.6deg) translate(-30px,4px) scale(.97)}.sample-card[data-pos='2']:hover{transform:rotate(2.2deg) translate(30px,10px) scale(.945)}}
 .sample-edition+.sample-edition{margin-top:70px;padding-top:60px;border-top:1px solid #dcdbd4}
 @media(max-width:700px){.sample-card[data-pos='1']{transform:rotate(-1.8deg) translate(-15px,4px) scale(.975)}.sample-card[data-pos='2']{transform:rotate(1.6deg) translate(0,11px) scale(.95)}.sample-card[data-pos='1']:hover{transform:rotate(-1.8deg) translate(-20px,0) scale(.98)}.sample-card[data-pos='2']:hover{transform:rotate(1.6deg) translate(4px,6px) scale(.955)}.sample-edition+.sample-edition{margin-top:46px;padding-top:40px}}
+
+/* Serius waves hello: a six-frame hand-drawn sprite, one wave every few seconds,
+   timed to arrive with his caw. */
+.hero-bird.hero-wave{display:block;width:252px;aspect-ratio:483/588;left:-7px;background:url('/static/press/serius-wave.png') 0 0/600% 100% no-repeat}
+.hero-art .hero-bird.hero-wave{bottom:87px}
+@keyframes serius-wave{0%{background-position:20% 0}2%{background-position:40% 0}4%{background-position:60% 0}6%{background-position:40% 0}8%{background-position:60% 0}10%{background-position:80% 0}12%{background-position:100% 0}14%,100%{background-position:0 0}}
+.js .hero-bird.hero-wave[data-reveal].is-in{animation:serius-idle 5.2s ease-in-out infinite,serius-wave 7s step-end infinite;animation-delay:calc(var(--reveal-delay,0ms) + 900ms),calc(var(--reveal-delay,0ms) + 450ms)}
+@media(max-width:700px){.hero-bird.hero-wave{width:138px;left:-2px}.hero-art .hero-bird.hero-wave{bottom:92px}}
+@media(prefers-reduced-motion:reduce){.js .hero-bird.hero-wave[data-reveal].is-in{animation:none;background-position:40% 0}}
+.motion-reduced .hero-bird.hero-wave[data-reveal].is-in{animation:none;background-position:40% 0}

@@ -35,6 +35,8 @@ def test_landing_content_is_present_before_any_motion_runs(client):
     for marker in ('data-reveal="paper"', 'data-reveal="bird"', "data-stagger"):
         assert marker in landing.text
     assert "a small bird." in landing.text
+    assert "hero-wave" in landing.text
+    assert "waving hello" in landing.text
     assert "data-sound-toggle" in landing.text
     assert 'aria-pressed="false"' in landing.text
 
@@ -127,9 +129,7 @@ def test_subscribing_a_known_address_changes_nothing(client, db):
     # be handed their management link.
     start_preview(client, topics=("philosophy",), interests=("ethics",))
     other = db.query(Edition).order_by(Edition.created_at.desc()).first()
-    response = client.post(
-        "/subscribe", data={"edition_id": other.id, "email": "reader@example.com"}
-    )
+    response = client.post("/subscribe", data={"edition_id": other.id, "email": "reader@example.com"})
     assert response.status_code == 200
     assert "/manage/" not in response.text
     db.expire_all()
