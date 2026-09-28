@@ -449,35 +449,53 @@
       if (audio.enabled() && navigator.vibrate) navigator.vibrate(pattern);
     };
     var PRESSABLE = 'button, .button, .nav-cta, .topic, [data-chip], .sound-toggle, a.button';
-    var pressed = false;
     var isControl = function (target) {
       return target && target.closest && target.closest(PRESSABLE);
     };
+    /* Each finger and each key is tracked on its own, so two controls held at
+       once both get their release, and a release is only ever the answer to a
+       press this listener actually played. */
+    var down = [];
+    var hold = function (id) {
+      /* Turning sound on with the control itself would otherwise answer a
+         silent press with an audible release. */
+      if (!audio.enabled()) return;
+      if (down.indexOf(id) < 0) down.push(id);
+    };
+    var drop = function (id) {
+      var at = down.indexOf(id);
+      if (at < 0) return false;
+      down.splice(at, 1);
+      return true;
+    };
+    var isActivator = function (key) {
+      return key === 'Enter' || key === ' ' || key === 'Spacebar';
+    };
     document.addEventListener('pointerdown', function (event) {
       if (!isControl(event.target)) return;
-      pressed = true;
+      hold('p' + event.pointerId);
       audio.play('press');
       buzz(10);
     });
-    document.addEventListener('pointerup', function () {
-      if (!pressed) return;
-      pressed = false;
+    document.addEventListener('pointerup', function (event) {
+      if (!drop('p' + event.pointerId)) return;
       audio.play('release');
     });
-    document.addEventListener('pointercancel', function () {
-      pressed = false;
+    document.addEventListener('pointercancel', function (event) {
+      drop('p' + event.pointerId);
     });
     /* Keyboard activation gets the same pair, without repeats while held. */
     document.addEventListener('keydown', function (event) {
       if (event.repeat) return;
-      if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+      if (!isActivator(event.key)) return;
       if (!isControl(event.target)) return;
+      hold('k' + event.key);
       audio.play('press');
       buzz(10);
     });
     document.addEventListener('keyup', function (event) {
-      if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
-      if (!isControl(event.target)) return;
+      if (!isActivator(event.key)) return;
+      if (!drop('k' + event.key)) return;
       audio.play('release');
     });
     document.querySelectorAll('.button, .nav-cta').forEach(function (button) {
