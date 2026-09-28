@@ -180,6 +180,19 @@ def do_subscribe(
     ):
         return page_error("Too many attempts just now. Try again in an hour.", 429)
 
+    known = db.scalars(select(Subscriber).where(Subscriber.email == email)).first()
+    if known is not None and known.verified_at is not None:
+        # A reader who is already on the list can only be changed from their own
+        # inbox, so an address typed by a stranger cannot rewrite their edition.
+        return render(
+            "verified.html",
+            subscriber=known,
+            result=None,
+            already_active=True,
+            manage_link=None,
+            local_time=local_now(known).strftime("%H:%M"),
+        )
+
     profile = Profile.from_dict(edition.profile_snapshot)
     subscriber, first_edition = subscribe(db, email, profile, timezone_name, edition)
     # One step: submitting the address is the subscription, and the edition they

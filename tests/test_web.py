@@ -114,6 +114,29 @@ def test_subscribe_rejects_an_unusable_address(client, db):
     assert db.query(Subscriber).count() == 0
 
 
+def test_subscribing_a_known_address_changes_nothing(client, db):
+    start_preview(client, topics=("tech",), interests=("software-craft",))
+    first = db.query(Edition).order_by(Edition.created_at.desc()).first()
+    client.post("/subscribe", data={"edition_id": first.id, "email": "reader@example.com"})
+    db.expire_all()
+    subscriber = db.query(Subscriber).filter_by(email="reader@example.com").one()
+    topics = list(subscriber.topics)
+
+    # A stranger typing that address must not rewrite the reader's interests or
+    # be handed their management link.
+    start_preview(client, topics=("philosophy",), interests=("ethics",))
+    other = db.query(Edition).order_by(Edition.created_at.desc()).first()
+    response = client.post(
+        "/subscribe", data={"edition_id": other.id, "email": "reader@example.com"}
+    )
+    assert response.status_code == 200
+    assert "/manage/" not in response.text
+    db.expire_all()
+    subscriber = db.query(Subscriber).filter_by(email="reader@example.com").one()
+    assert list(subscriber.topics) == topics
+    assert db.query(Edition).filter_by(subscriber_id=subscriber.id).count() == 1
+
+
 def test_full_journey_preview_to_first_edition(client, db):
     start_preview(client, topics=("tech",), interests=("software-craft",))
     edition = db.query(Edition).order_by(Edition.created_at.desc()).first()
