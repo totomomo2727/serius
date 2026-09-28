@@ -254,3 +254,13 @@
   .signup-tail { margin-top: 48px; padding-top: 34px; }
   .tail-inner h2 { font-size: 34px; }
 }
+
+/* Micro-feedback: the drawn button presses in, and its arrow leans the way
+   it is taking you. */
+.button:active { transform: translateY(0) scale(.975); }
+.button span { transition: transform 160ms cubic-bezier(.2,.6,.2,1); }
+.button:hover span { transform: translate(3px,-3px); }
+@media (prefers-reduced-motion: reduce) {
+  .button:active { transform: none; }
+  .button:hover span { transform: none; }
+}
