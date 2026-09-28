@@ -230,21 +230,21 @@
         }
         if (value) ready();
       },
-      /* A context created before any gesture starts suspended, and resuming it
-         is asynchronous, so the sound waits for the context rather than being
-         dropped. */
+      /* Resolves once the context is running, which a browser only allows
+         from a gesture; scheduled sounds wait for this rather than each
+         queueing their own resume and arriving together late. */
+      unlock: function () {
+        if (!ready()) return Promise.resolve(false);
+        if (ctx.state === 'running') return Promise.resolve(true);
+        return Promise.resolve(ctx.resume()).then(function () {
+          return ctx.state === 'running';
+        });
+      },
+      /* A sound whose moment has passed is dropped, never replayed late. */
       play: function (kind) {
         if (!on || !voices[kind]) return;
-        if (!ready()) return;
-        if (ctx.state === 'running') {
-          voices[kind]();
-          return;
-        }
-        var resumed = ctx.resume();
-        if (!resumed || !resumed.then) return;
-        resumed.then(function () {
-          if (on && ctx.state === 'running') voices[kind]();
-        });
+        if (!ready() || ctx.state !== 'running') return;
+        voices[kind]();
       },
     };
   })();
@@ -261,6 +261,17 @@
     };
     button.hidden = false;
     paint();
+    /* A returning visitor kept sound on, but audio stays blocked until they
+       interact with the page, so the first interaction unlocks it quietly. */
+    if (audio.enabled()) {
+      var once = function () {
+        audio.unlock();
+        document.removeEventListener('pointerdown', once);
+        document.removeEventListener('keydown', once);
+      };
+      document.addEventListener('pointerdown', once);
+      document.addEventListener('keydown', once);
+    }
     button.addEventListener('click', function () {
       audio.set(!audio.enabled());
       paint();
@@ -268,8 +279,11 @@
         playBeats(0);
         return;
       }
-      audio.play('toggle');
-      if (replay) replay();
+      audio.unlock().then(function () {
+        if (!audio.enabled()) return;
+        audio.play('toggle');
+        if (replay) replay();
+      });
     });
   }
 

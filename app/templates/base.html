@@ -9,11 +9,17 @@
     /* Hiding for the reveal is only applied while a live script is there to
        undo it: if press.js never runs, the page shows itself. */
     document.documentElement.className += ' js';
-    setTimeout(function () {
-      if (document.documentElement.dataset.motion !== 'ready') {
-        document.documentElement.classList.remove('js');
-      }
-    }, 2500);
+    (function () {
+      /* The deferred script always runs before load, so reaching load without
+         it means it never will, however slow the page was. */
+      var check = function () {
+        if (document.documentElement.dataset.motion !== 'ready') {
+          document.documentElement.classList.remove('js');
+        }
+      };
+      window.addEventListener('load', check);
+      setTimeout(check, 10000);
+    })();
   </script>
   <link rel="stylesheet" href="/static/press/fonts.css">
   <link rel="stylesheet" href="/static/press/style.css">
