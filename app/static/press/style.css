@@ -27,3 +27,6 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 .email-field input:focus,.email-field input:focus-visible{border-color:#38489e;outline:none;box-shadow:0 0 0 3px #38489e24}
 .small-envelope{background:transparent}
 @media(max-width:700px){.hero-art .hero-bird{bottom:90px}.hero-art .bird-note{bottom:30px}.topic{font-size:14px;padding:12px 16px}.email-field input{font-size:16px}}
+
+/* Format marker: read, watch or listen. */
+.news-kicker{gap:10px}.news-kicker b{margin-left:auto}.mode-tag{font:9px Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:#60605b;border:1px solid #c9c8c1;border-radius:30px;padding:4px 10px}

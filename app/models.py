@@ -33,7 +33,11 @@ POSE_ALT = {
     "reading": "Line drawing of Serius the seagull sitting with an open book",
     "inspecting": "Line drawing of Serius the seagull turning something over to look closely",
     "watching": "Line drawing of Serius the seagull watching something on a small screen",
+    "listening": "Line drawing of Serius the seagull listening with headphones on",
 }
+
+# An edition should feel like a mix of things to do, not three of the same thing.
+MODES = {"article": "read", "essay": "read", "video": "watch", "podcast": "listen"}
 
 DEFAULT_CREDIT = "Illustration: Serius character artwork, drawn for The Feather Press"
 
@@ -48,7 +52,7 @@ class ContentItem(Base):
     creator: Mapped[str] = mapped_column(String(200))
     publication: Mapped[str] = mapped_column(String(200))
     url: Mapped[str] = mapped_column(Text)
-    fmt: Mapped[str] = mapped_column(String(20))  # article | essay | video
+    fmt: Mapped[str] = mapped_column(String(20))  # article | essay | video | podcast
     topic: Mapped[str] = mapped_column(String(40))
     interests: Mapped[list[str]] = mapped_column(JSON, default=list)
     depth: Mapped[str] = mapped_column(String(20))  # accessible | deep
@@ -64,6 +68,7 @@ class ContentItem(Base):
     thumbnail_source: Mapped[str | None] = mapped_column(Text, nullable=True)
     thumbnail_kind: Mapped[str | None] = mapped_column(String(20), nullable=True)  # image | page
     thumbnail_credit: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    source_tier: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     @property
     def read_label(self) -> str:
@@ -71,11 +76,17 @@ class ContentItem(Base):
             "article": "Read the article",
             "essay": "Read the essay",
             "video": "Watch the video",
+            "podcast": "Listen to the episode",
         }.get(self.fmt, "Read the original")
 
     @property
+    def mode(self) -> str:
+        """read, watch or listen — what the reader actually does with it."""
+        return MODES.get(self.fmt, "read")
+
+    @property
     def verb(self) -> str:
-        return "watch" if self.fmt == "video" else "read"
+        return {"watch": "watch", "listen": "listen"}.get(self.mode, "read")
 
     @property
     def display_title(self) -> str:
@@ -90,7 +101,12 @@ class ContentItem(Base):
     @property
     def pose(self) -> str:
         """Which Serius drawing suits this format."""
-        return {"essay": "reading", "article": "inspecting", "video": "watching"}[self.fmt]
+        return {
+            "essay": "reading",
+            "article": "inspecting",
+            "video": "watching",
+            "podcast": "listening",
+        }[self.fmt]
 
     @property
     def thumbnail_url(self) -> str | None:
@@ -105,7 +121,7 @@ class ContentItem(Base):
             return f"Image from {self.publication}: {self.title}"
         if self.visual_alt:
             return self.visual_alt
-        return POSE_ALT[self.pose]
+        return POSE_ALT.get(self.pose, POSE_ALT["inspecting"])
 
     @property
     def credit(self) -> str:

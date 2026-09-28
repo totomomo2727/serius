@@ -78,7 +78,8 @@
     "summary": "Pigliucci, a philosopher who came to Stoicism late and practically, explains what a modern person can take from it without pretending to be a Roman. He separates the therapeutic advice from the metaphysics, is honest about which parts he rejects, and gives a few exercises worth trying. Nineteen minutes, and a useful corrective to the quote-of-the-day version of a school that was never really about endurance.",
     "thumbnail": "ph-pigliucci-stoicism-tedx.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=Yhn1Fe8cT0Q",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 3
   },
   {
     "id": "ph-singer-famine",
@@ -174,7 +175,8 @@
     "summary": "The first lecture of Sandel's Harvard course, filmed in a packed hall. He opens with the runaway trolley, gets a thousand students to commit to an answer, then walks them into the case where their own principle fails. What makes it work is the arguing: real objections from the room, taken seriously. The best hour of introductory moral philosophy on video.",
     "thumbnail": "ph-sandel-justice.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=kBdfcR-8hEY",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 1
   },
   {
     "id": "ph-life-meaning",
@@ -273,5 +275,49 @@
     "thumbnail": "ph-skepticism.jpg",
     "thumbnail_source": "https://plato.stanford.edu/entries/skepticism/",
     "thumbnail_kind": "page"
+  },
+  {
+    "id": "phil-philosophize-this-camus-fall",
+    "title": "Episode #170 — Albert Camus: The Fall",
+    "creator": "Stephen West",
+    "publication": "Philosophize This!",
+    "url": "https://www.philosophizethis.org/podcast/episode-170-the-fall",
+    "format": "podcast",
+    "topic": "philosophy",
+    "interests": [
+      "meaning-and-mortality",
+      "ethics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 39,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "West reads Camus's last novel as a warning rather than a manifesto. Jean-Baptiste Clamence, a Paris lawyer with an immaculate self-image, hears a woman fall from a bridge, does nothing, and spends the rest of the book constructing defences against what that revealed. The device Camus gives him — the judge-penitent, confessing first so that he earns the right to accuse you — is a precise description of a move you will recognise in public life. A careful, unhurried guide to a short, uncomfortable book.",
+    "headline": "Confess first, then accuse: Camus on self-deception",
+    "thumbnail": "phil-philosophize-this-camus-fall.jpg",
+    "thumbnail_source": "https://www.philosophizethis.org/podcast/episode-170-the-fall",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "phil-cwt-agnes-callard",
+    "title": "Agnes Callard on the Theory of Everything",
+    "creator": "Tyler Cowen and Agnes Callard",
+    "publication": "Conversations with Tyler",
+    "url": "https://conversationswithtyler.com/episodes/agnes-callard/",
+    "format": "podcast",
+    "topic": "philosophy",
+    "interests": [
+      "epistemology",
+      "meaning-and-mortality"
+    ],
+    "depth": "deep",
+    "duration_minutes": 60,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Callard's book Aspiration is about the strange position of wanting to become someone who values what you do not yet value — you cannot fully want the end you are working towards, because wanting it is the thing you are acquiring. Cowen pushes her across Plato's dialogue form, whether parenting is undertheorised, whether death should frighten us, and whether immortality would be boring. She argues rather than performs, and disagrees with him often enough that the hour stays live.",
+    "headline": "On becoming someone who wants different things",
+    "thumbnail": "phil-cwt-agnes-callard.jpg",
+    "thumbnail_source": "https://conversationswithtyler.com/episodes/agnes-callard/",
+    "thumbnail_kind": "image"
   }
 ]

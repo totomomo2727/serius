@@ -76,7 +76,7 @@
 {% endif %}
 <tr><td style="padding:14px 40px 0 40px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;">
   <a href="{{ item.content.url }}" style="color:#20201e;">{{ item.content.title }} &#8599;</a>
-  <span style="color:#60605b;font-size:11px;"> &nbsp; Original &middot; {{ item.content.duration_minutes }} min {{ item.content.read_label|lower }} &middot; summary reads in about a minute</span>
+  <span style="color:#60605b;font-size:11px;"> &nbsp; {{ item.content.read_label }} &middot; {{ item.content.duration_minutes }} min {{ item.content.verb }} &middot; summary reads in about a minute</span>
 </td></tr>
 <tr><td style="padding:8px 40px 0 40px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#60605b;">
   <a href="{{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more" style="color:#60605b;">More like this</a>

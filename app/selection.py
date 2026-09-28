@@ -4,12 +4,16 @@ Scoring, in order of weight:
 
 1. specific interests   (+10 each match)
 2. broad topic          (+4)
-3. preferred depth      (+3 exact, +1 when the reader asked for a mix)
-4. reader feedback      (+5 "more like this", -8 "less like this")
+3. reader feedback      (+5 "more like this", -8 "less like this")
+4. source tier          (+5 a primary source, +2.5 a strong specialist one)
+5. preferred depth      (+3 exact, +1 when the reader asked for a mix)
 
 Variety is applied as small penalties while greedily picking the three pieces, so
 it can break a near-tie between comparable items but never outweighs an interest
-match. Ties are broken by content id, which makes selection deterministic.
+match; repeating a mode (read / watch / listen) costs more than repeating a
+format, and a final pass swaps in another mode when an edition would otherwise be
+three of the same thing. Ties are broken by content id, which makes selection
+deterministic.
 """
 
 from __future__ import annotations
@@ -22,6 +26,7 @@ from sqlalchemy.orm import Session
 
 from app.content import INTEREST_LABELS, TOPIC_LABELS
 from app.models import ContentItem, Edition, EditionItem, Feedback
+from app.sources import source_score
 
 INTEREST_WEIGHT = 10.0
 TOPIC_WEIGHT = 4.0
@@ -31,9 +36,13 @@ FEEDBACK_MORE = 5.0
 FEEDBACK_LESS = -8.0
 
 SAME_FORMAT_PENALTY = 1.5
+SAME_MODE_PENALTY = 3.0
 SAME_TOPIC_PENALTY = 2.0
 SAME_CREATOR_PENALTY = 6.0
 SAME_INTEREST_PENALTY = 1.5
+
+# How much relevance an edition may give up to stop being three of the same mode.
+MIX_MAX_SACRIFICE = 8.0
 
 EDITION_SIZE = 3
 
@@ -76,6 +85,7 @@ def base_score(item: ContentItem, profile: Profile, feedback: dict[str, str] | N
     if item.topic in profile.topics:
         score += TOPIC_WEIGHT
     score += _depth_score(item, profile.depth)
+    score += source_score(item.source_tier)
     signal = (feedback or {}).get(item.id)
     if signal == "more":
         score += FEEDBACK_MORE
@@ -141,6 +151,8 @@ def _variety_penalty(item: ContentItem, chosen: list[ContentItem]) -> float:
             penalty += SAME_CREATOR_PENALTY
         if other.fmt == item.fmt:
             penalty += SAME_FORMAT_PENALTY
+        if other.mode == item.mode:
+            penalty += SAME_MODE_PENALTY
         if other.topic == item.topic:
             penalty += SAME_TOPIC_PENALTY
         overlap = set(other.interests or []) & set(item.interests or [])
@@ -209,6 +221,8 @@ def select_edition(
         # relevant pieces, labelled honestly as revisits.
         take(seen, revisit=True)
 
+    _mix_modes(selections, unseen, profile)
+
     # The same note three times reads like a template, so keep only its first appearance.
     seen_reasons: set[str] = set()
     for selection in selections:
@@ -218,6 +232,36 @@ def select_edition(
             selection.reason = ""
         seen_reasons.add(selection.reason)
     return selections
+
+
+def _mix_modes(
+    selections: list[Selection],
+    pool: list[tuple[ContentItem, float]],
+    profile: Profile,
+) -> None:
+    """Trade the weakest pick for a watch or a listen when all three are the same."""
+    if len(selections) < 2 or len({s.content.mode for s in selections}) > 1:
+        return
+    mode = selections[0].content.mode
+    # Variety is only worth having from a piece the reader would plausibly want anyway:
+    # it must sit in a chosen topic and earn its keep on relevance, not on prestige.
+    others = [
+        (i, s)
+        for i, s in pool
+        if i.mode != mode and i.topic in profile.topics and s - source_score(i.source_tier) >= TOPIC_WEIGHT
+    ]
+    if not others:
+        return
+    best_item, best_score = max(others, key=lambda pair: (pair[1], pair[0].id))
+    weakest = min(selections, key=lambda s: (s.score, s.content.id))
+    if weakest.score - best_score > MIX_MAX_SACRIFICE:
+        return
+    selections[selections.index(weakest)] = Selection(
+        content=best_item,
+        reason=explain(best_item, profile),
+        is_revisit=False,
+        score=best_score,
+    )
 
 
 def compose_intro(profile: Profile, selections: list[Selection]) -> str:

@@ -18,6 +18,7 @@ from sqlalchemy.orm import Session
 
 from app.config import ROOT_DIR
 from app.models import ContentItem
+from app.sources import TIER_WEIGHTS, is_platform, tier_for
 
 if TYPE_CHECKING:
     from app.selection import Profile
@@ -50,9 +51,10 @@ OPTIONAL_FIELDS = (
     "thumbnail_kind",
     "thumbnail_page",
     "thumbnail_credit",
+    "source_tier",
 )
 
-VALID_FORMATS = {"article", "essay", "video"}
+VALID_FORMATS = {"article", "essay", "video", "podcast"}
 VALID_DEPTHS = {"accessible", "deep"}
 VALID_VISUALS = {"product-design", "philosophy", "psychology", "ai", "tech"}
 
@@ -185,6 +187,11 @@ def load_library() -> list[dict]:
                 raise ValueError(f"{raw['id']}: unknown interests {sorted(unknown)}")
             if raw.get("visual") and raw["visual"] not in VALID_VISUALS:
                 raise ValueError(f"{raw['id']}: unknown visual {raw['visual']}")
+            if "source_tier" in raw and raw["source_tier"] not in TIER_WEIGHTS:
+                raise ValueError(f"{raw['id']}: source_tier must be 1, 2 or 3")
+            if is_platform(raw["url"]) and "source_tier" not in raw:
+                # A platform domain says nothing about who made the thing.
+                raise ValueError(f"{raw['id']}: platform-hosted pieces must declare source_tier")
             seen.add(raw["id"])
             records.append(raw)
     return records
@@ -219,6 +226,7 @@ def seed_content(db: Session) -> int:
         item.thumbnail_source = raw.get("thumbnail_source")
         item.thumbnail_kind = raw.get("thumbnail_kind")
         item.thumbnail_credit = raw.get("thumbnail_credit")
+        item.source_tier = tier_for(raw["url"], raw.get("source_tier"))
     db.commit()
     return len(records)
 

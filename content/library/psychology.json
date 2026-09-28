@@ -95,7 +95,8 @@
     "summary": "Pink's talk on autonomy, mastery, and purpose, illustrated live by a hand drawing the argument as it is made. The core evidence is the candle problem and the field studies showing bonuses hurting performance on tasks requiring any thought. Eleven minutes, and the animation is not decoration: watching the diagram assemble is what makes the structure of the argument stick when the narration alone would slide past.",
     "thumbnail": "psy-rsa-drive.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=u6XAPnuFjJc",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 2
   },
   {
     "id": "psy-augmenting-long-term-memory",
@@ -210,7 +211,8 @@
     "summary": "Oakley failed maths as a teenager and later taught engineering, and this talk is the method she reverse-engineered. Focused and diffuse thinking, why breaks are part of the work, chunking, and how procrastination follows from discomfort rather than laziness. Eighteen minutes, drawn from the research rather than from anecdote, and the natural entry point to the most-taken online course ever made. Useful even if you think you already know how you study.",
     "thumbnail": "psy-learning-how-to-learn.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=O96fE1E-rf8",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 3
   },
   {
     "id": "psy-acceleration-of-addictiveness",
@@ -269,6 +271,71 @@
     "note": "The relapse section is the honest part.",
     "thumbnail": "psy-how-i-got-my-attention-back.jpg",
     "thumbnail_source": "https://craigmod.com/essays/how_i_got_my_attention_back/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "psy-hidden-brain-finding-focus",
+    "title": "Finding Focus",
+    "creator": "Shankar Vedantam and Gloria Mark",
+    "publication": "Hidden Brain",
+    "url": "https://hiddenbrain.org/podcast/finding-focus/",
+    "format": "podcast",
+    "topic": "psychology",
+    "interests": [
+      "attention-and-focus"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 48,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Gloria Mark has spent two decades timing how long people actually stay on one screen before switching, and the number has collapsed over her career. The conversation is unusual because she refuses the obvious villain: much of the interruption is self-inflicted, driven by habit and by the rhythm of our own attention rather than by notifications alone. Her advice follows from the measurements — protect the hours when your attention is naturally high, and treat rest as part of the work.",
+    "headline": "Your attention span, measured",
+    "thumbnail": "psy-hidden-brain-finding-focus.jpg",
+    "thumbnail_source": "https://hiddenbrain.org/podcast/finding-focus/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "psy-huberman-working-memory",
+    "title": "Tools to Enhance Working Memory & Attention",
+    "creator": "Andrew Huberman",
+    "publication": "Huberman Lab",
+    "url": "https://www.hubermanlab.com/episode/tools-to-enhance-working-memory-attention",
+    "format": "podcast",
+    "topic": "psychology",
+    "interests": [
+      "attention-and-focus",
+      "learning-and-memory"
+    ],
+    "depth": "deep",
+    "duration_minutes": 86,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Working memory is the small amount you can hold and manipulate right now, and Huberman's through-line is that it runs on dopamine in an inverted-U: too little and you cannot hold the thread, too much and you cannot stop switching. He walks through the studies behind that claim, describes a simple task you can use to gauge your own baseline, and then goes through behavioural, supplemental and pharmacological levers in descending order of how well evidenced they are. Long, granular, and explicit about what is speculative.",
+    "headline": "Working memory runs on dopamine, to a point",
+    "note": "Skip to the tools if the mechanism section runs long.",
+    "thumbnail": "psy-huberman-working-memory.jpg",
+    "thumbnail_source": "https://www.hubermanlab.com/episode/tools-to-enhance-working-memory-attention",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "psy-gilbert-surprising-science-happiness",
+    "title": "The surprising science of happiness",
+    "creator": "Dan Gilbert",
+    "publication": "TED",
+    "url": "https://www.youtube.com/watch?v=4q1dgn_C0AU",
+    "format": "video",
+    "topic": "psychology",
+    "interests": [
+      "decision-making"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 21,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Gilbert's claim is that the prefrontal cortex is an experience simulator, and that it is reliably miscalibrated: we expect outcomes to matter more, and for longer, than they do. A year on, lottery winners and people newly paralysed report similar happiness. He calls the error the impact bias and attributes the recovery to a psychological immune system that quietly rewrites our view of what happened. The upshot is uncomfortable — synthesised happiness is not a consolation prize, and freedom to change your mind can make you less happy.",
+    "headline": "We are bad at predicting what will upset us",
+    "thumbnail": "psy-gilbert-surprising-science-happiness.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=4q1dgn_C0AU",
     "thumbnail_kind": "image"
   }
 ]

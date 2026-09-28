@@ -19,7 +19,8 @@
   <article class="news-story">
     <div class="news-kicker">
       <span class="pill">{{ piece.topic|topic_label }}{% if piece.interests %} ×
-        {{ piece.interests[0]|replace('-', ' ') }}{% endif %}</span><b>0{{ loop.index }}</b>
+        {{ piece.interests[0]|replace('-', ' ') }}{% endif %}</span>
+      <span class="mode-tag">{{ piece.verb }}</span><b>0{{ loop.index }}</b>
     </div>
     {% if piece.thumbnail_url %}
     <img class="news-image" src="{{ piece.thumbnail_url }}" alt="{{ piece.alt_text }}">

@@ -314,6 +314,74 @@
     "summary": "The talk that produced a decade of tooling. Victor demonstrates code whose results appear as you type, an animation editor with no compile step, and a game you can scrub through time in, then argues that the demos follow from a principle he refuses to compromise: creators need an immediate connection to what they make. The second half, about organising a career around a principle, is the part people underestimate.",
     "thumbnail": "pd-inventing-on-principle.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=PUv66718DII",
+    "thumbnail_kind": "image",
+    "source_tier": 1
+  },
+  {
+    "id": "pd-99pi-fraktur",
+    "title": "Fraktur",
+    "creator": "Roman Mars and Katie Mingle",
+    "publication": "99% Invisible",
+    "url": "https://99percentinvisible.org/episode/fraktur/",
+    "format": "podcast",
+    "topic": "product-design",
+    "interests": [
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 37,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "A sign on a Dresden bus, set in blackletter, is enough to start an argument about who counts as German. The episode traces Fraktur from medieval scribes economising on quill strokes, through its slow loss to Roman type, to the Nazis adopting it and then abruptly banning it in 1941. What you get is a working demonstration that a typeface carries history whether or not the designer intends it, which is worth having in mind the next time a font feels merely decorative.",
+    "headline": "A typeface that cannot stop meaning something",
+    "note": "Type as politics, told as a story.",
+    "thumbnail": "pd-99pi-fraktur.jpg",
+    "thumbnail_source": "https://99percentinvisible.org/episode/fraktur/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-design-matters-don-norman",
+    "title": "Don Norman",
+    "creator": "Debbie Millman",
+    "publication": "Design Matters",
+    "url": "https://www.designmattersmedia.com/podcast/2023/Don-Norman",
+    "format": "podcast",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "interaction-design"
+    ],
+    "depth": "deep",
+    "duration_minutes": 61,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Norman wrote the book that taught a generation to blame the door rather than themselves, and here he argues his own field has been aiming too low. Human-centred design, he tells Millman, optimises for the person in front of you while the ecology they live in degrades; his answer in Design for a Better World is humanity-centred design, with longer time horizons and communities doing the designing. Millman also gets the biography — the engineer who never finished high school, and how he arrived at usability.",
+    "headline": "The man who blamed the door, on what he got wrong",
+    "thumbnail": "pd-design-matters-don-norman.jpg",
+    "thumbnail_source": "https://www.designmattersmedia.com/podcast/2023/Don-Norman",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pd-scher-serious-not-solemn",
+    "title": "Great design is serious (not solemn)",
+    "creator": "Paula Scher",
+    "publication": "TED",
+    "url": "https://www.youtube.com/watch?v=atn22-bmTPU",
+    "format": "video",
+    "topic": "product-design",
+    "interests": [
+      "craft-and-process",
+      "typography"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 22,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Scher borrows a distinction from Russell Baker — solemn is easy, serious is hard — and applies it to a 35-year career at Pentagram. Solemn work is correct, approved and safe; serious work happens spontaneously, often out of innocence or arrogance, and is usually imperfect. She counts four genuinely serious moments in her own career, including the Citibank logo drawn on a napkin, and is honest that the rest was competent solemnity. A good corrective if your process has become entirely process.",
+    "headline": "Solemn is easy. Serious is hard.",
+    "note": "She drew the Citi logo on a napkin. That's the point.",
+    "thumbnail": "pd-scher-serious-not-solemn.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=atn22-bmTPU",
     "thumbnail_kind": "image"
   }
 ]

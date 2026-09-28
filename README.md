@@ -66,11 +66,17 @@ Then open http://localhost:8000. The content library is seeded into SQLite on st
 
 ## The content library
 
-`content/library/*.json` holds 75 hand-checked pieces across product design, philosophy,
-psychology, AI, and tech. Each record carries a stable id, title, creator, publication or
-channel, url, format (`article` / `essay` / `video`), broad topic, specific-interest tags,
-depth (`accessible` / `deep`), estimated minutes, an original 130–170 word summary, and the
-date it was verified.
+`content/library/*.json` holds 88 hand-checked pieces across product design, philosophy,
+psychology, AI, and tech — essays, articles, talks and podcast episodes. Each record carries
+a stable id, title, creator, publication or channel, url, format (`article` / `essay` /
+`video` / `podcast`), broad topic, specific-interest tags, depth (`accessible` / `deep`),
+estimated minutes, an original 60–90 word summary, and the date it was verified.
+
+Source quality is a tier: 1 for primary sources and original-author work (Paul Graham, Aeon,
+Distill, the Stanford Encyclopedia, arXiv, authored newsletters), 2 for strong specialist
+publications, 3 for everything else. `app/sources.py` infers it from the publisher domain;
+pieces hosted on a platform (YouTube, podcast hosts) say nothing about their own quality by
+their url, so those records must declare `source_tier` explicitly or loading fails.
 
 To add a piece: read or watch it, append a record to the right file with a new stable id,
 use only interest slugs listed in `app/content.py`, and write the summary yourself. Restart
@@ -81,9 +87,13 @@ at load time for required fields, known topics, known interests, and valid forma
 ## How selection works
 
 `app/selection.py` scores each piece: a specific-interest match is worth 10, the broad topic
-4, matching the preferred depth 3, and reader feedback ±5/8. Variety penalties nudge the
-edition away from repeating a format, topic, or creator, but never override a substantially
-stronger match. Ties break on id, so the same profile always yields the same edition.
+4, matching the preferred depth 3, reader feedback ±5/8, and source quality +5 (tier 1) or
++2.5 (tier 2) — bounded below one interest match, so a better source breaks a tie without
+ever beating relevance. Variety penalties nudge the edition away from repeating a format,
+mode, topic, or creator, and a final pass trades the weakest pick for a watch or a listen
+when an edition would otherwise be three of the same mode — only for a piece already inside
+the reader's topics and relevant on its own merits, never for format variety alone. Ties
+break on id, so the same profile always yields the same edition.
 
 Pieces the reader has already been sent are excluded while suitable unseen content remains.
 Once it runs out, the least-recently-sent relevant pieces return, labelled as revisits in

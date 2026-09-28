@@ -78,7 +78,8 @@
     "summary": "A one-hour talk that gets a general audience from tokens to fine-tuning without hand-waving. Karpathy frames a model as two files, walks through pretraining and the assistant training that follows, and then spends the second half on the security side: prompt injection, jailbreaks, and data poisoning. It is the talk to send someone who wants a real mental model rather than a metaphor.",
     "thumbnail": "ai-karpathy-intro-llms.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 1
   },
   {
     "id": "ai-circuits-zoom-in",
@@ -157,7 +158,8 @@
     "summary": "Eighteen minutes on why a capable system pursuing a slightly wrong objective is a problem, delivered without doom or hype. Miles builds the argument from specification, instrumental goals, and the gap between what we ask for and what we want, using examples simple enough to repeat to someone else afterwards. The best short introduction if you want the shape of the field before reading papers.",
     "thumbnail": "ai-intro-ai-safety.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=pYXy-A4siMw",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 2
   },
   {
     "id": "ai-stochastic-parrots",
@@ -318,6 +320,72 @@
     "headline": "A field update, delivered without hype",
     "thumbnail": "ai-weird-world-of-llms.jpg",
     "thumbnail_source": "https://simonwillison.net/2023/Aug/3/weird-world-of-llms/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "ai-dwarkesh-demis-hassabis",
+    "title": "Demis Hassabis — Scaling, superhuman AIs, AlphaZero atop LLMs, AlphaFold",
+    "creator": "Dwarkesh Patel and Demis Hassabis",
+    "publication": "Dwarkesh Podcast",
+    "url": "https://www.dwarkesh.com/p/demis-hassabis",
+    "format": "podcast",
+    "topic": "ai",
+    "interests": [
+      "how-models-work",
+      "ai-safety"
+    ],
+    "depth": "deep",
+    "duration_minutes": 62,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "The head of Google DeepMind on why scaling is still, in his words, an art form rather than an engineering discipline, and on what happens when you put AlphaZero-style search and planning on top of a language model. Patel presses him on timelines, on whether an intelligence explosion is a thing you can steer, on keeping model weights out of the hands of states that want them, and on how Gemini was actually trained. A transcript is posted alongside if you would rather read it.",
+    "headline": "Search, planning, and the limits of scaling",
+    "thumbnail": "ai-dwarkesh-demis-hassabis.jpg",
+    "thumbnail_source": "https://www.dwarkesh.com/p/demis-hassabis",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "ai-80k-beth-barnes-evals",
+    "title": "Beth Barnes on the most important graph in AI right now",
+    "creator": "Rob Wiblin and Beth Barnes",
+    "publication": "The 80,000 Hours Podcast",
+    "url": "https://80000hours.org/podcast/episodes/beth-barnes-ai-safety-evals/",
+    "format": "podcast",
+    "topic": "ai",
+    "interests": [
+      "ai-safety",
+      "ai-and-society"
+    ],
+    "depth": "deep",
+    "duration_minutes": 238,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "METR times how long a task takes a skilled human, then measures which of those tasks models can finish. The resulting number — the length of job a model completes half the time — has been doubling roughly every seven months, which is the graph of the title. Barnes explains how the measurement is built, why chain-of-thought being readable is a safety property worth protecting, and what alignment faking looks like in practice. Very long; the timestamped outline and full transcript let you take it in pieces.",
+    "headline": "The seven-month doubling, and how it is measured",
+    "note": "Four hours. Use the timestamps.",
+    "thumbnail": "ai-80k-beth-barnes-evals.jpg",
+    "thumbnail_source": "https://80000hours.org/podcast/episodes/beth-barnes-ai-safety-evals/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "ai-3blue1brown-neural-networks",
+    "title": "But what is a neural network? | Deep learning chapter 1",
+    "creator": "Grant Sanderson",
+    "publication": "3Blue1Brown",
+    "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+    "format": "video",
+    "topic": "ai",
+    "interests": [
+      "how-models-work"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 19,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Sanderson builds up a network that reads handwritten digits from a 28x28 grid, one layer at a time, and insists on the question most explanations skip: what could an individual neuron plausibly be detecting, and why does stacking those detections help? Weights, biases and the sigmoid arrive as answers to that question rather than as definitions, and the animation carries the linear algebra without hiding it. Training comes in the next chapter; this one is about what the object actually is.",
+    "headline": "What the layers are actually doing",
+    "thumbnail": "ai-3blue1brown-neural-networks.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=aircAruvnKk",
     "thumbnail_kind": "image"
   }
 ]

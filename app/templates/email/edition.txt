@@ -16,7 +16,7 @@ Three good finds. Delivered daily.
 {% if item.reason %}
 {{ item.reason }}{% if item.is_revisit %} A revisit - worth a second look.{% endif %} - Serius
 {% endif %}
-{{ item.content.title }} - {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min
+{{ item.content.title }} - {{ item.content.read_label|lower }}, {{ item.content.duration_minutes }} min {{ item.content.verb }}
 {{ item.content.url }}
 
 More like this: {{ base_url }}/feedback/{{ manage_token }}/{{ item.content.id }}/more

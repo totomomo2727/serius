@@ -52,7 +52,12 @@ def test_every_item_has_complete_attribution_and_a_real_reason(db):
         assert item.title and item.creator and item.publication
         assert item.url.startswith("http")
         assert 60 <= len(item.summary.split()) <= 90
-        assert item.read_label in ("Read the article", "Read the essay", "Watch the video")
+        assert item.read_label in (
+            "Read the article",
+            "Read the essay",
+            "Watch the video",
+            "Listen to the episode",
+        )
         # A note is optional, but when it appears it stays to one short line.
         assert len(pick.reason.split()) <= 12
     assert any(pick.reason for pick in picks)

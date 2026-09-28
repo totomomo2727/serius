@@ -216,7 +216,8 @@
     "headline": "Ninety minutes in 1968 that contained everything",
     "thumbnail": "tech-mother-of-all-demos.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=yJDv-zdhzMY",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 1
   },
   {
     "id": "tech-computer-revolution",
@@ -235,7 +236,8 @@
     "summary": "Kay's OOPSLA keynote, delivered with visible impatience, argues that the industry industrialised the wrong parts of computing and stopped asking what the machine was for. He revisits what object orientation was meant to mean, compares software engineering unfavourably with real engineering, and demonstrates ideas from the sixties still ahead of 1997. Bracing, funny, and a little uncomfortable if you build software for a living.",
     "thumbnail": "tech-computer-revolution.jpg",
     "thumbnail_source": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
-    "thumbnail_kind": "image"
+    "thumbnail_kind": "image",
+    "source_tier": 1
   },
   {
     "id": "tech-aggregation-theory",
@@ -295,6 +297,50 @@
     "summary": "Qureshi's account of working at an unusually strange company: how it hired, why deployment engineers mattered more than product managers, what forward-deployed work actually involves, and where the culture failed. It is neither defence nor exposé, which is what makes it useful. The sections on hiring for raw ability and on what it costs to place engineers inside a customer's problem are the ones worth arguing with. The most concrete first-hand writing available about how an enterprise software company really operates.",
     "thumbnail": "tech-reflections-on-palantir.jpg",
     "thumbnail_source": "https://nabeelqu.substack.com/p/reflections-on-palantir",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-acquired-nvidia-part-one",
+    "title": "Nvidia Part I: The GPU Company (1993-2006)",
+    "creator": "Ben Gilbert and David Rosenthal",
+    "publication": "Acquired",
+    "url": "https://www.acquired.fm/episodes/nvidia-the-gpu-company-1993-2006",
+    "format": "podcast",
+    "topic": "tech",
+    "interests": [
+      "startups-and-strategy",
+      "computing-culture"
+    ],
+    "depth": "deep",
+    "duration_minutes": 113,
+    "verified_on": "2026-09-26",
+    "source_tier": 2,
+    "summary": "Recorded in 2022, before the AI boom made the story obvious, this is Nvidia as a company that nearly died repeatedly: the first chip architecture bet wrong, a market with dozens of graphics competitors, and Jensen Huang's decision to ship on a cadence nobody else could sustain. Gilbert and Rosenthal are unusually good on why the GPU turned out to be a general-purpose parallel machine that happened to be sold to gamers. The first of a trilogy, and the one that explains the rest.",
+    "headline": "Before the trillion dollars, a graphics card company",
+    "thumbnail": "tech-acquired-nvidia-part-one.jpg",
+    "thumbnail_source": "https://www.acquired.fm/episodes/nvidia-the-gpu-company-1993-2006",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "tech-hickey-simple-made-easy",
+    "title": "Simple Made Easy",
+    "creator": "Rich Hickey",
+    "publication": "Strange Loop",
+    "url": "https://www.youtube.com/watch?v=SxdOUGdseq4",
+    "format": "video",
+    "topic": "tech",
+    "interests": [
+      "software-craft"
+    ],
+    "depth": "deep",
+    "duration_minutes": 62,
+    "verified_on": "2026-09-26",
+    "source_tier": 1,
+    "summary": "Hickey separates two words we use interchangeably. Simple is objective — one fold, one braid, nothing twisted together. Easy is relative to you: near at hand, familiar, already installed. Most of what we choose in software is chosen for easiness, and the complexity we pay for it is not visible until the system is large. He then goes construct by construct — state, objects, inheritance, ORMs, conditionals — naming what each one complects. The talk that put 'complect' into working vocabularies.",
+    "headline": "Simple is not the same as easy",
+    "note": "Worth it for the vocabulary alone.",
+    "thumbnail": "tech-hickey-simple-made-easy.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=SxdOUGdseq4",
     "thumbnail_kind": "image"
   }
 ]

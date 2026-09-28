@@ -43,3 +43,24 @@ def init_db() -> None:
     from app.models import Base
 
     Base.metadata.create_all(bind=engine)
+    _add_new_columns()
+
+
+def _add_new_columns() -> None:
+    """Catch a live database up with nullable columns added since it was created."""
+    from sqlalchemy import inspect, text
+
+    from app.models import Base
+
+    inspector = inspect(engine)
+    tables = set(inspector.get_table_names())
+    with engine.begin() as connection:
+        for table in Base.metadata.sorted_tables:
+            if table.name not in tables:
+                continue
+            present = {c["name"] for c in inspector.get_columns(table.name)}
+            for column in table.columns:
+                if column.name in present or not column.nullable:
+                    continue
+                kind = column.type.compile(dialect=engine.dialect)
+                connection.execute(text(f"ALTER TABLE {table.name} ADD COLUMN {column.name} {kind}"))
