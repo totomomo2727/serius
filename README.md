@@ -90,6 +90,21 @@ Once it runs out, the least-recently-sent relevant pieces return, labelled as re
 both the reason line and the edition itself. Every edition stores the profile used, the
 three items, and the reason for each, so a preview, its email, and any retry are identical.
 
+### Checking that editions really are personalised
+
+```
+.venv/bin/python scripts/personalization_report.py
+```
+
+Builds one real edition per profile in `PROFILE_MATRIX` (each topic alone, subtopics within
+a topic, two topics together, the same topic at opposite depths) in a throwaway database,
+writes each profile's newsletter as it would be sent to
+`data/personalization-report/<profile>.html` and `.txt`, and writes `report.md`: what each
+profile received and how many of the three pieces any two profiles share. It exits non-zero
+if two profiles would receive the same three pieces, if a piece falls outside the chosen
+topics, or if a chosen subtopic goes unmatched. Add a profile by appending to the matrix;
+`tests/test_personalization.py` asserts the same invariants over it on every test run.
+
 ## Type and imagery
 
 Four self-hosted families, each with one job, all under the SIL Open Font License 1.1 and
