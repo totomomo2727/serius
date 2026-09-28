@@ -37,6 +37,7 @@ def test_landing_content_is_present_before_any_motion_runs(client):
     assert "a small bird." in landing.text
     assert "hero-wave" in landing.text
     assert "waving hello" in landing.text
+    assert "deck-dots" in landing.text
     assert "data-sound-toggle" in landing.text
     assert 'aria-pressed="false"' in landing.text
 

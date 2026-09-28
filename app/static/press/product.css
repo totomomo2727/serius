@@ -314,6 +314,7 @@
   position: relative;
   width: min(420px, 100%);
   max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
   overflow: auto;
   background: #f7f6f2 url('/static/press/paper-photo.jpg') center/cover;
   border: 1px solid #cfcec7;
@@ -343,10 +344,10 @@
 .modal-lede { font: 14px/1.6 Arial, Helvetica, sans-serif; color: #60605b; margin: 0; }
 .modal-paper .email-field { margin-top: 18px; max-width: 100%; }
 .modal-paper .email-field label { font-size: 13px; margin-bottom: 4px; }
-.modal-paper .email-field input { font-size: 16px; padding: 10px 0; }
+.modal-paper .email-field input { font-size: 16px; padding: 12px 20px; min-height: 48px; }
 .modal-paper .hint, .modal-paper .fine { display: none; }
 .modal-paper .consent-note { font-size: 10px; margin-top: 10px; }
-.modal-paper .button { margin-top: 14px; width: 100%; min-height: 72px; font-size: 17px; }
+.modal-paper .button { margin-top: 14px; width: 100%; min-height: 72px; font-size: 17px; padding-inline: 24px; white-space: nowrap; }
 .modal-paper .quiet { margin: 8px auto 0; padding: 10px 0; }
 body.has-modal { overflow: hidden; }
 
