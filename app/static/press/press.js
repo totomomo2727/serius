@@ -305,11 +305,13 @@
           return ctx.state === 'running';
         });
       },
-      /* A sound whose moment has passed is dropped, never replayed late. */
+      /* A sound whose moment has passed is dropped, never replayed late.
+         Reports whether it actually sounded. */
       play: function (kind) {
-        if (!on || !voices[kind]) return;
-        if (!ready() || ctx.state !== 'running') return;
+        if (!on || !voices[kind]) return false;
+        if (!ready() || ctx.state !== 'running') return false;
         voices[kind]();
+        return true;
       },
     };
   })();
@@ -456,10 +458,10 @@
        once both get their release, and a release is only ever the answer to a
        press this listener actually played. */
     var down = [];
-    var hold = function (id) {
-      /* Turning sound on with the control itself would otherwise answer a
-         silent press with an audible release. */
-      if (!audio.enabled()) return;
+    var hold = function (id, sounded) {
+      /* A press that stayed silent - sound off, or audio not unlocked yet -
+         must not be answered by an audible release. */
+      if (!sounded) return;
       if (down.indexOf(id) < 0) down.push(id);
     };
     var drop = function (id) {
@@ -473,8 +475,7 @@
     };
     document.addEventListener('pointerdown', function (event) {
       if (!isControl(event.target)) return;
-      hold('p' + event.pointerId);
-      audio.play('press');
+      hold('p' + event.pointerId, audio.play('press'));
       buzz(10);
     });
     document.addEventListener('pointerup', function (event) {
@@ -489,8 +490,7 @@
       if (event.repeat) return;
       if (!isActivator(event.key)) return;
       if (!isControl(event.target)) return;
-      hold('k' + event.key);
-      audio.play('press');
+      hold('k' + event.key, audio.play('press'));
       buzz(10);
     });
     document.addEventListener('keyup', function (event) {
