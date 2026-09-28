@@ -13,3 +13,13 @@
   font-display: swap;
   src: url(/static/press/fonts/font-5.ttf) format('truetype');
 }
+/* Georgia, scaled to Instrument Serif's metrics, so the swap to the real font
+   does not change how much room the text takes. */
+@font-face {
+  font-family: 'Instrument Fallback';
+  src: local('Georgia'), local('Times New Roman'), local('Times');
+  size-adjust: 96%;
+  ascent-override: 103%;
+  descent-override: 32%;
+  line-gap-override: 0%;
+}

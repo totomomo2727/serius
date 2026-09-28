@@ -134,6 +134,7 @@
      stays a single request, and silent until asked for: browsers block
      unprompted audio and so should we. */
   var audio = (function () {
+    var LEVEL = 0.16;
     var ctx = null;
     var master = null;
     var on = false;
@@ -149,7 +150,7 @@
       if (!ctx) {
         ctx = new Ctx();
         master = ctx.createGain();
-        master.gain.value = 0.16;
+        master.gain.value = on ? LEVEL : 0;
         master.connect(ctx.destination);
       }
       return ctx;
@@ -221,6 +222,8 @@
       enabled: function () {
         return on;
       },
+      /* Switching off silences what is already ringing, not just what is
+         scheduled, so "off" is immediate. */
       set: function (value) {
         on = value;
         try {
@@ -228,7 +231,11 @@
         } catch (err) {
           /* private browsing keeps the choice for this page only */
         }
-        if (value) ready();
+        if (!ready()) return;
+        var now = ctx.currentTime;
+        master.gain.cancelScheduledValues(now);
+        master.gain.setValueAtTime(master.gain.value, now);
+        master.gain.linearRampToValueAtTime(value ? LEVEL : 0, now + 0.02);
       },
       /* Resolves once the context is running, which a browser only allows
          from a gesture; scheduled sounds wait for this rather than each
