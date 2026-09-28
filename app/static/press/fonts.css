@@ -18,8 +18,8 @@
 @font-face {
   font-family: 'Instrument Fallback';
   src: local('Georgia'), local('Times New Roman'), local('Times');
-  size-adjust: 96%;
-  ascent-override: 103%;
-  descent-override: 32%;
+  size-adjust: 76%;
+  ascent-override: 130%;
+  descent-override: 41%;
   line-gap-override: 0%;
 }
