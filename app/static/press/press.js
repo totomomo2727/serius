@@ -2,6 +2,15 @@
    labels, and the hand-drawn outline that follows them. */
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+  /* Tells the head script that the motion code is alive and will reveal the
+     page itself; without this the head script drops the hiding rules. */
+  root.dataset.motion = 'ready';
+
+  function showEverything() {
+    root.classList.remove('js');
+  }
+
   var OUTLINE =
     '<svg class="drawn-outline" aria-hidden="true" viewBox="0 0 340 100" preserveAspectRatio="none">' +
     '<path pathLength="1" d="M 82 12 C 135 3 244 4 298 24 C 324 34 332 58 307 76 C 264 100 110 96 44 83 ' +
@@ -143,8 +152,7 @@
         master.gain.value = 0.16;
         master.connect(ctx.destination);
       }
-      if (ctx.state === 'suspended') ctx.resume();
-      return ctx.state === 'running' ? ctx : null;
+      return ctx;
     }
 
     function noise(duration) {
@@ -222,10 +230,21 @@
         }
         if (value) ready();
       },
+      /* A context created before any gesture starts suspended, and resuming it
+         is asynchronous, so the sound waits for the context rather than being
+         dropped. */
       play: function (kind) {
         if (!on || !voices[kind]) return;
         if (!ready()) return;
-        voices[kind]();
+        if (ctx.state === 'running') {
+          voices[kind]();
+          return;
+        }
+        var resumed = ctx.resume();
+        if (!resumed || !resumed.then) return;
+        resumed.then(function () {
+          if (on && ctx.state === 'running') voices[kind]();
+        });
       },
     };
   })();
@@ -245,20 +264,34 @@
     button.addEventListener('click', function () {
       audio.set(!audio.enabled());
       paint();
+      if (!audio.enabled()) {
+        playBeats(0);
+        return;
+      }
       audio.play('toggle');
-      if (audio.enabled() && replay) replay();
+      if (replay) replay();
+    });
+  }
+
+  /* One intro is audible at a time: a second replay cancels the first rather
+     than playing both sets of keystrokes over one animation. */
+  var pending = [];
+
+  function playBeats(offset) {
+    pending.forEach(window.clearTimeout);
+    pending = [];
+    if (!audio.enabled()) return;
+    beats.forEach(function (item) {
+      pending.push(
+        window.setTimeout(function () {
+          audio.play(item.kind);
+        }, Math.max(0, item.at - offset))
+      );
     });
   }
 
   function scheduleBeats() {
-    if (!audio.enabled()) return;
-    var now = window.performance && performance.now ? performance.now() : 0;
-    beats.forEach(function (item) {
-      var delay = item.at - now;
-      window.setTimeout(function () {
-        audio.play(item.kind);
-      }, Math.max(0, delay));
-    });
+    playBeats(window.performance && performance.now ? performance.now() : 0);
   }
 
   /* Restarting the CSS animations from their first frame. */
@@ -271,11 +304,7 @@
     nodes.forEach(function (node) {
       node.style.animation = '';
     });
-    beats.forEach(function (item) {
-      window.setTimeout(function () {
-        audio.play(item.kind);
-      }, item.at);
-    });
+    playBeats(0);
   }
 
   /* Only fills fields that ask for detection; a saved preference is never
@@ -357,12 +386,20 @@
     });
   }
 
-  var introEnd = editorial();
-  heroReveal(introEnd + 120);
-  scrollReveal();
-  soundControl(replayIntro);
-  scheduleBeats();
-  touchFeedback();
+  try {
+    var introEnd = editorial();
+    heroReveal(introEnd + 120);
+    scrollReveal();
+    soundControl(replayIntro);
+    scheduleBeats();
+    touchFeedback();
+  } catch (err) {
+    showEverything();
+  }
+  /* Last resort: whatever went wrong, nothing stays hidden. */
+  window.setTimeout(function () {
+    if (document.querySelector('[data-reveal]:not(.is-in)')) showEverything();
+  }, 6000);
   timezone();
   chips();
   guardDoubleSubmit();
