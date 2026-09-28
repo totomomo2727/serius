@@ -21,8 +21,8 @@
     <div class="hero-art">
       <span class="sticker" data-reveal="note">your interests.<br><em>his good finds.</em></span>
       <div class="paper-tilt" data-reveal="paper">
-        <button type="button" class="paper-stack" data-sample-cycle
-                aria-label="Show another reader’s sample edition">
+        <button type="button" class="paper-stack" data-sample-cycle>
+          <span class="offscreen">Sample edition. Activate for another reader’s three.</span>
           {% for edition in samples %}
           {% set stories = edition.stories %}
           <div class="mini-paper{% if loop.first %} is-active{% endif %}" data-sample="{{ edition.slug }}"

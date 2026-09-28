@@ -61,6 +61,7 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 
 /* Three front pages in one place: a stack of sheets, the front one clickable. */
 [hidden]{display:none!important}
+.offscreen{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .paper-stack{display:grid;position:relative;z-index:0;width:100%;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:transform 200ms cubic-bezier(.2,.6,.2,1)}
 .paper-stack>.mini-paper{grid-area:1/1}
 .paper-stack>.mini-paper:not(.is-active){display:none}

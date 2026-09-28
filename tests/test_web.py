@@ -93,6 +93,17 @@ def test_preview_shows_three_real_pieces(client, db):
     assert "— Serius" in response.text
 
 
+def test_preview_offers_the_delivery_invitation_without_scripting(client, db):
+    response = start_preview(client)
+    # The pop-up carries the daily promise, and the tail below it still works
+    # for anyone the script never reaches.
+    assert "data-delivery-modal" in response.text
+    assert "every single day" in response.text.lower()
+    assert response.text.count('action="/subscribe"') == 2
+    assert 'id="email-page"' in response.text
+    assert 'id="email-modal"' in response.text
+
+
 def test_subscribe_requires_consent(client, db):
     start_preview(client)
     edition = db.query(Edition).order_by(Edition.created_at.desc()).first()

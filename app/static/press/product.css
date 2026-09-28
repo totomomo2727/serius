@@ -183,16 +183,18 @@
   76%, 100% { opacity: 1; transform: scale(1); }
 }
 
-@media (max-width: 960px) {
-  .delivery-scene { --walk: 42vw; width: 100%; }
+/* Below the scene's full width the postbox travels with the right edge, so the
+   walk is measured from the viewport and Serius still arrives beside it. */
+@media (max-width: 1000px) {
+  .delivery-scene { --walk: calc(100vw - 400px); width: 100%; }
 }
 
 @media (max-width: 700px) {
   .delivery-scene {
-    --walk: 44vw;
-    --toss-x: 18px;
+    --walk: calc(100vw - 246px);
+    --toss-x: 26px;
     --toss-y: -14px;
-    --slot-x: 50px;
+    --slot-x: 58px;
     --slot-y: 18px;
     height: 200px;
   }
@@ -290,4 +292,78 @@
 @media (prefers-reduced-motion: reduce) {
   .button:active { transform: none; }
   .button:hover span { transform: none; }
+}
+
+/* ---- the delivery pop-up over the personalized edition ---- */
+.delivery-modal[hidden] { display: none; }
+.delivery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: auto;
+}
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  background: #20201ec4;
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(.2,.6,.2,1);
+}
+.delivery-modal.is-open .modal-scrim { opacity: 1; }
+.modal-paper {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: #f7f6f2 url('/static/press/paper-photo.jpg') center/cover;
+  border: 1px solid #cfcec7;
+  box-shadow: 0 28px 60px #20201e3d;
+  padding: 44px 48px 40px;
+  opacity: 0;
+  transform: translateY(18px) rotate(-.4deg);
+  transition: opacity 260ms cubic-bezier(.2,.6,.2,1),
+    transform 260ms cubic-bezier(.2,.6,.2,1);
+}
+.delivery-modal.is-open .modal-paper { opacity: 1; transform: none; }
+.modal-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  border: 0;
+  background: transparent;
+  font: 26px/1 Arial, Helvetica, sans-serif;
+  color: #60605b;
+  padding: 6px 10px;
+}
+.modal-paper h2 {
+  font: 42px/1.04 'Instrument Serif','Instrument Fallback', Georgia, serif;
+  letter-spacing: -1.2px;
+  margin: 14px 0 12px;
+}
+.modal-lede { font: 15px/1.7 Arial, Helvetica, sans-serif; color: #60605b; margin: 0; }
+.modal-points {
+  list-style: none;
+  margin: 22px 0 6px;
+  padding: 0;
+  font: 14px/1.6 Arial, Helvetica, sans-serif;
+  color: #20201e;
+}
+.modal-points li { padding: 9px 0 9px 22px; position: relative; border-top: 1px solid #dcdbd4; }
+.modal-points li::before { content: '·'; position: absolute; left: 6px; color: #38489e; }
+.modal-paper .email-field { margin-top: 22px; max-width: 100%; }
+.modal-paper .button { margin-top: 20px; }
+.modal-paper .quiet { margin: 14px auto 0; }
+body.has-modal { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .delivery-modal { padding: 12px; }
+  .modal-paper { padding: 34px 24px 28px; }
+  .modal-paper h2 { font-size: 32px; letter-spacing: -.6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-scrim, .modal-paper { transition: none; opacity: 1; transform: none; }
 }
