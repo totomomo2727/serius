@@ -41,6 +41,17 @@ PROFILE_MATRIX: list[tuple[str, dict]] = [
     ("tech-accessible", {"topics": ["tech"], "interests": [], "depth": "accessible"}),
     ("tech-deep", {"topics": ["tech"], "interests": [], "depth": "deep"}),
     ("ai-and-tech", {"topics": ["ai", "tech"], "interests": ["software-craft"], "depth": "mix"}),
+    ("politics-geopolitics", {"topics": ["politics"], "interests": ["geopolitics"], "depth": "mix"}),
+    ("politics-policy", {"topics": ["politics"], "interests": ["public-policy"], "depth": "deep"}),
+    ("business-markets", {"topics": ["business"], "interests": ["stock-market"], "depth": "mix"}),
+    (
+        "business-strategy",
+        {"topics": ["business"], "interests": ["business-strategy"], "depth": "accessible"},
+    ),
+    (
+        "business-and-politics",
+        {"topics": ["business", "politics"], "interests": ["economics"], "depth": "deep"},
+    ),
 ]
 
 
