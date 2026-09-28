@@ -417,29 +417,24 @@
     sync();
   }
 
-  /* Three sample editions share one place on the page: the hero's stack of
-     front pages and the sample reader. Every picker on the page drives every
-     stack, so the hero and the full edition stay on the same reader. */
+  /* Three sample editions share one place in the hero. The front page itself
+     is the control: clicking it shows the next reader's. */
   function sampleStacks() {
-    var pickers = document.querySelectorAll('[data-sample-picker]');
-    if (!pickers.length) return;
-    var show = function (slug) {
-      document.querySelectorAll('[data-sample]').forEach(function (panel) {
-        var active = panel.dataset.sample === slug;
-        panel.classList.toggle('is-active', active);
-        if (active) panel.removeAttribute('aria-hidden');
-        else panel.setAttribute('aria-hidden', 'true');
+    var stack = document.querySelector('[data-sample-cycle]');
+    if (!stack) return;
+    var papers = [].slice.call(stack.querySelectorAll('[data-sample]'));
+    if (papers.length < 2) return;
+    var hint = document.querySelector('[data-sample-hint]');
+    if (hint) hint.hidden = false;
+    stack.addEventListener('click', function () {
+      var current = papers.findIndex(function (paper) {
+        return paper.classList.contains('is-active');
       });
-      document.querySelectorAll('[data-sample-tab]').forEach(function (tab) {
-        tab.setAttribute('aria-pressed', tab.dataset.sampleTab === slug ? 'true' : 'false');
-      });
-    };
-    pickers.forEach(function (picker) {
-      picker.hidden = false;
-      picker.addEventListener('click', function (event) {
-        var tab = event.target.closest('[data-sample-tab]');
-        if (!tab) return;
-        show(tab.dataset.sampleTab);
+      papers.forEach(function (paper, index) {
+        var active = index === (current + 1) % papers.length;
+        paper.classList.toggle('is-active', active);
+        if (active) paper.removeAttribute('aria-hidden');
+        else paper.setAttribute('aria-hidden', 'true');
       });
     });
   }

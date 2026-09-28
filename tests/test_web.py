@@ -56,9 +56,12 @@ def test_three_sample_editions_are_offered_with_the_featured_one_first(client):
         text = client.get(page).text
         first = text.index('data-sample="philosophy-psychology"')
         for sample in samples:
-            assert f'data-sample-tab="{sample["slug"]}"' in text
-            assert sample["label"] in text
             assert first <= text.index(f'data-sample="{sample["slug"]}"')
+
+    # The stack itself is the control; no separate tabs to click.
+    landing = client.get("/").text
+    assert "data-sample-cycle" in landing
+    assert "data-sample-tab" not in landing
 
     sample_page = client.get("/sample").text
     for story in samples[2]["stories"]:
