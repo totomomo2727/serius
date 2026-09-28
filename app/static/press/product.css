@@ -156,7 +156,14 @@
   animation: post 6s both;
 }
 .mail-arrived { right: 118px; top: 30px; width: 28px; height: 28px; line-height: 28px; font-size: 15px; animation-name: posted; }
-.scene-note { right: 10px; bottom: 0; }
+/* The note sits under the ground line, beneath the postbox, never on it. */
+.scene-note {
+  position: static;
+  display: block;
+  width: fit-content;
+  margin: 10px max(30px, calc((100% - 920px) / 2 + 30px)) 0 auto;
+  text-align: left;
+}
 
 /* Serius keeps the envelope only until the hand-off. */
 @keyframes carry {
@@ -200,6 +207,7 @@
   .beak-mail { width: 38px; left: 66px; top: 20px; }
   .posted-mail { width: 38px; left: calc(var(--walk) + 66px); top: 102px; }
   .mail-arrived { right: 78px; top: 22px; width: 22px; height: 22px; line-height: 22px; font-size: 12px; }
+  .scene-note { margin-right: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -276,7 +284,7 @@
 @media (max-width: 700px) {
   .site-foot, .sheet { padding-left: 22px; padding-right: 22px; }
   .sheet h1 { font-size: 40px; letter-spacing: -1px; }
-  .signup-tail { margin-top: 48px; padding-top: 34px; }
+  .signup-tail { margin-top: 48px; padding: 34px 22px 0; }
   .tail-inner h2 { font-size: 34px; }
 }
 
@@ -309,7 +317,6 @@
   transition: opacity 240ms cubic-bezier(.2,.6,.2,1);
 }
 .delivery-modal.is-open .modal-scrim { opacity: 1; }
-.edition-end { display: block; height: 1px; }
 .modal-paper {
   position: relative;
   width: min(420px, 100%);

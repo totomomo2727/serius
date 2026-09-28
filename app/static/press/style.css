@@ -113,3 +113,5 @@ html{background:#f7f6f2}body{background:linear-gradient(#f7f6f2a8,#f7f6f2a8),url
 .closing{padding-top:64px}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.deck-dots>i{transition:none}}
+.hero-top{justify-content:flex-start}
+@media(max-width:700px){.hero-top .edition-note{display:block;font-size:17px}}
