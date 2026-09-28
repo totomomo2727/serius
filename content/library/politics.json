@@ -1,0 +1,357 @@
+[
+  {
+    "id": "pol-federalist-10",
+    "title": "The Federalist No. 10",
+    "creator": "James Madison",
+    "publication": "The Federalist Papers (1787), Avalon Project at Yale Law School",
+    "url": "https://avalon.law.yale.edu/18th_century/fed10.asp",
+    "format": "essay",
+    "topic": "politics",
+    "interests": [
+      "democracy",
+      "political-ideas"
+    ],
+    "depth": "deep",
+    "duration_minutes": 20,
+    "verified_on": "2026-09-28",
+    "summary": "Madison's answer to the oldest problem in democratic government: what to do about factions, groups united by an interest against the rights of others or the good of the whole. You cannot remove their causes without destroying liberty, he argues, so a large republic must instead multiply them until none can dominate. It reads as sharply today as any column about polarisation.",
+    "headline": "What a republic does about factions",
+    "thumbnail": "pol-federalist-10.jpg",
+    "thumbnail_source": "https://avalon.law.yale.edu/18th_century/fed10.asp",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "pol-federalist-51",
+    "title": "The Federalist No. 51",
+    "creator": "James Madison",
+    "publication": "The Federalist Papers (1788), Avalon Project at Yale Law School",
+    "url": "https://avalon.law.yale.edu/18th_century/fed51.asp",
+    "format": "essay",
+    "topic": "politics",
+    "interests": [
+      "democracy"
+    ],
+    "depth": "deep",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-28",
+    "summary": "The short paper behind checks and balances, and the source of the line that if men were angels no government would be necessary. Madison explains why each branch must be given the means and the motive to resist the others, so that ambition counteracts ambition. Twelve minutes with the design principle underneath most constitutional arguments you will ever hear.",
+    "headline": "Ambition must counteract ambition",
+    "thumbnail": "pol-federalist-51.jpg",
+    "thumbnail_source": "https://avalon.law.yale.edu/18th_century/fed51.asp",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "pol-orwell-politics-and-the-english-language",
+    "title": "Politics and the English Language",
+    "creator": "George Orwell",
+    "publication": "The Orwell Foundation (1946)",
+    "url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/",
+    "format": "essay",
+    "topic": "politics",
+    "interests": [
+      "political-ideas"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 25,
+    "verified_on": "2026-09-28",
+    "summary": "Orwell argues that bad political writing is not an accident: vague, stale language lets people defend the indefensible without having to picture it. He takes apart real passages, names the tricks, and ends with six rules for clear writing. After reading it you will hear euphemism in every press briefing, which is exactly what he intended.",
+    "headline": "How vague words defend the indefensible",
+    "thumbnail": "pol-orwell-politics-and-the-english-language.jpg",
+    "thumbnail_source": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-sep-democracy",
+    "title": "Democracy",
+    "creator": "Tom Christiano and Sameer Bajaj",
+    "publication": "Stanford Encyclopedia of Philosophy",
+    "url": "https://plato.stanford.edu/entries/democracy/",
+    "format": "article",
+    "topic": "politics",
+    "interests": [
+      "democracy",
+      "political-ideas"
+    ],
+    "depth": "deep",
+    "duration_minutes": 80,
+    "verified_on": "2026-09-28",
+    "summary": "The scholarly overview of what democracy is and why anyone should think it is justified. The entry sets the instrumental arguments, that democracies produce better outcomes, against the intrinsic ones, that it is the only fair way to decide together, and then works through the hard cases: voter ignorance, representation, and what citizens owe the majority. Dense, balanced and the best map of the field.",
+    "headline": "Why rule by the people, really?",
+    "thumbnail": "pol-sep-democracy.jpg",
+    "thumbnail_source": "https://plato.stanford.edu/entries/democracy/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "pol-havel-power-of-the-powerless",
+    "title": "The Power of the Powerless",
+    "creator": "Václav Havel",
+    "publication": "Essay (1978), hosted by the International Center on Nonviolent Conflict",
+    "url": "https://www.nonviolent-conflict.org/wp-content/uploads/1979/01/the-power-of-the-powerless.pdf",
+    "format": "essay",
+    "topic": "politics",
+    "interests": [
+      "political-ideas",
+      "democracy"
+    ],
+    "depth": "deep",
+    "duration_minutes": 120,
+    "verified_on": "2026-09-28",
+    "summary": "A greengrocer puts a sign reading \"Workers of the world, unite!\" in his window, not because he believes it but because everyone does. From that small act Havel, then a dissident playwright, builds a whole theory of how a regime survives on ordinary people living within a lie, and what happens when one of them starts living within the truth. It circulated in secret and helped end Communist rule.",
+    "headline": "The greengrocer who stopped pretending",
+    "thumbnail": "pol-havel-power-of-the-powerless.jpg",
+    "thumbnail_source": "https://www.nonviolent-conflict.org/wp-content/uploads/1979/01/the-power-of-the-powerless.pdf",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "pol-kennan-and-containment",
+    "title": "Kennan and Containment, 1947",
+    "creator": "Office of the Historian",
+    "publication": "U.S. Department of State, Milestones in the History of U.S. Foreign Relations",
+    "url": "https://history.state.gov/milestones/1945-1952/kennan",
+    "format": "article",
+    "topic": "politics",
+    "interests": [
+      "geopolitics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 8,
+    "verified_on": "2026-09-28",
+    "summary": "The State Department's own historians explain how a single diplomat's anonymous article in Foreign Affairs became the strategy of the Cold War. It quotes Kennan's call for patient, firm containment of Soviet expansion, then covers the argument it started, including Walter Lippmann's attack on it for treating every corner of the world as equally vital. A short, primary-sourced entry point to modern grand strategy.",
+    "headline": "One article that set the Cold War's strategy",
+    "thumbnail": "pol-kennan-and-containment.jpg",
+    "thumbnail_source": "https://history.state.gov/milestones/1945-1952/kennan",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "pol-belfer-thucydides-trap",
+    "title": "Thucydides's Trap",
+    "creator": "Graham Allison",
+    "publication": "Belfer Center for Science and International Affairs, Harvard Kennedy School",
+    "url": "https://www.belfercenter.org/thucydides-trap/overview-thucydides-trap",
+    "format": "article",
+    "topic": "politics",
+    "interests": [
+      "geopolitics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 10,
+    "verified_on": "2026-09-28",
+    "summary": "Allison's Thucydides's Trap project at Harvard looked at 16 cases over five hundred years in which a rising power threatened to displace a ruling one; twelve ended in war. This overview sets out the pattern, the four cases where statecraft avoided it, and what that implies for the United States and China. Short, sobering, and the source of a phrase you now hear in every summit headline.",
+    "headline": "Twelve of sixteen ended in war",
+    "thumbnail": "pol-belfer-thucydides-trap.jpg",
+    "thumbnail_source": "https://www.belfercenter.org/thucydides-trap/overview-thucydides-trap",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-allison-ted-us-china",
+    "title": "Is war between China and the US inevitable?",
+    "creator": "Graham Allison",
+    "publication": "YouTube, TED (2018)",
+    "url": "https://www.youtube.com/watch?v=XewnyUJgyA4",
+    "format": "video",
+    "topic": "politics",
+    "interests": [
+      "geopolitics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 18,
+    "verified_on": "2026-09-28",
+    "summary": "Allison makes the case from his Thucydides's Trap research in eighteen minutes: why a rising China and a dominant United States are drifting towards a collision neither wants, and which historical near-misses show how to avoid one. It is the most accessible version of an argument that now shapes how both governments talk about each other.",
+    "headline": "A rising power, a ruling one",
+    "source_tier": 2,
+    "thumbnail": "pol-allison-ted-us-china.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=XewnyUJgyA4",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-mearsheimer-ukraine-crisis",
+    "title": "The Causes and Consequences of the Ukraine Crisis",
+    "creator": "John J. Mearsheimer",
+    "publication": "YouTube, The University of Chicago (2015)",
+    "url": "https://www.youtube.com/watch?v=JrMiSQAGOS4",
+    "format": "video",
+    "topic": "politics",
+    "interests": [
+      "geopolitics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 74,
+    "verified_on": "2026-09-28",
+    "summary": "A leading realist scholar's lecture, given in 2015, arguing that Western expansion of NATO and the EU provoked Russia over Ukraine. It is one of the most watched and most contested lectures in international relations, and many historians reject its conclusions. Watch it for the realist way of thinking about great powers, then pair it with a critic such as Stephen Kotkin.",
+    "headline": "The realist case, and why it is contested",
+    "source_tier": 1,
+    "thumbnail": "pol-mearsheimer-ukraine-crisis.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=JrMiSQAGOS4",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-cfr-what-is-nato",
+    "title": "What Is NATO?",
+    "creator": "Council on Foreign Relations",
+    "publication": "CFR Backgrounder",
+    "url": "https://www.cfr.org/backgrounder/what-nato",
+    "format": "article",
+    "topic": "politics",
+    "interests": [
+      "geopolitics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 15,
+    "verified_on": "2026-09-28",
+    "summary": "A plain, regularly updated guide to the alliance founded in 1949 against Soviet aggression and now 32 members strong. It covers how collective defence actually works, the missions NATO took on after the Cold War, the arguments over defence spending, and how Russia's invasion of Ukraine reshaped it. The quickest way to follow any news story that mentions the alliance.",
+    "headline": "The alliance, explained plainly",
+    "source_tier": 2,
+    "thumbnail": "pol-cfr-what-is-nato.jpg",
+    "thumbnail_source": "https://www.cfr.org/backgrounder/what-nato",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-cgp-grey-first-past-the-post",
+    "title": "The Problems with First Past the Post Voting Explained",
+    "creator": "CGP Grey",
+    "publication": "YouTube, CGP Grey (2011)",
+    "url": "https://www.youtube.com/watch?v=s7tWHJfhiyo",
+    "format": "video",
+    "topic": "politics",
+    "interests": [
+      "democracy"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 6,
+    "verified_on": "2026-09-28",
+    "summary": "Six animated minutes on why the simplest voting system, where whoever gets the most votes wins, tends to squeeze politics into two parties, rewards spoilers and punishes honest votes. Grey uses a kingdom of animals to make the mechanics obvious. It explains more about modern elections than most campaign coverage, and it leads naturally into how other voting systems try to fix it.",
+    "headline": "Why simple voting squeezes out choice",
+    "source_tier": 2,
+    "thumbnail": "pol-cgp-grey-first-past-the-post.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=s7tWHJfhiyo",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-acemoglu-nobel-lecture",
+    "title": "Institutions, Technology and Prosperity",
+    "creator": "Daron Acemoglu",
+    "publication": "Nobel Prize lecture in Economic Sciences, NobelPrize.org (2024)",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2024/acemoglu/lecture/",
+    "format": "video",
+    "topic": "politics",
+    "interests": [
+      "public-policy",
+      "democracy"
+    ],
+    "depth": "deep",
+    "duration_minutes": 45,
+    "verified_on": "2026-09-28",
+    "summary": "The Nobel lecture behind Why Nations Fail. Acemoglu sets out the research he did with Simon Johnson and James Robinson, showing that inclusive political and economic institutions, not geography or culture, explain why some countries grew rich, and asks what that means for who benefits from new technology today. The page has the video of the lecture and the full written version.",
+    "headline": "Why some nations grow rich",
+    "source_tier": 1,
+    "thumbnail": "pol-acemoglu-nobel-lecture.jpg",
+    "thumbnail_source": "https://www.nobelprize.org/prizes/economic-sciences/2024/acemoglu/lecture/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-cwt-acemoglu",
+    "title": "Daron Acemoglu on the Struggle Between State and Society",
+    "creator": "Tyler Cowen",
+    "publication": "Conversations with Tyler, Ep. 81 (2019)",
+    "url": "https://conversationswithtyler.com/episodes/daron-acemoglu/",
+    "format": "podcast",
+    "topic": "politics",
+    "interests": [
+      "democracy",
+      "public-policy"
+    ],
+    "depth": "deep",
+    "duration_minutes": 65,
+    "verified_on": "2026-09-28",
+    "summary": "Cowen presses Acemoglu on The Narrow Corridor, his argument that liberty survives only when a strong state and a strong society keep checking each other. They range across China, Europe, India and the United States, and Cowen does not let the thesis off easily. A full transcript sits on the page for readers who prefer to skim.",
+    "headline": "Liberty lives in a narrow corridor",
+    "source_tier": 1,
+    "thumbnail": "pol-cwt-acemoglu.jpg",
+    "thumbnail_source": "https://conversationswithtyler.com/episodes/daron-acemoglu/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-cwt-kotkin",
+    "title": "Stephen Kotkin on Stalin, Power, and the Art of Biography",
+    "creator": "Tyler Cowen",
+    "publication": "Conversations with Tyler, Ep. 228 (2024)",
+    "url": "https://conversationswithtyler.com/episodes/stephen-kotkin/",
+    "format": "podcast",
+    "topic": "politics",
+    "interests": [
+      "geopolitics",
+      "political-ideas"
+    ],
+    "depth": "deep",
+    "duration_minutes": 80,
+    "verified_on": "2026-09-28",
+    "summary": "The historian behind the landmark multi-volume biography of Stalin talks about how totalitarian power worked, not only through terror from above but through millions of everyday decisions from below, and what writing a biography that big teaches you. Kotkin is blunt and often funny, and a useful counterweight to the realist view of Russia. The page carries the full transcript.",
+    "headline": "How power works inside a dictatorship",
+    "source_tier": 1,
+    "thumbnail": "pol-cwt-kotkin.jpg",
+    "thumbnail_source": "https://conversationswithtyler.com/episodes/stephen-kotkin/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-cwt-pahlka",
+    "title": "Jennifer Pahlka on Reforming Government",
+    "creator": "Tyler Cowen",
+    "publication": "Conversations with Tyler, Ep. 238 (2025)",
+    "url": "https://conversationswithtyler.com/episodes/jennifer-pahlka/",
+    "format": "podcast",
+    "topic": "politics",
+    "interests": [
+      "public-policy"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 60,
+    "verified_on": "2026-09-28",
+    "summary": "The founder of Code for America and author of Recoding America explains why well-meant laws so often fail once they reach a government website or a benefits office. Pahlka and Cowen get concrete about procurement, hiring, and the gap between policy and delivery. It is policy seen from the implementation end, where most of it succeeds or fails.",
+    "headline": "Why good laws fail in delivery",
+    "source_tier": 1,
+    "thumbnail": "pol-cwt-pahlka.jpg",
+    "thumbnail_source": "https://conversationswithtyler.com/episodes/jennifer-pahlka/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-alexander-cost-disease",
+    "title": "Considerations On Cost Disease",
+    "creator": "Scott Alexander",
+    "publication": "Slate Star Codex (2017)",
+    "url": "https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/",
+    "format": "essay",
+    "topic": "politics",
+    "interests": [
+      "public-policy"
+    ],
+    "depth": "deep",
+    "duration_minutes": 35,
+    "verified_on": "2026-09-28",
+    "summary": "Why do American schools, hospitals, universities and subways cost several times what they did a few decades ago, without being obviously better? Alexander lays out the numbers, then tests every explanation he can find, from salaries to regulation to lawsuits, and admits where none of them fits. It is the rare policy essay that is honest about what it does not know.",
+    "headline": "Why everything public costs more",
+    "thumbnail": "pol-alexander-cost-disease.jpg",
+    "thumbnail_source": "https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "pol-alexander-seeing-like-a-state",
+    "title": "Book Review: Seeing Like A State",
+    "creator": "Scott Alexander",
+    "publication": "Slate Star Codex (2017)",
+    "url": "https://slatestarcodex.com/2017/03/16/book-review-seeing-like-a-state/",
+    "format": "essay",
+    "topic": "politics",
+    "interests": [
+      "public-policy",
+      "political-ideas"
+    ],
+    "depth": "deep",
+    "duration_minutes": 40,
+    "verified_on": "2026-09-28",
+    "summary": "A long review of James C. Scott's classic on why grand government schemes fail: planned cities, scientific forestry, collectivised farms. Alexander explains Scott's idea of legibility, the state's need to simplify what it governs, and why that simplification destroys local knowledge. Then he argues with it. The review is so good many readers treat it as a substitute for the book.",
+    "headline": "When the state simplifies, things break",
+    "thumbnail": "pol-alexander-seeing-like-a-state.jpg",
+    "thumbnail_source": "https://slatestarcodex.com/2017/03/16/book-review-seeing-like-a-state/",
+    "thumbnail_kind": "image"
+  }
+]

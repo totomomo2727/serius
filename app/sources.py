@@ -66,6 +66,10 @@ TIER_ONE = {
     "atomicdesign.bradfrost.com",
     "oneusefulthing.org",
     "anthropic.com",
+    "slatestarcodex.com",
+    "ofdollarsanddata.com",
+    "oaktreecapital.com",
+    "berkshirehathaway.com",
     # primary texts, scholarship and reference works
     "plato.stanford.edu",
     "iep.utm.edu",
@@ -79,6 +83,13 @@ TIER_ONE = {
     "rintintin.colorado.edu",
     "cs.utexas.edu",
     "w3.org",
+    "web.stanford.edu",
+    "avalon.law.yale.edu",
+    "econlib.org",
+    "nobelprize.org",
+    "history.state.gov",
+    "orwellfoundation.com",
+    "nonviolent-conflict.org",
     # magazines built entirely around long-form ideas
     "aeon.co",
     "psyche.co",
@@ -96,6 +107,11 @@ TIER_TWO = {
     "rauno.me",
     "newyorker.com",
     "theatlantic.com",
+    "collabfund.com",
+    "federalreservehistory.org",
+    "belfercenter.org",
+    "cfr.org",
+    "freakonomics.com",
 }
 
 

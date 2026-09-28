@@ -222,6 +222,6 @@ def test_cron_endpoint_requires_the_secret(client):
 
 def test_health_reports_library_and_provider(client):
     body = client.get("/healthz").json()
-    assert body["content_items"] == 88
+    assert body["content_items"] == 122
     assert body["email_provider"] == "console"
     assert body["email_delivery_live"] is False

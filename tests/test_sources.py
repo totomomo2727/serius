@@ -113,6 +113,8 @@ def test_source_score_is_bounded_below_one_interest_match():
         (["psychology"], ["attention-and-focus"]),
         (["ai"], ["ai-safety"]),
         (["product-design"], ["typography"]),
+        (["politics"], ["geopolitics"]),
+        (["business"], ["stock-market"]),
         (["philosophy"], ["meaning-and-mortality"]),
     ],
 )
@@ -122,7 +124,15 @@ def test_editions_mix_what_the_reader_does_with_them(db, topics, interests):
 
 
 def test_variety_never_drags_in_an_off_topic_piece(db):
-    for topics in (["ai"], ["tech"], ["philosophy"], ["psychology"], ["product-design"]):
+    for topics in (
+        ["ai"],
+        ["tech"],
+        ["philosophy"],
+        ["psychology"],
+        ["product-design"],
+        ["politics"],
+        ["business"],
+    ):
         picks = select_edition(db, Profile(topics=topics, interests=[], depth="mix"))
         assert {p.content.topic for p in picks} == set(topics)
 

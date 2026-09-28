@@ -129,6 +129,28 @@ TOPICS: tuple[Topic, ...] = (
             Interest("startups-and-strategy", "Startups and strategy"),
         ),
     ),
+    Topic(
+        "politics",
+        "Politics",
+        "How power is won, checked, and used, from Madison to the Cold War.",
+        (
+            Interest("democracy", "Democracy and elections"),
+            Interest("geopolitics", "Geopolitics"),
+            Interest("political-ideas", "Political ideas"),
+            Interest("public-policy", "Public policy"),
+        ),
+    ),
+    Topic(
+        "business",
+        "Business & finance",
+        "Markets, money, and how companies actually make it.",
+        (
+            Interest("stock-market", "The stock market"),
+            Interest("investing", "Investing"),
+            Interest("economics", "Economics"),
+            Interest("business-strategy", "Business strategy"),
+        ),
+    ),
 )
 
 TOPICS_BY_SLUG = {t.slug: t for t in TOPICS}

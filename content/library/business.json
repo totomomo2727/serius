@@ -1,0 +1,360 @@
+[
+  {
+    "id": "biz-sharpe-arithmetic-of-active-management",
+    "title": "The Arithmetic of Active Management",
+    "creator": "William F. Sharpe",
+    "publication": "Financial Analysts Journal (1991), hosted at Stanford",
+    "url": "https://web.stanford.edu/~wfsharpe/art/active/active.htm",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "stock-market",
+      "investing"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 8,
+    "verified_on": "2026-09-28",
+    "summary": "A Nobel laureate proves, in about two pages and with nothing more than arithmetic, that the average actively managed dollar must do worse than the average passive dollar once costs are counted. There is no model to argue with, only the observation that the active and passive investors together are the market. Read it before any debate about stock picking; most of those debates are quietly arguing with this page.",
+    "headline": "Why the average stock picker must lose",
+    "thumbnail": "biz-sharpe-arithmetic-of-active-management.jpg",
+    "thumbnail_source": "https://web.stanford.edu/~wfsharpe/art/active/active.htm",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "biz-buffett-2016-letter",
+    "title": "Berkshire Hathaway 2016 Letter to Shareholders",
+    "creator": "Warren Buffett",
+    "publication": "Berkshire Hathaway annual letter (2017)",
+    "url": "https://www.berkshirehathaway.com/letters/2016ltr.pdf",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "investing",
+      "stock-market",
+      "business-strategy"
+    ],
+    "depth": "deep",
+    "duration_minutes": 60,
+    "verified_on": "2026-09-28",
+    "summary": "The letter where Buffett reports on his ten-year bet against Ted Seides of Protégé Partners: an S&P 500 index fund against a hand-picked set of hedge funds of funds. Around the result he explains, in plain sentences, how fees quietly consume returns, and why he thinks a statue for American investors should go to Jack Bogle. The rest is a masterclass in how a conglomerate is actually run.",
+    "headline": "The ten-year bet against the hedge funds",
+    "thumbnail": "biz-buffett-2016-letter.jpg",
+    "thumbnail_source": "https://www.berkshirehathaway.com/letters/2016ltr.pdf",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "biz-marks-illusion-of-knowledge",
+    "title": "The Illusion of Knowledge",
+    "creator": "Howard Marks",
+    "publication": "Memos from Howard Marks, Oaktree Capital (2022)",
+    "url": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "investing",
+      "economics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 30,
+    "verified_on": "2026-09-28",
+    "summary": "After decades of saying he ignores forecasts, Marks finally explains why macro prediction is so hard: the economy is millions of people reacting to one another, and small errors compound across every step of a forecast. He works through inflation, recessions and elections at a lunch table of seasoned investors, then turns to what an investor can know instead. A careful argument for humility that still ends in practical advice.",
+    "headline": "Why nobody can forecast the economy",
+    "thumbnail": "biz-marks-illusion-of-knowledge.jpg",
+    "thumbnail_source": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-marks-sea-change",
+    "title": "Sea Change",
+    "creator": "Howard Marks",
+    "publication": "Memos from Howard Marks, Oaktree Capital (2022)",
+    "url": "https://www.oaktreecapital.com/insights/memo/sea-change",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "stock-market",
+      "economics",
+      "investing"
+    ],
+    "depth": "deep",
+    "duration_minutes": 30,
+    "verified_on": "2026-09-28",
+    "summary": "In fifty-three years Marks remembers only two real transformations of the investing world, and in late 2022 he argued a third had begun. He retells the Nifty Fifty and the birth of high-yield bonds, then shows how four decades of falling interest rates flattered almost every strategy. His case that the easy-money era is over is the clearest map of how rates reach every price in the market.",
+    "headline": "The end of four decades of easy money",
+    "thumbnail": "biz-marks-sea-change.jpg",
+    "thumbnail_source": "https://www.oaktreecapital.com/insights/memo/sea-change",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-housel-psychology-of-money",
+    "title": "The Psychology of Money",
+    "creator": "Morgan Housel",
+    "publication": "Collaborative Fund (2018)",
+    "url": "https://collabfund.com/blog/the-psychology-of-money/",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "investing"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 30,
+    "verified_on": "2026-09-28",
+    "summary": "Housel opens with a secretary who left seven million dollars to charity and a Merrill Lynch executive who went bankrupt, then lists twenty ways people behave badly with money. Few of them are about knowledge; most are about ego, envy, luck and time. The essay became a bestselling book, but the original is tighter, and it is the kindest introduction to investing as a matter of temperament.",
+    "headline": "Twenty ways smart people get money wrong",
+    "thumbnail": "biz-housel-psychology-of-money.jpg",
+    "thumbnail_source": "https://collabfund.com/blog/the-psychology-of-money/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-maggiulli-dollar-cost-averaging",
+    "title": "Even God Couldn't Beat Dollar-Cost Averaging",
+    "creator": "Nick Maggiulli",
+    "publication": "Of Dollars And Data (2019)",
+    "url": "https://ofdollarsanddata.com/even-god-couldnt-beat-dollar-cost-averaging/",
+    "format": "article",
+    "topic": "business",
+    "interests": [
+      "investing",
+      "stock-market"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-28",
+    "summary": "A thought experiment with real market data: invest a hundred dollars every month for forty years, or save it and buy only at the exact bottom of every dip, with perfect foresight. The all-knowing dip buyer loses to the steady monthly investor in most periods since 1920. Maggiulli walks through why, with charts, and the answer changes how you think about waiting for a better moment to buy.",
+    "headline": "Perfect market timing still loses",
+    "thumbnail": "biz-maggiulli-dollar-cost-averaging.jpg",
+    "thumbnail_source": "https://ofdollarsanddata.com/even-god-couldnt-beat-dollar-cost-averaging/",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-dalio-economic-machine",
+    "title": "How The Economic Machine Works",
+    "creator": "Ray Dalio",
+    "publication": "YouTube, Principles by Ray Dalio (2013)",
+    "url": "https://www.youtube.com/watch?v=PHe0bXAIuk0",
+    "format": "video",
+    "topic": "business",
+    "interests": [
+      "economics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 31,
+    "verified_on": "2026-09-28",
+    "summary": "The founder of Bridgewater, the world's largest hedge fund, explains the economy in thirty animated minutes: transactions, credit, productivity, and the short and long debt cycles that sit on top of them. It is one practitioner's template rather than a textbook, and some economists would draw it differently, but few explanations make recessions, deleveraging and central banks feel this mechanical and this clear.",
+    "headline": "The economy as a machine, in thirty minutes",
+    "source_tier": 2,
+    "thumbnail": "biz-dalio-economic-machine.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=PHe0bXAIuk0",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-shiller-financial-markets-lecture",
+    "title": "Financial Markets, Lecture 1: Introduction",
+    "creator": "Robert Shiller",
+    "publication": "YouTube, Open Yale Courses, ECON 252 (2011)",
+    "url": "https://www.youtube.com/watch?v=WQui_3Hpmmc",
+    "format": "video",
+    "topic": "business",
+    "interests": [
+      "stock-market",
+      "economics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 74,
+    "verified_on": "2026-09-28",
+    "summary": "The opening lecture of Shiller's Yale course on financial markets, recorded two years before his Nobel. He argues that finance is one of the pillars of civilisation, a technology for managing risk rather than a casino, and sets out what the course will cover, from insurance to behavioural finance. If it lands, the rest of the course is free on the same channel.",
+    "headline": "Finance as a pillar of civilisation",
+    "source_tier": 1,
+    "thumbnail": "biz-shiller-financial-markets-lecture.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=WQui_3Hpmmc",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-porter-five-forces",
+    "title": "The Five Competitive Forces That Shape Strategy",
+    "creator": "Michael E. Porter",
+    "publication": "YouTube, Harvard Business Review (2008)",
+    "url": "https://www.youtube.com/watch?v=mYF2_FBCvXw",
+    "format": "video",
+    "topic": "business",
+    "interests": [
+      "business-strategy"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 13,
+    "verified_on": "2026-09-28",
+    "summary": "Porter explains, in his own words, the framework that underpins most of modern business strategy: an industry's profits are set by rivals, buyers, suppliers, substitutes and new entrants, not by how hard its companies work. Thirteen minutes from the source is better than any slide deck summary, and it makes it obvious why some industries are rich and others never are.",
+    "headline": "Why some industries are rich and others never are",
+    "source_tier": 1,
+    "thumbnail": "biz-porter-five-forces.jpg",
+    "thumbnail_source": "https://www.youtube.com/watch?v=mYF2_FBCvXw",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-spolsky-strategy-letter-v",
+    "title": "Strategy Letter V",
+    "creator": "Joel Spolsky",
+    "publication": "Joel on Software (2002)",
+    "url": "https://www.joelonsoftware.com/2002/06/12/strategy-letter-v/",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "business-strategy"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-28",
+    "summary": "Why did IBM build the PC from documented, off-the-shelf parts, and why do companies pour money into open-source software? Spolsky borrows one idea from economics, that demand for a product rises when its complements get cheaper, and uses it to explain a whole run of puzzling corporate moves. Twenty years on, it still predicts how companies behave, and you will start seeing it everywhere.",
+    "headline": "Commoditise your complements",
+    "thumbnail": "biz-spolsky-strategy-letter-v.jpg",
+    "thumbnail_source": "https://www.joelonsoftware.com/2002/06/12/strategy-letter-v/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "biz-graham-how-to-make-wealth",
+    "title": "How to Make Wealth",
+    "creator": "Paul Graham",
+    "publication": "paulgraham.com (2004)",
+    "url": "https://paulgraham.com/wealth.html",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "business-strategy",
+      "economics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 40,
+    "verified_on": "2026-09-28",
+    "summary": "Graham separates wealth from money, argues that wealth is created rather than taken from someone else, and explains why a startup is a way of compressing a working lifetime into a few years. Along the way he covers measurement, leverage and why large companies struggle to pay people for what they actually produce. Still one of the clearest essays on where value comes from.",
+    "headline": "Wealth is made, not divided",
+    "thumbnail": "biz-graham-how-to-make-wealth.jpg",
+    "thumbnail_source": "https://paulgraham.com/wealth.html",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "biz-freakonomics-index-funds",
+    "title": "The Stupidest Thing You Can Do With Your Money",
+    "creator": "Stephen J. Dubner",
+    "publication": "Freakonomics Radio, Episode 297 (2017)",
+    "url": "https://freakonomics.com/podcast/the-stupidest-thing-you-can-do-with-your-money/",
+    "format": "podcast",
+    "topic": "business",
+    "interests": [
+      "stock-market",
+      "investing"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 48,
+    "verified_on": "2026-09-28",
+    "summary": "Dubner asks why ordinary investors keep paying billions for active fund managers who, on average, fail to beat the market. Eugene Fama, Kenneth French, Barry Ritholtz and John Bogle, who founded Vanguard, make the case, and the episode is honest about the backlash from the other side. The full transcript sits on the page, so you can read it instead of listening.",
+    "headline": "The billions investors pay for nothing",
+    "source_tier": 2,
+    "thumbnail": "biz-freakonomics-index-funds.jpg",
+    "thumbnail_source": "https://freakonomics.com/podcast/the-stupidest-thing-you-can-do-with-your-money/",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "biz-acquired-berkshire-part-one",
+    "title": "Berkshire Hathaway Part I",
+    "creator": "Ben Gilbert and David Rosenthal",
+    "publication": "Acquired, Season 8 Episode 5 (2021)",
+    "url": "https://www.acquired.fm/episodes/berkshire-hathaway-part-i",
+    "format": "podcast",
+    "topic": "business",
+    "interests": [
+      "business-strategy",
+      "investing"
+    ],
+    "depth": "deep",
+    "duration_minutes": 200,
+    "verified_on": "2026-09-28",
+    "summary": "How a failing New England textile mill became the most successful holding company in history. The Acquired hosts trace Buffett from his Graham-and-Dodd apprenticeship through the partnership years to the purchase he later called his biggest mistake, and pull out why insurance float became Berkshire's engine. Long, but it is a business-school case told as a story.",
+    "headline": "How a textile mill became Berkshire",
+    "source_tier": 2,
+    "thumbnail": "biz-acquired-berkshire-part-one.jpg",
+    "thumbnail_source": "https://www.acquired.fm/episodes/berkshire-hathaway-part-i",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-hayek-use-of-knowledge",
+    "title": "The Use of Knowledge in Society",
+    "creator": "Friedrich A. Hayek",
+    "publication": "American Economic Review (1945), hosted by Econlib",
+    "url": "https://www.econlib.org/library/Essays/hykKnw.html",
+    "format": "essay",
+    "topic": "business",
+    "interests": [
+      "economics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 30,
+    "verified_on": "2026-09-28",
+    "summary": "Hayek's short, enormously influential argument that the central problem of an economy is not allocating known resources but using knowledge scattered across millions of people, much of it local and fleeting. Prices, he argues, are a telecommunications system that coordinates what no planner could know. Whatever your politics, it is the essay that explains why markets work when they do.",
+    "headline": "Prices as a system for sharing knowledge",
+    "thumbnail": "biz-hayek-use-of-knowledge.jpg",
+    "thumbnail_source": "https://www.econlib.org/library/Essays/hykKnw.html",
+    "thumbnail_kind": "page"
+  },
+  {
+    "id": "biz-krugman-babysitting-the-economy",
+    "title": "Baby-Sitting the Economy",
+    "creator": "Paul Krugman",
+    "publication": "Slate (1998)",
+    "url": "https://slate.com/business/1998/08/baby-sitting-the-economy.html",
+    "format": "article",
+    "topic": "business",
+    "interests": [
+      "economics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 10,
+    "verified_on": "2026-09-28",
+    "summary": "A babysitting co-op on Capitol Hill ran on scrip, and when members hoarded the coupons nobody went out and the whole co-op fell into recession. Krugman uses the true story to explain, better than most textbooks, how a shortage of spending can stall an economy full of willing workers, and what a central bank can do about it. Ten minutes and you will understand recessions differently.",
+    "headline": "A recession in a babysitting co-op",
+    "thumbnail": "biz-krugman-babysitting-the-economy.jpg",
+    "thumbnail_source": "https://slate.com/business/1998/08/baby-sitting-the-economy.html",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-fed-history-crash-of-1929",
+    "title": "Stock Market Crash of 1929",
+    "creator": "Gary Richardson, Alejandro Komai, Michael Gou and Daniel Park",
+    "publication": "Federal Reserve History",
+    "url": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929",
+    "format": "article",
+    "topic": "business",
+    "interests": [
+      "stock-market",
+      "economics"
+    ],
+    "depth": "accessible",
+    "duration_minutes": 12,
+    "verified_on": "2026-09-28",
+    "summary": "The Federal Reserve's own historians tell the story of the Roaring Twenties boom, Black Monday and Black Tuesday, and the slide that took the Dow down 89 percent by 1932. The useful part is what came after: how Federal Reserve leaders disagreed about how to respond and support the financial system, and why it took until 1954 for prices to recover. A crisp, charted account from primary records.",
+    "headline": "The crash, told by the Fed's historians",
+    "thumbnail": "biz-fed-history-crash-of-1929.jpg",
+    "thumbnail_source": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929",
+    "thumbnail_kind": "image"
+  },
+  {
+    "id": "biz-bernanke-nobel-lecture",
+    "title": "Banking, Credit, and Economic Fluctuations",
+    "creator": "Ben S. Bernanke",
+    "publication": "Nobel Prize lecture in Economic Sciences, NobelPrize.org (2022)",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2022/bernanke/lecture/",
+    "format": "video",
+    "topic": "business",
+    "interests": [
+      "economics"
+    ],
+    "depth": "deep",
+    "duration_minutes": 40,
+    "verified_on": "2026-09-28",
+    "summary": "The former Fed chair's Nobel lecture on the research that shaped how he fought 2008: bank failures in the Great Depression did not just reflect the downturn, they deepened it, because the credit they provided could not be replaced. He connects the 1930s to the financial crisis and the pandemic. The page has the video, slides and the full written lecture.",
+    "headline": "Why bank failures make recessions worse",
+    "source_tier": 1,
+    "thumbnail": "biz-bernanke-nobel-lecture.jpg",
+    "thumbnail_source": "https://www.nobelprize.org/prizes/economic-sciences/2022/bernanke/lecture/",
+    "thumbnail_kind": "image"
+  }
+]
