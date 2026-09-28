@@ -21,17 +21,30 @@
     <div class="hero-art">
       <span class="sticker" data-reveal="note">your interests.<br><em>his good finds.</em></span>
       <div class="paper-tilt" data-reveal="paper">
-        <div class="mini-paper">
-          <div class="mini-top">THE FEATHER PRESS <span>CURATED BY SERIUS</span></div>
-          <h3>Your personalized<br>newsletter.</h3>
-          <img src="{{ sample[0].image }}" alt="{{ sample[0].alt }}">
-          <div class="mini-row"><span>01 / {{ sample[0].topic|upper }}</span><span>↗</span></div>
-          <p>{{ sample[0].title }}</p>
-          <div class="mini-bottom">
-            <div>02<br><em>{{ sample[1].short|safe }}</em></div>
-            <div>03<br><em>{{ sample[2].short|safe }}</em></div>
+        <div class="paper-stack">
+          {% for edition in samples %}
+          {% set stories = edition.stories %}
+          <div class="mini-paper{% if loop.first %} is-active{% endif %}" data-sample="{{ edition.slug }}"
+               {% if not loop.first %}aria-hidden="true"{% endif %}>
+            <div class="mini-top">THE FEATHER PRESS <span>CURATED BY SERIUS</span></div>
+            <h3>Your personalized<br>newsletter.</h3>
+            <img src="{{ stories[0].image }}" alt="{{ stories[0].alt }}">
+            <div class="mini-row"><span>01 / {{ stories[0].topic|upper }}</span><span>↗</span></div>
+            <p>{{ stories[0].title }}</p>
+            <div class="mini-bottom">
+              <div>02<br><em>{{ stories[1].short|safe }}</em></div>
+              <div>03<br><em>{{ stories[2].short|safe }}</em></div>
+            </div>
+            <small>SAMPLE EDITION · {{ edition.label|upper }}</small>
           </div>
-          <small>SAMPLE EDITION · THREE GOOD FINDS</small>
+          {% endfor %}
+        </div>
+        <div class="paper-picker" data-sample-picker hidden>
+          <span>Another reader’s three:</span>
+          {% for edition in samples %}
+          <button type="button" data-sample-tab="{{ edition.slug }}"
+                  aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ edition.label }}</button>
+          {% endfor %}
         </div>
       </div>
       <img class="hero-bird" src="/static/press/serius.png" data-reveal="bird"

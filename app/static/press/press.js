@@ -417,6 +417,33 @@
     sync();
   }
 
+  /* Three sample editions share one place on the page: the hero's stack of
+     front pages and the sample reader. Every picker on the page drives every
+     stack, so the hero and the full edition stay on the same reader. */
+  function sampleStacks() {
+    var pickers = document.querySelectorAll('[data-sample-picker]');
+    if (!pickers.length) return;
+    var show = function (slug) {
+      document.querySelectorAll('[data-sample]').forEach(function (panel) {
+        var active = panel.dataset.sample === slug;
+        panel.classList.toggle('is-active', active);
+        if (active) panel.removeAttribute('aria-hidden');
+        else panel.setAttribute('aria-hidden', 'true');
+      });
+      document.querySelectorAll('[data-sample-tab]').forEach(function (tab) {
+        tab.setAttribute('aria-pressed', tab.dataset.sampleTab === slug ? 'true' : 'false');
+      });
+    };
+    pickers.forEach(function (picker) {
+      picker.hidden = false;
+      picker.addEventListener('click', function (event) {
+        var tab = event.target.closest('[data-sample-tab]');
+        if (!tab) return;
+        show(tab.dataset.sampleTab);
+      });
+    });
+  }
+
   function guardDoubleSubmit() {
     document.querySelectorAll('form[data-once]').forEach(function (form) {
       form.addEventListener('submit', function () {
@@ -523,5 +550,6 @@
   }, 6000);
   timezone();
   chips();
+  sampleStacks();
   guardDoubleSubmit();
 })();
