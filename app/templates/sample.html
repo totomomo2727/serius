@@ -9,16 +9,8 @@
     <span>SAMPLE EDITIONS · THREE DIFFERENT READERS</span>
   </div>
 
-  <div class="sample-picker" data-sample-picker hidden>
-    <span>Built for</span>
-    {% for edition in samples %}
-    <button type="button" data-sample-tab="{{ edition.slug }}"
-            aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ edition.label }}</button>
-    {% endfor %}
-  </div>
-
   {% for edition in samples %}
-  <div class="sample-edition{% if loop.first %} is-active{% endif %}" data-sample="{{ edition.slug }}">
+  <div class="sample-edition" data-sample="{{ edition.slug }}">
     <div class="message-header">
       <span>FROM <b>Serius · The Feather Press</b></span>
       <h2>{{ edition.subject }}</h2>

@@ -29,25 +29,30 @@
         yet. Messages are written to the local outbox instead and clearly marked as undelivered.
       </p>
       {% endif %}
-      <form method="post" action="/subscribe" data-once>
-        <input type="hidden" name="edition_id" value="{{ edition.id }}">
-        <input type="hidden" name="timezone_name" id="timezone_name" value="UTC" data-detect-timezone>
-        <div class="email-field">
-          <label for="email">Where should Serius deliver?</label>
-          <input id="email" type="email" name="email" required autocomplete="email"
-                 placeholder="you@somewhere.com" value="{{ email_value|default('') }}">
-          <span class="hint">Your inbox. His favorite postbox.</span>
-        </div>
-        {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
-        <label class="consent-check">
-          <input type="checkbox" name="consent" value="yes" required>
-          <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
-        </label>
-        <p class="fine" id="tz-note">Delivery timezone: <span id="tz-label">UTC</span>.
-          You can change this from your preferences later.</p>
-        <button class="button" type="submit">Send me Serius’s finds<span>↗</span></button>
-      </form>
+      {% with scope = 'page' %}{% include "_subscribe_form.html" %}{% endwith %}
     </div>
   </section>
 </section>
+
+{# Serius asks for the address himself, once the reader has had a moment with
+   the edition. Hidden until the motion code opens it; the tail above is the
+   whole story without scripting. #}
+<div class="delivery-modal" data-delivery-modal {% if error %}data-open-now{% endif %} hidden>
+  <div class="modal-scrim" data-modal-dismiss></div>
+  <div class="modal-paper" role="dialog" aria-modal="true" aria-labelledby="delivery-modal-title">
+    <button type="button" class="modal-close" data-modal-dismiss aria-label="Close">×</button>
+    <span class="pill">Every morning</span>
+    <h2 id="delivery-modal-title">Serius reads the internet. You read three things.</h2>
+    <p class="modal-lede">Every single day he combs the web for essays, videos and podcasts on
+      what you chose, throws out everything that isn’t worth your time, and leaves the three best
+      finds in your inbox by eight in the morning. This edition is the first one.</p>
+    <ul class="modal-points">
+      <li><b>Daily.</b> A new edition every morning, not a one-off.</li>
+      <li><b>Yours.</b> Picked around your interests, never a mass mailing.</li>
+      <li><b>Short.</b> Three finds, a summary each, the original a click away.</li>
+    </ul>
+    {% with scope = 'modal' %}{% include "_subscribe_form.html" %}{% endwith %}
+    <button type="button" class="quiet" data-modal-dismiss>Keep reading this edition first</button>
+  </div>
+</div>
 {% endblock %}

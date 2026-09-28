@@ -115,70 +115,99 @@
 .button[disabled], .button.is-sending { opacity: .55; pointer-events: none; }
 
 /* ---- delivery screen ----
-   The envelope rides in the beak, then travels into the postbox and passes
-   behind it. Geometry is tuned to the drawn content of each asset, which sits
-   inside transparent padding. */
+   A wide, small-figure scene: Serius walks the length of it with the envelope
+   in his beak, hands it over to a second envelope that arcs into the slot, and
+   the postbox paints above both so nothing floats on top of the box.
+   Distances are custom properties so one set of keyframes serves every width. */
 .delivery .quiet { display: inline-block; margin-top: 26px; }
-.beak-mail { width: 74px; left: 168px; top: 50px; animation-name: post; }
-.mail-arrived { right: 112px; top: 92px; animation-name: posted; }
+.delivery-scene {
+  --walk: 600px;
+  --toss-x: 44px;
+  --toss-y: -18px;
+  --slot-x: 86px;
+  --slot-y: 26px;
+  width: 920px;
+  height: 240px;
+  max-width: 100%;
+}
+.delivery-scene .ground { left: 2%; right: 4%; bottom: 22px; }
+.postbox { width: 124px; height: 160px; right: 46px; bottom: 12px; z-index: 5; }
+.courier { width: 150px; height: 150px; left: 0; bottom: 22px; animation-name: walk-in; }
+.courier > img:first-child { width: 150px; }
+
+/* One long walk down the scene, a pause at the box, one step back. */
+@keyframes walk-in {
+  0% { transform: translateX(-160px) translateY(-14px); }
+  45% { transform: translateX(var(--walk)) translateY(0); }
+  62%, 82% { transform: translateX(var(--walk)); }
+  100% { transform: translateX(calc(var(--walk) - 34px)); }
+}
+.beak-mail {
+  width: 42px;
+  left: 94px;
+  top: 28px;
+  z-index: 1;
+  animation-name: carry;
+}
+.posted-mail {
+  position: absolute;
+  width: 42px;
+  left: calc(var(--walk) + 94px);
+  top: 100px;
+  z-index: 2;
+  transform: rotate(13deg);
+  opacity: 0;
+  animation: post 6s both;
+}
+.mail-arrived { right: 92px; top: 58px; width: 28px; height: 28px; line-height: 28px; font-size: 15px; animation-name: posted; }
+.scene-note { right: 10px; bottom: 0; }
+
+/* Serius keeps the envelope only until the hand-off. */
+@keyframes carry {
+  0%, 44% { opacity: 1; transform: rotate(13deg); }
+  45%, 100% { opacity: 0; transform: rotate(13deg); }
+}
+
+/* The envelope leaves the beak, arcs up to the slot and is gone inside it. */
+@keyframes post {
+  0%, 44% { opacity: 0; transform: rotate(13deg); }
+  45% { opacity: 1; transform: rotate(13deg); }
+  54% { opacity: 1; transform: translate(var(--toss-x), var(--toss-y)) rotate(26deg) scale(.94); }
+  61% { opacity: 1; transform: translate(var(--slot-x), var(--slot-y)) rotate(46deg) scale(.82); }
+  65%, 100% { opacity: 0; transform: translate(var(--slot-x), calc(var(--slot-y) + 16px)) rotate(52deg) scale(.7); }
+}
 
 /* The tick only appears once the envelope is inside the box. */
 @keyframes posted {
-  0%, 90% { opacity: 0; transform: scale(.5); }
-  97%, 100% { opacity: 1; transform: scale(1); }
+  0%, 68% { opacity: 0; transform: scale(.5); }
+  76%, 100% { opacity: 1; transform: scale(1); }
 }
 
-@keyframes post {
-  0%, 50% { opacity: 1; transform: rotate(13deg); }
-  70% { opacity: 1; transform: translate(122px, 26px) rotate(34deg) scale(.86); }
-  80% { opacity: 1; transform: translate(152px, 46px) rotate(52deg) scale(.6); }
-  88%, 100% { opacity: 0; transform: translate(160px, 56px) rotate(58deg) scale(.42); }
+/* Below the scene's full width the postbox travels with the right edge, so the
+   walk is measured from the viewport and Serius still arrives beside it. */
+@media (max-width: 1000px) {
+  .delivery-scene { --walk: calc(100vw - 400px); width: 100%; }
 }
 
 @media (max-width: 700px) {
-  .courier { animation-name: arrive-narrow; }
-  .beak-mail { width: 56px; left: 124px; top: 38px; animation-name: post-mobile; }
-  .mail-arrived { right: 24px; top: 60px; }
-}
-
-/* Serius stops short of the box on a narrow screen instead of standing on it. */
-@keyframes arrive-narrow {
-  0% { transform: translateX(-150px) translateY(-20px); }
-  40% { transform: translateX(72px) translateY(-7px); }
-  55%, 80% { transform: translateX(78px); }
-  100% { transform: translateX(62px); }
-}
-
-/* Narrower travel: the box stands much closer to the beak on a phone. */
-@keyframes post-mobile {
-  0%, 50% { opacity: 1; transform: rotate(13deg); }
-  70% { opacity: 1; transform: translate(44px, 14px) rotate(34deg) scale(.86); }
-  80% { opacity: 1; transform: translate(62px, 26px) rotate(52deg) scale(.6); }
-  88%, 100% { opacity: 0; transform: translate(68px, 32px) rotate(58deg) scale(.42); }
-}
-
-/* Below 360px the scene is clamped to the viewport, pulling the box closer again. */
-@media (max-width: 360px) {
-  .courier { animation-name: arrive-tiny; }
-  .beak-mail { animation-name: post-narrow; }
-}
-
-@keyframes arrive-tiny {
-  0% { transform: translateX(-150px) translateY(-20px); }
-  40% { transform: translateX(44px) translateY(-7px); }
-  55%, 80% { transform: translateX(50px); }
-  100% { transform: translateX(34px); }
-}
-
-@keyframes post-narrow {
-  0%, 50% { opacity: 1; transform: rotate(13deg); }
-  70% { opacity: 1; transform: translate(50px, 12px) rotate(34deg) scale(.86); }
-  80% { opacity: 1; transform: translate(66px, 24px) rotate(52deg) scale(.6); }
-  88%, 100% { opacity: 0; transform: translate(72px, 30px) rotate(58deg) scale(.42); }
+  .delivery-scene {
+    --walk: calc(100vw - 246px);
+    --toss-x: 26px;
+    --toss-y: -14px;
+    --slot-x: 58px;
+    --slot-y: 18px;
+    height: 200px;
+  }
+  .postbox { width: 88px; height: 116px; right: 10px; bottom: 10px; }
+  .courier { width: 104px; height: 104px; bottom: 18px; }
+  .courier > img:first-child { width: 104px; }
+  .beak-mail { width: 30px; left: 66px; top: 20px; }
+  .posted-mail { width: 30px; left: calc(var(--walk) + 66px); top: 102px; }
+  .mail-arrived { right: 24px; top: 40px; width: 22px; height: 22px; line-height: 22px; font-size: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .beak-mail { animation: none; }
+  .beak-mail, .posted-mail { animation: none; opacity: 0; }
 }
 
 /* ---- generic document pages (preferences, unsubscribe, messages) ---- */
@@ -263,4 +292,78 @@
 @media (prefers-reduced-motion: reduce) {
   .button:active { transform: none; }
   .button:hover span { transform: none; }
+}
+
+/* ---- the delivery pop-up over the personalized edition ---- */
+.delivery-modal[hidden] { display: none; }
+.delivery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: auto;
+}
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  background: #20201ec4;
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(.2,.6,.2,1);
+}
+.delivery-modal.is-open .modal-scrim { opacity: 1; }
+.modal-paper {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: #f7f6f2 url('/static/press/paper-photo.jpg') center/cover;
+  border: 1px solid #cfcec7;
+  box-shadow: 0 28px 60px #20201e3d;
+  padding: 44px 48px 40px;
+  opacity: 0;
+  transform: translateY(18px) rotate(-.4deg);
+  transition: opacity 260ms cubic-bezier(.2,.6,.2,1),
+    transform 260ms cubic-bezier(.2,.6,.2,1);
+}
+.delivery-modal.is-open .modal-paper { opacity: 1; transform: none; }
+.modal-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  border: 0;
+  background: transparent;
+  font: 26px/1 Arial, Helvetica, sans-serif;
+  color: #60605b;
+  padding: 6px 10px;
+}
+.modal-paper h2 {
+  font: 42px/1.04 'Instrument Serif','Instrument Fallback', Georgia, serif;
+  letter-spacing: -1.2px;
+  margin: 14px 0 12px;
+}
+.modal-lede { font: 15px/1.7 Arial, Helvetica, sans-serif; color: #60605b; margin: 0; }
+.modal-points {
+  list-style: none;
+  margin: 22px 0 6px;
+  padding: 0;
+  font: 14px/1.6 Arial, Helvetica, sans-serif;
+  color: #20201e;
+}
+.modal-points li { padding: 9px 0 9px 22px; position: relative; border-top: 1px solid #dcdbd4; }
+.modal-points li::before { content: '·'; position: absolute; left: 6px; color: #38489e; }
+.modal-paper .email-field { margin-top: 22px; max-width: 100%; }
+.modal-paper .button { margin-top: 20px; }
+.modal-paper .quiet { margin: 14px auto 0; }
+body.has-modal { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .delivery-modal { padding: 12px; }
+  .modal-paper { padding: 34px 24px 28px; }
+  .modal-paper h2 { font-size: 32px; letter-spacing: -.6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-scrim, .modal-paper { transition: none; opacity: 1; transform: none; }
 }

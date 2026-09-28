@@ -387,17 +387,80 @@
   /* Only fills fields that ask for detection; a saved preference is never
      overwritten by the device it happens to be opened on. */
   function timezone() {
-    var field = document.querySelector('[data-detect-timezone]');
-    if (!field) return;
+    var fields = document.querySelectorAll('[data-detect-timezone]');
+    if (!fields.length) return;
     try {
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
       if (!tz) return;
-      field.value = tz;
-      var label = document.getElementById('tz-label');
-      if (label) label.textContent = tz;
+      fields.forEach(function (field) {
+        field.value = tz;
+      });
+      document.querySelectorAll('[data-tz-label]').forEach(function (label) {
+        label.textContent = tz;
+      });
     } catch (err) {
       /* UTC stays */
     }
+  }
+
+  /* Serius asks for the address himself, a few seconds after the reader meets
+     their edition - unless they have already found the form further down. */
+  function deliveryModal() {
+    var modal = document.querySelector('[data-delivery-modal]');
+    if (!modal) return;
+    var paper = modal.querySelector('.modal-paper');
+    var tail = document.querySelector('.signup-tail');
+    var returnTo = null;
+    var timer = null;
+
+    var close = function () {
+      if (modal.hidden) return;
+      modal.hidden = true;
+      modal.classList.remove('is-open');
+      document.body.classList.remove('has-modal');
+      if (returnTo && returnTo.focus) returnTo.focus();
+    };
+    var open = function () {
+      if (!modal.hidden) return;
+      returnTo = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('has-modal');
+      /* One frame hidden so the entrance actually plays. */
+      window.requestAnimationFrame(function () {
+        modal.classList.add('is-open');
+      });
+      var field = modal.querySelector('input[type=email]');
+      if (field) field.focus({ preventScroll: true });
+      audio.play('paper');
+    };
+
+    modal.querySelectorAll('[data-modal-dismiss]').forEach(function (control) {
+      control.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') close();
+    });
+    /* Focus cannot wander out of the dialog behind the scrim. */
+    document.addEventListener('focusin', function (event) {
+      if (modal.hidden || !paper) return;
+      if (!paper.contains(event.target)) {
+        var field = paper.querySelector('input, button');
+        if (field) field.focus();
+      }
+    });
+
+    var cancel = function () {
+      if (timer) window.clearTimeout(timer);
+      timer = null;
+    };
+    /* A reader already typing their address downstairs is not interrupted. */
+    if (tail) {
+      tail.addEventListener('focusin', cancel);
+      tail.addEventListener('pointerdown', cancel);
+    }
+
+    if (modal.hasAttribute('data-open-now')) open();
+    else timer = window.setTimeout(open, 5000);
   }
 
   function chips() {
@@ -417,29 +480,24 @@
     sync();
   }
 
-  /* Three sample editions share one place on the page: the hero's stack of
-     front pages and the sample reader. Every picker on the page drives every
-     stack, so the hero and the full edition stay on the same reader. */
+  /* Three sample editions share one place in the hero. The front page itself
+     is the control: clicking it shows the next reader's. */
   function sampleStacks() {
-    var pickers = document.querySelectorAll('[data-sample-picker]');
-    if (!pickers.length) return;
-    var show = function (slug) {
-      document.querySelectorAll('[data-sample]').forEach(function (panel) {
-        var active = panel.dataset.sample === slug;
-        panel.classList.toggle('is-active', active);
-        if (active) panel.removeAttribute('aria-hidden');
-        else panel.setAttribute('aria-hidden', 'true');
+    var stack = document.querySelector('[data-sample-cycle]');
+    if (!stack) return;
+    var papers = [].slice.call(stack.querySelectorAll('[data-sample]'));
+    if (papers.length < 2) return;
+    var hint = document.querySelector('[data-sample-hint]');
+    if (hint) hint.hidden = false;
+    stack.addEventListener('click', function () {
+      var current = papers.findIndex(function (paper) {
+        return paper.classList.contains('is-active');
       });
-      document.querySelectorAll('[data-sample-tab]').forEach(function (tab) {
-        tab.setAttribute('aria-pressed', tab.dataset.sampleTab === slug ? 'true' : 'false');
-      });
-    };
-    pickers.forEach(function (picker) {
-      picker.hidden = false;
-      picker.addEventListener('click', function (event) {
-        var tab = event.target.closest('[data-sample-tab]');
-        if (!tab) return;
-        show(tab.dataset.sampleTab);
+      papers.forEach(function (paper, index) {
+        var active = index === (current + 1) % papers.length;
+        paper.classList.toggle('is-active', active);
+        if (active) paper.removeAttribute('aria-hidden');
+        else paper.setAttribute('aria-hidden', 'true');
       });
     });
   }
@@ -551,5 +609,6 @@
   timezone();
   chips();
   sampleStacks();
+  deliveryModal();
   guardDoubleSubmit();
 })();

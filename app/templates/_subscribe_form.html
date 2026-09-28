@@ -1,0 +1,20 @@
+{# The delivery form appears twice on the preview: inline under the edition and
+   inside the pop-up. `scope` keeps the ids unique between the two. #}
+<form method="post" action="/subscribe" data-once>
+  <input type="hidden" name="edition_id" value="{{ edition.id }}">
+  <input type="hidden" name="timezone_name" value="UTC" data-detect-timezone>
+  <div class="email-field">
+    <label for="email-{{ scope }}">Where should Serius deliver?</label>
+    <input id="email-{{ scope }}" type="email" name="email" required autocomplete="email"
+           placeholder="you@somewhere.com" value="{{ email_value|default('') }}">
+    <span class="hint">Your inbox. His favorite postbox.</span>
+  </div>
+  {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+  <label class="consent-check">
+    <input type="checkbox" name="consent" value="yes" required>
+    <span>Yes, send me a daily edition of {{ app_name }}. I can unsubscribe from any email.</span>
+  </label>
+  <p class="fine">Delivery timezone: <span data-tz-label>UTC</span>.
+    You can change this from your preferences later.</p>
+  <button class="button" type="submit">Send me Serius’s finds<span>↗</span></button>
+</form>

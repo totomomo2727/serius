@@ -56,9 +56,12 @@ def test_three_sample_editions_are_offered_with_the_featured_one_first(client):
         text = client.get(page).text
         first = text.index('data-sample="philosophy-psychology"')
         for sample in samples:
-            assert f'data-sample-tab="{sample["slug"]}"' in text
-            assert sample["label"] in text
             assert first <= text.index(f'data-sample="{sample["slug"]}"')
+
+    # The stack itself is the control; no separate tabs to click.
+    landing = client.get("/").text
+    assert "data-sample-cycle" in landing
+    assert "data-sample-tab" not in landing
 
     sample_page = client.get("/sample").text
     for story in samples[2]["stories"]:
@@ -88,6 +91,17 @@ def test_preview_shows_three_real_pieces(client, db):
         assert item.content.title in response.text
         assert item.content.url in response.text
     assert "— Serius" in response.text
+
+
+def test_preview_offers_the_delivery_invitation_without_scripting(client, db):
+    response = start_preview(client)
+    # The pop-up carries the daily promise, and the tail below it still works
+    # for anyone the script never reaches.
+    assert "data-delivery-modal" in response.text
+    assert "every single day" in response.text.lower()
+    assert response.text.count('action="/subscribe"') == 2
+    assert 'id="email-page"' in response.text
+    assert 'id="email-modal"' in response.text
 
 
 def test_subscribe_requires_consent(client, db):

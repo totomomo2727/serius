@@ -21,7 +21,8 @@
     <div class="hero-art">
       <span class="sticker" data-reveal="note">your interests.<br><em>his good finds.</em></span>
       <div class="paper-tilt" data-reveal="paper">
-        <div class="paper-stack">
+        <button type="button" class="paper-stack" data-sample-cycle>
+          <span class="offscreen">Sample edition. Activate for another reader’s three.</span>
           {% for edition in samples %}
           {% set stories = edition.stories %}
           <div class="mini-paper{% if loop.first %} is-active{% endif %}" data-sample="{{ edition.slug }}"
@@ -38,14 +39,8 @@
             <small>SAMPLE EDITION · {{ edition.label|upper }}</small>
           </div>
           {% endfor %}
-        </div>
-        <div class="paper-picker" data-sample-picker hidden>
-          <span>Another reader’s three:</span>
-          {% for edition in samples %}
-          <button type="button" data-sample-tab="{{ edition.slug }}"
-                  aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ edition.label }}</button>
-          {% endfor %}
-        </div>
+        </button>
+        <span class="paper-hint" data-sample-hint hidden>click for another reader’s three</span>
       </div>
       <img class="hero-bird" src="/static/press/serius.png" data-reveal="bird"
            alt="Serius, your seagull curator, holding a flower">
