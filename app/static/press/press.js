@@ -450,20 +450,27 @@
     });
 
     var asked = false;
-    var ask = function () {
-      if (asked) return;
-      asked = true;
-      open();
-    };
     var cancel = function () {
       asked = true;
       if (timer) window.clearTimeout(timer);
       timer = null;
     };
-    /* A reader already typing their address downstairs is not interrupted. */
+    var ask = function () {
+      if (asked) return;
+      asked = true;
+      open();
+    };
+    /* Reaching for the form downstairs dismisses the pop-up rather than
+       fighting it: it asks for the same address. */
     if (tail) {
-      tail.addEventListener('focusin', cancel);
-      tail.addEventListener('pointerdown', cancel);
+      tail.addEventListener('focusin', function () {
+        cancel();
+        close();
+      });
+      tail.addEventListener('pointerdown', function () {
+        cancel();
+        close();
+      });
     }
 
     if (modal.hasAttribute('data-open-now')) {

@@ -16,6 +16,7 @@
 
   {% set intro = edition.intro %}
   {% include "_edition.html" %}
+  <span class="edition-end" data-edition-end aria-hidden="true"></span>
 
   <section class="signup-tail" id="subscribe">
     <div class="tail-inner">
@@ -31,7 +32,6 @@
       {% endif %}
       {% with scope = 'page' %}{% include "_subscribe_form.html" %}{% endwith %}
     </div>
-    <span class="edition-end" data-edition-end aria-hidden="true"></span>
   </section>
 </section>
 

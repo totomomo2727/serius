@@ -18,7 +18,9 @@
       {% if result is none %}
       <span class="pill">YOU’RE ON SERIUS’S LIST</span>
       <h1>Your inbox.<br><em>A little more<br>interesting.</em></h1>
-      <p>Your next edition arrives at eight in the morning, {{ subscriber.timezone }} time.</p>
+      <p>This address already receives the Feather Press, so nothing changed and nothing was
+        re-sent. Your next edition arrives at eight in the morning, {{ subscriber.timezone }}
+        time; to change your interests, use the preferences link in any edition.</p>
       {% elif result.ok and result.delivered %}
       <span class="pill">YOU’RE ON SERIUS’S LIST</span>
       <h1>It’s on its way.<br><em>Three good finds.</em></h1>
@@ -36,7 +38,9 @@
       <p class="error" role="alert">{{ result.error }}</p>
       {% endif %}
       <div class="address"><span>DELIVER TO</span><strong>{{ subscriber.email }}</strong></div>
+      {% if manage_link %}
       <a class="button" href="{{ manage_link }}">Manage your preferences<span>↗</span></a>
+      {% endif %}
       <p class="state-note">
         {% if result is none %}
         Status: already confirmed — nothing was re-sent.
