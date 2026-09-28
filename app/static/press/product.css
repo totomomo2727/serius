@@ -343,7 +343,7 @@
 .modal-lede { font: 14px/1.6 Arial, Helvetica, sans-serif; color: #60605b; margin: 0; }
 .modal-paper .email-field { margin-top: 18px; max-width: 100%; }
 .modal-paper .email-field label { font-size: 13px; margin-bottom: 4px; }
-.modal-paper .email-field input { font-size: 20px; padding: 11px 0; }
+.modal-paper .email-field input { font-size: 16px; padding: 10px 0; }
 .modal-paper .hint, .modal-paper .fine { display: none; }
 .modal-paper .consent-note { font-size: 10px; margin-top: 10px; }
 .modal-paper .button { margin-top: 14px; width: 100%; min-height: 72px; font-size: 17px; }
