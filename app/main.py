@@ -16,7 +16,7 @@ from app.content import (
     TOPICS,
     TOPICS_BY_SLUG,
     interests_line,
-    sample_edition,
+    sample_editions,
     seed_content,
 )
 from app.db import SessionLocal, get_db, init_db
@@ -92,13 +92,13 @@ def client_key(request: Request) -> str:
 
 @app.get("/", response_class=HTMLResponse)
 def landing() -> HTMLResponse:
-    return render("landing.html", sample=sample_edition()["stories"])
+    return render("landing.html", samples=sample_editions())
 
 
 @app.get("/sample", response_class=HTMLResponse)
 def sample() -> HTMLResponse:
-    """A fixed, clearly-labelled sample so people can read one before choosing."""
-    return render("sample.html", sample=sample_edition())
+    """Fixed, clearly-labelled samples so people can read one before choosing."""
+    return render("sample.html", samples=sample_editions())
 
 
 @app.get("/start", response_class=HTMLResponse)

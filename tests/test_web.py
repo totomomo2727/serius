@@ -39,6 +39,33 @@ def test_landing_content_is_present_before_any_motion_runs(client):
     assert 'aria-pressed="false"' in landing.text
 
 
+def test_three_sample_editions_are_offered_with_the_featured_one_first(client):
+    from app.content import sample_editions
+
+    samples = sample_editions()
+    assert len(samples) == 3
+    assert samples[0]["slug"] == "philosophy-psychology"
+    assert len({s["slug"] for s in samples}) == 3
+    # Different readers must be shown genuinely different finds.
+    picks = [{story["url"] for story in s["stories"]} for s in samples]
+    assert picks[0] & picks[1] == set()
+    assert picks[0] & picks[2] == set()
+    assert picks[1] & picks[2] == set()
+
+    for page in ("/", "/sample"):
+        text = client.get(page).text
+        first = text.index('data-sample="philosophy-psychology"')
+        for sample in samples:
+            assert f'data-sample-tab="{sample["slug"]}"' in text
+            assert sample["label"] in text
+            assert first <= text.index(f'data-sample="{sample["slug"]}"')
+
+    sample_page = client.get("/sample").text
+    for story in samples[2]["stories"]:
+        assert story["url"] in sample_page
+        assert story["title"] in sample_page
+
+
 def test_adjusting_interests_reopens_the_form_on_the_same_choices(client, db):
     start_preview(client, topics=("philosophy",), interests=("ethics",), depth="deep")
     edition = db.query(Edition).order_by(Edition.created_at.desc()).first()
